@@ -24,8 +24,8 @@
 	transition: all 0.5s ease;
 	font-size: rem(20px);
 	color: #fff;
-	padding: rem(15px) rem(30px);
-	height: 52px;
+	padding: rem(12px) rem(24px);
+	// height: 52px;
 	font-weight: 600;
 	vertical-align: middle;
 	position: relative;
@@ -65,13 +65,40 @@
 	&.btn-primary,
 	.btn-primary:focus,
 	.btn-primary:active {
+		position: relative;
+		z-index: 1;
 		background: var(--primary);
 		color: #fff;
 		border: 2px solid var(--primary);
-		min-width: rem(273px);
+		border-radius: 6px;
 		&:hover {
-			background: #fff;
-			color: var(--primary);
+			&::before {
+				content: '';
+				position: absolute;
+				width: 80%;
+				height: 100%;
+				// background-color: var(--primary);
+				background-color: inherit;
+				border-radius: 6px;
+				z-index: -1;
+				animation: ripple 1.5s ease-out;
+				animation-delay: -0.5s;
+			}
+		}
+		// min-width: rem(273px);
+		// &:hover {
+		// 	background: #fff;
+		// 	color: var(--primary);
+		// }
+	}
+	@keyframes ripple {
+		from {
+			opacity: 1;
+			transform: scale(0);
+		}
+		to {
+			opacity: 0;
+			transform: scale(1.8);
 		}
 	}
 	&.btn-default {
@@ -89,9 +116,9 @@
 		color: var(--textPrimary);
 		font-weight: 700;
 		border-radius: 8px;
-		min-width: 120px;
-		padding: rem(16px);
-		height: 40px;
+		// min-width: 120px;
+		padding: rem(8px) rem(42px);
+		// height: 40px;
 		display: flex;
 		align-items: center;
 	}

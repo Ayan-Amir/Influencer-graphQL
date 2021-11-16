@@ -2,21 +2,23 @@
 	<div class="contentWrapper discover">
 		<div class="container">
 			<filters />
-			<div class="card">
+			<div class="card" v-for="card in cardData" :key="card.index">
 				<div>
 					<div class="logo">
 						<img
-							src="@/assets/images/svg/brand-logo.svg"
+							:src="require(`@/assets/images/svg/${card.icon}`)"
 							alt=""
 							class="img-fluid"
 						/>
 					</div>
 					<div class="title">
-						Palas Mall
-						<span>Nullam convallis sollicitudin</span>
+						{{ card.title }}
+						<span>{{ card.subTitle }}</span>
 					</div>
 				</div>
-				<a href="#" class="btn btn-primary">Apply Now</a>
+				<router-link to="discover-detail" class="btn btn-primary">{{
+					card.btn
+				}}</router-link>
 			</div>
 		</div>
 	</div>
@@ -26,7 +28,66 @@
 import Filters from '@/components/base/Filters.vue';
 export default {
 	data() {
-		return {};
+		return {
+			cardData: [
+				{
+					index: 0,
+					icon: 'brand-logo.svg',
+					title: 'Palas Mall',
+					subTitle: 'Nullam convallis sollicitudin',
+					btn: 'Apply Now',
+				},
+				{
+					index: 1,
+					icon: 'brand-logo.svg',
+					title: '5 TO GO',
+					subTitle: 'Nullam convallis sollicitudin',
+					btn: 'Apply Now',
+				},
+				{
+					index: 2,
+					icon: 'brand-logo.svg',
+					title: 'Shop Online',
+					subTitle: 'Nullam convallis sollicitudin',
+					btn: 'Apply Now',
+				},
+				{
+					index: 3,
+					icon: 'brand-logo.svg',
+					title: 'Pizza Papa',
+					subTitle: 'Nullam convallis sollicitudin',
+					btn: 'Apply Now',
+				},
+				{
+					index: 4,
+					icon: 'brand-logo.svg',
+					title: 'Gsm Iasi',
+					subTitle: 'Nullam convallis sollicitudin',
+					btn: 'Apply Now',
+				},
+				{
+					index: 5,
+					icon: 'brand-logo.svg',
+					title: 'Beer Zone',
+					subTitle: 'Nullam convallis sollicitudin',
+					btn: 'Apply Now',
+				},
+				{
+					index: 6,
+					icon: 'brand-logo.svg',
+					title: 'Liria',
+					subTitle: 'Nullam convallis sollicitudin',
+					btn: 'Apply Now',
+				},
+				{
+					index: 7,
+					icon: 'brand-logo.svg',
+					title: 'Camping',
+					subTitle: 'Nullam convallis sollicitudin',
+					btn: 'Apply Now',
+				},
+			],
+		};
 	},
 	components: {
 		Filters,
@@ -42,9 +103,12 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 		padding: rem(15px);
+		border-radius: 10px;
+		border: 0;
+		margin-bottom: rem(15px);
 		> div {
 			display: flex;
-			align-items: center;
+			align-items: flex-start;
 			.title {
 				font-size: rem(18px);
 				font-weight: 500;
@@ -60,9 +124,34 @@ export default {
 		}
 		.btn.btn-primary {
 			font-size: rem(10px);
-			color: #fff;
-			min-width: 50px;
+			border-radius: 6px;
+			font-weight: 600;
+
+			// &:hover {
+			// 	&::before {
+			// 		content: '';
+			// 		position: absolute;
+			// 		width: 80%;
+			// 		height: 100%;
+			// 		// background-color: var(--primary);
+			// 		background-color: inherit;
+			// 		border-radius: 6px;
+			// 		z-index: -1;
+			// 		animation: ripple 1.5s ease-out;
+			// 		animation-delay: -0.5s;
+			// 	}
+			// }
 		}
+		// @keyframes ripple {
+		// 	from {
+		// 		opacity: 1;
+		// 		transform: scale(0);
+		// 	}
+		// 	to {
+		// 		opacity: 0;
+		// 		transform: scale(1.8);
+		// 	}
+		// }
 	}
 }
 </style>
