@@ -1,21 +1,16 @@
 <template>
 	<div id="app">
-		<div class="container">
-			<div class="publicHeader">
-
-			</div>
-			<main role="main">
-				<router-view />
-			</main>
-		</div>
-		
+		<the-header />
+		<main role="main">
+			<router-view />
+		</main>
 	</div>
 </template>
 
 <script>
 import TheHeader from '@/components/layout/TheHeader.vue';
 export default {
-	name: 'App',
+	name: 'DashboardLayout',
 	components: {
 		TheHeader,
 	},

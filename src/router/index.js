@@ -1,45 +1,22 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
+import publicLayout from '@/layouts/PublicLayout.vue';
+import DashboardLayout from '@/layouts/DashboardLayout.vue';
+import user from '@/views/user/router';
 Vue.use(VueRouter);
 
 const routes = [
-  	{
-		path: "/free-offer",
-		name: "Free Offer",
+	{
+		path: "/login",
 		component: () =>
-        import ("../views/user/FreeOffers.vue"),
+        import ("@/views/common/Login.vue")
 	},
 	{
-		path: "/discover",
-		name: "Discover",
-		component: () =>
-        import ("../views/user/Discover.vue"),
+		path: "/user",
+		component: DashboardLayout,
+		children:[...user]
 	},
-	{
-		path: "/discover-detail",
-		name: "Discover Detail",
-		component: () =>
-        import ("../views/user/DiscoverDetail.vue"),
-	},
-	{
-		path: "/discover-detail-deleivery",
-		name: "Discover Detail Deleivery",
-		component: () =>
-        import ("../views/user/DiscoverDetailDeleivery.vue"),
-	},
-	{
-		path: "/influencer-complete",
-		name: "Influencer Complete",
-		component: () =>
-        import ("../views/user/InfluencerComplete.vue"),
-	},
-	{
-		path: "/notification",
-		name: "Notification",
-		component: () =>
-        import ("../views/user/Notification.vue"),
-	}
+  	
 ];
 
 const router = new VueRouter({

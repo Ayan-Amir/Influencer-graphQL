@@ -19,7 +19,5 @@ Vue.component('svg-icon', SvgIcon)
 
 new Vue({
   router,
-  render: function (h) {
-    return h(App);
-  },
+  render: h => h(App),
 }).$mount("#app");
