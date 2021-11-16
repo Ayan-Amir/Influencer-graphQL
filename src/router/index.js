@@ -33,6 +33,12 @@ const routes = [
 		name: "Influencer Complete",
 		component: () =>
         import ("../views/user/InfluencerComplete.vue"),
+	},
+	{
+		path: "/notification",
+		name: "Notification",
+		component: () =>
+        import ("../views/user/Notification.vue"),
 	}
 ];
 

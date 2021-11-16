@@ -40,7 +40,7 @@ export default {
 	align-items: center;
 	justify-content: space-between;
 	padding: rem(15px);
-	border-radius: 10px;
+	border-radius: 6px;
 	border: 0;
 	margin-bottom: rem(15px);
 	> div {

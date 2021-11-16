@@ -210,33 +210,6 @@ export default {
 		}
 	}
 	/deep/ {
-		.tabs {
-			.nav.nav-tabs {
-				border: 0;
-				margin-bottom: rem(18px);
-				.nav-item {
-					border: 0;
-					&:not(:last-child) {
-						margin-right: rem(13px);
-					}
-					.nav-link {
-						padding: rem(9px);
-						font-weight: 700;
-						font-size: rem(14px);
-						min-width: 120px;
-						text-align: center;
-						background: #fff;
-						color: var(--textPrimary);
-						border: 0;
-						border-radius: 6px;
-						&.active {
-							background: var(--primary);
-							color: #fff;
-						}
-					}
-				}
-			}
-		}
 		.tab-content {
 			.card {
 				cursor: pointer;
