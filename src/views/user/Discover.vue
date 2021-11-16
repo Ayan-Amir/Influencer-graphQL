@@ -2,30 +2,15 @@
 	<div class="contentWrapper discover">
 		<div class="container">
 			<filters />
-			<div class="card" v-for="card in cardData" :key="card.index">
-				<div>
-					<div class="logo">
-						<img
-							:src="require(`@/assets/images/svg/${card.icon}`)"
-							alt=""
-							class="img-fluid"
-						/>
-					</div>
-					<div class="title">
-						{{ card.title }}
-						<span>{{ card.subTitle }}</span>
-					</div>
-				</div>
-				<router-link to="discover-detail" class="btn btn-primary">{{
-					card.btn
-				}}</router-link>
-			</div>
+			<base-shoping-card :cardData="cardData" />
 		</div>
 	</div>
 </template>
 
 <script>
 import Filters from '@/components/base/Filters.vue';
+import BaseShopingCard from '@/components/base/BaseShopingCard.vue';
+
 export default {
 	data() {
 		return {
@@ -36,6 +21,8 @@ export default {
 					title: 'Palas Mall',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
+					isDiscoverBtn: true,
+					isPrice: false,
 				},
 				{
 					index: 1,
@@ -43,6 +30,8 @@ export default {
 					title: '5 TO GO',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
+					isDiscoverBtn: true,
+					isPrice: false,
 				},
 				{
 					index: 2,
@@ -50,6 +39,8 @@ export default {
 					title: 'Shop Online',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
+					isDiscoverBtn: true,
+					isPrice: false,
 				},
 				{
 					index: 3,
@@ -57,6 +48,8 @@ export default {
 					title: 'Pizza Papa',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
+					isDiscoverBtn: true,
+					isPrice: false,
 				},
 				{
 					index: 4,
@@ -64,6 +57,8 @@ export default {
 					title: 'Gsm Iasi',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
+					isDiscoverBtn: true,
+					isPrice: false,
 				},
 				{
 					index: 5,
@@ -71,6 +66,8 @@ export default {
 					title: 'Beer Zone',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
+					isDiscoverBtn: true,
+					isPrice: false,
 				},
 				{
 					index: 6,
@@ -78,6 +75,8 @@ export default {
 					title: 'Liria',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
+					isDiscoverBtn: true,
+					isPrice: false,
 				},
 				{
 					index: 7,
@@ -85,73 +84,17 @@ export default {
 					title: 'Camping',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
+					isDiscoverBtn: true,
+					isPrice: false,
 				},
 			],
 		};
 	},
 	components: {
 		Filters,
+		BaseShopingCard,
 	},
 };
 </script>
 
-<style lang="scss" scoped>
-.discover {
-	.card {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-between;
-		padding: rem(15px);
-		border-radius: 10px;
-		border: 0;
-		margin-bottom: rem(15px);
-		> div {
-			display: flex;
-			align-items: flex-start;
-			.title {
-				font-size: rem(18px);
-				font-weight: 500;
-				margin-left: rem(18px);
-				color: var(--textPrimary);
-				span {
-					display: block;
-					font-size: rem(14px);
-					font-weight: 400;
-					color: var(--textSecondary);
-				}
-			}
-		}
-		.btn.btn-primary {
-			font-size: rem(10px);
-			border-radius: 6px;
-			font-weight: 600;
-
-			// &:hover {
-			// 	&::before {
-			// 		content: '';
-			// 		position: absolute;
-			// 		width: 80%;
-			// 		height: 100%;
-			// 		// background-color: var(--primary);
-			// 		background-color: inherit;
-			// 		border-radius: 6px;
-			// 		z-index: -1;
-			// 		animation: ripple 1.5s ease-out;
-			// 		animation-delay: -0.5s;
-			// 	}
-			// }
-		}
-		// @keyframes ripple {
-		// 	from {
-		// 		opacity: 1;
-		// 		transform: scale(0);
-		// 	}
-		// 	to {
-		// 		opacity: 0;
-		// 		transform: scale(1.8);
-		// 	}
-		// }
-	}
-}
-</style>
+<style lang="scss" scoped></style>
