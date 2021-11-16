@@ -213,6 +213,7 @@ export default {
 		.tabs {
 			.nav.nav-tabs {
 				border: 0;
+				margin-bottom: rem(18px);
 				.nav-item {
 					border: 0;
 					&:not(:last-child) {
