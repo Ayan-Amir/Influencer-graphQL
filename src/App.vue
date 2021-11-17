@@ -1,11 +1,6 @@
 <template>
 	<div id="app">
-		<div class="">
-			<div class="publicHeader"></div>
-			<main role="main">
-				<router-view />
-			</main>
-		</div>
+		<router-view />
 	</div>
 </template>
 

@@ -1,6 +1,12 @@
 <template>
 	<div>
 		<svg class="d-none">
+			<g id="logo" transform="translate(0 1.5)">
+				<circle id="Ellipse_4" data-name="Ellipse 4" cx="11" cy="11" r="11" transform="translate(2 3)" fill="none" stroke="currentColor" stroke-width="4"/>
+				<circle id="Ellipse_5" data-name="Ellipse 5" cx="5" cy="5" r="5" transform="translate(15)" fill="currentColor"/>
+				<circle id="Ellipse_6" data-name="Ellipse 6" cx="5" cy="5" r="5" transform="translate(8 9)" fill="currentColor"/>
+				<text id="Local_Influencer" data-name="Local Influencer" transform="translate(31.973 20.5)" fill="currentColor" font-size="20" font-family="SegoeUIBlack, Segoe UI"><tspan x="0" y="0">Local Influencer</tspan></text>
+			</g>
 			<g
 				id="watch_icon"
 				data-name="watch icon"

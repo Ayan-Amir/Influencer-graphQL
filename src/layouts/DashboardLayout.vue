@@ -1,5 +1,5 @@
 <template>
-	<div id="app">
+	<div class="dashboard">
 		<the-header />
 		<main role="main">
 			<router-view />
