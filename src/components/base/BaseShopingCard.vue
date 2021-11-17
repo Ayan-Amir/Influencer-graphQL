@@ -21,6 +21,20 @@
 				>{{ card.btn }}</router-link
 			>
 			<p class="card__price" v-if="card.isPrice">{{ card.price }}</p>
+
+			<div class="card__socialActivity" v-if="card.isSocailActivity">
+				<div class="card__socialActivity--logo">
+					<img
+						src="@/assets/images/icons/insta.png"
+						alt=""
+						class="img-fluid"
+					/>
+				</div>
+				<div class="card__socialActivity--status">
+					{{ card.app }}
+					<span>{{ card.activity }}</span>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -40,12 +54,22 @@ export default {
 	align-items: center;
 	justify-content: space-between;
 	padding: rem(15px);
-	border-radius: 6px;
+	border-radius: 8px;
 	border: 0;
 	margin-bottom: rem(15px);
 	> div {
 		display: flex;
 		align-items: flex-start;
+	}
+	&__logo {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		overflow: hidden;
+		img {
+			height: 100%;
+			width: 100%;
+		}
 	}
 	&__title {
 		font-size: rem(18px);
@@ -59,9 +83,36 @@ export default {
 			color: var(--textSecondary);
 		}
 	}
+	&__socialActivity {
+		display: flex;
+		align-items: flex-start;
+		&--logo {
+			width: 38px;
+			height: 38px;
+			border-radius: 50%;
+			overflow: hidden;
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
+		&--status {
+			color: #8998ac;
+			font-size: rem(9px);
+			margin-left: rem(18px);
+			font-weight: 400;
+			span {
+				display: block;
+				font-size: rem(16px);
+				font-weight: 500;
+				color: var(--textPrimary);
+			}
+		}
+	}
+
 	.btn.btn-primary {
 		font-size: rem(10px);
-		border-radius: 6px;
+		border-radius: 8px;
 		font-weight: 600;
 	}
 

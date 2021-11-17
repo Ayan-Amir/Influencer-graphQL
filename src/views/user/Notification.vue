@@ -57,7 +57,7 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 		padding: rem(13px) rem(25px);
-		border-radius: 6px;
+		border-radius: 8px;
 		border: 0;
 		margin-bottom: rem(15px);
 		> div {

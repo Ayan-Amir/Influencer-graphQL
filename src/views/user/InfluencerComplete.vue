@@ -97,6 +97,9 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 1,
@@ -107,6 +110,9 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 2,
@@ -117,6 +123,9 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 3,
@@ -127,6 +136,9 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 4,
@@ -137,6 +149,9 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 5,
@@ -147,6 +162,9 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 6,
@@ -157,6 +175,9 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 7,
@@ -167,6 +188,9 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 			],
 			complete: 61,
@@ -183,7 +207,7 @@ export default {
 	.card {
 		padding: rem(24px) rem(16px) rem(16px) rem(16px);
 		border: 0;
-		border-radius: 10px;
+		border-radius: 8px;
 		text-align: center;
 	}
 	.profile {
@@ -214,7 +238,7 @@ export default {
 			}
 		}
 		&__seeStatistic {
-			border-radius: 10px;
+			border-radius: 8px;
 			margin: rem(16px) 0;
 			padding: rem(16px) rem(14px);
 			background: #fff;
@@ -248,7 +272,7 @@ export default {
 		}
 		&__statistic {
 			padding: rem(16px) rem(28px);
-			border-radius: 10px;
+			border-radius: 8px;
 			background: #fff;
 			display: flex;
 			align-items: center;

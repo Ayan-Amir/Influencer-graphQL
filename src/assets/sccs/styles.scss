@@ -4,16 +4,6 @@ p {
 	color: var(--textSecondary);
 	font-weight: 400;
 	line-height: 1.4;
-	// &.heading {
-	// 	color: #494e5a;
-	// 	font-size: rem(16px);
-	// 	margin-bottom: rem(14px);
-	// }
-	// &.subTitle {
-	// 	font-size: rem(16px);
-	// 	color: rgba(37, 56, 88, 0.6);
-	// 	margin-bottom: rem(65px);
-	// }
 }
 .contentWrapper {
 	padding-top: 150px;
@@ -38,10 +28,17 @@ p {
 				background: #fff;
 				color: var(--textPrimary);
 				border: 0;
-				border-radius: 6px;
+				border-radius: 8px;
 				&.active {
 					background: var(--primary);
 					color: #fff;
+				}
+			}
+			&:hover {
+				@media screen and (min-width: 1025px) {
+					.nav-link {
+						opacity: 0.8;
+					}
 				}
 			}
 		}

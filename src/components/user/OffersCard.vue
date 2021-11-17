@@ -115,7 +115,7 @@ export default {
 				padding: 11px 15px;
 				font-size: 10px;
 				font-weight: 600;
-				border-radius: 6px;
+				border-radius: 8px;
 				// padding-left: 16px;
 				svg {
 					width: 12px;

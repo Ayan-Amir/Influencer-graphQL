@@ -70,7 +70,7 @@
 		background: var(--primary);
 		color: #fff;
 		border: 2px solid var(--primary);
-		border-radius: 6px;
+		border-radius: 8px;
 		&:hover {
 			&::before {
 				content: '';
@@ -79,7 +79,7 @@
 				height: 100%;
 				// background-color: var(--primary);
 				background-color: inherit;
-				border-radius: 6px;
+				border-radius: 8px;
 				z-index: -1;
 				animation: ripple 1.5s ease-out;
 				animation-delay: -0.5s;

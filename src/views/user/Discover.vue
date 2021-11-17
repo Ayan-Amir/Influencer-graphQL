@@ -23,6 +23,9 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 1,
@@ -32,6 +35,9 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 2,
@@ -41,6 +47,9 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 3,
@@ -50,6 +59,9 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 4,
@@ -59,6 +71,9 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 5,
@@ -68,6 +83,9 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 6,
@@ -77,6 +95,9 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 				{
 					index: 7,
@@ -86,6 +107,9 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
+					isSocailActivity: false,
+					app: 'Instagram',
+					activity: '200.200',
 				},
 			],
 		};
