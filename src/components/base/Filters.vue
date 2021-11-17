@@ -43,6 +43,9 @@ export default {
 	@include flex(center, space-between);
 	padding-top: rem(10px);
 	margin-bottom: rem(30px);
+	@media screen and (max-width:767px){
+		margin-bottom:rem(15px);
+	}
 	.dropdownWrapper {
 		@media screen and (max-width: 767px) {
 			width: 100%;

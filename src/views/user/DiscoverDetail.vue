@@ -1,7 +1,7 @@
 <template>
 	<div class="contentWrapper discoverDetail">
 		<div class="container">
-			<div class="row col-gap-40">
+			<div class="row">
 				<div class="col-md-5">
 					<div class="image">
 						<img
@@ -80,9 +80,17 @@ export default {
 
 <style lang="scss" scoped>
 .discoverDetail {
+	&.contentWrapper{
+		@media screen and (min-width:992px){
+			padding-top:rem(150px)
+		}
+	}
 	.image {
 		border-radius: 30px;
 		overflow: hidden;
+		@media screen and (max-width:767px){
+			margin-bottom:rem(16px);
+		}
 	}
 	&__info {
 		display: flex;
@@ -110,6 +118,7 @@ export default {
 			color: var(--textSecondary);
 			font-size: rem(15px);
 			font-weight: 400;
+			font-family:$secondary-font;
 		}
 	}
 }
