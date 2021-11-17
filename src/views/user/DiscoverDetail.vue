@@ -96,6 +96,16 @@ export default {
 		display: flex;
 		align-items: center;
 		margin-bottom: rem(18px);
+		&--logo {
+			width: 77px;
+			height: 77px;
+			border-radius: 50%;
+			overflow: hidden;
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
 		&--title {
 			margin-left: rem(16px);
 			h1 {

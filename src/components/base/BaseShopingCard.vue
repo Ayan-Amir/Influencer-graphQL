@@ -59,7 +59,7 @@ export default {
 	margin-bottom: rem(15px);
 	> div {
 		display: flex;
-		align-items: flex-start;
+		align-items: center;
 	}
 	&__logo {
 		width: 50px;
@@ -81,6 +81,7 @@ export default {
 			font-size: rem(14px);
 			font-weight: 400;
 			color: var(--textSecondary);
+			@include truncate(1);
 		}
 	}
 	&__socialActivity {
@@ -114,6 +115,8 @@ export default {
 		font-size: rem(10px);
 		border-radius: 8px;
 		font-weight: 600;
+		margin-left: rem(20px);
+		min-width: 105px;
 	}
 
 	&__price {

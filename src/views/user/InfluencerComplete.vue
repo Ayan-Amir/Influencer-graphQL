@@ -207,7 +207,7 @@ export default {
 	.card {
 		padding: rem(24px) rem(16px) rem(16px) rem(16px);
 		border: 0;
-		border-radius: 8px;
+		border-radius: 35px;
 		text-align: center;
 	}
 	.profile {
@@ -238,7 +238,7 @@ export default {
 			}
 		}
 		&__seeStatistic {
-			border-radius: 8px;
+			border-radius: 12px;
 			margin: rem(16px) 0;
 			padding: rem(16px) rem(14px);
 			background: #fff;
@@ -272,7 +272,7 @@ export default {
 		}
 		&__statistic {
 			padding: rem(16px) rem(28px);
-			border-radius: 8px;
+			border-radius: 12px;
 			background: #fff;
 			display: flex;
 			align-items: center;

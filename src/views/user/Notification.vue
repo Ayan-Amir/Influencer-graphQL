@@ -57,12 +57,22 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 		padding: rem(13px) rem(25px);
-		border-radius: 8px;
+		border-radius: 12px;
 		border: 0;
 		margin-bottom: rem(15px);
 		> div {
 			display: flex;
 			align-items: flex-start;
+		}
+		&__image {
+			width: 50px;
+			height: 50px;
+			overflow: hidden;
+			border-radius: 50%;
+			img {
+				height: 100%;
+				width: 100%;
+			}
 		}
 		&__title {
 			font-size: rem(14px);
