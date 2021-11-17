@@ -76,6 +76,7 @@ export default {
 		font-weight: 500;
 		margin-left: rem(18px);
 		color: var(--textPrimary);
+		font-family: $secondary-font;
 		span {
 			display: block;
 			font-size: rem(14px);
@@ -126,6 +127,7 @@ export default {
 		font-weight: 700;
 		position: relative;
 		margin-right: rem(42px);
+		font-family: $secondary-font;
 		&::before {
 			position: absolute;
 			content: '';

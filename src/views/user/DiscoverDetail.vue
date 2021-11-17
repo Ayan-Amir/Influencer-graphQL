@@ -26,41 +26,8 @@
 						</div>
 					</div>
 					<ul>
-						<li>1. Ask for an offer</li>
-						<li>2. Talk to us to establish the details</li>
-						<li>
-							3. Post a video story / picture on your Instagram
-							account with our product and tag our page @
-							magic.bath.hombs
-						</li>
-						<li>
-							4. Post a video story / picture on your Instagram
-							account with our product and tag our page @
-							magic.bath.bombs
-						</li>
-						<li>
-							5. Post a video story / picture on your Instagram
-							account with our product and tag our page @
-							magic.bath.hombs
-						</li>
-						<li>
-							6. Post a video story / photo on your Instagram
-							account with the atmosphere of our location and tag
-							our page @ magic.bath.bombs
-						</li>
-						<li>
-							7. Post a video story / photo on your Instagram
-							account with the atmosphere of our location and tag
-							our page @ magic.bath.bombs
-						</li>
-						<li>
-							8. Post a video story / photo on your Instagram
-							account with the atmosphere of our location and tag
-							our page @ magic.bath.bombs
-						</li>
-						<li>
-							9. After at least 20 hours, take a screenshot of
-							your posts and upload them to FameUp
+						<li v-for="(item, id) in listing" :key="id + 1">
+							{{ item }}
 						</li>
 					</ul>
 				</div>
@@ -72,7 +39,19 @@
 <script>
 export default {
 	data() {
-		return {};
+		return {
+			listing: [
+				'1. Ask for an offer',
+				'2. Talk to us to establish the details',
+				'3. Post a video story / picture on your Instagram account with our product and tag our page @ magic.bath.hombs',
+				'4. Post a video story / picture on your Instagram account with our product and tag our page @ magic.bath.bombs',
+				'5. Post a video story / picture on your Instagram account with our product and tag our page @ magic.bath.hombs',
+				'6. Post a video story / photo on your Instagram account with the atmosphere of our location and tag our page @ magic.bath.bombs',
+				'7. Post a video story / photo on your Instagram account with the atmosphere of our location and tag our page @ magic.bath.bombs',
+				'8. Post a video story / photo on your Instagram account with the atmosphere of our location and tag our page @ magic.bath.bombs',
+				'9. After at least 20 hours, take a screenshot of your posts and upload them to FameUp',
+			],
+		};
 	},
 	components: {},
 };
@@ -80,16 +59,16 @@ export default {
 
 <style lang="scss" scoped>
 .discoverDetail {
-	&.contentWrapper{
-		@media screen and (min-width:992px){
-			padding-top:rem(150px)
+	&.contentWrapper {
+		@media screen and (min-width: 992px) {
+			padding-top: rem(150px);
 		}
 	}
 	.image {
 		border-radius: 30px;
 		overflow: hidden;
-		@media screen and (max-width:767px){
-			margin-bottom:rem(16px);
+		@media screen and (max-width: 767px) {
+			margin-bottom: rem(16px);
 		}
 	}
 	&__info {
@@ -110,9 +89,6 @@ export default {
 			margin-left: rem(16px);
 			h1 {
 				margin: 0;
-				font-size: rem(40px);
-				font-weight: 700;
-				color: var(--textPrimary);
 			}
 			p {
 				font-size: rem(18px);
@@ -128,7 +104,7 @@ export default {
 			color: var(--textSecondary);
 			font-size: rem(15px);
 			font-weight: 400;
-			font-family:$secondary-font;
+			font-family: $secondary-font;
 		}
 	}
 }

@@ -89,7 +89,11 @@ export default {
 			font-size: rem(27px);
 			margin: 0;
 			font-weight: 700;
+			font-family: $secondary-font;
 		}
+	}
+	p {
+		font-family: $secondary-font;
 	}
 	.col-gap-40 .col-md-4 {
 		.image {
