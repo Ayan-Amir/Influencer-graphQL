@@ -21,6 +21,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .search {
+	@media screen and (max-width: 767px) {
+		width: 100%;
+	}
 	.form-group {
 		margin: 0;
 		input {

@@ -1,14 +1,11 @@
 <template>
 	<div id="app">
-		<div class="container">
-			<div class="publicHeader">
-
-			</div>
+		<div class="">
+			<div class="publicHeader"></div>
 			<main role="main">
 				<router-view />
 			</main>
 		</div>
-		
 	</div>
 </template>
 

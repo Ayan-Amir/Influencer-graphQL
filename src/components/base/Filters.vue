@@ -44,8 +44,16 @@ export default {
 	padding-top: rem(10px);
 	margin-bottom: rem(30px);
 	.dropdownWrapper {
+		@media screen and (max-width: 767px) {
+			width: 100%;
+			margin-bottom: rem(15px);
+		}
 		/deep/ {
 			.dropdown {
+				min-height: 40px;
+				@media screen and (max-width: 767px) {
+					width: 48%;
+				}
 				&:not(:last-child) {
 					margin-right: rem(16px);
 				}
