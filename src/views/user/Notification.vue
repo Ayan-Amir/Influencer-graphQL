@@ -14,7 +14,7 @@
 					</div>
 					<div class="card__title">
 						5 Min Ago
-						<p>Your <span>Campaign</span> 1 performs well.</p>
+						<p>Your <span>Campaign 1</span> performs well.</p>
 					</div>
 				</div>
 			</div>
