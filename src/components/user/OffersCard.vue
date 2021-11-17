@@ -70,10 +70,9 @@ export default {
 	&__image {
 		position: relative;
 		overflow: hidden;
-		min-height: 205px;
 		img {
+			width:100%;
 			transition: 0.5s ease-in-out all;
-			height: 100%;
 		}
 		span {
 			position: absolute;
@@ -110,13 +109,10 @@ export default {
 			@include flex(center, space-between);
 			padding-top: rem(15px);
 			.btn {
-				// min-width: 104px;
-				// height: 36px;
 				padding: 11px 15px;
 				font-size: 10px;
 				font-weight: 600;
 				border-radius: 8px;
-				// padding-left: 16px;
 				svg {
 					width: 12px;
 					margin-right: 7px;
@@ -157,6 +153,10 @@ export default {
 				}
 			}
 		}
+	}
+	@media screen and (max-width:575px){
+		max-width:375px;
+		margin:auto auto rem(25px) auto;
 	}
 }
 </style>
