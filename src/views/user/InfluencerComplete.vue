@@ -1,5 +1,5 @@
 <template>
-	<div class="contentWrapper influencerActive">
+	<div class="contentWrapper influencerComplete">
 		<div class="container">
 			<div class="row col-gap-40 profile">
 				<div class="col-md-4">
@@ -20,7 +20,47 @@
 					<div class="profile__seeStatistic">
 						<p>See earnings statistics</p>
 					</div>
-					<div class="profile__statistic"></div>
+					<div class="profile__statistic">
+						<div class="profile__statistic--counter">
+							<vue-ellipse-progress
+								:progress="complete"
+								color="#9637F1"
+								emptyColor="#D8D8D8	"
+								:size="65"
+								fontColor="#253858"
+								fontSize="14px"
+								:thickness="5"
+								emptyThickness="5"
+							/>
+							Completion
+						</div>
+						<div class="profile__statistic--counter">
+							<vue-ellipse-progress
+								:progress="response"
+								color="#57B894"
+								emptyColor="#D8D8D8	"
+								:size="65"
+								fontColor="#253858"
+								fontSize="14px"
+								:thickness="5"
+								emptyThickness="5"
+							/>
+							Respone Rate
+						</div>
+						<div class="profile__statistic--counter">
+							<vue-ellipse-progress
+								:progress="onTime"
+								color="#F70101"
+								emptyColor="#D8D8D8	"
+								:size="65"
+								fontColor="#253858"
+								fontSize="14px"
+								:thickness="5"
+								emptyThickness="5"
+							/>
+							Job Ontime
+						</div>
+					</div>
 				</div>
 				<div class="col-md-8">
 					<div>
@@ -129,6 +169,9 @@ export default {
 					price: '$250',
 				},
 			],
+			complete: 61,
+			response: 68,
+			onTime: 95,
 		};
 	},
 	components: { BaseShopingCard },
@@ -136,7 +179,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.influencerActive {
+.influencerComplete {
 	.card {
 		padding: rem(24px) rem(16px) rem(16px) rem(16px);
 		border: 0;
@@ -207,12 +250,39 @@ export default {
 			padding: rem(16px) rem(28px);
 			border-radius: 10px;
 			background: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			&--counter {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				color: #8998ac;
+				font-size: rem(14px);
+			}
 		}
 	}
 	/deep/ {
 		.tab-content {
 			.card {
 				cursor: pointer;
+			}
+		}
+		.ep-container {
+			margin-bottom: rem(8px);
+		}
+		.ep-circle--progress {
+			stroke-linecap: square;
+		}
+		.ep-legend--value__counter {
+			font-weight: 700;
+			position: relative;
+			left: 5px;
+			&::before {
+				position: absolute;
+				content: '%';
+				font-weight: 900;
+				left: -13px;
 			}
 		}
 	}

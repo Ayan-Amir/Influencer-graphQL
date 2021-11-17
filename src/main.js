@@ -10,12 +10,16 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import SvgIcon from '@/components/base/BaseSvgIcon.vue'
 
+import VueEllipseProgress from 'vue-ellipse-progress';
+
+
 
 Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.component('svg-icon', SvgIcon)
+Vue.use(VueEllipseProgress);
 
 new Vue({
   router,
