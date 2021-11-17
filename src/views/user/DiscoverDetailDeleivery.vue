@@ -91,10 +91,13 @@ export default {
 			font-weight: 700;
 		}
 	}
-	.image {
-		border-radius: 25px;
-		overflow: hidden;
+	.col-gap-40 .col-md-4 {
+		.image {
+			border-radius: 25px;
+			overflow: hidden;
+		}
 	}
+
 	h3 {
 		font-size: rem(18px);
 		font-weight: 500;
@@ -124,6 +127,10 @@ export default {
 		h3 {
 			margin-bottom: rem(18px);
 		}
+	}
+	.image {
+		overflow: hidden;
+		border-radius: 40px;
 	}
 }
 </style>
