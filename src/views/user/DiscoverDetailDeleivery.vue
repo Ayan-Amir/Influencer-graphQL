@@ -18,26 +18,7 @@
 				<div class="delivery">
 					<h3>You delivered:</h3>
 					<span class="delivery__date">Sep 10, 2021</span>
-					<div class="row col-gap-40">
-						<div class="col-md-4">
-							<div class="image">
-								<img
-									src="@/assets/images/instaStatusScreen.png"
-									alt=""
-									class="img-fluid"
-								/>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="image">
-								<img
-									src="@/assets/images/instaPhotoUpload.png"
-									alt=""
-									class="img-fluid"
-								/>
-							</div>
-						</div>
-					</div>
+					<deleivery-images />
 				</div>
 				<div class="revision">
 					<h3>Revision</h3>
@@ -64,11 +45,12 @@
 
 <script>
 import BaseSocialLink from '@/components/base/BaseSocialLink.vue';
+import DeleiveryImages from '@/components/user/partials/DeleiveryImages.vue';
 export default {
 	data() {
 		return {};
 	},
-	components: { BaseSocialLink },
+	components: { BaseSocialLink, DeleiveryImages },
 };
 </script>
 
@@ -93,13 +75,6 @@ export default {
 	p {
 		font-family: $secondary-font;
 	}
-	.col-gap-40 .col-md-4 {
-		.image {
-			border-radius: 25px;
-			overflow: hidden;
-		}
-	}
-
 	h3 {
 		font-size: rem(18px);
 		font-weight: 500;

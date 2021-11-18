@@ -30,9 +30,9 @@ export default [
     },
     
     {
-        path: "notification",
-        name: "Notification",
+        path: "notifications",
+        name: "Notifications",
         component: () =>
-            import ("@/views/user/Notification.vue"),
+            import ("@/views/user/Notifications.vue"),
     }
 ]

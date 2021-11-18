@@ -2,31 +2,31 @@
 	<div class="notification container">
 		<h1>Notification</h1>
 		<h3>Today</h3>
-		<div class="card active">
+		<div class="card notificationCard active">
 			<div>
-				<div class="card__image">
+				<div class="notificationCard__image">
 					<img
 						src="@/assets/images/user.png"
 						alt=""
 						class="img-fluid"
 					/>
 				</div>
-				<div class="card__title">
+				<div class="notificationCard__title">
 					5 Min Ago
 					<p>Your <span>Campaign 1</span> performs well.</p>
 				</div>
 			</div>
 		</div>
-		<div class="card">
+		<div class="card notificationCard">
 			<div>
-				<div class="card__image">
+				<div class="notificationCard__image">
 					<img
 						src="@/assets/images/user.png"
 						alt=""
 						class="img-fluid"
 					/>
 				</div>
-				<div class="card__title">
+				<div class="notificationCard__title">
 					1 Hour Ago
 					<p><span>Dorian Popa</span> has sent you a message.</p>
 				</div>
@@ -49,14 +49,13 @@ export default {
 	h3 {
 		margin-bottom: rem(16px);
 	}
-	.card {
+	.notificationCard {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-between;
 		padding: rem(13px) rem(25px);
 		border-radius: 16px;
-		border: 0;
 		margin-bottom: rem(15px);
 		&.active {
 			border: 2px solid var(--primary);
