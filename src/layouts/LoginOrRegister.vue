@@ -29,6 +29,7 @@ export default {
     .LoginRegister{
         min-height: 100vh;
         background: linear-gradient(90deg, #F3F3F6 50%, #9637F1 50%);
+        padding-bottom:rem(40px);
         .header__logo{
             color: red;
             /deep/ svg{

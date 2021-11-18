@@ -55,7 +55,7 @@ $margines-list: 5,
 // headings
 h1 {
     font-size: rem(40px);
-    font-weight: 700;
+    font-weight: 600;
     color: var(--textPrimary);
     line-height: 1.1;
     margin-bottom: rem(17px);
@@ -545,14 +545,13 @@ h6 {
         }
     }
     ul {
-        border: 2px solid #ccd4e0 !important;
         border-radius: 8px !important;
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
         box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.24);
         -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.24);
         -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.24);
         overflow: hidden;
-        max-height: 158px;
-        overflow-y: scroll;
         li {
             border: 0 !important;
             line-height: 1 !important;
