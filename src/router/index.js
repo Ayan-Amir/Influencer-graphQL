@@ -51,6 +51,16 @@ const routes = [{
                 path: "payment-details",
                 component: () =>
                     import ("@/views/user/register/PaymentDetails.vue"),
+            },
+            {
+                path: "password",
+                component: () =>
+                    import ("@/views/user/register/Password.vue"),
+            },
+            {
+                path: "story-price",
+                component: () =>
+                    import ("@/views/user/register/StoryPrice.vue"),
             }
         ]
     },

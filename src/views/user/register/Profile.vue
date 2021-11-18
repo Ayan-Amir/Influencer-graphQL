@@ -1,7 +1,7 @@
 <template>
-	<div class="myProfile">
+	<div>
         <div class="row align-items-center justify-content-between">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <h1>{{ title }}</h1>
                 <form>
                     <div class="row">
@@ -35,13 +35,13 @@
                         />
                     </div>
                     <div class="button-row">
-                        <button type="button" class="btn btn-primary">
+                        <router-link to="payment-details" class="btn btn-primary">
                             Save
-                        </button>
+                        </router-link>
                     </div>
                 </form>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="image">
                     <img
                         src="@/assets/images/young-woman-with-smartphone.png"
@@ -74,14 +74,4 @@ export default {
 	},
 };
 </script>
-<style lang="scss">
-.LoginRegister{
-    .myProfile{
-        .image{
-            margin-left:rem(-45px);
-        }
-    }
-}
-    
-</style>
     

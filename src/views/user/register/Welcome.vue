@@ -1,5 +1,5 @@
 <template>
-	<div class="welcome">
+	<div>
         <div class="row align-items-center justify-content-between">
             <div class="col-md-5">
                 <h1>{{ title }}</h1>
@@ -10,10 +10,10 @@
                     {{ subTitle }}
                 </p>
                 <div class="button-row">
-                    <a href="#" class="btn btn-primary">Ok, let’s do it</a>
+                    <router-link to="password" class="btn btn-primary">Ok, let’s do it</router-link>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="image">
                     <img
                         src="@/assets/images/Securitylogo.png"

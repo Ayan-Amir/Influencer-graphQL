@@ -3,7 +3,7 @@
 		<div class="col-md-5">
 			<h1>Add Your <br>Profile Photo</h1>
 			<div class="profilePhoto">
-				<base-upload />
+				<base-profile-upload />
 			</div>
 			<p class="subTitle">
 				By continuing you accept our <br><span>Terms and Conditions</span> and <span>Privacy Policy </span>
@@ -12,7 +12,7 @@
 				<a href="#" class="btn btn-primary">Finish</a>
 			</div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-7">
 			<div class="image">
 				<img
 					src="@/assets/images/profile-img.png"
@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import BaseUpload from '@/components/base/BaseUpload.vue';
+import BaseProfileUpload from '@/components/base/BaseProfileUpload.vue';
 export default {
 	
-	components: {BaseUpload },
+	components: {BaseProfileUpload },
 };
 </script>
 

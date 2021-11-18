@@ -1,0 +1,58 @@
+<template>
+	<div class="storyPrice">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-md-6">
+                <h1>{{ title }}</h1>
+                <p class="alertMessage">
+                    {{message}}
+                </p>
+                <div>
+                    <base-touch-spin />
+                </div>
+                <p class="subTitle">
+                    {{ subTitle }}
+                </p>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="all" />
+                        <span>My price is negotiable</span>
+                    </label>
+                </div>
+                <div class="button-row">
+                    <router-link to="password" class="btn btn-primary">Save</router-link>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="image">
+                    <img
+                        src="@/assets/images/story-price.png"
+                        class="img-fluid"
+                        alt="story-price-img"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import BaseTouchSpin from '../../../components/base/BaseTouchSpin.vue';
+export default {
+  components: { BaseTouchSpin },
+	data() {
+		return {
+			title: 'Modify Story Price',
+			subTitle:'We recommend choosing this price ',
+            message:'More that 90% chances to receive deal proposals with this price'
+		};
+	},
+};
+</script>
+<style lang="scss" >
+    .LoginRegister{
+        .contentWrapper{
+            padding-top: 0 !important;
+        }
+    }
+</style>
+
