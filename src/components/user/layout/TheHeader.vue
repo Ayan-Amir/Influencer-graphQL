@@ -68,20 +68,22 @@
 								</li>
 								<!-- Dropdown -->
 								<li class="hide-on-md">
-									<div class="userProfile">
-										Sandu Cosm
-										<span
-											><img
-												src="@/assets/images/user-img.jpg"
-												alt=""
-												class="img-fluid"
-										/></span>
-										<svg-icon
-											icon-id="dropdown"
-											icon-viewbox="0 0 14.828 8.414"
-										>
-										</svg-icon>
-									</div>
+									<router-link to="user/edit-profile">
+										<div class="userProfile">
+											Sandu Cosm
+											<span
+												><img
+													src="@/assets/images/user-img.jpg"
+													alt=""
+													class="img-fluid"
+											/></span>
+											<svg-icon
+												icon-id="dropdown"
+												icon-viewbox="0 0 14.828 8.414"
+											>
+											</svg-icon>
+										</div>
+									</router-link>
 								</li>
 							</ul>
 						</div>
