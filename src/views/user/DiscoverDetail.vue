@@ -21,7 +21,7 @@
 					</div>
 					<div class="discoverDetail__info--title">
 						<h1>Palas Mall</h1>
-						<p class="location">Iasi</p>
+						<p>Iasi</p>
 					</div>
 				</div>
 				<ul>
@@ -87,7 +87,7 @@ export default {
 			h1 {
 				margin: 0;
 			}
-			.location {
+			p {
 				font-size: rem(18px);
 				font-weight: 500;
 				color: var(--textPrimary);
