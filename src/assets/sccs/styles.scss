@@ -219,6 +219,15 @@ p {
     .image {
         position: relative;
     }
+    @media screen and (max-width:767px) {
+        .row {
+            flex-direction: column-reverse;
+        }
+        .image {
+            max-width: 300px;
+            margin: auto;
+        }
+    }
 }
 
 .card {

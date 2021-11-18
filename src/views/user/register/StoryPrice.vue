@@ -1,7 +1,7 @@
 <template>
 	<div class="storyPrice">
         <div class="row align-items-center justify-content-between">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <h1>{{ title }}</h1>
                 <p class="alertMessage">
                     {{message}}
@@ -19,10 +19,10 @@
                     </label>
                 </div>
                 <div class="button-row">
-                    <router-link to="password" class="btn btn-primary">Save</router-link>
+                    <router-link to="profile-photo" class="btn btn-primary">Save</router-link>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="image">
                     <img
                         src="@/assets/images/story-price.png"

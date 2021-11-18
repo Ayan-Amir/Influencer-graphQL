@@ -4,9 +4,16 @@
             <header role="banner">
                 <div class="header__logo">
                     <a href="#">
+                        <!-- logo for Desktop -->
                         <img
                         src="@/assets/images/svg/logo.svg"
-                        class="img-fluid"
+                        class="img-fluid hide-on-md"
+                        alt=" logo"
+                    />
+                    <!-- logo for Mobile -->
+                      <img
+                        src="@/assets/images/svg/mob-logo.svg"
+                        class="img-fluid d-none show-on-md"
                         alt=" logo"
                     />
                     </a>
@@ -28,10 +35,17 @@ export default {
 <style lang="scss" scoped>
     .LoginRegister{
         min-height: 100vh;
-        background: linear-gradient(90deg, #F3F3F6 50%, #9637F1 50%);
+        background: linear-gradient(90deg, #F3F3F6 50%, #BE89F3 50%);
         padding-bottom:rem(40px);
+        @media screen and (max-width:767px){
+                background: linear-gradient(0deg, #F3F3F6 64%, #BE89F3 50%);
+        }
         header {
             padding: rem(45px) 0;
+            padding-bottom:rem(25px);
+            @media screen and (max-width:767px){
+                padding-bottom:0;
+            }
         }
         .header__logo{
             color: red;
@@ -50,7 +64,10 @@ export default {
         .contentWrapper{
             height: 100%;
             @include flex(center,flex-start);
-            padding-top:rem(45px);
+            padding-top:rem(35px);
+            @media screen and (max-width:767px){
+                padding-top:rem(20px);
+            }
         }
     }
 </style>

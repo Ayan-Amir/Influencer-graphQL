@@ -9,7 +9,7 @@
 				By continuing you accept our <br><span>Terms and Conditions</span> and <span>Privacy Policy </span>
 			</p>
 			<div class="button-row">
-				<a href="#" class="btn btn-primary">Finish</a>
+				<router-link to="/user" class="btn btn-primary">Finish</router-link>
 			</div>
 		</div>
 		<div class="col-md-7">

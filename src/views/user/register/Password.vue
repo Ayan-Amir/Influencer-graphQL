@@ -48,9 +48,16 @@ export default {
 };
 </script>
 <style lang="scss" >
-        .LoginRegister{
-             .contentWrapper{
-                 padding-top: 0 !important;
-             }
+    .LoginRegister{
+        .contentWrapper{
+            padding-top: 0 !important;
         }
+        @media screen and (max-width:1600px){
+            .image{
+                img{
+                    max-width:500px;
+                }
+            }
+        }
+    }
 </style>

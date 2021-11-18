@@ -73,9 +73,9 @@
                         </div>
                     </div>
                     <div class="button-row">
-                        <button type="button" class="btn btn-primary">
+                        <router-link to="story-price" class="btn btn-primary">
                             Save
-                        </button>
+                        </router-link>
                     </div>
                 </form>
             </div>

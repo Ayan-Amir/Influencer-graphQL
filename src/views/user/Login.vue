@@ -22,9 +22,9 @@
                         />
                     </div>
                     <div class="button-row">
-                        <button type="button" class="btn btn-primary">
+                        <router-link to="/user" class="btn btn-primary">
                             Login to Continue
-                        </button>
+                        </router-link>
                     </div>
                     <div class="or"><span>or</span></div>
                     <!-- social links -->

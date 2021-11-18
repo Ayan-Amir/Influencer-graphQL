@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="welcome">
         <div class="row align-items-center justify-content-between">
             <div class="col-md-5">
                 <h1>{{ title }}</h1>
@@ -37,4 +37,18 @@ export default {
 	},
 };
 </script>
+
+<style lang="scss" >
+.LoginRegister{
+    .welcome{
+        @media screen and (max-width:1600px){
+            .image{
+                img{
+                    max-width:480px
+                }
+            }
+        }
+    }
+}
+</style>
 
