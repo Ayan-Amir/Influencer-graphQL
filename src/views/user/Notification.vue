@@ -3,7 +3,7 @@
 		<div class="container">
 			<h1>Notification</h1>
 			<h3>Today</h3>
-			<div class="card">
+			<div class="card active">
 				<div>
 					<div class="card__image">
 						<img
@@ -57,9 +57,12 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 		padding: rem(13px) rem(25px);
-		border-radius: 12px;
+		border-radius: 16px;
 		border: 0;
 		margin-bottom: rem(15px);
+		&.active {
+			border: 2px solid var(--primary);
+		}
 		> div {
 			display: flex;
 			align-items: flex-start;

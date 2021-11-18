@@ -3,7 +3,7 @@
 		<li
 			class="socialLinks__item"
 			v-for="link in socialLinks"
-			:key="link.id"
+			:key="link.index"
 		>
 			<div class="socialLinks__item--icon">
 				<img
@@ -23,17 +23,17 @@ export default {
 		return {
 			socialLinks: [
 				{
-					id: 1,
+					index: 1,
 					icon: 'instagram.svg',
 					title: 'Instagram',
 				},
 				{
-					id: 2,
+					index: 2,
 					icon: 'facebook.svg',
 					title: 'facebook',
 				},
 				{
-					id: 1,
+					index: 3,
 					icon: 'tiktok.svg',
 					title: 'tiktok',
 				},
