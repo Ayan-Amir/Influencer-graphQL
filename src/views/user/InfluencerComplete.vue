@@ -1,8 +1,8 @@
 <template>
 	<div class="contentWrapper influencerComplete">
 		<div class="container">
-			<div class="row col-gap-40 profile">
-				<div class="col-md-4">
+			<div class="row profile">
+				<div class="col-md-5 col-lg-4">
 					<div class="card">
 						<div class="profile__image">
 							<img
@@ -62,7 +62,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-7 col-lg-8">
 					<div>
 						<b-tabs content-class="mt-3">
 							<b-tab title="Active"
@@ -269,6 +269,9 @@ export default {
 					transform: translateY(-50%);
 				}
 			}
+			@media screen and (max-width: 767px) {
+				display: none;
+			}
 		}
 		&__statistic {
 			padding: rem(16px) rem(28px);
@@ -277,12 +280,22 @@ export default {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			@media screen and (max-width: 1199px) {
+				padding: rem(16px);
+			}
+			@media screen and (max-width: 767px) {
+				margin: rem(12px) 0 rem(16px) 0;
+				padding: rem(16px) rem(28px);
+			}
 			&--counter {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				color: #8998ac;
 				font-size: rem(14px);
+				@media screen and (max-width: 1199px) {
+					font-size: 12px;
+				}
 			}
 		}
 	}
