@@ -682,6 +682,9 @@ h6 {
 }
 
 .LoginRegister {
+	.btn.btn-primary {
+		display: flex;
+	}
 	@keyframes ripple {
 		from {
 			opacity: 1;
