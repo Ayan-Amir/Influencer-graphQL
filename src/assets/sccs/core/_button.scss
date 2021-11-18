@@ -67,10 +67,11 @@
 	.btn-primary:active {
 		position: relative;
 		z-index: 1;
-		background: var(--primary);
-		color: #fff;
-		border: 2px solid var(--primary);
-		border-radius: 8px;
+		background: var(--primary) !important;
+		color: #fff !important;
+		border: 2px solid var(--primary) !important;
+		border-radius: 8px !important;
+		display: flex;
 		&:hover {
 			&::before {
 				content: '';

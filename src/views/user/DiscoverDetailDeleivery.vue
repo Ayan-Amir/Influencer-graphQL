@@ -1,7 +1,7 @@
 <template>
 	<div class="contentWrapper discoverDetailDeleivery">
 		<div class="container">
-			<div class="row col-gap-40">
+			<div class="row">
 				<div class="col-md-6">
 					<div class="pageHead">
 						<h1>Palas Mall</h1>
@@ -116,7 +116,7 @@ export default {
 		padding-right: rem(40px);
 	}
 	.delivery {
-		margin-top: rem(26px);
+		margin-top: rem(20px);
 		&__date {
 			color: var(--primary);
 			font-size: rem(14px);
@@ -127,14 +127,14 @@ export default {
 		}
 	}
 	.revision {
-		margin-top: rem(26px);
+		margin-top: rem(24px);
 		h3 {
 			margin-bottom: rem(18px);
 		}
 	}
 	.image {
 		overflow: hidden;
-		border-radius: 40px;
+		border-radius: 30px;
 	}
 }
 </style>

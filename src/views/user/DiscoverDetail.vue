@@ -68,7 +68,7 @@ export default {
 		border-radius: 30px;
 		overflow: hidden;
 		@media screen and (max-width: 767px) {
-			margin-bottom: rem(16px);
+			margin-bottom: rem(20px);
 		}
 	}
 	&__info {

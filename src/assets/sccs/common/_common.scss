@@ -680,3 +680,17 @@ h6 {
 		}
 	}
 }
+
+.LoginRegister {
+	@keyframes ripple {
+		from {
+			opacity: 1;
+			transform: scale(0);
+		}
+		to {
+			opacity: 0;
+			// transform: scale(1.8);
+			transform: scale(1.65);
+		}
+	}
+}
