@@ -11,6 +11,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import SvgIcon from '@/components/base/BaseSvgIcon.vue'
 
 import VueEllipseProgress from 'vue-ellipse-progress';
+import VSelect from '@alfsnd/vue-bootstrap-select'
 
 
 
@@ -20,8 +21,9 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.component('svg-icon', SvgIcon)
 Vue.use(VueEllipseProgress);
+Vue.component('VSelect', VSelect)
 
 new Vue({
-  router,
-  render: h => h(App),
+    router,
+    render: h => h(App),
 }).$mount("#app");

@@ -1,6 +1,6 @@
 <template>
 	<div class="welcome">
-        <div class="row justify-content-between">
+        <div class="row align-items-center justify-content-between">
             <div class="col-md-5">
                 <h1>{{ title }}</h1>
                 <p class="alertMessage">
@@ -16,9 +16,9 @@
             <div class="col-md-6">
                 <div class="image">
                     <img
-                        src="@/assets/images/influencers-vloggers.png"
+                        src="@/assets/images/Securitylogo.png"
                         class="img-fluid"
-                        alt="blogger-img"
+                        alt="Securitylogo-img"
                     />
                 </div>
             </div>
@@ -38,4 +38,3 @@ export default {
 };
 </script>
 
-<style></style>
