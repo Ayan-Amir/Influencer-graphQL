@@ -7,8 +7,10 @@
 			</div>
 			<p class="subTitle">
 				By continuing you accept our <br><span>Terms and Conditions</span> and <span>Privacy Policy </span>
-
 			</p>
+			<div class="button-row">
+				<a href="#" class="btn btn-primary">Finish</a>
+			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="image">
