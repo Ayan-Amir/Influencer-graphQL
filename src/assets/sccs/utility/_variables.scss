@@ -1,62 +1,58 @@
 :root {
-	--primary: #9637f1;
-	--secondary: #c4c4d4;
-	--default: #6b6b6b;
-	--textPrimary: #253858;
-	--textSecondary: #77838f;
-	--bgColor: #f3f3f6;
+    --primary: #9637f1;
+    --secondary: #c4c4d4;
+    --default: #6b6b6b;
+    --textPrimary: #253858;
+    --textSecondary: #77838f;
+    --bgColor: #f3f3f6;
+    --warning: #FDA737;
 }
 
 // add popin family
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap'),
-	url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 @import 'functions';
 // Fonts
-$primary-font: 'Nunito Sans', sans-serif;
-$secondary-font: 'Poppins', sans-serif;
+$primary-font: 'Nunito Sans',
+sans-serif;
+$secondary-font: 'Poppins',
+sans-serif;
 // font sizes
-$h--1: (
-	base: rem(64px),
-	mobile: rem(40px),
-	tablet: rem(50px),
-	wide: rem(64px),
+$h--1: ( base: rem(64px),
+mobile: rem(40px),
+tablet: rem(50px),
+wide: rem(64px),
 );
-$h--2: (
-	base: rem(48px),
-	mobile: rem(33px),
-	tablet: rem(38px),
-	wide: rem(48px),
+$h--2: ( base: rem(48px),
+mobile: rem(33px),
+tablet: rem(38px),
+wide: rem(48px),
 );
-$h--3: (
-	base: rem(32px),
-	mobile: rem(22px),
-	tablet: rem(25px),
-	wide: rem(32px),
+$h--3: ( base: rem(32px),
+mobile: rem(22px),
+tablet: rem(25px),
+wide: rem(32px),
 );
-$h--4: (
-	base: rem(24px),
-	mobile: rem(20px),
-	tablet: rem(22px),
-	wide: rem(24px),
+$h--4: ( base: rem(24px),
+mobile: rem(20px),
+tablet: rem(22px),
+wide: rem(24px),
 );
-$h--5: (
-	base: rem(20px),
-	mobile: rem(17px),
-	tablet: rem(19px),
-	wide: rem(20px),
+$h--5: ( base: rem(20px),
+mobile: rem(17px),
+tablet: rem(19px),
+wide: rem(20px),
 );
-$h--6: (
-	base: rem(16px),
-	mobile: rem(15px),
-	tablet: rem(15px),
-	wide: rem(16px),
+$h--6: ( base: rem(16px),
+mobile: rem(15px),
+tablet: rem(15px),
+wide: rem(16px),
 );
 $p: rem(16px);
 $p--large: rem(18px);
 $p--medium: rem(15px);
 $p--small: rem(14px);
-$breakpoints: (
-	mobile: 414px,
-	tablet: 991px,
-	wide: 1300px,
+$breakpoints: ( mobile: 414px,
+tablet: 991px,
+wide: 1300px,
 ) !default;

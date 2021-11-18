@@ -26,12 +26,17 @@
                     </div>
                     <div class="form-group">
                         <v-select
-                             v-model="selected" :options="options"
+                             v-model="selected" :options="BirthDate"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <v-select
+                             v-model="selected1" :options="Gender"
                         />
                     </div>
                     <div class="button-row">
                         <button type="button" class="btn btn-primary">
-                            Login to Continue
+                            Save
                         </button>
                     </div>
                 </form>
@@ -55,10 +60,15 @@ export default {
 		return {
 			title: 'My Profile',
             selectedValue: null,
-            options: [
-            { value: null, text: 'Please select an option' },
-            { value: 'a', text: 'This is First option' },
-            { value: 'b', text: 'Selected Option' },
+            BirthDate: [
+                { value: null, text: '1/ 12 / 2020' },
+                { value: 'a', text: '2/ 12 / 2020' },
+                { value: 'b', text: '3/ 12 / 2020' },
+            ],
+            Gender: [
+                { value: null, text: 'Male' },
+                { value: 'a', text: 'Female' },
+                { value: 'b', text: 'Other' },
             ]
 		};
 	},
@@ -68,15 +78,7 @@ export default {
 .LoginRegister{
     .myProfile{
         .image{
-            margin-left:-20px;
-        }
-        form{
-            max-width:100%;
-        }
-        .form-control{
-            height:42px;
-            border-radius: 10px;
-            padding-left:rem(15px);
+            margin-left:rem(-45px);
         }
     }
 }
