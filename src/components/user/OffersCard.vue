@@ -1,8 +1,8 @@
 <template>
-	<div class="offerCard">
+	<div class="offerCard card">
 		<div class="offerCard__image">
 			<img
-				:src="`${require(`@/assets/images/${cardData.mainImage}`)}`"
+				:src="require(`@/assets/images/${cardData.mainImage}`)"
 				class="img-fluid"
 				alt=""
 			/>
@@ -10,17 +10,21 @@
 		</div>
 		<div class="offerCard__detail">
 			<div class="d-flex justify-content-between">
-				<div class="offerCard__detail--title">{{ cardData.title }}</div>
+				<a href="#" class="offerCard__detail--title">{{
+					cardData.title
+				}}</a>
 				<div class="offerCard__detail--brandLogo">
 					<img
-						:src="`${require(`@/assets/images/brandlogo/${cardData.brandLogo}`)}`"
+						:src="
+							require(`@/assets/images/brandlogo/${cardData.brandLogo}`)
+						"
 						class="img-fluid"
 						alt=""
 					/>
 				</div>
 			</div>
-			<div class="offerCard__detail--viewers">
-				<router-link to="" class="btn btn-primary">
+			<div class="offerCard__detail--watcher">
+				<router-link to="" class="btn btn-primary small">
 					<svg-icon
 						class="arrow"
 						icon-id="watch_icon"
@@ -29,31 +33,16 @@
 					</svg-icon>
 					Watch Now
 				</router-link>
-				<div class="d-flex align-items-center">
-					<ul>
-						<li
-							v-for="(data, i) in cardData.imageLists"
-							:key="i + 1"
-						>
-							<img
-								v-if="data.img !== ''"
-								:src="`${require(`@/assets/images/${data.img}`)}`"
-								class="img-fluid"
-								alt=""
-							/>
-						</li>
-					</ul>
-					<span class="offerCard__detail--viewers--numbers">{{
-						cardData.number
-					}}</span>
-				</div>
+				<offer-watcher :cardData="cardData" />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import OfferWatcher from './OfferWatcher.vue';
 export default {
+	components: { OfferWatcher },
 	props: {
 		cardData: Object,
 	},
@@ -63,15 +52,12 @@ export default {
 <style lang="scss" scoped>
 .offerCard {
 	$self: &;
-	border-radius: 20px;
-	overflow: hidden;
 	margin-bottom: rem(25px);
-	cursor: pointer;
 	&__image {
 		position: relative;
 		overflow: hidden;
 		img {
-			width:100%;
+			width: 100%;
 			transition: 0.5s ease-in-out all;
 		}
 		span {
@@ -91,6 +77,14 @@ export default {
 				transform: translateY(-50%);
 			}
 		}
+		@media screen and (min-width: 1025px) {
+			&:hover {
+				cursor: pointer;
+				img {
+					transform: scale(1.2);
+				}
+			}
+		}
 	}
 	&__detail {
 		padding: rem(15px);
@@ -105,58 +99,21 @@ export default {
 		&--brandLogo {
 			padding-left: 10px;
 		}
-		&--viewers {
+		&--watcher {
 			@include flex(center, space-between);
 			padding-top: rem(15px);
 			.btn {
 				padding: 11px 15px;
-				font-size: 10px;
-				font-weight: 600;
-				border-radius: 8px;
 				svg {
 					width: 12px;
 					margin-right: 7px;
 				}
 			}
-			ul {
-				list-style: none;
-				display: flex;
-				align-items: center;
-				li {
-					width: rem(32px);
-					min-width: rem(32px);
-					height: rem(32px);
-					border-radius: 100%;
-					background: #e8e8f0;
-					border: 2px solid #fff;
-					overflow: hidden;
-					position: relative;
-					&:not(:first-child) {
-						margin-left: -10px;
-					}
-				}
-			}
-			&--numbers {
-				color: #4c4f57;
-				font-size: rem(12px);
-				font-weight: 600;
-				margin-left: 5px;
-				display: inline-block;
-			}
 		}
 	}
-	@media screen and (min-width: 1025px) {
-		&:hover {
-			#{$self}__image {
-				img {
-					transform: scale(1.2);
-				}
-			}
-		}
-	}
-	@media screen and (max-width:575px){
-		max-width:375px;
-		margin:auto auto rem(25px) auto;
+	@media screen and (max-width: 575px) {
+		max-width: 375px;
+		margin: auto auto rem(25px) auto;
 	}
 }
 </style>

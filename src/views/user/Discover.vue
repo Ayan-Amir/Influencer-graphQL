@@ -2,7 +2,11 @@
 	<div class="contentWrapper discover">
 		<div class="container">
 			<filters />
-			<base-shoping-card :cardData="cardData" />
+			<base-shoping-card
+				v-for="card in cardData"
+				:key="card.index"
+				:card="card"
+			/>
 		</div>
 	</div>
 </template>
@@ -23,9 +27,6 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 1,
@@ -35,9 +36,6 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 2,
@@ -47,9 +45,6 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 3,
@@ -59,9 +54,6 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 4,
@@ -71,9 +63,6 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 5,
@@ -83,9 +72,6 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 6,
@@ -95,9 +81,6 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 7,
@@ -107,9 +90,6 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: true,
 					isPrice: false,
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 			],
 		};
