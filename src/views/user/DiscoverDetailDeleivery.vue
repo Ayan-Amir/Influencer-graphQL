@@ -1,63 +1,61 @@
 <template>
-	<div class="contentWrapper discoverDetailDeleivery">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<div class="pageHead">
-						<h1>Palas Mall</h1>
-						<span class="pageHead__price">$250</span>
+	<div class="discoverDetailDeleivery container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="pageHead">
+					<h1>Palas Mall</h1>
+					<span class="pageHead__price">$250</span>
+				</div>
+				<h3>Palas Mall</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+					do eiusmod tempor incididunt ut labore et dolore magna
+					aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+					ullamco
+				</p>
+				<base-social-link />
+				<a href="#" class="btn btn-primary">Delivery</a>
+				<div class="delivery">
+					<h3>You delivered:</h3>
+					<span class="delivery__date">Sep 10, 2021</span>
+					<div class="row col-gap-40">
+						<div class="col-md-4">
+							<div class="image">
+								<img
+									src="@/assets/images/instaStatusScreen.png"
+									alt=""
+									class="img-fluid"
+								/>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="image">
+								<img
+									src="@/assets/images/instaPhotoUpload.png"
+									alt=""
+									class="img-fluid"
+								/>
+							</div>
+						</div>
 					</div>
-					<h3>Palas Mall</h3>
+				</div>
+				<div class="revision">
+					<h3>Revision</h3>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 						sed do eiusmod tempor incididunt ut labore et dolore
 						magna aliqua. Ut enim ad minim veniam, quis nostrud
 						exercitation ullamco
 					</p>
-					<base-social-link />
-					<a href="#" class="btn btn-primary">Delivery</a>
-					<div class="delivery">
-						<h3>You delivered:</h3>
-						<span class="delivery__date">Sep 10, 2021</span>
-						<div class="row col-gap-40">
-							<div class="col-md-4">
-								<div class="image">
-									<img
-										src="@/assets/images/instaStatusScreen.png"
-										alt=""
-										class="img-fluid"
-									/>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="image">
-									<img
-										src="@/assets/images/instaPhotoUpload.png"
-										alt=""
-										class="img-fluid"
-									/>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="revision">
-						<h3>Revision</h3>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua. Ut enim ad minim veniam, quis
-							nostrud exercitation ullamco
-						</p>
-					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="image">
-						<img
-							src="@/assets/images/discoveryDetailDeleivery.png"
-							alt=""
-							class="img-fluid"
-						/>
-					</div>
+			</div>
+			<div class="col-md-6">
+				<div class="image">
+					<img
+						src="@/assets/images/discoveryDetailDeleivery.png"
+						alt=""
+						class="img-fluid"
+					/>
 				</div>
 			</div>
 		</div>

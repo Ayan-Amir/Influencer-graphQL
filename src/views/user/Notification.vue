@@ -1,36 +1,34 @@
 <template>
-	<div class="contentWrapper notification">
-		<div class="container">
-			<h1>Notification</h1>
-			<h3>Today</h3>
-			<div class="card active">
-				<div>
-					<div class="card__image">
-						<img
-							src="@/assets/images/user.png"
-							alt=""
-							class="img-fluid"
-						/>
-					</div>
-					<div class="card__title">
-						5 Min Ago
-						<p>Your <span>Campaign 1</span> performs well.</p>
-					</div>
+	<div class="notification container">
+		<h1>Notification</h1>
+		<h3>Today</h3>
+		<div class="card active">
+			<div>
+				<div class="card__image">
+					<img
+						src="@/assets/images/user.png"
+						alt=""
+						class="img-fluid"
+					/>
+				</div>
+				<div class="card__title">
+					5 Min Ago
+					<p>Your <span>Campaign 1</span> performs well.</p>
 				</div>
 			</div>
-			<div class="card">
-				<div>
-					<div class="card__image">
-						<img
-							src="@/assets/images/user.png"
-							alt=""
-							class="img-fluid"
-						/>
-					</div>
-					<div class="card__title">
-						1 Hour Ago
-						<p><span>Dorian Popa</span> has sent you a message.</p>
-					</div>
+		</div>
+		<div class="card">
+			<div>
+				<div class="card__image">
+					<img
+						src="@/assets/images/user.png"
+						alt=""
+						class="img-fluid"
+					/>
+				</div>
+				<div class="card__title">
+					1 Hour Ago
+					<p><span>Dorian Popa</span> has sent you a message.</p>
 				</div>
 			</div>
 		</div>

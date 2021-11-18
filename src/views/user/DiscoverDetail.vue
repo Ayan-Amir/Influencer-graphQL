@@ -1,36 +1,34 @@
 <template>
-	<div class="contentWrapper discoverDetail">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-5">
-					<div class="image">
+	<div class="discoverDetail container">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="image">
+					<img
+						src="@/assets/images/palasMall.png"
+						alt=""
+						class="img-fluid"
+					/>
+				</div>
+			</div>
+			<div class="col-md-7">
+				<div class="discoverDetail__info">
+					<div class="discoverDetail__info--logo">
 						<img
-							src="@/assets/images/palasMall.png"
+							src="@/assets/images/svg/palasLogo.svg"
 							alt=""
 							class="img-fluid"
 						/>
 					</div>
-				</div>
-				<div class="col-md-7">
-					<div class="discoverDetail__info">
-						<div class="discoverDetail__info--logo">
-							<img
-								src="@/assets/images/svg/palasLogo.svg"
-								alt=""
-								class="img-fluid"
-							/>
-						</div>
-						<div class="discoverDetail__info--title">
-							<h1>Palas Mall</h1>
-							<p>Iasi</p>
-						</div>
+					<div class="discoverDetail__info--title">
+						<h1>Palas Mall</h1>
+						<p class="location">Iasi</p>
 					</div>
-					<ul>
-						<li v-for="(item, id) in listing" :key="id + 1">
-							{{ item }}
-						</li>
-					</ul>
 				</div>
+				<ul>
+					<li v-for="(item, id) in listing" :key="id + 1">
+						{{ item }}
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -53,7 +51,6 @@ export default {
 			],
 		};
 	},
-	components: {},
 };
 </script>
 
@@ -90,7 +87,7 @@ export default {
 			h1 {
 				margin: 0;
 			}
-			p {
+			.location {
 				font-size: rem(18px);
 				font-weight: 500;
 				color: var(--textPrimary);

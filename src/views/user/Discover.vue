@@ -1,13 +1,11 @@
 <template>
-	<div class="contentWrapper discover">
-		<div class="container">
-			<base-filters />
-			<discover-card
-				v-for="card in cardData"
-				:key="card.index"
-				:card="card"
-			/>
-		</div>
+	<div class="discover container">
+		<base-filters />
+		<discover-card
+			v-for="card in cardData"
+			:key="card.index"
+			:card="card"
+		/>
 	</div>
 </template>
 
@@ -26,7 +24,6 @@ export default {
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
 					isApply: true,
-					isPrice: false,
 				},
 				{
 					index: 1,
@@ -35,7 +32,6 @@ export default {
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
 					isApply: true,
-					isPrice: false,
 				},
 				{
 					index: 2,
@@ -44,7 +40,6 @@ export default {
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
 					isApply: true,
-					isPrice: false,
 				},
 				{
 					index: 3,
@@ -53,7 +48,6 @@ export default {
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
 					isApply: true,
-					isPrice: false,
 				},
 				{
 					index: 4,
@@ -62,7 +56,6 @@ export default {
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
 					isApply: true,
-					isPrice: false,
 				},
 				{
 					index: 5,
@@ -71,7 +64,6 @@ export default {
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
 					isApply: true,
-					isPrice: false,
 				},
 				{
 					index: 6,
@@ -80,7 +72,6 @@ export default {
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
 					isApply: true,
-					isPrice: false,
 				},
 				{
 					index: 7,
@@ -89,7 +80,6 @@ export default {
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
 					isApply: true,
-					isPrice: false,
 				},
 			],
 		};
