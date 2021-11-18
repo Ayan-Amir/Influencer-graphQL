@@ -28,11 +28,16 @@ export default [
         component: () =>
             import ("@/views/user/DiscoverDetailDeleivery.vue"),
     },
-    
     {
         path: "notifications",
         name: "Notifications",
         component: () =>
             import ("@/views/user/Notifications.vue"),
+    },
+    {
+        path: "edit-profile",
+        name: "Edit Profile",
+        component: () =>
+            import ("@/views/user/EditProfile.vue"),
     }
 ]

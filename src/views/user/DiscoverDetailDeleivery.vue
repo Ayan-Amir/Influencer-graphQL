@@ -14,7 +14,7 @@
 					ullamco
 				</p>
 				<base-social-link />
-				<a href="#" class="btn btn-primary">Delivery</a>
+				<a href="#" class="btn btn-primary small">Delivery</a>
 				<div class="delivery">
 					<h3>You delivered:</h3>
 					<span class="delivery__date">Sep 10, 2021</span>
@@ -85,8 +85,8 @@ export default {
 		font-size: rem(14px);
 		font-weight: 700;
 		border-radius: 8px;
-		padding-left: rem(40px);
-		padding-right: rem(40px);
+		padding-left: rem(42px);
+		padding-right: rem(42px);
 	}
 	.delivery {
 		margin-top: rem(20px);
