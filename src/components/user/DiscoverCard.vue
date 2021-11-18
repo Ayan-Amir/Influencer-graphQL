@@ -43,7 +43,6 @@ export default {
 	justify-content: space-between;
 	padding: rem(15px);
 	border-radius: 12px;
-	border: 0;
 	margin-bottom: rem(15px);
 	> div {
 		display: flex;
@@ -103,7 +102,7 @@ export default {
 		}
 	}
 	&:hover {
-		.card__price {
+		.discoverCard__price {
 			&::before {
 				right: -35px;
 			}

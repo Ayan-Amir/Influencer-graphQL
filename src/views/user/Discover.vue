@@ -2,7 +2,7 @@
 	<div class="contentWrapper discover">
 		<div class="container">
 			<filters />
-			<base-shoping-card
+			<discover-card
 				v-for="card in cardData"
 				:key="card.index"
 				:card="card"
@@ -13,7 +13,7 @@
 
 <script>
 import Filters from '@/components/base/Filters.vue';
-import BaseShopingCard from '@/components/base/BaseShopingCard.vue';
+import DiscoverCard from '@/components/user/DiscoverCard.vue';
 
 export default {
 	data() {
@@ -96,7 +96,7 @@ export default {
 	},
 	components: {
 		Filters,
-		BaseShopingCard,
+		DiscoverCard,
 	},
 };
 </script>

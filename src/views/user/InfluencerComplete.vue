@@ -71,9 +71,13 @@
 							<b-tab title="Revision"
 								><p>I'm the second tab</p></b-tab
 							>
-							<b-tab title="Completed" active
-								><base-shoping-card :cardData="cardData"
-							/></b-tab>
+							<b-tab title="Completed" active>
+								<discover-card
+									v-for="card in cardData"
+									:key="card.index"
+									:card="card"
+								/>
+							</b-tab>
 						</b-tabs>
 					</div>
 				</div>
@@ -83,7 +87,7 @@
 </template>
 
 <script>
-import BaseShopingCard from '@/components/base/BaseShopingCard.vue';
+import DiscoverCard from '@/components/user/DiscoverCard.vue';
 export default {
 	data() {
 		return {
@@ -97,9 +101,6 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 1,
@@ -110,9 +111,6 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 2,
@@ -123,9 +121,6 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 3,
@@ -136,9 +131,6 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 4,
@@ -149,9 +141,6 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 5,
@@ -162,9 +151,6 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 6,
@@ -175,9 +161,6 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 				{
 					index: 7,
@@ -188,9 +171,6 @@ export default {
 					isDiscoverBtn: false,
 					isPrice: true,
 					price: '$250',
-					isSocailActivity: false,
-					app: 'Instagram',
-					activity: '200.200',
 				},
 			],
 			complete: 61,
@@ -198,7 +178,7 @@ export default {
 			onTime: 95,
 		};
 	},
-	components: { BaseShopingCard },
+	components: { DiscoverCard },
 };
 </script>
 
