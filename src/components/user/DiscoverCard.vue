@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			<router-link
-				v-if="card.isDiscoverBtn"
+				v-if="card.isApply"
 				to="discover-detail"
 				class="btn btn-primary small"
 				>{{ card.btn }}</router-link
@@ -73,11 +73,7 @@ export default {
 		}
 	}
 	.btn.btn-primary {
-		font-size: rem(10px);
-		border-radius: 8px;
-		font-weight: 600;
 		margin-left: rem(20px);
-		min-width: 105px;
 	}
 
 	&__price {

@@ -1,7 +1,7 @@
 <template>
 	<div class="contentWrapper discover">
 		<div class="container">
-			<filters />
+			<base-filters />
 			<discover-card
 				v-for="card in cardData"
 				:key="card.index"
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Filters from '@/components/base/Filters.vue';
+import BaseFilters from '@/components/base/BaseFilters.vue';
 import DiscoverCard from '@/components/user/DiscoverCard.vue';
 
 export default {
@@ -25,7 +25,7 @@ export default {
 					title: 'Palas Mall',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
-					isDiscoverBtn: true,
+					isApply: true,
 					isPrice: false,
 				},
 				{
@@ -34,7 +34,7 @@ export default {
 					title: '5 TO GO',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
-					isDiscoverBtn: true,
+					isApply: true,
 					isPrice: false,
 				},
 				{
@@ -43,7 +43,7 @@ export default {
 					title: 'Shop Online',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
-					isDiscoverBtn: true,
+					isApply: true,
 					isPrice: false,
 				},
 				{
@@ -52,7 +52,7 @@ export default {
 					title: 'Pizza Papa',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
-					isDiscoverBtn: true,
+					isApply: true,
 					isPrice: false,
 				},
 				{
@@ -61,7 +61,7 @@ export default {
 					title: 'Gsm Iasi',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
-					isDiscoverBtn: true,
+					isApply: true,
 					isPrice: false,
 				},
 				{
@@ -70,7 +70,7 @@ export default {
 					title: 'Beer Zone',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
-					isDiscoverBtn: true,
+					isApply: true,
 					isPrice: false,
 				},
 				{
@@ -79,7 +79,7 @@ export default {
 					title: 'Liria',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
-					isDiscoverBtn: true,
+					isApply: true,
 					isPrice: false,
 				},
 				{
@@ -88,14 +88,14 @@ export default {
 					title: 'Camping',
 					subTitle: 'Nullam convallis sollicitudin',
 					btn: 'Apply Now',
-					isDiscoverBtn: true,
+					isApply: true,
 					isPrice: false,
 				},
 			],
 		};
 	},
 	components: {
-		Filters,
+		BaseFilters,
 		DiscoverCard,
 	},
 };
