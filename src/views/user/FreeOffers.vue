@@ -1,15 +1,13 @@
 <template>
-	<div class="contentWrapper freeOffers">
-		<div class="container">
-			<base-filters />
-			<div class="row">
-				<div
-					class="col-xl-3 col-lg-4 col-sm-6"
-					v-for="cardData in offerCard"
-					:key="cardData.index"
-				>
-					<offers-card :cardData="cardData" />
-				</div>
+	<div class="freeOffers container">
+		<base-filters />
+		<div class="row">
+			<div
+				class="col-xl-3 col-lg-4 col-sm-6"
+				v-for="cardData in offerCard"
+				:key="cardData.index"
+			>
+				<offers-card :cardData="cardData" />
 			</div>
 		</div>
 	</div>

@@ -1,4 +1,10 @@
-export default [{
+export default [
+    {
+        path: "",
+        component: () =>
+            import ("@/views/user/Dashboard.vue"),
+    },
+    {
         path: "free-offer",
         name: "Free Offer",
         component: () =>
@@ -22,16 +28,11 @@ export default [{
         component: () =>
             import ("@/views/user/DiscoverDetailDeleivery.vue"),
     },
+    
     {
-        path: "influencer-complete",
-        name: "Influencer Complete",
+        path: "notifications",
+        name: "Notifications",
         component: () =>
-            import ("@/views/user/InfluencerComplete.vue"),
-    },
-    {
-        path: "notification",
-        name: "Notification",
-        component: () =>
-            import ("@/views/user/Notification.vue"),
+            import ("@/views/user/Notifications.vue"),
     }
 ]

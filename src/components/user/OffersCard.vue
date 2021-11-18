@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import OfferWatcher from './OfferWatcher.vue';
+import OfferWatcher from './Partials/OfferWatcher.vue';
 export default {
 	components: { OfferWatcher },
 	props: {

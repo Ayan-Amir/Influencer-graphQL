@@ -1,29 +1,27 @@
 <template>
-	<div>
-		<div class="card discoverCard">
-			<div>
-				<div class="discoverCard__image">
-					<img
-						:src="require(`@/assets/images/svg/${card.icon}`)"
-						alt=""
-						class="img-fluid"
-					/>
-				</div>
-				<div class="discoverCard__title">
-					{{ card.title }}
-					<span>{{ card.subTitle }}</span>
-				</div>
+	<div class="card discoverCard">
+		<div>
+			<div class="discoverCard__image">
+				<img
+					:src="require(`@/assets/images/svg/${card.icon}`)"
+					alt=""
+					class="img-fluid"
+				/>
 			</div>
-			<router-link
-				v-if="card.isApply"
-				to="discover-detail"
-				class="btn btn-primary small"
-				>{{ card.btn }}</router-link
-			>
-			<p class="discoverCard__price" v-if="card.isPrice">
-				{{ card.price }}
-			</p>
+			<div class="discoverCard__title">
+				{{ card.title }}
+				<span>{{ card.subTitle }}</span>
+			</div>
 		</div>
+		<router-link
+			v-if="card.isApply"
+			to="discover-detail"
+			class="btn btn-primary small"
+			>{{ card.btn }}</router-link
+		>
+		<p class="discoverCard__price" v-else>
+			{{ card.price }}
+		</p>
 	</div>
 </template>
 

@@ -33,13 +33,19 @@
 							<nav>
 								<ul>
 									<li>
-										<router-link to="#">Dashboard</router-link>
+										<router-link to="#"
+											>Dashboard</router-link
+										>
 									</li>
 									<li>
-										<router-link to="free-offer">Free offers</router-link>
+										<router-link to="free-offer"
+											>Free offers</router-link
+										>
 									</li>
 									<li>
-										<router-link to="discover">Discover</router-link>
+										<router-link to="discover"
+											>Discover</router-link
+										>
 									</li>
 								</ul>
 							</nav>
@@ -48,49 +54,33 @@
 							<ul class="list-unstyled">
 								<!-- Notification -->
 								<li class="notifaction_Wrapper hide-on-md">
-									<a href="#" class="notification">
+									<router-link
+										to="notifications"
+										class="notification"
+									>
 										<svg-icon
 											icon-id="notiffication_icon"
 											icon-viewbox="0 0 20 22"
 										>
 										</svg-icon>
 										<span></span>
-									</a>
+									</router-link>
 								</li>
 								<!-- Dropdown -->
 								<li class="hide-on-md">
-									<div>
-										<b-dropdown
-											size="lg"
-											variant="link"
-											toggle-class="text-decoration-none"
-											no-caret
+									<div class="userProfile">
+										Sandu Cosm
+										<span
+											><img
+												src="@/assets/images/user-img.jpg"
+												alt=""
+												class="img-fluid"
+										/></span>
+										<svg-icon
+											icon-id="dropdown"
+											icon-viewbox="0 0 14.828 8.414"
 										>
-											<template #button-content>
-												Sandu Cosm
-												<span
-													><img
-														src="@/assets/images/user-img.jpg"
-														alt=""
-														class="img-fluid"
-												/></span>
-												<svg-icon
-													icon-id="dropdown"
-													icon-viewbox="0 0 14.828 8.414"
-												>
-												</svg-icon>
-											</template>
-											<b-dropdown-item href="#"
-												>Action</b-dropdown-item
-											>
-											<b-dropdown-item href="#"
-												>Another action</b-dropdown-item
-											>
-											<b-dropdown-item href="#"
-												>Something else
-												here...</b-dropdown-item
-											>
-										</b-dropdown>
+										</svg-icon>
 									</div>
 								</li>
 							</ul>
@@ -119,13 +109,19 @@
 								<!-- Mobile Main links -->
 								<ul>
 									<li>
-										<router-link to="#">Dashboard</router-link>
+										<router-link to="#"
+											>Dashboard</router-link
+										>
 									</li>
 									<li>
-										<router-link to="#">Free offers</router-link>
+										<router-link to="#"
+											>Free offers</router-link
+										>
 									</li>
 									<li>
-										<router-link to="#">Discover</router-link>
+										<router-link to="#"
+											>Discover</router-link
+										>
 									</li>
 								</ul>
 								<!-- Mobile Notification -->
@@ -159,7 +155,7 @@ export default {
 					.getElementsByTagName('html')[0]
 					.classList.toggle('no-scroll');
 			});
-		},	
+		},
 	},
 	mounted() {
 		this.menuIcon();
@@ -182,71 +178,6 @@ header {
 	width: 100%;
 	z-index: 9;
 	transition: 0.4s ease-in-out;
-	/deep/.dropdown {
-		.btn {
-			background: transparent;
-			padding: 0;
-			font-size: rem(14px);
-			font-weight: 600;
-			color: #253858;
-			display: flex;
-			align-items: center;
-			&:hover,
-			&:focus,
-			&:active {
-				background: transparent !important;
-				padding: 0 !important;
-				box-shadow: none !important;
-			}
-			span {
-				width: rem(50px);
-				min-width: rem(50px);
-				height: rem(50px);
-				border-radius: 100%;
-				background: #e8e8f0;
-				display: inline-block;
-				margin-left: 13px;
-				margin-right: 20px;
-				overflow: hidden;
-				@media screen and (max-width: 1199px) {
-					width: rem(35px);
-					min-width: rem(35px);
-					height: rem(35px);
-					margin-right: 13px;
-				}
-			}
-			svg {
-				width: 12px;
-				transition: 0.5s ease-in;
-			}
-		}
-		.dropdown-menu {
-			padding: 0;
-			border: 2px solid var(--primary);
-			width: 100%;
-			li {
-				margin: 0 !important;
-				.dropdown-item {
-					padding: rem(10px);
-					color: var(--textPrimary);
-					font-size: rem(14px);
-					&:hover,
-					&:focus,
-					&:active {
-						background: var(--primary);
-						color: #fff;
-					}
-				}
-			}
-		}
-		&.show {
-			.btn {
-				svg {
-					transform: rotate(180deg);
-				}
-			}
-		}
-	}
 	.flex-row {
 		display: flex;
 		align-items: center;
@@ -279,12 +210,12 @@ header {
 					color: var(--textPrimary);
 					margin: 0;
 				}
-				@media screen and (max-width:991px){
-					img{
-						max-width:160px;
+				@media screen and (max-width: 991px) {
+					img {
+						max-width: 160px;
 					}
 				}
-				@media screen and (max-width:767px){
+				@media screen and (max-width: 767px) {
 					position: absolute;
 					left: 50%;
 					transform: translateX(-50%);
@@ -301,19 +232,19 @@ header {
 				margin-bottom: 0;
 				li {
 					&.notifaction_Wrapper {
-						position:relative;
-						&:after{
-							content:"";
-							position:absolute;
-							height:rem(65px);
-							width:1px;
-							background:#EFF4F6;
-							right:0;
-							top:50%;
+						position: relative;
+						&:after {
+							content: '';
+							position: absolute;
+							height: rem(65px);
+							width: 1px;
+							background: #eff4f6;
+							right: 0;
+							top: 50%;
 							transform: translateY(-50%);
 						}
 						margin-right: rem(15px) !important;
-						padding-right:rem(20px);
+						padding-right: rem(20px);
 					}
 					.notification {
 						position: relative;
@@ -364,38 +295,63 @@ header {
 					}
 				}
 			}
+			.userProfile {
+				display: flex;
+				align-items: center;
+				span {
+					width: rem(50px);
+					min-width: rem(50px);
+					height: rem(50px);
+					border-radius: 100%;
+					background: #e8e8f0;
+					display: inline-block;
+					margin-left: 13px;
+					margin-right: 20px;
+					overflow: hidden;
+					@media screen and (max-width: 1199px) {
+						width: rem(35px);
+						min-width: rem(35px);
+						height: rem(35px);
+						margin-right: 13px;
+					}
+				}
+				svg {
+					width: 12px;
+					transition: 0.5s ease-in;
+				}
+			}
 		}
 	}
-	nav{
-		ul{
+	nav {
+		ul {
 			list-style: none;
-			@include flex(center , start);
-			margin-left:rem(55px);
-			li{
-				&:not(:last-child){
-					margin-right:rem(25px);
+			@include flex(center, start);
+			margin-left: rem(55px);
+			li {
+				&:not(:last-child) {
+					margin-right: rem(25px);
 				}
-				a{
-					font-size:rem(14px);
-					color:var(--textPrimary);
-					font-weight:600;
-					@media screen and (min-width:1025px){
-						&:hover{
-							color:var(--primary);
+				a {
+					font-size: rem(14px);
+					color: var(--textPrimary);
+					font-weight: 600;
+					@media screen and (min-width: 1025px) {
+						&:hover {
+							color: var(--primary);
 						}
 					}
-					&.router-link-exact-active{
-						color:var(--primary);
-						font-weight:900;
+					&.router-link-exact-active {
+						color: var(--primary);
+						font-weight: 900;
 					}
 				}
 			}
-			@media screen and (max-width:991px){
-				margin-left:rem(35px);
+			@media screen and (max-width: 991px) {
+				margin-left: rem(35px);
 			}
 		}
 	}
-	@media screen and (max-width:767px){
+	@media screen and (max-width: 767px) {
 		nav {
 			position: fixed;
 			left: -200%;
@@ -466,22 +422,22 @@ header {
 					margin-right: rem(25px);
 				}
 			}
-			ul{
+			ul {
 				flex-direction: column;
 				align-items: flex-start;
-				margin:0;
-				li{
+				margin: 0;
+				li {
 					position: relative;
 					padding: 20px 0;
-					width:100%;
+					width: 100%;
 					border-bottom: 1px solid #d8d8d8;
-					&:not(:last-child){
-						margin:0;
+					&:not(:last-child) {
+						margin: 0;
 					}
-					a{
+					a {
 						display: block;
-						font-size:rem(20px);
-						font-weight:700;
+						font-size: rem(20px);
+						font-weight: 700;
 					}
 					&:after {
 						content: '';
@@ -501,9 +457,9 @@ header {
 	.checkbox {
 		padding: 0;
 	}
-	@media screen and (max-width:767px){
-		padding-top:rem(50px);
-		padding-bottom:rem(50px);
+	@media screen and (max-width: 767px) {
+		padding-top: rem(50px);
+		padding-bottom: rem(50px);
 	}
 	&.vue-fixed-header--isFixed {
 		box-shadow: -1px 6px 13px -6px rgba(0, 0, 0, 0.34);
@@ -511,7 +467,7 @@ header {
 		-moz-box-shadow: -1px 6px 13px -6px rgba(0, 0, 0, 0.34);
 		padding-top: rem(15px);
 		padding-bottom: rem(15px);
-		@media screen and (max-width:767px){
+		@media screen and (max-width: 767px) {
 			padding-top: rem(30px);
 			padding-bottom: rem(30px);
 		}
