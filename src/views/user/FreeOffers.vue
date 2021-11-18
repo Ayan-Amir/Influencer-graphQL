@@ -1,7 +1,7 @@
 <template>
 	<div class="contentWrapper freeOffers">
 		<div class="container">
-			<filters />
+			<base-filters />
 			<div class="row">
 				<div
 					class="col-xl-3 col-lg-4 col-sm-6"
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Filters from '@/components/base/Filters.vue';
+import BaseFilters from '@/components/base/BaseFilters.vue';
 import OffersCard from '@/components/user/OffersCard.vue';
 export default {
 	data() {
@@ -234,7 +234,7 @@ export default {
 		};
 	},
 	components: {
-		Filters,
+		BaseFilters,
 		OffersCard,
 	},
 };

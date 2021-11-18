@@ -35,10 +35,7 @@
 </template>
 
 <script>
-import BaseSearch from './BaseSearch.vue';
-
 export default {
-	components: { BaseSearch },
 	data() {
 		return {
 			lists: ['First Option', 'Second', 'Third'],
