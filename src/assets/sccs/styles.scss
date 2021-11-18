@@ -156,6 +156,7 @@ p {
                 padding: rem(18px) rem(10px);
                 text-decoration: none;
                 min-width: 213px;
+                min-height: 65px;
                 @media screen and (min-width: 1025px) {
                     &:hover {
                         border-color: var(--primary);
