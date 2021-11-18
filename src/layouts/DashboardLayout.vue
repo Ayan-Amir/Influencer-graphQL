@@ -2,7 +2,9 @@
 	<div class="dashboard">
 		<the-header />
 		<main role="main">
-			<router-view />
+			<div class="contentWrapper">
+				<router-view />
+			</div>
 		</main>
 	</div>
 </template>
