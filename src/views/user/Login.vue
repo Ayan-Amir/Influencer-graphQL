@@ -1,10 +1,9 @@
 <template>
 	<div class="row justify-content-between">
 		<div class="col-md-5">
-			<h1>Welcome</h1>
+			<h1>{{ title }}</h1>
 			<p class="subTitle">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna
-				arcu tempor et tellus, lobortis interdu.
+				{{ subTitle }}
 			</p>
 			<form>
 				<div class="form-group userName">
@@ -45,6 +44,13 @@
 <script>
 import SocialLinks from '@/components/user/layout/SocialLinks.vue';
 export default {
+	data() {
+		return {
+			title: 'Welcome',
+			subTitle:
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
+		};
+	},
 	components: { SocialLinks },
 };
 </script>
