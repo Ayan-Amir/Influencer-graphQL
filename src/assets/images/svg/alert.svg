@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="Group_1341" data-name="Group 1341" transform="translate(-111 -444.252)">
+    <g id="Ellipse_21" data-name="Ellipse 21" transform="translate(111 444.252)" fill="none" stroke="#9637f1" stroke-width="2">
+      <circle cx="10" cy="10" r="10" stroke="none"/>
+      <circle cx="10" cy="10" r="9" fill="none"/>
+    </g>
+    <text id="Lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit._Urna_arcu_tempor_et_tellus_lobortis_interdu." data-name="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu." transform="translate(119 445.252)" fill="#9637f1" font-size="14" font-family="NunitoSans-ExtraBold, Nunito Sans" font-weight="800"><tspan x="0" y="14">i</tspan></text>
+  </g>
+</svg>

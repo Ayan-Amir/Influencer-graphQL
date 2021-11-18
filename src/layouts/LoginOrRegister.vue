@@ -3,11 +3,13 @@
         <div class="container">
             <header role="banner">
                 <div class="header__logo">
-                    <img
+                    <a href="#">
+                        <img
                         src="@/assets/images/svg/logo.svg"
                         class="img-fluid"
                         alt=" logo"
                     />
+                    </a>
                 </div>
             </header>
             <div class="contentWrapper">
@@ -44,6 +46,7 @@ export default {
         .contentWrapper{
             height: 100%;
             @include flex(center,flex-start);
+            padding-top:rem(45px);
         }
     }
 </style>

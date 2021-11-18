@@ -26,6 +26,7 @@
 					</button>
 				</div>
 				<div class="or"><span>or</span></div>
+                <!-- social links -->
 				<social-links />
 			</form>
 		</div>
