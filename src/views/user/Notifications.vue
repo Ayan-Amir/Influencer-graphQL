@@ -37,10 +37,7 @@
 
 <script>
 export default {
-	data() {
-		return {};
-	},
-	components: {},
+	
 };
 </script>
 
@@ -57,6 +54,14 @@ export default {
 		padding: rem(13px) rem(25px);
 		border-radius: 16px;
 		margin-bottom: rem(15px);
+		border:2px solid transparent;
+		transition: .4s ease all;
+		cursor: pointer;
+		@media screen and (min-width:1025px){
+			&:hover{
+			border: 2px solid var(--primary);
+		}
+		}
 		&.active {
 			border: 2px solid var(--primary);
 		}

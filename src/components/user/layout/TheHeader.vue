@@ -470,8 +470,8 @@ header {
 		padding-top: rem(15px);
 		padding-bottom: rem(15px);
 		@media screen and (max-width: 767px) {
-			padding-top: rem(30px);
-			padding-bottom: rem(30px);
+			padding-top: rem(35px);
+			padding-bottom: rem(35px);
 		}
 	}
 	.settingIcon {

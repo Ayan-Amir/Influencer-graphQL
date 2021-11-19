@@ -1,7 +1,7 @@
 <template>
-	<div>
+	<div class="profile">
         <div class="row align-items-center justify-content-between">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h1>{{ title }}</h1>
                 <form>
                     <div class="row">
@@ -41,7 +41,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <div class="image">
                     <img
                         src="@/assets/images/young-woman-with-smartphone.png"
@@ -74,4 +74,14 @@ export default {
 	},
 };
 </script>
+<style lang="scss">
+    .LoginRegister{
+        .contentWrapper{
+            padding-top:0 !important;
+        }
+        .profile{
+            width:100%;
+        }
+    }
+</style>
     

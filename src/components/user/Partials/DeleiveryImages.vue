@@ -1,6 +1,6 @@
 <template>
 	<div class="row col-gap-40">
-		<div class="col-md-4">
+		<div class="col-lg-4 col-md-5 col-6" >
 			<div class="image">
 				<img
 					src="@/assets/images/instaStatusScreen.png"
@@ -9,7 +9,7 @@
 				/>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-lg-4 col-md-5 col-6" >
 			<div class="image">
 				<img
 					src="@/assets/images/instaPhotoUpload.png"
@@ -29,5 +29,8 @@ export default {};
 .image {
 	border-radius: 25px;
 	overflow: hidden;
+	img{
+		width:100%;
+	}
 }
 </style>

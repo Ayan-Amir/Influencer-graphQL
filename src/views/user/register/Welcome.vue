@@ -48,6 +48,20 @@ export default {
                 }
             }
         }
+        @media screen and (max-width:1300px){
+            .image{
+                img{
+                    max-width:375px
+                }
+            }
+        }
+         @media screen and (max-width:767px){
+            .image{
+                img{
+                    max-width:325px
+                }
+            }
+        }
     }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-	<div class="card discoverCard">
+	<div class="card discoverCard"> 
 		<div>
 			<div class="discoverCard__image">
 				<img
@@ -22,6 +22,7 @@
 		<p class="discoverCard__price" v-else>
 			{{ card.price }}
 		</p>
+		<router-link v-if="card.islink" :to="card.link" class="abs-link" >{{card.link}}</router-link>
 	</div>
 </template>
 
@@ -40,7 +41,7 @@ export default {
 	align-items: center;
 	justify-content: space-between;
 	padding: rem(15px);
-	border-radius: 12px;
+	border-radius: 8px !important;
 	margin-bottom: rem(15px);
 	> div {
 		display: flex;
@@ -49,6 +50,7 @@ export default {
 	&__image {
 		width: 50px;
 		height: 50px;
+		min-width:50px;
 		border-radius: 50%;
 		overflow: hidden;
 		img {
@@ -67,7 +69,7 @@ export default {
 			font-size: rem(14px);
 			font-weight: 400;
 			color: var(--textSecondary);
-			@include truncate(1);
+			@include truncate(2);
 		}
 	}
 	.btn.btn-primary {
@@ -76,7 +78,7 @@ export default {
 
 	&__price {
 		margin: 0;
-		font-size: rem(14px);
+		font-size: 14px;
 		color: var(--primary);
 		font-weight: 700;
 		position: relative;
@@ -94,11 +96,19 @@ export default {
 			right: -25px;
 			transition: 0.5s ease all;
 		}
+		@media screen and (max-width:1024px){
+			margin-right:rem(30px);
+			&::before{
+				right:-35px;
+			}
+		}
 	}
-	&:hover {
-		.discoverCard__price {
-			&::before {
-				right: -35px;
+	@media screen and (min-width:1025px){
+		&:hover {
+			.discoverCard__price {
+				&::before {
+					right: -35px;
+				}
 			}
 		}
 	}

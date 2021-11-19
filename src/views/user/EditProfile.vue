@@ -53,7 +53,7 @@
 								placeholder="Adress"
 							/>
 						</div>
-						<div class="form-group">
+						<div class="form-group upload">
 							<input
 								type="file"
 								class="form-control"
@@ -119,10 +119,7 @@ export default {
 				let img = document.createElement('img');
 				img.src = URL.createObjectURL(e.target.files[0]);
 				wrapper.appendChild(img);
-			}
-			// let img = document.createElement('img');
-			// img.src = URL.createObjectURL(e.target.files[0]);
-			// wrapper.appendChild(img);
+			};
 		},
 	},
 	components: { BaseSocialLink, DeleiveryImages },
@@ -132,13 +129,19 @@ export default {
 <style lang="scss" scoped>
 .editProfile {
 	.UploadImage {
-		height: 50px;
-		width: 50px;
 		overflow: hidden;
-		img {
-			height: 100%;
-			width: 100%;
+		text-align: center;
+		@include flex (center , center);
+		/deep/img {
+			width:150px;
+			height:150px;
 			object-fit: cover;
+			border-radius: 100%;
+			margin:10px;
+			@media screen and (max-width:767px){
+				width:150px;
+				height:150px;
+			}
 		}
 	}
 	h1 {
@@ -157,15 +160,9 @@ export default {
 			border: 1px solid var(--primary) !important;
 		}
 	}
-	input[type='file'] {
-		width: 100%;
-		height: 100%;
-		// opacity: 0;
-	}
 	.socialLinks {
 		list-style: none;
-		@include flex(center, space-between);
-		padding: 0;
+		@include flex(center, space-between);;
 		li {
 			flex: 0 0 48%;
 			max-width: 48%;
@@ -196,6 +193,22 @@ export default {
 				}
 			}
 		}
+		@media screen and (max-width:991px){
+			li{
+				a{
+					min-width:auto;
+				}
+			}
+		}
+		@media screen and (max-width:575px){
+			li{
+				flex: 0 0 100%;
+				max-width: 100%;
+				a{
+					min-height:55px;
+				}
+			}
+		}
 	}
 	.button-row {
 		margin-top: 0;
@@ -203,6 +216,57 @@ export default {
 		.btn {
 			width: 100%;
 		}
+	}
+	.form-group{
+		&.upload{
+			background: #E8E8F0;
+			border-radius: 8px;
+			height: 52px;
+			position: relative;
+			margin:0;
+			width:96%;
+			margin:auto;
+			margin-bottom:rem(16px);
+			transition: .4s ease all;
+			span{
+				position:absolute;
+				font-size:rem(20px);
+				font-weight:600;
+				color:var(--textPrimary);
+				top:50%;
+				left:50%;
+				transform: translate(-50% , -50%);
+				width:100%;
+				text-align: center;
+				@media screen and (max-width:767px){
+					font-size:rem(18px);
+				}
+			}
+			input{
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				z-index:2;
+			}
+			@media screen and (min-width:1025px){
+				&:hover{
+					background: var(--primary);
+					span{
+						color:#fff;
+					}
+				}
+			}
+		}
+	}
+	@media screen and (max-width:767px){
+		>.row{
+			flex-direction: column-reverse;
+		}
+		&__image{
+			max-width:300px;
+			margin:auto auto rem(30px) auto;
+		}
+
 	}
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
 	<div class="login">
         <div class="row justify-content-between">
-            <div class="col-md-5">
+            <div class="col-lg-5 col-md-6">
                 <h1>{{ title }}</h1>
                 <p class="subTitle">
                     {{ subTitle }}
@@ -31,7 +31,7 @@
                     <social-links />
                 </form>
             </div>
-            <div class="col-md-7">
+            <div class="col-lg-7 col-md-6">
                 <div class="image">
                     <img
                         src="@/assets/images/influencers-vloggers.png"
@@ -68,9 +68,15 @@ export default {
                 margin-top: rem(40px);
                 @include flex(center,
                 center);
+                @media screen and (max-width:767px){
+                    margin-top: rem(25px);
+                }
             }
             .form-group {
                 margin-bottom: rem(25px);
+                @media screen and (max-width:767px){
+                    margin-bottom:rem(16px);
+                }
                 
             }
         }

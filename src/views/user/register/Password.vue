@@ -1,7 +1,7 @@
 <template>
 	<div class="password">
         <div class="row justify-content-between align-items-center">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h1>{{ title }}</h1>
                 <p class="subTitle">
                     {{ subTitle }}
@@ -21,7 +21,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <div class="image">
                     <img
                         src="@/assets/images/hi-to-followers.png"
@@ -52,10 +52,10 @@ export default {
         .contentWrapper{
             padding-top: 0 !important;
         }
-        @media screen and (max-width:1600px){
+        @media screen and (max-width:1600px) and (min-width:992px){
             .image{
                 img{
-                    max-width:500px;
+                    max-width:450px;
                 }
             }
         }

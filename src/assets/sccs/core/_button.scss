@@ -32,15 +32,16 @@
     vertical-align: middle;
     position: relative;
     box-shadow: none !important;
-    border-radius: 17px;
     text-transform: capitalize;
     @media screen and (max-width: 767px) {
-        font-size: rem(15px);
+        font-size: rem(18px);
         padding-left: rem(20px);
         padding-right: rem(20px);
     }
-    &:hover {
-        text-decoration: none;
+    @media screen and (min-width:1025px) {
+        &:hover {
+            text-decoration: none;
+        }
     }
     .icon {
         &.big {
@@ -59,6 +60,7 @@
         padding: rem(12px) rem(24px);
         width: auto;
         min-width: 105px;
+        min-height: auto;
         border-radius: 8px !important;
     }
     &.full {
@@ -79,25 +81,22 @@
         background: var(--primary) !important;
         color: #fff !important;
         border: 2px solid var(--primary) !important;
-        &:hover {
-            &::before {
-                content: '';
-                position: absolute;
-                width: 80%;
-                height: 100%;
-                // background-color: var(--primary);
-                background-color: inherit;
-                border-radius: 8px;
-                z-index: -1;
-                animation: ripple 1.5s ease-out;
-                animation-delay: -0.5s;
+        @media screen and (min-width: 1025px) {
+            &:hover {
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 80%;
+                    height: 100%;
+                    // background-color: var(--primary);
+                    background-color: inherit;
+                    border-radius: 8px;
+                    z-index: -1;
+                    animation: ripple 1.5s ease-out;
+                    animation-delay: -0.5s;
+                }
             }
         }
-        // min-width: rem(273px);
-        // &:hover {
-        // 	background: #fff;
-        // 	color: var(--primary);
-        // }
     }
     @keyframes ripple {
         from {
@@ -113,9 +112,11 @@
         background: #e8e8f0;
         color: var(--textPrimary);
         border: 2px solid #e8e8f0;
-        &:hover {
-            background: #fff;
-            color: var(--primary);
+        @media screen and (min-width: 1025px) {
+            &:hover {
+                background: #fff;
+                color: var(--primary);
+            }
         }
     }
     &.btn-white {

@@ -71,10 +71,51 @@ export default {
 			text-decoration: none;
 			min-width: 213px;
 			min-height: 65px;
+			position: relative;
+			overflow: hidden;
+			&:after{
+				background: #9637f1;
+				content: "";
+				height: 155px;
+				left: -75px;
+				opacity: 0.1;
+				position: absolute;
+				top: -50px;
+				transform: rotate(35deg);
+				transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+				width: 50px;
+				z-index: 1;
+			}
 			@media screen and (min-width: 1025px) {
 				&:hover {
 					border-color: var(--primary);
+					&:after{
+						left: 120%;
+    					transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+					}
+					
 				}
+			}
+		}
+	}
+	@media screen and (max-width:1199px) and (min-width:768px){
+		li{
+			a{
+				min-width:auto;
+			}
+		}
+	}
+	@media screen and (max-width:767px){
+		li{
+			a{
+				min-height:55px;
+			}
+		}
+	}
+	@media screen and (max-width:575px){
+		li{
+			a{
+				min-width: auto;
 			}
 		}
 	}

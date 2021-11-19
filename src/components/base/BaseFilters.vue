@@ -38,7 +38,7 @@
 export default {
 	data() {
 		return {
-			lists: ['First Option', 'Second', 'Third'],
+			lists: ['one', 'Two', 'Three'],
 			lists2: ['First Option', 'Second', 'Third'],
 		};
 	},
@@ -54,13 +54,14 @@ export default {
 		margin-bottom: rem(15px);
 	}
 	.dropdownWrapper {
+		display: flex;
 		@media screen and (max-width: 767px) {
 			width: 100%;
 			margin-bottom: rem(15px);
 		}
 		/deep/ {
 			.dropdown {
-				min-height: 40px;
+				
 				@media screen and (max-width: 767px) {
 					width: 48%;
 				}
@@ -68,6 +69,10 @@ export default {
 					margin-right: rem(16px);
 				}
 				.dropdown-toggle {
+					width: 120px;
+					min-height: 40px;
+					border-radius: 8px!important;
+					padding: 10px;
 					&::after {
 						width: 8px;
 						height: 14px;
@@ -77,6 +82,11 @@ export default {
 						transform: rotate(90deg);
 						position: relative;
 						right: -10px;
+					}
+					@media screen and (min-width:1025px){
+						&:hover{
+							opacity:.7;
+						}
 					}
 				}
 			}

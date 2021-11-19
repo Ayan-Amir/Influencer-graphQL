@@ -1,5 +1,4 @@
-export default [
-    {
+export default [{
         path: "",
         component: () =>
             import ("@/views/user/Dashboard.vue"),

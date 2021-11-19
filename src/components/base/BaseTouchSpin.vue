@@ -33,6 +33,10 @@ export default {
 	display: flex;
 	align-items: center;
 	margin:rem(20px) 0;
+	@media screen and (max-width:767px){
+		justify-content: space-around;
+		margin: rem(20px) 0;
+	}
 	input {
 		width: 220px;
 		border:0 !important;
@@ -43,10 +47,14 @@ export default {
 		background: transparent;
 		height: 45px;
 		outline: none !important;
+		@media screen and (max-width:767px){
+			width:100%;
+		}
 	}
 	button {
 		width: 42px;
 		height: 42px;
+		min-width:42px;
 		border: 5px solid var(--primary);
 		border-radius: 50%;
 		font-size: rem(22px);

@@ -54,7 +54,7 @@
 <script>
 import DiscoverCard from '@/components/user/DiscoverCard.vue';
 import BaseProgressCircle from '@/components/base/BaseProgressCircle.vue';
-import ProfileCard from '@/components/user/Partials/ProfileCard.vue';
+import ProfileCard from '@/components/user/partials/ProfileCard.vue';
 export default {
 	data() {
 		return {
@@ -67,6 +67,8 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: false,
 					price: '$250',
+					islink:true,
+					link:'discover-detail-deleivery',
 				},
 				{
 					index: 1,
@@ -149,11 +151,13 @@ export default {
 		padding: rem(16px) rem(14px);
 		background: #fff;
 		cursor: pointer;
-		&:hover {
-			p {
-				&::before {
-					content: '';
-					right: -5px;
+		@media screen and (min-width:1025px){
+			&:hover {
+				p {
+					&::before {
+						content: '';
+						right: -5px;
+					}
 				}
 			}
 		}

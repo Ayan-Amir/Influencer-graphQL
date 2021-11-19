@@ -10,7 +10,7 @@
 		<div class="profile__title">Ruby Von Rails</div>
 		<p class="profile__subTitle">Influencer</p>
 		<div class="button-row">
-			<a href="#" class="btn btn-primary small">Edit Profile</a>
+			<router-link to="user/edit-profile" class="btn btn-primary small">Edit Profile</router-link>
 		</div>
 	</div>
 </template>

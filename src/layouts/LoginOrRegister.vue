@@ -38,13 +38,15 @@ export default {
         background: linear-gradient(90deg, #F3F3F6 50%, #BE89F3 50%);
         padding-bottom:rem(40px);
         @media screen and (max-width:767px){
-                background: linear-gradient(0deg, #F3F3F6 64%, #BE89F3 50%);
+            background: linear-gradient(0deg, #F3F3F6 64%, #BE89F3 50%);
+            padding-bottom:rem(15px);
         }
         header {
             padding: rem(45px) 0;
             padding-bottom:rem(25px);
             @media screen and (max-width:767px){
-                padding-bottom:0;
+                padding-bottom:10px;
+                padding-top:rem(30px);
             }
         }
         .header__logo{
@@ -66,7 +68,11 @@ export default {
             @include flex(center,flex-start);
             padding-top:rem(35px);
             @media screen and (max-width:767px){
+                >div{
+                    width:100%;
+                }
                 padding-top:rem(20px);
+                justify-content: center;
             }
         }
     }

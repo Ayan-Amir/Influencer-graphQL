@@ -1,7 +1,7 @@
 <template>
 	<div class="storyPrice">
         <div class="row align-items-center justify-content-between">
-            <div class="col-md-5">
+            <div class="col-lg-5 col-md-6">
                 <h1>{{ title }}</h1>
                 <p class="alertMessage">
                     {{message}}
@@ -22,7 +22,7 @@
                     <router-link to="profile-photo" class="btn btn-primary">Save</router-link>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-lg-7 col-md-6">
                 <div class="image">
                     <img
                         src="@/assets/images/story-price.png"
@@ -48,10 +48,38 @@ export default {
 	},
 };
 </script>
-<style lang="scss" >
+<style lang="scss">
     .LoginRegister{
         .contentWrapper{
             padding-top: 0 !important;
+        }
+        .storyPrice{
+            @media screen and (max-width:1850px){
+                .image{
+                    img{
+                        max-width:440px;
+                    }
+                }
+            }
+            @media screen and (max-width:1400px){
+                .image{
+                    img{
+                        max-width:385px;
+                    }
+                }
+            }
+            @media screen and (max-width:991px){
+                .image{
+                    img{
+                        max-width:100%;
+                    }
+                }
+            }
+            @media screen and (max-width:767px){
+                .button-row{
+                    justify-content: start !important;
+                }
+            }
         }
     }
 </style>
