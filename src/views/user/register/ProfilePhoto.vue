@@ -4,13 +4,14 @@
 			<div class="col-md-5">
 				<h1>Add Your <br>Profile Photo</h1>
 				<div class="profile__Photo">
+					<!-- profile Photo upload -->
 					<base-profile-upload />
 				</div>
 				<p class="subTitle">
 					By continuing you accept our <br><span>Terms and Conditions</span> and <span>Privacy Policy </span>
 				</p>
 				<div class="button-row">
-					<router-link to="/user" class="btn btn-primary">Finish</router-link>
+					<a href="/user" class="btn btn-primary">Finish</a>
 				</div>
 			</div>
 			<div class="col-md-7">

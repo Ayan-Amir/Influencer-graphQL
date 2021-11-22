@@ -102,6 +102,7 @@ export default {
 			font-size: rem(15px);
 			font-weight: 400;
 			font-family: $secondary-font;
+			line-height:1.2;
 		}
 	}
 }
