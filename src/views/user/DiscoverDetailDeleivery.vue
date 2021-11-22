@@ -2,15 +2,26 @@
 	<div class="discoverDetailDeleivery container">
 		<div class="row">
 			<div class="col-md-6">
+				<div class="orderID">{{orderId}} </div>
 				<div class="pageHead">
-					<h1>{{title}}</h1>
+					<div class="d-flex align-items-center">
+						<div class="pageHead__icon">
+							<img
+							src="@/assets/images/svg/palasLogo.svg"
+							alt=""
+							class="img-fluid"
+						/>
+						</div>
+						<h1>{{title}}</h1>
+					</div> 
+					
 					<span class="pageHead__price">{{price}}</span>
 				</div>
-				<h3>{{subTitle}}</h3>
+				<base-social-link />
 				<p>
 					{{desc}}
 				</p>
-				<base-social-link />
+				
 				<a href="#" class="btn btn-primary small">Delivery</a>
 				<div class="delivery">
 					<h3>You delivered:</h3>
@@ -45,8 +56,8 @@ export default {
 		return {
 			title:'Palas Mall',
 			price:'$250',
-			subTitle:'Palas Mall',
 			deliveryDate:'Sep 10, 2021',
+			orderId:'Order #FO1446167081',
 			desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
 		};
 	},
@@ -61,6 +72,9 @@ export default {
 		justify-content: space-between;
 		align-items: center;
 		margin-bottom: rem(24px);
+		&__icon{
+			margin-right:rem(14px);
+		}
 		h1 {
 			margin: 0;
 		}
@@ -71,6 +85,12 @@ export default {
 			font-weight: 700;
 			font-family: $secondary-font;
 		}
+	}
+	.orderID{
+		font-size:rem(20px);
+		font-weight:700;
+		color:var(--textPrimary);
+		margin-bottom:rem(30px);
 	}
 	p {
 		font-family: $secondary-font;
@@ -108,6 +128,22 @@ export default {
 	.image {
 		overflow: hidden;
 		border-radius: 30px;
+		@media screen and (min-width:768px){
+			margin-top:rem(20px);
+		}
+	}
+	@media screen and (max-width:767px){
+		>.row{
+			flex-direction: column-reverse;
+		}
+		.image{
+			margin-bottom:rem(18px);
+		}
+	}
+	@media screen and (max-width:575px){
+		.btn{
+			width:100%;
+		}
 	}
 }
 </style>

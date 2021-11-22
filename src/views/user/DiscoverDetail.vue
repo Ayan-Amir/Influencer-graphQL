@@ -2,7 +2,7 @@
 	<div class="discoverDetail container">
 		<div class="row">
 			<div class="col-md-5">
-				<div class="image">
+				<div class="image"> 
 					<img
 						src="@/assets/images/palasMall.png"
 						alt=""

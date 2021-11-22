@@ -162,7 +162,8 @@ export default {
 	}
 	.socialLinks {
 		list-style: none;
-		@include flex(center, space-between);;
+		@include flex(center, space-between);
+		padding:0 10px;
 		li {
 			flex: 0 0 48%;
 			max-width: 48%;
@@ -212,7 +213,7 @@ export default {
 	}
 	.button-row {
 		margin-top: 0;
-		padding: 0;
+		padding: 0 10px;
 		.btn {
 			width: 100%;
 		}

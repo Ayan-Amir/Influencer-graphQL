@@ -1,5 +1,5 @@
 <template>
-	<div class="row col-gap-40">
+	<div class="row">
 		<div class="col-lg-4 col-md-5 col-6" >
 			<div class="image">
 				<img
@@ -33,4 +33,7 @@ export default {};
 		width:100%;
 	}
 }
+
+
+
 </style>
