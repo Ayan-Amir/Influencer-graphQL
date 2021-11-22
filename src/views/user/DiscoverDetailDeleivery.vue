@@ -3,30 +3,24 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="pageHead">
-					<h1>Palas Mall</h1>
-					<span class="pageHead__price">$250</span>
+					<h1>{{title}}</h1>
+					<span class="pageHead__price">{{price}}</span>
 				</div>
-				<h3>Palas Mall</h3>
+				<h3>{{subTitle}}</h3>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-					do eiusmod tempor incididunt ut labore et dolore magna
-					aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					ullamco
+					{{desc}}
 				</p>
 				<base-social-link />
 				<a href="#" class="btn btn-primary small">Delivery</a>
 				<div class="delivery">
 					<h3>You delivered:</h3>
-					<span class="delivery__date">Sep 10, 2021</span>
+					<span class="delivery__date">{{deliveryDate}}</span>
 					<deleivery-images />
 				</div>
 				<div class="revision">
 					<h3>Revision</h3>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore
-						magna aliqua. Ut enim ad minim veniam, quis nostrud
-						exercitation ullamco
+						{{desc}}
 					</p>
 				</div>
 			</div>
@@ -48,7 +42,13 @@ import BaseSocialLink from '@/components/base/BaseSocialLink.vue';
 import DeleiveryImages from '@/components/user/partials/DeleiveryImages.vue';
 export default {
 	data() {
-		return {};
+		return {
+			title:'Palas Mall',
+			price:'$250',
+			subTitle:'Palas Mall',
+			deliveryDate:'Sep 10, 2021',
+			desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
+		};
 	},
 	components: { BaseSocialLink, DeleiveryImages },
 };
