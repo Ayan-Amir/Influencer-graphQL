@@ -68,7 +68,7 @@
 								</li>
 								<!-- Dropdown -->
 								<li class="hide-on-md">
-									<router-link to="user/edit-profile">
+									<router-link to="edit-profile">
 										<div class="userProfile">
 											Sandu Cosm
 											<span
@@ -116,12 +116,12 @@
 										>
 									</li>
 									<li>
-										<router-link to="#"
+										<router-link to="free-offer"
 											>Free offers</router-link
 										>
 									</li>
 									<li>
-										<router-link to="#"
+										<router-link to="discover"
 											>Discover</router-link
 										>
 									</li>
