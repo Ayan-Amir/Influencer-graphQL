@@ -1,117 +1,118 @@
 <template>
-  <div class="quantityToggle">
-    <button
-      :disabled="quantity == 1 ? true : false"
-      @click="decrement"
-      class="decrement"
-    >
-      &mdash;
-    </button>
-    <input type="text" :value="quantity" readonly />
-    <button class="increament" @click="increment">&#xff0b;</button>
-  </div>
+	<div class="quantityToggle">
+		<button
+			:disabled="quantity == 1 ? true : false"
+			@click="decrement"
+			class="decrement"
+		>
+			&mdash;
+		</button>
+		<input type="text" :value="`$${quantity}.00`" readonly />
+		<button class="increament" @click="increment">&#xff0b;</button>
+	</div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      quantity: 1,
-    };
-  },
-  methods: {
-    increment() {
-      this.quantity++;
-    },
-    decrement() {
-      if (this.quantity > 1) {
-        this.quantity--;
-      }
-    },
-  },
+	data() {
+		return {
+			quantity: 1,
+		};
+	},
+	mounted() {},
+	methods: {
+		increment() {
+			this.quantity++;
+		},
+		decrement() {
+			if (this.quantity > 1) {
+				this.quantity--;
+			}
+		},
+	},
 };
 </script>
 
 <style lang="scss" scoped>
 .quantityToggle {
-  display: flex;
-  align-items: center;
-  margin: rem(20px) 0;
-  @media screen and (max-width: 767px) {
-    justify-content: space-around;
-    margin: rem(20px) 0;
-  }
-  input {
-    width: 220px;
-    border: 0 !important;
-    text-align: center;
-    font-size: rem(52px);
-    font-weight: 900;
-    color: var(--primary);
-    background: transparent;
-    height: 45px;
-    outline: none !important;
-    @media screen and (max-width: 767px) {
-      width: 100%;
-    }
-  }
-  button {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
-    border: 5px solid var(--primary);
-    border-radius: 50%;
-    font-size: rem(22px);
-    color: var(--primary);
-    font-weight: bold;
-    transition: all 0.5s ease;
-    font-size: 0;
-    position: relative;
-    &:before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-    &.decrement {
-      &:before {
-        background: url(../../assets/images/icons/minius.png) center center
-          no-repeat;
-        width: 12px;
-        height: 5px;
-      }
-    }
-    &.increament {
-      &:before {
-        background: url(../../assets/images/icons/plus.png) center center
-          no-repeat;
-        width: 17px;
-        height: 17px;
-      }
-    }
-    @media screen and (min-width: 1025px) {
-      &:hover {
-        background: var(--primary);
-        color: #fff;
-        &.decrement {
-          &:before {
-            background: url(../../assets/images/icons/minius-white.png) center
-              center no-repeat;
-            width: 12px;
-            height: 5px;
-          }
-        }
-        &.increament {
-          &:before {
-            background: url(../../assets/images/icons/plus-white.png) center
-              center no-repeat;
-            width: 17px;
-            height: 17px;
-          }
-        }
-      }
-    }
-  }
+	display: flex;
+	align-items: center;
+	margin: rem(20px) 0;
+	@media screen and (max-width: 767px) {
+		justify-content: space-around;
+		margin: rem(20px) 0;
+	}
+	input {
+		width: 220px;
+		border: 0 !important;
+		text-align: center;
+		font-size: rem(52px);
+		font-weight: 900;
+		color: var(--primary);
+		background: transparent;
+		height: 45px;
+		outline: none !important;
+		@media screen and (max-width: 767px) {
+			width: 100%;
+		}
+	}
+	button {
+		width: 42px;
+		height: 42px;
+		min-width: 42px;
+		border: 5px solid var(--primary);
+		border-radius: 50%;
+		font-size: rem(22px);
+		color: var(--primary);
+		font-weight: bold;
+		transition: all 0.5s ease;
+		font-size: 0;
+		position: relative;
+		&:before {
+			content: '';
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+		&.decrement {
+			&:before {
+				background: url(../../assets/images/icons/minius.png) center
+					center no-repeat;
+				width: 12px;
+				height: 5px;
+			}
+		}
+		&.increament {
+			&:before {
+				background: url(../../assets/images/icons/plus.png) center
+					center no-repeat;
+				width: 17px;
+				height: 17px;
+			}
+		}
+		@media screen and (min-width: 1025px) {
+			&:hover {
+				background: var(--primary);
+				color: #fff;
+				&.decrement {
+					&:before {
+						background: url(../../assets/images/icons/minius-white.png)
+							center center no-repeat;
+						width: 12px;
+						height: 5px;
+					}
+				}
+				&.increament {
+					&:before {
+						background: url(../../assets/images/icons/plus-white.png)
+							center center no-repeat;
+						width: 17px;
+						height: 17px;
+					}
+				}
+			}
+		}
+	}
 }
 </style>

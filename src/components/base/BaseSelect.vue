@@ -1,16 +1,15 @@
 <template>
-  <div class="form-group">
-    <v-select :options="options" v-model="selected" />
-  </div>
+	<div class="form-group">
+		<v-select :options="options" v-model="selected" />
+	</div>
 </template>
 
 <script>
 export default {
-  props: {
-    options: Array,
-    data: Array,
-    selected: String,
-  },
+	props: {
+		options: Array,
+		selected: String,
+	},
 };
 </script>
 

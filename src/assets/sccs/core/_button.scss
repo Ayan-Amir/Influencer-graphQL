@@ -99,6 +99,15 @@
 				}
 			}
 		}
+		&.large {
+			@media screen and (min-width: 1025px) {
+				&:hover {
+					&::before {
+						width: 75%;
+					}
+				}
+			}
+		}
 	}
 	@keyframes ripple {
 		from {
