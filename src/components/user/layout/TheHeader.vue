@@ -33,7 +33,7 @@
 							<nav>
 								<ul>
 									<li>
-										<router-link to="#"
+										<router-link to="/user"
 											>Dashboard</router-link
 										>
 									</li>
