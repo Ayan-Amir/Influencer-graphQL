@@ -1,7 +1,7 @@
 <template>
 	<ul class="socialLinks">
 		<li v-for="item in linkItems" :key="item.index">
-			<router-link :to="item.link" target="_blank">
+			<router-link :to="item.link">
 				<img
 					:src="require(`@/assets/images/svg/${item.icon}`)"
 					class="img-fluid"
