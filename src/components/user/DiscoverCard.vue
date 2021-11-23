@@ -1,5 +1,5 @@
 <template>
-	<div class="card discoverCard"> 
+	<div class="card discoverCard">
 		<div>
 			<div class="discoverCard__image">
 				<img
@@ -22,7 +22,12 @@
 		<p class="discoverCard__price" v-else>
 			{{ card.price }}
 		</p>
-		<router-link v-if="card.islink" :to="card.link" class="abs-link" >{{card.link}}</router-link>
+		<router-link
+			v-if="card.islink"
+			:to="`/user/${card.link}`"
+			class="abs-link"
+			>{{ card.link }}</router-link
+		>
 	</div>
 </template>
 
@@ -50,7 +55,7 @@ export default {
 	&__image {
 		width: 50px;
 		height: 50px;
-		min-width:50px;
+		min-width: 50px;
 		border-radius: 50%;
 		overflow: hidden;
 		img {
@@ -96,14 +101,14 @@ export default {
 			right: -25px;
 			transition: 0.5s ease all;
 		}
-		@media screen and (max-width:1024px){
-			margin-right:rem(30px);
-			&::before{
-				right:-35px;
+		@media screen and (max-width: 1024px) {
+			margin-right: rem(30px);
+			&::before {
+				right: -35px;
 			}
 		}
 	}
-	@media screen and (min-width:1025px){
+	@media screen and (min-width: 1025px) {
 		&:hover {
 			.discoverCard__price {
 				&::before {

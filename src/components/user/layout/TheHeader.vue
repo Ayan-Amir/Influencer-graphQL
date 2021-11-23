@@ -55,7 +55,7 @@
 								<!-- Notification -->
 								<li class="notifaction_Wrapper hide-on-md">
 									<router-link
-										to="notifications"
+										to="/user/notifications"
 										class="notification"
 									>
 										<svg-icon

@@ -112,14 +112,14 @@ export default {
 	methods: {
 		upload: function (e) {
 			let wrapper = document.querySelector('.UploadImage');
-			let image = document.querySelector('UploadImage img');
+			let image = document.querySelector('.UploadImage img');
 			if (image) {
 				image.src = URL.createObjectURL(e.target.files[0]);
 			} else {
 				let img = document.createElement('img');
 				img.src = URL.createObjectURL(e.target.files[0]);
 				wrapper.appendChild(img);
-			};
+			}
 		},
 	},
 	components: { BaseSocialLink, DeleiveryImages },
@@ -131,16 +131,16 @@ export default {
 	.UploadImage {
 		overflow: hidden;
 		text-align: center;
-		@include flex (center , center);
+		@include flex(center, center);
 		/deep/img {
-			width:150px;
-			height:150px;
+			width: 150px;
+			height: 150px;
 			object-fit: cover;
 			border-radius: 100%;
-			margin:10px;
-			@media screen and (max-width:767px){
-				width:150px;
-				height:150px;
+			margin: 10px;
+			@media screen and (max-width: 767px) {
+				width: 150px;
+				height: 150px;
 			}
 		}
 	}
@@ -163,7 +163,7 @@ export default {
 	.socialLinks {
 		list-style: none;
 		@include flex(center, space-between);
-		padding:0 10px;
+		padding: 0 10px;
 		li {
 			flex: 0 0 48%;
 			max-width: 48%;
@@ -194,19 +194,19 @@ export default {
 				}
 			}
 		}
-		@media screen and (max-width:991px){
-			li{
-				a{
-					min-width:auto;
+		@media screen and (max-width: 991px) {
+			li {
+				a {
+					min-width: auto;
 				}
 			}
 		}
-		@media screen and (max-width:575px){
-			li{
+		@media screen and (max-width: 575px) {
+			li {
 				flex: 0 0 100%;
 				max-width: 100%;
-				a{
-					min-height:55px;
+				a {
+					min-height: 55px;
 				}
 			}
 		}
@@ -218,56 +218,55 @@ export default {
 			width: 100%;
 		}
 	}
-	.form-group{
-		&.upload{
-			background: #E8E8F0;
+	.form-group {
+		&.upload {
+			background: #e8e8f0;
 			border-radius: 8px;
 			height: 52px;
 			position: relative;
-			margin:0;
-			width:96%;
-			margin:auto;
-			margin-bottom:rem(16px);
-			transition: .4s ease all;
-			span{
-				position:absolute;
-				font-size:rem(20px);
-				font-weight:600;
-				color:var(--textPrimary);
-				top:50%;
-				left:50%;
-				transform: translate(-50% , -50%);
-				width:100%;
+			margin: 0;
+			width: 96%;
+			margin: auto;
+			margin-bottom: rem(16px);
+			transition: 0.4s ease all;
+			span {
+				position: absolute;
+				font-size: rem(20px);
+				font-weight: 600;
+				color: var(--textPrimary);
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 100%;
 				text-align: center;
-				@media screen and (max-width:767px){
-					font-size:rem(18px);
+				@media screen and (max-width: 767px) {
+					font-size: rem(18px);
 				}
 			}
-			input{
+			input {
 				width: 100%;
 				height: 100%;
 				opacity: 0;
-				z-index:2;
+				z-index: 2;
 			}
-			@media screen and (min-width:1025px){
-				&:hover{
+			@media screen and (min-width: 1025px) {
+				&:hover {
 					background: var(--primary);
-					span{
-						color:#fff;
+					span {
+						color: #fff;
 					}
 				}
 			}
 		}
 	}
-	@media screen and (max-width:767px){
-		>.row{
+	@media screen and (max-width: 767px) {
+		> .row {
 			flex-direction: column-reverse;
 		}
-		&__image{
-			max-width:300px;
-			margin:auto auto rem(30px) auto;
+		&__image {
+			max-width: 300px;
+			margin: auto auto rem(30px) auto;
 		}
-
 	}
 }
 </style>

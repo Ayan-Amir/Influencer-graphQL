@@ -67,8 +67,9 @@ export default {
 					btn: 'Apply Now',
 					isDiscoverBtn: false,
 					price: '$250',
-					islink:true,
-					link:'discover-detail-deleivery',
+					islink: true,
+					link: 'discover-detail-deleivery',
+					path: 'discover-detail-deleivery',
 				},
 				{
 					index: 1,
@@ -151,7 +152,7 @@ export default {
 		padding: rem(16px) rem(14px);
 		background: #fff;
 		cursor: pointer;
-		@media screen and (min-width:1025px){
+		@media screen and (min-width: 1025px) {
 			&:hover {
 				p {
 					&::before {
