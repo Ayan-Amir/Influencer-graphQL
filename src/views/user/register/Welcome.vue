@@ -10,7 +10,7 @@
           {{ subTitle }}
         </p>
         <div class="button-row">
-          <router-link to="password" class="btn btn-primary"
+          <router-link to="password" class="btn btn-primary large"
             >Ok, let’s do it</router-link
           >
         </div>

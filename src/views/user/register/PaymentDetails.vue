@@ -14,8 +14,11 @@
 						</div>
 					</div>
 					<base-input placeholder="CNP" type="text" />
+
 					<base-date-picker />
+
 					<base-select :options="Gender" :selected="selected" />
+
 					<base-input placeholder="Email" type="email" />
 
 					<base-input placeholder="Phone" type="tell" />
@@ -65,23 +68,23 @@ export default {
 		return {
 			title: 'Payment details',
 			message: 'You must use the data from your identity card.',
-			selected: { value: 'null', text: 'Male' },
+			selected: { value: 'a', text: 'Male' },
 			Gender: [
-				{ value: null, text: 'Male' },
-				{ value: 'a', text: 'Female' },
-				{ value: 'b', text: 'Other' },
+				{ value: 'a', text: 'Male' },
+				{ value: 'b', text: 'Female' },
+				{ value: 'c', text: 'Other' },
 			],
-			selectCountry: { value: null, text: 'Pakistan' },
+			selectCountry: { value: 'a', text: 'Pakistan' },
 			Country: [
-				{ value: null, text: 'Pakistan' },
-				{ value: 'a', text: 'Kuwait' },
-				{ value: 'b', text: 'America' },
+				{ value: 'a', text: 'Pakistan' },
+				{ value: 'b', text: 'Kuwait' },
+				{ value: 'c', text: 'America' },
 			],
-			selectCity: { value: null, text: 'Lahore' },
+			selectCity: { value: 'a', text: 'Lahore' },
 			Locality: [
-				{ value: null, text: 'Lahore' },
-				{ value: 'a', text: 'Kuwait' },
-				{ value: 'b', text: 'New york' },
+				{ value: 'a', text: 'Lahore' },
+				{ value: 'b', text: 'Kuwait' },
+				{ value: 'c', text: 'New york' },
 			],
 		};
 	},
@@ -107,6 +110,9 @@ export default {
 				max-width: 450px;
 			}
 		}
+	}
+	.button-row {
+		margin-top: 10px;
 	}
 }
 </style>
