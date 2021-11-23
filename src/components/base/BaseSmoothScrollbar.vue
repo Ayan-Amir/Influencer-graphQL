@@ -1,15 +1,15 @@
 <template>
-    <div class="scrollArea">
-         <scrollbar :maxHeight="height"  >
-               <slot />
-          </scrollbar>
-    </div>
+  <div class="scrollArea">
+    <scrollbar :maxHeight="height">
+      <slot />
+    </scrollbar>
+  </div>
 </template>
 
 <script>
 export default {
-     props:{
-          height:String
-     }
-}
+  props: {
+    height: String,
+  },
+};
 </script>

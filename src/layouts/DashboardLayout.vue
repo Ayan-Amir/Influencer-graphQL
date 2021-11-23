@@ -1,21 +1,21 @@
 <template>
-	<div class="dashboard">
-		<the-header />
-		<main role="main">
-			<div class="contentWrapper">
-				<router-view />
-			</div>
-		</main>
-	</div>
+  <div class="dashboard">
+    <the-header />
+    <main role="main">
+      <div class="contentWrapper">
+        <router-view />
+      </div>
+    </main>
+  </div>
 </template>
 
 <script>
-import TheHeader from '@/components/user/layout/TheHeader.vue';
+import TheHeader from "@/components/user/layout/TheHeader.vue";
 export default {
-	name: 'DashboardLayout',
-	components: {
-		TheHeader,
-	},
+  name: "DashboardLayout",
+  components: {
+    TheHeader,
+  },
 };
 </script>
 

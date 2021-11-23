@@ -1,22 +1,22 @@
 <template>
-	<div>
-		<b-form-datepicker v-model="value"></b-form-datepicker>
-		<span>{{ value }}</span>
-	</div>
+  <div>
+    <b-form-datepicker v-model="value"></b-form-datepicker>
+    <span>{{ value }}</span>
+  </div>
 </template>
 
 <script>
 export default {
-	data() {
-		return {
-			value: '',
-		};
-	},
+  data() {
+    return {
+      value: "",
+    };
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .form-control {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 </style>
