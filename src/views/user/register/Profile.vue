@@ -17,7 +17,7 @@
 					<div class="button-row">
 						<router-link
 							to="payment-details"
-							class="btn btn-primary"
+							class="btn btn-primary large"
 						>
 							Save
 						</router-link>

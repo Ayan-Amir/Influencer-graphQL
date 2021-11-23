@@ -18,7 +18,7 @@
 						type="text"
 					/>
 					<div class="button-row">
-						<router-link to="/user" class="btn btn-primary">
+						<router-link to="/user" class="btn btn-primary large">
 							Login to Continue
 						</router-link>
 					</div>

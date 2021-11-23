@@ -1,8 +1,8 @@
 <template>
-	<div>
-		<b-form-datepicker v-model="value"></b-form-datepicker>
-		<span>{{ value }}</span>
-	</div>
+	<b-form-datepicker
+		placeholder="Birth date"
+		v-model="value"
+	></b-form-datepicker>
 </template>
 
 <script>

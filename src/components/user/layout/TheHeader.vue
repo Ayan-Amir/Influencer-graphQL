@@ -300,6 +300,8 @@ header {
 			.userProfile {
 				display: flex;
 				align-items: center;
+				font-weight: 500;
+				color: var(--textPrimary);
 				span {
 					width: rem(50px);
 					min-width: rem(50px);

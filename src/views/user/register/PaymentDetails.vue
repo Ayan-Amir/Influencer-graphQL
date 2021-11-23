@@ -4,79 +4,47 @@
 			<div class="col-lg-5 col-md-6">
 				<h1>{{ title }}</h1>
 				<p class="alertMessage">{{ message }}</p>
-				<form>
+				<b-form>
 					<div class="row">
 						<div class="col-md-6">
-							<div class="form-group">
-								<input
-									type="text"
-									class="form-control"
-									placeholder="First name"
-								/>
-							</div>
+							<base-input placeholder="First Name" type="text" />
 						</div>
 						<div class="col-md-6">
-							<div class="form-group">
-								<input
-									type="text"
-									class="form-control"
-									placeholder="Last name"
-								/>
-							</div>
+							<base-input placeholder="Last Name" type="text" />
 						</div>
 					</div>
-					<div class="form-group">
-						<input
-							type="text"
-							class="form-control"
-							placeholder="CNP"
-						/>
-					</div>
-					<div class="form-group">
-						<v-select v-model="selected" :options="BirthDate" />
-					</div>
-					<div class="form-group">
-						<!-- Date Range Picker -->
-						<base-date-picker />
-					</div>
-					<div class="form-group">
-						<input
-							type="email"
-							class="form-control"
-							placeholder="Email"
-						/>
-					</div>
-					<div class="form-group">
-						<input
-							type="tell"
-							class="form-control"
-							placeholder="Phone"
-						/>
-					</div>
+					<base-input placeholder="CNP" type="text" />
+					<base-date-picker />
+					<base-select :options="Gender" :selected="selected" />
+					<base-input placeholder="Email" type="email" />
+
+					<base-input placeholder="Phone" type="tell" />
+
 					<div class="row">
 						<div class="col-md-6">
-							<div class="form-group">
-								<v-select
-									v-model="selected"
-									:options="Country"
-								/>
-							</div>
+							<base-select
+								:options="Country"
+								:selected="selectCountry"
+							/>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<v-select
-									v-model="selected"
 									:options="Locality"
+									v-model="selectCity"
 								/>
 							</div>
 						</div>
 					</div>
 					<div class="button-row">
-						<router-link to="story-price" class="btn btn-primary">
+						<router-link
+							to="story-price"
+							class="btn btn-primary large"
+						>
 							Save
 						</router-link>
 					</div>
-				</form>
+				</b-form>
 			</div>
 			<div class="col-lg-7 col-md-6">
 				<div class="image">
@@ -92,33 +60,28 @@
 </template>
 
 <script>
-import BaseDatePicker from '../../../components/base/BaseDatePicker.vue';
 export default {
-	components: { BaseDatePicker },
 	data() {
 		return {
 			title: 'Payment details',
 			message: 'You must use the data from your identity card.',
-			selectedValue: null,
-			BirthDate: [
-				{ value: null, text: '1/ 12 / 2020' },
-				{ value: 'a', text: '2/ 12 / 2020' },
-				{ value: 'b', text: '3/ 12 / 2020' },
-			],
+			selected: { value: 'null', text: 'Male' },
 			Gender: [
 				{ value: null, text: 'Male' },
 				{ value: 'a', text: 'Female' },
 				{ value: 'b', text: 'Other' },
 			],
+			selectCountry: { value: null, text: 'Pakistan' },
 			Country: [
 				{ value: null, text: 'Pakistan' },
 				{ value: 'a', text: 'Kuwait' },
 				{ value: 'b', text: 'America' },
 			],
+			selectCity: { value: null, text: 'Lahore' },
 			Locality: [
-				{ value: null, text: 'Newyork' },
-				{ value: 'a', text: 'peris' },
-				{ value: 'b', text: 'Newyork' },
+				{ value: null, text: 'Lahore' },
+				{ value: 'a', text: 'Kuwait' },
+				{ value: 'b', text: 'New york' },
 			],
 		};
 	},
