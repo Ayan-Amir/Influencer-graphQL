@@ -7,7 +7,7 @@
 		>
 			&mdash;
 		</button>
-		<input type="text" :value="quantity" readonly />
+		<input type="text" :value="`$${quantity}.00`" readonly />
 		<button class="increament" @click="increment">&#xff0b;</button>
 	</div>
 </template>
@@ -16,9 +16,10 @@
 export default {
 	data() {
 		return {
-			quantity: 1.0,
+			quantity: 1,
 		};
 	},
+	mounted() {},
 	methods: {
 		increment() {
 			this.quantity++;
