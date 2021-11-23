@@ -1,6 +1,7 @@
 <template>
-	<div >
-		<b-form-datepicker id="example-datepicker" v-model="value"></b-form-datepicker>
+	<div>
+		<b-form-datepicker v-model="value"></b-form-datepicker>
+		<span>{{ value }}</span>
 	</div>
 </template>
 
@@ -8,14 +9,14 @@
 export default {
 	data() {
 		return {
-			
+			value: '',
 		};
 	},
-	
 };
 </script>
 
 <style lang="scss" scoped>
-	
-	
+.form-control {
+	margin-bottom: 10px;
+}
 </style>

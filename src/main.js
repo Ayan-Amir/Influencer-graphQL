@@ -12,6 +12,8 @@ import SvgIcon from '@/components/base/BaseSvgIcon.vue'
 
 import VueEllipseProgress from 'vue-ellipse-progress';
 import VSelect from '@alfsnd/vue-bootstrap-select'
+import '@/components/global_components'
+
 
 
 

@@ -1,37 +1,35 @@
 <template>
 	<div class="password">
-        <div class="row justify-content-between align-items-center">
-            <div class="col-md-6">
-                <h1>{{ title }}</h1>
-                <p class="subTitle">
-                    {{ subTitle }}
-                </p>
-                <form>
-                    <div class="form-group password">
-                        <input
-                            type="password"
-                            class="form-control"
-                            placeholder="Password"
-                        />
-                    </div>
-                    <div class="button-row">
-                        <router-link to="profile" class="btn btn-primary">
-                            Continue
-                        </router-link>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <div class="image">
-                    <img
-                        src="@/assets/images/hi-to-followers.png"
-                        class="img-fluid"
-                        alt="hi-to-followers-img"
-                    />
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="row justify-content-between align-items-center">
+			<div class="col-md-6">
+				<h1>{{ title }}</h1>
+				<p class="subTitle">
+					{{ subTitle }}
+				</p>
+				<b-form>
+					<base-input
+						className="password"
+						placeholder="Password"
+						type="password"
+					/>
+					<div class="button-row">
+						<router-link to="profile" class="btn btn-primary">
+							Continue
+						</router-link>
+					</div>
+				</b-form>
+			</div>
+			<div class="col-md-6">
+				<div class="image">
+					<img
+						src="@/assets/images/hi-to-followers.png"
+						class="img-fluid"
+						alt="hi-to-followers-img"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -47,17 +45,17 @@ export default {
 	components: { SocialLinks },
 };
 </script>
-<style lang="scss" >
-    .LoginRegister{
-        .contentWrapper{
-            padding-top: 0 !important;
-        }
-        @media screen and (max-width:1600px) and (min-width:992px){
-            .image{
-                img{
-                    max-width:450px;
-                }
-            }
-        }
-    }
+<style lang="scss">
+.LoginRegister {
+	.contentWrapper {
+		padding-top: 0 !important;
+	}
+	@media screen and (max-width: 1600px) and (min-width: 992px) {
+		.image {
+			img {
+				max-width: 450px;
+			}
+		}
+	}
+}
 </style>
