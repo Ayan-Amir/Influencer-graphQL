@@ -6,26 +6,32 @@
 				<p class="subTitle">
 					{{ subTitle }}
 				</p>
-				<b-form>
-					<base-input
-						className="userName"
-						placeholder="Username"
-						type="text"
-					/>
-					<base-input
-						className="email"
-						placeholder="Email"
-						type="text"
-					/>
-					<div class="button-row">
-						<router-link to="/user" class="btn btn-primary large">
-							Login to Continue
-						</router-link>
-					</div>
-					<div class="or"><span>or</span></div>
-					<!-- social links -->
-					<social-links />
-				</b-form>
+				<validation-observer ref="observer" v-slot="{ handleSubmit }">
+					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
+						<base-input
+							className="userName"
+							placeholder="Username"
+							type="text"
+						/>
+						<base-input
+							className="email"
+							placeholder="Email"
+							type="text"
+						/>
+						<div class="button-row">
+							<button
+								type="submit"
+								to="/user"
+								class="btn btn-primary large"
+							>
+								Login to Continue
+							</button>
+						</div>
+						<div class="or"><span>or</span></div>
+						<!-- social links -->
+						<social-links />
+					</b-form>
+				</validation-observer>
 			</div>
 			<div class="col-lg-7 col-md-6">
 				<div class="image">
@@ -49,6 +55,11 @@ export default {
 			subTitle:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
 		};
+	},
+	methods: {
+		onSubmit() {
+			this.$router.push('/user');
+		},
 	},
 	components: { SocialLinks },
 };
