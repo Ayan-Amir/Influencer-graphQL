@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import OffersCard from '@/components/user/OffersCard.vue';
+//import OffersCard from '@/components/user/OffersCard.vue';
 export default {
 	data() {
 		return {
@@ -56,10 +56,10 @@ export default {
 		
 	},
 	components: {
-		OffersCard,
+		//OffersCard,
 	},
 	mounted(){
-		console.log(IMG_BASE);
+		console.log(this.$config);
 	}
 };
 </script>
