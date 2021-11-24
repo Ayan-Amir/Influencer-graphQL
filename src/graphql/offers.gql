@@ -1,5 +1,5 @@
-query {
-	offers(page: 1) {
+query ($page: Int, $locations: String, $categories: String) {
+	offers(page: $page, locations: $locations, categories: $categories) {
 		id
 		name
 		image

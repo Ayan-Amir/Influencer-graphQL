@@ -1,6 +1,6 @@
 <template>
 	<div class="freeOffers container">
-		<base-filters />
+		<base-filters @value="selectedValue" />
 		<div class="row">
 			<div
 				class="col-xl-3 col-lg-4 col-sm-6"
@@ -24,6 +24,7 @@ export default {
 	data() {
 		return {
 			offers: [],
+			locations: '',
 			offerCard: [
 				{
 					index: 0,
@@ -239,9 +240,17 @@ export default {
 	apollo: {
 		offers: {
 			query: require('../../graphql/offers.gql'),
+			variables: {
+				// locations,
+			},
 			update(data) {
 				return data.offers;
 			},
+		},
+	},
+	methods: {
+		selectedValue: function (e) {
+			this.locations = e;
 		},
 	},
 	components: {

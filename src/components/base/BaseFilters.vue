@@ -2,11 +2,16 @@
 	<div class="filters">
 		<!-- Dropdown -->
 		<div class="dropdownWrapper">
-			<b-dropdown text="moscow" variant="white">
+			<b-dropdown
+				@click.native="handleChange"
+				text="moscow"
+				variant="white"
+			>
 				<b-dropdown-item
 					href="#"
 					v-for="list in locations"
 					:key="list.id"
+					:value="list.name"
 					>{{ list.name }}</b-dropdown-item
 				>
 			</b-dropdown>
@@ -38,23 +43,41 @@
 export default {
 	data() {
 		return {
+			location: '',
 			locations: [],
+			category: '',
 			categories: [],
 		};
 	},
 	apollo: {
 		locations: {
 			query: require('../../graphql/locations.gql'),
+			variable: {
+				location: '',
+			},
 			update(data) {
 				return data.offersFilters.locations;
 			},
 		},
 		categories: {
 			query: require('../../graphql/categories.gql'),
+			variable: {
+				category: '',
+			},
 			update(data) {
 				return data.offersFilters.categories;
 			},
 		},
+	},
+	methods: {
+		handleChange(evt) {
+			this.location = evt.target.getAttribute('value');
+			this.$emit('value', this.location);
+			// console.log(this.location);
+		},
+	},
+	mounted() {
+		// this.handleChange();
 	},
 };
 </script>
