@@ -1,0 +1,11 @@
+query {
+	offers(page: 1) {
+		id
+		name
+		image
+		type
+		description
+		expirationDate
+		requirements
+	}
+}

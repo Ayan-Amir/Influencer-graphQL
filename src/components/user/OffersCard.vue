@@ -1,115 +1,156 @@
 <template>
-  <div class="offerCard card">
-    <div class="offerCard__image">
-      <img
-        :src="require(`@/assets/images/${cardData.mainImage}`)"
-        class="img-fluid"
-        alt=""
-      />
-      <span>{{ cardData.time }}</span>
-    </div>
-    <div class="offerCard__detail">
-      <div class="d-flex justify-content-between">
-        <a href="#" class="offerCard__detail--title">{{ cardData.title }}</a>
-        <div class="offerCard__detail--brandLogo">
-          <img
-            :src="require(`@/assets/images/brandlogo/${cardData.brandLogo}`)"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
-      </div>
-      <div class="offerCard__detail--watcher">
-        <router-link to="" class="btn btn-primary small">
-          <svg-icon
-            class="arrow"
-            icon-id="watch_icon"
-            icon-viewbox="0 0 11.999 9"
-          >
-          </svg-icon>
-          Watch Now
-        </router-link>
-        <offer-watcher :cardData="cardData" />
-      </div>
-    </div>
-  </div>
+	<div class="offerCard card">
+		<div class="offerCard__image">
+			<img
+				:src="require(`@/assets/images/${offerCard.mainImage}`)"
+				class="img-fluid"
+				alt=""
+			/>
+			<span class="timeValue">{{ time }}</span>
+		</div>
+		<div class="offerCard__detail">
+			<div class="d-flex justify-content-between">
+				<a href="#" class="offerCard__detail--title">{{
+					cardData.description
+				}}</a>
+				<div class="offerCard__detail--brandLogo">
+					<img
+						:src="
+							require(`@/assets/images/brandlogo/${offerCard.brandLogo}`)
+						"
+						class="img-fluid"
+						alt=""
+					/>
+				</div>
+			</div>
+			<div class="offerCard__detail--watcher">
+				<router-link to="" class="btn btn-primary small">
+					<svg-icon
+						class="arrow"
+						icon-id="watch_icon"
+						icon-viewbox="0 0 11.999 9"
+					>
+					</svg-icon>
+					Watch Now
+				</router-link>
+				<offer-watcher :offerCard="offerCard" />
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-import OfferWatcher from "./partials/OfferWatcher.vue";
+import OfferWatcher from './partials/OfferWatcher.vue';
 export default {
-  components: { OfferWatcher },
-  props: {
-    cardData: Object,
-  },
+	components: { OfferWatcher },
+	data() {
+		return {
+			time: '',
+		};
+	},
+	props: {
+		cardData: {
+			type: Object | Array,
+		},
+		offerCard: {
+			type: Object | Array,
+		},
+	},
+	methods: {
+		hhmmss: function () {
+			let value = this.cardData.expirationDate;
+			const sec = parseInt(value, 10);
+			let hours = Math.floor(sec / 3600);
+			let minutes = Math.floor((sec - hours * 3600) / 60);
+			let seconds = sec - hours * 3600 - minutes * 60;
+
+			if (hours < 10) {
+				hours = '0' + hours;
+			}
+			if (minutes < 10) {
+				minutes = '0' + minutes;
+			}
+			if (seconds < 10) {
+				seconds = '0' + seconds;
+			}
+			return hours + ':' + minutes + ':' + seconds;
+		},
+	},
+	mounted() {
+		this.hhmmss();
+		this.time = document.querySelector('.timeValue').innerHTML =
+			this.hhmmss();
+	},
 };
 </script>
 
 <style lang="scss" scoped>
 .offerCard {
-  $self: &;
-  margin-bottom: rem(25px);
-  &__image {
-    position: relative;
-    overflow: hidden;
-    img {
-      width: 100%;
-      transition: 0.5s ease-in-out all;
-    }
-    span {
-      position: absolute;
-      color: #fff;
-      bottom: 22px;
-      left: 42px;
-      &:before {
-        content: "";
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background-image: url("data:image/svg+xml,%3Csvg id='time' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath id='Path_115' data-name='Path 115' d='M7.992,0A8,8,0,1,0,16,8,8,8,0,0,0,7.992,0ZM8,14.4A6.4,6.4,0,1,1,14.4,8,6.4,6.4,0,0,1,8,14.4ZM8.4,4H7.2V8.8l4.2,2.52.6-.984L8.4,8.2Z' fill='%23fff'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        left: -25px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-    }
-    @media screen and (min-width: 1025px) {
-      &:hover {
-        cursor: pointer;
-        img {
-          transform: scale(1.2);
-        }
-      }
-    }
-  }
-  &__detail {
-    padding: rem(15px);
-    padding-bottom: rem(22px);
-    background: #fff;
-    &--title {
-      font-size: rem(17px);
-      color: var(--textPrimary);
-      font-weight: 700;
-      line-height: 1.3;
-    }
-    &--brandLogo {
-      padding-left: 10px;
-    }
-    &--watcher {
-      @include flex(center, space-between);
-      padding-top: rem(15px);
-      .btn {
-        padding: 11px 15px;
-        svg {
-          width: 12px;
-          margin-right: 7px;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 575px) {
-    max-width: 375px;
-    margin: auto auto rem(25px) auto;
-  }
+	$self: &;
+	margin-bottom: rem(25px);
+	&__image {
+		position: relative;
+		overflow: hidden;
+		img {
+			width: 100%;
+			transition: 0.5s ease-in-out all;
+		}
+		span {
+			position: absolute;
+			color: #fff;
+			bottom: 22px;
+			left: 42px;
+			&:before {
+				content: '';
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				background-image: url("data:image/svg+xml,%3Csvg id='time' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath id='Path_115' data-name='Path 115' d='M7.992,0A8,8,0,1,0,16,8,8,8,0,0,0,7.992,0ZM8,14.4A6.4,6.4,0,1,1,14.4,8,6.4,6.4,0,0,1,8,14.4ZM8.4,4H7.2V8.8l4.2,2.52.6-.984L8.4,8.2Z' fill='%23fff'/%3E%3C/svg%3E");
+				background-repeat: no-repeat;
+				left: -25px;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+		@media screen and (min-width: 1025px) {
+			&:hover {
+				cursor: pointer;
+				img {
+					transform: scale(1.2);
+				}
+			}
+		}
+	}
+	&__detail {
+		padding: rem(15px);
+		padding-bottom: rem(22px);
+		background: #fff;
+		&--title {
+			font-size: rem(17px);
+			color: var(--textPrimary);
+			font-weight: 700;
+			line-height: 1.3;
+			@include truncate(2);
+		}
+		&--brandLogo {
+			padding-left: 10px;
+			min-width: 50px;
+		}
+		&--watcher {
+			@include flex(center, space-between);
+			padding-top: rem(15px);
+			.btn {
+				padding: 11px 15px;
+				svg {
+					width: 12px;
+					margin-right: 7px;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 575px) {
+		max-width: 375px;
+		margin: auto auto rem(25px) auto;
+	}
 }
 </style>

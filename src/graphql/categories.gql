@@ -1,0 +1,8 @@
+query {
+	offersFilters {
+		categories {
+			id
+			name
+		}
+	}
+}

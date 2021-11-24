@@ -1,0 +1,8 @@
+query {
+	offersFilters {
+		locations {
+			id
+			name
+		}
+	}
+}
