@@ -3,26 +3,31 @@
 		<div class="row align-items-center justify-content-between">
 			<div class="col-md-6">
 				<h1>{{ title }}</h1>
-				<b-form>
-					<div class="row">
-						<div class="col-md-6">
-							<base-input placeholder="First Name" type="text" />
+				<validation-observer ref="observer" v-slot="{ handleSubmit }">
+					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
+						<div class="row">
+							<div class="col-md-6">
+								<base-input
+									placeholder="First Name"
+									type="text"
+								/>
+							</div>
+							<div class="col-md-6">
+								<base-input
+									placeholder="last Name"
+									type="text"
+								/>
+							</div>
 						</div>
-						<div class="col-md-6">
-							<base-input placeholder="last Name" type="text" />
+						<base-date-picker />
+						<base-select :options="Gender" :selected="selected" />
+						<div class="button-row">
+							<button type="submit" class="btn btn-primary large">
+								Save
+							</button>
 						</div>
-					</div>
-					<base-date-picker />
-					<base-select :options="Gender" :selected="selected" />
-					<div class="button-row">
-						<router-link
-							to="payment-details"
-							class="btn btn-primary large"
-						>
-							Save
-						</router-link>
-					</div>
-				</b-form>
+					</b-form>
+				</validation-observer>
 			</div>
 			<div class="col-md-6">
 				<div class="image">
@@ -49,6 +54,11 @@ export default {
 				{ value: 'b', text: 'Other' },
 			],
 		};
+	},
+	methods: {
+		onSubmit() {
+			this.$router.push('payment-details');
+		},
 	},
 };
 </script>

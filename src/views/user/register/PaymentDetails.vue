@@ -4,50 +4,59 @@
 			<div class="col-lg-5 col-md-6">
 				<h1>{{ title }}</h1>
 				<p class="alertMessage">{{ message }}</p>
-				<b-form>
-					<div class="row">
-						<div class="col-md-6">
-							<base-input placeholder="First Name" type="text" />
-						</div>
-						<div class="col-md-6">
-							<base-input placeholder="Last Name" type="text" />
-						</div>
-					</div>
-					<base-input placeholder="CNP" type="text" />
-
-					<base-date-picker />
-
-					<base-select :options="Gender" :selected="selected" />
-
-					<base-input placeholder="Email" type="email" />
-
-					<base-input placeholder="Phone" type="tell" />
-
-					<div class="row">
-						<div class="col-md-6">
-							<base-select
-								:options="Country"
-								:selected="selectCountry"
-							/>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<v-select
-									:options="Locality"
-									v-model="selectCity"
+				<validation-observer ref="observer" v-slot="{ handleSubmit }">
+					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
+						<div class="row">
+							<div class="col-md-6">
+								<base-input
+									placeholder="First Name"
+									type="text"
+								/>
+							</div>
+							<div class="col-md-6">
+								<base-input
+									placeholder="Last Name"
+									type="text"
 								/>
 							</div>
 						</div>
-					</div>
-					<div class="button-row">
-						<router-link
-							to="story-price"
-							class="btn btn-primary large"
-						>
-							Save
-						</router-link>
-					</div>
-				</b-form>
+						<base-input placeholder="CNP" type="text" />
+
+						<base-date-picker />
+
+						<base-select :options="Gender" :selected="selected" />
+
+						<base-input placeholder="Email" type="email" />
+
+						<base-input placeholder="Phone" type="tell" />
+
+						<div class="row">
+							<div class="col-md-6">
+								<base-select
+									:options="Country"
+									:selected="selectCountry"
+								/>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<v-select
+										:options="Locality"
+										v-model="selectCity"
+									/>
+								</div>
+							</div>
+						</div>
+						<div class="button-row">
+							<button
+								type="submit"
+								to=""
+								class="btn btn-primary large"
+							>
+								Save
+							</button>
+						</div>
+					</b-form>
+				</validation-observer>
 			</div>
 			<div class="col-lg-7 col-md-6">
 				<div class="image">
@@ -87,6 +96,11 @@ export default {
 				{ value: 'c', text: 'New york' },
 			],
 		};
+	},
+	methods: {
+		onSubmit() {
+			this.$router.push('story-price');
+		},
 	},
 };
 </script>
