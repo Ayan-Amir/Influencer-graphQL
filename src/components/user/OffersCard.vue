@@ -2,7 +2,7 @@
 	<div class="offerCard card">
 		<div class="offerCard__image">
 			<img
-				:src="require(`@/assets/images/${offerCard.mainImage}`)"
+				:src="`this.config.IMG_HOST/500x500/${offer.image}`"
 				class="img-fluid"
 				alt=""
 			/>
@@ -11,16 +11,16 @@
 		<div class="offerCard__detail">
 			<div class="d-flex justify-content-between">
 				<a href="#" class="offerCard__detail--title">{{
-					cardData.description
+					offer.description
 				}}</a>
 				<div class="offerCard__detail--brandLogo">
-					<img
+					<!-- <img
 						:src="
-							require(`@/assets/images/brandlogo/${offerCard.brandLogo}`)
+							require(`https://images.hostify.one/${offer.logo}`)
 						"
 						class="img-fluid"
 						alt=""
-					/>
+					/> -->
 				</div>
 			</div>
 			<div class="offerCard__detail--watcher">
@@ -33,7 +33,7 @@
 					</svg-icon>
 					Watch Now
 				</router-link>
-				<offer-watcher :offerCard="offerCard" />
+				<!-- <offer-watcher  /> -->
 			</div>
 		</div>
 	</div>
@@ -49,16 +49,13 @@ export default {
 		};
 	},
 	props: {
-		cardData: {
-			type: Object | Array,
-		},
-		offerCard: {
+		offer: {
 			type: Object | Array,
 		},
 	},
 	methods: {
 		hhmmss: function () {
-			let value = this.cardData.expirationDate;
+			let value = this.offer.expirationDate;
 			const sec = parseInt(value, 10);
 			let hours = Math.floor(sec / 3600);
 			let minutes = Math.floor((sec - hours * 3600) / 60);
@@ -80,6 +77,7 @@ export default {
 		this.hhmmss();
 		this.time = document.querySelector('.timeValue').innerHTML =
 			this.hhmmss();
+		console.log(this.$config);
 	},
 };
 </script>

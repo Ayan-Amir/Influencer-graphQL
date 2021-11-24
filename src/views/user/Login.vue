@@ -12,6 +12,7 @@
 							className="userName"
 							placeholder="Username"
 							type="text"
+							:required="true"
 						/>
 						<base-input
 							className="email"

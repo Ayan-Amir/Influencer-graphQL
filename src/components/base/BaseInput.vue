@@ -1,6 +1,6 @@
 <template>
 	<validation-provider
-		:rules="{ required: true, min: 3 }"
+		:rules="`${[required ? 'required' : '']}`"
 		v-slot="validationContext"
 	>
 		<b-form-group :class="className">
@@ -8,11 +8,15 @@
 				:type="type"
 				class="form-control"
 				:placeholder="placeholder"
+				:required="required"
 				:state="getValidationState(validationContext)"
 				v-model="value"
 				autocomplete="off"
-				required
 			></b-form-input>
+			<b-form-invalid-feedback
+				>This is a required field and must be at least 3
+				characters.</b-form-invalid-feedback
+			>
 		</b-form-group>
 	</validation-provider>
 </template>
@@ -23,6 +27,7 @@ export default {
 		className: String,
 		placeholder: String,
 		type: String,
+		required: Boolean,
 	},
 	data() {
 		return {

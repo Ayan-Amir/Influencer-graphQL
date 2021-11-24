@@ -5,39 +5,37 @@
 			@categoryvalue="categoryValue"
 		/>
 		<div v-if="$apollo.loading">Loading...</div>
-		<div class="row">
+		<div class="row" v-if="$apollo.data">
 			<div
 				class="col-xl-3 col-lg-4 col-sm-6"
 				v-for="offer in offers"
 				:key="offer.id"
 			>
-				<!-- <offers-card
-					:cardData="offer"
-					:offerCard="offer"
-				/> -->
+				<offers-card :offer="offer" />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-//import OffersCard from '@/components/user/OffersCard.vue';
+import OffersCard from '@/components/user/OffersCard.vue';
 export default {
+	components: { OffersCard },
 	data() {
 		return {
 			offers: [],
 			locations: '',
 			category: '',
-			page: 1
+			page: 1,
 		};
 	},
 	apollo: {
 		offers: {
 			query: require('../../graphql/offers.gql'),
 			variables() {
-				return{
-					page: this.page
-				}
+				return {
+					page: this.page,
+				};
 			},
 			// update(data) {
 			// 	console.log(data);
@@ -53,14 +51,7 @@ export default {
 			this.category = e;
 			console.log(this.category);
 		},
-		
 	},
-	components: {
-		//OffersCard,
-	},
-	mounted(){
-		console.log(this.$config);
-	}
 };
 </script>
 
