@@ -1,6 +1,9 @@
 <template>
 	<div class="freeOffers container">
-		<base-filters @value="selectedValue" />
+		<base-filters
+			@locationvalue="locationValue"
+			@categoryvalue="categoryValue"
+		/>
 		<div class="row">
 			<div
 				class="col-xl-3 col-lg-4 col-sm-6"
@@ -25,6 +28,7 @@ export default {
 		return {
 			offers: [],
 			locations: '',
+			category: '',
 			offerCard: [
 				{
 					index: 0,
@@ -249,8 +253,13 @@ export default {
 		},
 	},
 	methods: {
-		selectedValue: function (e) {
+		locationValue: function (e) {
 			this.locations = e;
+			console.log(this.locations);
+		},
+		categoryValue: function (e) {
+			this.category = e;
+			console.log(this.category);
 		},
 	},
 	components: {

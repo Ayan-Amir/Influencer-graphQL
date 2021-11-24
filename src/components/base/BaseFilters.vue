@@ -3,7 +3,7 @@
 		<!-- Dropdown -->
 		<div class="dropdownWrapper">
 			<b-dropdown
-				@click.native="handleChange"
+				@click.native="handleLocation"
 				text="moscow"
 				variant="white"
 			>
@@ -15,11 +15,16 @@
 					>{{ list.name }}</b-dropdown-item
 				>
 			</b-dropdown>
-			<b-dropdown text="travel" variant="white">
+			<b-dropdown
+				@click.native="handleCategory"
+				text="travel"
+				variant="white"
+			>
 				<b-dropdown-item
 					href="#"
 					v-for="list in categories"
 					:key="list.id"
+					:value="list.name"
 					>{{ list.name }}</b-dropdown-item
 				>
 			</b-dropdown>
@@ -70,10 +75,13 @@ export default {
 		},
 	},
 	methods: {
-		handleChange(evt) {
+		handleLocation(evt) {
 			this.location = evt.target.getAttribute('value');
-			this.$emit('value', this.location);
-			// console.log(this.location);
+			this.$emit('locationvalue', this.location);
+		},
+		handleCategory(evt) {
+			this.category = evt.target.getAttribute('value');
+			this.$emit('categoryvalue', this.category);
 		},
 	},
 	mounted() {
