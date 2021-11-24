@@ -1,11 +1,10 @@
-query ($page: Int, $locations: String, $categories: String) {
-	offers(page: $page, locations: $locations, categories: $categories) {
+query offers($page: Int) {
+	offers(page: $page) {
 		id
 		name
 		image
 		type
 		description
 		expirationDate
-		requirements
 	}
 }
