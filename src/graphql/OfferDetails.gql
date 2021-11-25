@@ -1,5 +1,5 @@
-query {
-	offer(id: 1) {
+query offer($id: Int!) {
+	offer(id: $id) {
 		id
 		name
 		image

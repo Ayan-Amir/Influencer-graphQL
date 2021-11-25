@@ -4,9 +4,9 @@ export default [
 		component: () => import("@/views/user/Dashboard.vue"),
 	},
 	{
-		path: "free-offer",
-		name: "Free Offer",
-		component: () => import("@/views/user/FreeOffers.vue"),
+		path: "offers",
+		name: "Offers",
+		component: () => import("@/views/user/Offers.vue"),
 	},
 	{
 		path: "discover",
@@ -34,7 +34,7 @@ export default [
 		component: () => import("@/views/user/EditProfile.vue"),
 	},
 	{
-		path: "offer-detail/:id",
+		path: "offer/:id",
 		name: "Offer Detail",
 		component: () => import("@/views/user/OfferDetail.vue"),
 	},

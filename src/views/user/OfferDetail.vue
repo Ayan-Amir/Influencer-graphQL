@@ -1,71 +1,76 @@
 <template>
-	<div class="offerDetail container">
+	<div class="offerDetail container"  v-if="$apollo.data">
 		<div class="row col-gap-40 align-items-center mb-3">
 			<div class="col-md-6">
 				<div class="image">
 					<img
-						:src="`${$config.IMG_HOST}/629x226/${offerDetail.image}`"
+						:src="`${$config.IMG_HOST}/629x226/${offer.image}`"
 						alt=""
 						class="img-fluid"
 					/>
 				</div>
 			</div>
 			<div class="col-md-6">
-				<h1>{{ offerDetail.name }}</h1>
+				<h1>{{ offer.name }}</h1>
 				<div class="offerDetail__purchase">
 					<div class="offerDetail__purchase--brandLogo">
 						<img
-							:src="`${$config.IMG_HOST}/629x226/${offerDetail.logo}`"
+							:src="`${$config.IMG_HOST}/629x226/${offer.logo}`"
 							alt=""
 							class="img-fluid"
 						/>
 					</div>
 					<p>
-						{{ offerDetail.company }}
-						<span>{{ offerDetail.location.name }}</span>
+						{{ offer.company }}
+						<span>{{ offer.location }}</span>
 					</p>
 				</div>
-				<span>{{ offerDetail.description }}</span>
+				<span>{{ offer.description }}</span>
 				<div class="requestOffer">
 					<router-link to="#" class="btn btn-primary"
 						>Request offer
 					</router-link>
 					<div class="requestOffer__time">
-						Ends in: {{ offerDetail.expirationDate }}
-						<span>{{ offerDetail.left }} Left</span>
+						Ends in: {{ offer.expirationDate }}
+						<span>{{ offer.left }} Left</span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<offer-details :details="offerDetail.details" />
+		<offer-details :details="offer.details" />
 	</div>
 </template>
 
 <script>
 import OfferDetails from '@/components/user/OfferDetails.vue';
 export default {
+	
 	data() {
 		return {
-			offerDetail: [],
-			// id: 1,
+			offer: [],
+			id: 0,
 		};
 	},
 	components: { OfferDetails },
+	created(){
+		this.id= parseInt(this.$route.params.id);
+	},
 	apollo: {
-		offerDetail: {
+		offer: {
 			query: require('../../graphql/OfferDetails.gql'),
-			// variables() {
-			// 	return {
-			// 		id: this.id,
-			// 	};
-			// },
+			variables() {
+				return {
+					id: parseInt(this.$route.params.id)
+				};
+			},
 			update(data) {
+				//console.log(data);
+				console.log(data.offer.location.name)
 				return data.offer;
 			},
-		},
-		mounted() {
-			console.log('route', this.$route.params.id);
-			console.log('id', this.id);
+			error(e){
+				console.log(e);
+			}
 		},
 	},
 };

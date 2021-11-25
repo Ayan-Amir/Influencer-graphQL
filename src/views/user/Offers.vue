@@ -4,7 +4,10 @@
 			@locationvalue="locationValue"
 			@categoryvalue="categoryValue"
 		/>
-		<div v-if="$apollo.loading">Loading...</div>
+		<base-skeleton-loader type="offer"></base-skeleton-loader>
+		<div v-if="$apollo.loading">
+			<base-skeleton-loader type="offer"></base-skeleton-loader>
+		</div>
 		<div class="row" v-if="$apollo.data">
 			<div
 				class="col-xl-3 col-lg-4 col-sm-6"
@@ -18,9 +21,9 @@
 </template>
 
 <script>
-import OffersCard from '@/components/user/OffersCard.vue';
+
 export default {
-	components: { OffersCard },
+	//components: { OffersCardBaseSkeletonLoader },
 	data() {
 		return {
 			offers: [],
