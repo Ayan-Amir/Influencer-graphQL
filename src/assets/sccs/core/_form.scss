@@ -1,109 +1,143 @@
 form {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .form-group {
-    margin-bottom: 15px;
-    position: relative;
+	margin-bottom: 15px;
+	position: relative;
 }
 
 .control-label {
-    font-weight: 500;
-    font-size: rem(16px);
-    display: block;
-    text-align: left;
-    margin-bottom: 0px;
-    transition: 0.5s;
-    pointer-events: none;
-    z-index: 10;
-    color: var(--textPrimary);
-    margin-bottom: 10px;
+	font-weight: 500;
+	font-size: rem(16px);
+	display: block;
+	text-align: left;
+	margin-bottom: 0px;
+	transition: 0.5s;
+	pointer-events: none;
+	z-index: 10;
+	color: var(--textPrimary);
+	margin-bottom: 10px;
 }
 
 .form-control {
-    position: relative;
-    height: 44px;
-    font-size: rem(16px);
-    background-color: #fff;
-    border: 2px solid transparent;
-    outline: none;
-    border: 0;
-    border-radius: 12px;
-    opacity: 1;
-    padding: 12px 25px;
-    font-weight: 500;
-    &:focus {
-        border: 2px solid var(--primary) !important;
-        box-shadow: none !important;
-    }
-    @media screen and (max-width: 767px) {
-        font-size: rem(14px);
-    }
-    &.active {
-        outline: none;
-        box-shadow: none;
-    }
-    &::placeholder {
-        opacity: 1;
-        color: var(--textSecondary);
-    }
-    &.big {
-        height: rem(128px);
-    }
-    &:read-only {
-        border: 1px solid #dbdde4;
-        background: rgb(255, 255, 255);
-        background: -moz-linear-gradient( top, rgba(255, 255, 255, 1) 8%, rgba(255, 255, 255, 1) 8%, rgba(242, 244, 248, 1) 100%);
-        background: -webkit-linear-gradient( top, rgba(255, 255, 255, 1) 8%, rgba(255, 255, 255, 1) 8%, rgba(242, 244, 248, 1) 100%);
-        background: linear-gradient( to bottom, rgba(255, 255, 255, 1) 8%, rgba(255, 255, 255, 1) 8%, rgba(242, 244, 248, 1) 100%);
-        // filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f4f8', GradientType=0);
-    }
+	position: relative;
+	height: 44px;
+	font-size: rem(16px);
+	background-color: #fff;
+	border: 2px solid transparent;
+	outline: none;
+	border: 0;
+	border-radius: 12px;
+	opacity: 1;
+	padding: 12px 25px;
+	font-weight: 500;
+	&:focus {
+		// border: 2px solid var(--primary) !important;
+		box-shadow: none !important;
+	}
+	@media screen and (max-width: 767px) {
+		font-size: rem(14px);
+	}
+	&.active {
+		outline: none;
+		box-shadow: none;
+	}
+	&::placeholder {
+		opacity: 1;
+		color: var(--textSecondary);
+	}
+	&.big {
+		height: rem(128px);
+	}
+	&:read-only {
+		border: 1px solid #dbdde4;
+		background: rgb(255, 255, 255);
+		background: -moz-linear-gradient(
+			top,
+			rgba(255, 255, 255, 1) 8%,
+			rgba(255, 255, 255, 1) 8%,
+			rgba(242, 244, 248, 1) 100%
+		);
+		background: -webkit-linear-gradient(
+			top,
+			rgba(255, 255, 255, 1) 8%,
+			rgba(255, 255, 255, 1) 8%,
+			rgba(242, 244, 248, 1) 100%
+		);
+		background: linear-gradient(
+			to bottom,
+			rgba(255, 255, 255, 1) 8%,
+			rgba(255, 255, 255, 1) 8%,
+			rgba(242, 244, 248, 1) 100%
+		);
+		// filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f4f8', GradientType=0);
+	}
+}
+.invalid-feedback {
+	position: absolute;
+	margin-top: 5px;
 }
 
 textarea {
-    &.form-control {
-        position: relative;
-        height: rem(135px);
-        font-size: rem(14px);
-        outline: none;
-        border: 0;
-        border-radius: 8px;
-        opacity: 1;
-        transition: all 0.2s;
-        touch-action: manipulation;
-        padding: rem(10px) !important;
-        padding-top: 10px !important;
-        font-weight: 400;
-        border: 1px solid #CCD4E0;
-        background: transparent;
-        resize: none;
-        @media screen and (max-width: 767px) {
-            font-size: rem(14px);
-        }
-        &.active {
-            outline: none;
-            box-shadow: none;
-        }
-        &::placeholder {
-            opacity: 1;
-            color: var(--textPrimary) !important;
-        }
-        &:focus {
-            outline: none;
-            box-shadow: none;
-            color: var(--textPrimary);
-            border-width: 1px
-        }
-        &.big {
-            height: rem(128px);
-        }
-        &:read-only {
-            border: 1px solid #dbdde4;
-            background: rgb(255, 255, 255);
-            background: -moz-linear-gradient( top, rgba(255, 255, 255, 1) 8%, rgba(255, 255, 255, 1) 8%, rgba(242, 244, 248, 1) 100%);
-            background: -webkit-linear-gradient( top, rgba(255, 255, 255, 1) 8%, rgba(255, 255, 255, 1) 8%, rgba(242, 244, 248, 1) 100%);
-            background: linear-gradient( to bottom, rgba(255, 255, 255, 1) 8%, rgba(255, 255, 255, 1) 8%, rgba(242, 244, 248, 1) 100%);
-            // filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f4f8', GradientType=0);
-        }
-    }
+	&.form-control {
+		position: relative;
+		height: rem(135px);
+		font-size: rem(14px);
+		outline: none;
+		border: 0;
+		border-radius: 8px;
+		opacity: 1;
+		transition: all 0.2s;
+		touch-action: manipulation;
+		padding: rem(10px) !important;
+		padding-top: 10px !important;
+		font-weight: 400;
+		border: 1px solid #ccd4e0;
+		background: transparent;
+		resize: none;
+		@media screen and (max-width: 767px) {
+			font-size: rem(14px);
+		}
+		&.active {
+			outline: none;
+			box-shadow: none;
+		}
+		&::placeholder {
+			opacity: 1;
+			color: var(--textPrimary) !important;
+		}
+		&:focus {
+			outline: none;
+			box-shadow: none;
+			color: var(--textPrimary);
+			border-width: 1px;
+		}
+		&.big {
+			height: rem(128px);
+		}
+		&:read-only {
+			border: 1px solid #dbdde4;
+			background: rgb(255, 255, 255);
+			background: -moz-linear-gradient(
+				top,
+				rgba(255, 255, 255, 1) 8%,
+				rgba(255, 255, 255, 1) 8%,
+				rgba(242, 244, 248, 1) 100%
+			);
+			background: -webkit-linear-gradient(
+				top,
+				rgba(255, 255, 255, 1) 8%,
+				rgba(255, 255, 255, 1) 8%,
+				rgba(242, 244, 248, 1) 100%
+			);
+			background: linear-gradient(
+				to bottom,
+				rgba(255, 255, 255, 1) 8%,
+				rgba(255, 255, 255, 1) 8%,
+				rgba(242, 244, 248, 1) 100%
+			);
+			// filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f4f8', GradientType=0);
+		}
+	}
 }

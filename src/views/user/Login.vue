@@ -18,6 +18,7 @@
 							className="email"
 							placeholder="Email"
 							type="text"
+							:required="true"
 						/>
 						<div class="button-row">
 							<button

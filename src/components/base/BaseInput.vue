@@ -8,14 +8,12 @@
 				:type="type"
 				class="form-control"
 				:placeholder="placeholder"
-				:required="required"
 				:state="getValidationState(validationContext)"
 				v-model="value"
 				autocomplete="off"
 			></b-form-input>
 			<b-form-invalid-feedback
-				>This is a required field and must be at least 3
-				characters.</b-form-invalid-feedback
+				>This is a required field</b-form-invalid-feedback
 			>
 		</b-form-group>
 	</validation-provider>
