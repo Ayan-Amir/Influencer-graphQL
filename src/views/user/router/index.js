@@ -34,7 +34,7 @@ export default [
 		component: () => import("@/views/user/EditProfile.vue"),
 	},
 	{
-		path: "offer-detail",
+		path: "offer-detail/:id",
 		name: "Offer Detail",
 		component: () => import("@/views/user/OfferDetail.vue"),
 	},

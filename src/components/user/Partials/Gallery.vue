@@ -1,36 +1,9 @@
 <template>
 	<div class="row products">
-		<div class="col-md-3">
+		<div class="col-md-3" v-for="(img, i) in gallery" :key="i + 1">
 			<div class="image">
 				<img
-					src="@/assets/images/offers.png"
-					alt=""
-					class="img-fluid"
-				/>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="image">
-				<img
-					src="@/assets/images/offers.png"
-					alt=""
-					class="img-fluid"
-				/>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="image">
-				<img
-					src="@/assets/images/offers.png"
-					alt=""
-					class="img-fluid"
-				/>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="image">
-				<img
-					src="@/assets/images/offers.png"
+					:src="`${$config.IMG_HOST}/296x346/${img}`"
 					alt=""
 					class="img-fluid"
 				/>
@@ -46,22 +19,14 @@ export default {
 			type: Object | Array,
 		},
 	},
-	mounted() {
-		// console.log(this.$config);
-	},
+	mounted() {},
 };
 </script>
 
 <style lang="scss" scoped>
 .products {
 	margin: rem(18px) 0;
-	.col-md-3 {
-		padding-left: 0;
-		padding-right: 0;
-	}
 	.image {
-		height: 345px;
-		width: 295px;
 		border-radius: 28px;
 		overflow: hidden;
 	}

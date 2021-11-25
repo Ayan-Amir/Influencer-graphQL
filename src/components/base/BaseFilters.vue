@@ -57,8 +57,10 @@ export default {
 	apollo: {
 		locations: {
 			query: require('../../graphql/locations.gql'),
-			variable: {
-				location: '',
+			variable() {
+				return {
+					location: this.location,
+				};
 			},
 			update(data) {
 				return data.offersFilters.locations;
@@ -66,8 +68,10 @@ export default {
 		},
 		categories: {
 			query: require('../../graphql/categories.gql'),
-			variable: {
-				category: '',
+			variable() {
+				return {
+					category: this.category,
+				};
 			},
 			update(data) {
 				return data.offersFilters.categories;

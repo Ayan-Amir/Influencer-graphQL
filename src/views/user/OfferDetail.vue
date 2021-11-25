@@ -4,7 +4,7 @@
 			<div class="col-md-6">
 				<div class="image">
 					<img
-						src="@/assets/images/offer.png"
+						:src="`${$config.IMG_HOST}/629x226/${offerDetail.image}`"
 						alt=""
 						class="img-fluid"
 					/>
@@ -15,14 +15,14 @@
 				<div class="offerDetail__purchase">
 					<div class="offerDetail__purchase--brandLogo">
 						<img
-							src="@/assets/images/brandlogo/logo.png"
+							:src="`${$config.IMG_HOST}/629x226/${offerDetail.logo}`"
 							alt=""
 							class="img-fluid"
 						/>
 					</div>
 					<p>
 						{{ offerDetail.company }}
-						<!-- <span>{{ offerDetail.location.name }}</span> -->
+						<span>{{ offerDetail.location.name }}</span>
 					</p>
 				</div>
 				<span>{{ offerDetail.description }}</span>
@@ -37,25 +37,35 @@
 				</div>
 			</div>
 		</div>
-		<offer-detail :details="offerDetail.details" />
+		<offer-details :details="offerDetail.details" />
 	</div>
 </template>
 
 <script>
-import OfferDetail from '@/components/user/OfferDetail.vue';
+import OfferDetails from '@/components/user/OfferDetails.vue';
 export default {
 	data() {
 		return {
 			offerDetail: [],
+			// id: 1,
 		};
 	},
-	components: { OfferDetail },
+	components: { OfferDetails },
 	apollo: {
 		offerDetail: {
 			query: require('../../graphql/OfferDetails.gql'),
+			// variables() {
+			// 	return {
+			// 		id: this.id,
+			// 	};
+			// },
 			update(data) {
 				return data.offer;
 			},
+		},
+		mounted() {
+			console.log('route', this.$route.params.id);
+			console.log('id', this.id);
 		},
 	},
 };

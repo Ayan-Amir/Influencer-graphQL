@@ -2,7 +2,7 @@
 	<div class="offerCard card">
 		<div class="offerCard__image">
 			<img
-				:src="`${$config.IMG_HOST}/500x500/${offer.image}`"
+				:src="`${$config.IMG_HOST}/304x206/${offer.image}`"
 				class="img-fluid"
 				alt=""
 			/>
@@ -14,13 +14,11 @@
 					offer.description
 				}}</a>
 				<div class="offerCard__detail--brandLogo">
-					<!-- <img
-						:src="
-							require(`https://images.hostify.one/${offer.logo}`)
-						"
+					<img
+						:src="`${$config.IMG_HOST}/40x40/${offer.logo}`"
 						class="img-fluid"
 						alt=""
-					/> -->
+					/>
 				</div>
 			</div>
 			<div class="offerCard__detail--watcher">
@@ -77,7 +75,6 @@ export default {
 		this.hhmmss();
 		this.time = document.querySelector('.timeValue').innerHTML =
 			this.hhmmss();
-		console.log(this.$config);
 	},
 };
 </script>
@@ -128,11 +125,13 @@ export default {
 			color: var(--textPrimary);
 			font-weight: 700;
 			line-height: 1.3;
+			padding-right: 10px;
 			@include truncate(2);
 		}
 		&--brandLogo {
-			padding-left: 10px;
 			min-width: 50px;
+			border-radius: 50%;
+			overflow: hidden;
 		}
 		&--watcher {
 			@include flex(center, space-between);
