@@ -11,7 +11,7 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<h1>Extra 30% off any purchase</h1>
+				<h1>{{ offerDetail.name }}</h1>
 				<div class="offerDetail__purchase">
 					<div class="offerDetail__purchase--brandLogo">
 						<img
@@ -20,142 +20,58 @@
 							class="img-fluid"
 						/>
 					</div>
-					<p>FoodChef <span>Bucharest</span></p>
+					<p>
+						{{ offerDetail.company }}
+						<!-- <span>{{ offerDetail.location.name }}</span> -->
+					</p>
 				</div>
-				<span>Extra 30% off any purchase.</span>
+				<span>{{ offerDetail.description }}</span>
 				<div class="requestOffer">
 					<router-link to="#" class="btn btn-primary"
 						>Request offer
 					</router-link>
 					<div class="requestOffer__time">
-						Ends in: 356 h
-						<span>4 Left</span>
+						Ends in: {{ offerDetail.expirationDate }}
+						<span>{{ offerDetail.left }} Left</span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<p>How to get this free offers?</p>
-		<h2>Post 4 stories on your Instagram</h2>
-		<h3>1. One video/phone story with our product</h3>
-		<span>Tap to view examples:</span>
-		<div class="row products">
-			<div class="col-md-3">
-				<div class="image">
-					<img
-						src="@/assets/images/offers.png"
-						alt=""
-						class="img-fluid"
-					/>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="image">
-					<img
-						src="@/assets/images/offers.png"
-						alt=""
-						class="img-fluid"
-					/>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="image">
-					<img
-						src="@/assets/images/offers.png"
-						alt=""
-						class="img-fluid"
-					/>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="image">
-					<img
-						src="@/assets/images/offers.png"
-						alt=""
-						class="img-fluid"
-					/>
-				</div>
-			</div>
-		</div>
-		<h3>2. One video/phone story with our product</h3>
-		<span>Tap to view examples:</span>
-		<div class="row products">
-			<div class="col-md-3">
-				<div class="image">
-					<img
-						src="@/assets/images/offers.png"
-						alt=""
-						class="img-fluid"
-					/>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="image">
-					<img
-						src="@/assets/images/offers.png"
-						alt=""
-						class="img-fluid"
-					/>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="image">
-					<img
-						src="@/assets/images/offers.png"
-						alt=""
-						class="img-fluid"
-					/>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="image">
-					<img
-						src="@/assets/images/offers.png"
-						alt=""
-						class="img-fluid"
-					/>
-				</div>
-			</div>
-		</div>
-		<h3>Follow the steps:</h3>
-		<ul>
-			<li>1. Ask for an offer</li>
-			<li>2. Talk to us to establish the details</li>
-			<li>
-				3. Post a video story / picture on your Instagram account with
-				our product and tag our page @ magic.bath.hombs
-			</li>
-			<li>
-				4. Post a video story / picture on your Instagram account with
-				our product and tag our page @ magic.bath.bombs
-			</li>
-			<li>
-				4. Post a video story / picture on your Instagram account with
-				our product and tag our page @ magic.bath.bombs
-			</li>
-			<li>
-				4. Post a video story / picture on your Instagram account with
-				our product and tag our page @ magic.bath.bombs
-			</li>
-			<li>
-				4. Post a video story / picture on your Instagram account with
-				our product and tag our page @ magic.bath.bombs
-			</li>
-			<li>
-				4. Post a video story / picture on your Instagram account with
-				our product and tag our page @ magic.bath.bombs
-			</li>
-			<li>
-				9. After at least 20 hours, take a screenshot of your posts and
-				upload them to FameUp
-			</li>
-		</ul>
-		<router-link to="#" class="btn btn-primary">Request offer </router-link>
+		<offer-detail :details="offerDetail.details" />
 	</div>
 </template>
 
 <script>
-export default {};
+import OfferDetail from '@/components/user/OfferDetail.vue';
+export default {
+	data() {
+		return {
+			offerDetail: [],
+		};
+	},
+	components: { OfferDetail },
+	apollo: {
+		offerDetail: {
+			query: require('../../graphql/OfferDetails.gql'),
+			update(data) {
+				return data.offer;
+			},
+		},
+	},
+};
 </script>
+
+<style lang="scss">
+.btn.btn-primary {
+	min-height: 40px;
+	width: 142px;
+	padding-top: 6px;
+	padding-bottom: 8px;
+	font-size: rem(14px);
+	font-weight: 700;
+	border-radius: 8px;
+}
+</style>
 
 <style lang="scss" scoped>
 .offerDetail {
@@ -163,30 +79,6 @@ export default {};
 		height: 225px;
 		border-radius: 30px;
 		overflow: hidden;
-	}
-	p {
-		font-size: rem(18px);
-		font-weight: 500;
-		color: var(--textPrimary);
-		font-family: $secondary-font;
-		margin: 0;
-	}
-	span {
-		font-size: rem(15px);
-		color: #77838f;
-		font-family: $secondary-font;
-	}
-	.products {
-		margin: rem(18px) 0;
-		.col-md-3 {
-			padding-left: 0;
-			padding-right: 0;
-		}
-		.image {
-			height: 345px;
-			width: 295px;
-			border-radius: 28px;
-		}
 	}
 	&__purchase {
 		display: flex;
@@ -199,22 +91,25 @@ export default {};
 			border-radius: 50%;
 			overflow: hidden;
 		}
-		p span {
+		p {
+			font-size: rem(18px);
+			font-weight: 500;
+			color: var(--textPrimary);
+			font-family: $secondary-font;
+			margin: 0;
+		}
+		span {
 			display: block;
-			font-size: rem(14px);
+			font-size: rem(14px) !important;
 			font-weight: 400;
-			color: #9798b4;
+			color: #9798b4 !important;
 			margin: 0;
 		}
 	}
-	.btn.btn-primary {
-		min-height: 40px;
-		width: 142px;
-		padding-top: 6px;
-		padding-bottom: 8px;
-		font-size: rem(14px);
-		font-weight: 700;
-		border-radius: 8px;
+	span {
+		font-size: rem(15px);
+		color: #77838f;
+		font-family: $secondary-font;
 	}
 	.requestOffer {
 		display: flex;
@@ -241,26 +136,6 @@ export default {};
 				transform: translateY(-50%);
 				left: -24px;
 			}
-		}
-	}
-	h2 {
-		font-size: rem(25px);
-		color: var(--primary);
-		font-family: $secondary-font;
-		font-weight: 600;
-		margin: 10px 0;
-	}
-	h3 {
-		font-weight: 500;
-	}
-	ul {
-		list-style: none;
-		margin-bottom: rem(20px);
-		li {
-			font-family: $secondary-font;
-			font-size: rem(15px);
-			font-weight: 500;
-			color: #77838f;
 		}
 	}
 }

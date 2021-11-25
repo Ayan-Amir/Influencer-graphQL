@@ -2,7 +2,7 @@
 	<div class="offerCard card">
 		<div class="offerCard__image">
 			<img
-				:src="`this.config.IMG_HOST/500x500/${offer.image}`"
+				:src="`${$config.IMG_HOST}/500x500/${offer.image}`"
 				class="img-fluid"
 				alt=""
 			/>

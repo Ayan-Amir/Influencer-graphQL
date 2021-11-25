@@ -1,0 +1,26 @@
+query {
+	offer(id: 1) {
+		id
+		name
+		image
+		type
+		logo
+		company
+		left
+		description
+		expirationDate
+		category {
+			id
+			name
+		}
+		location {
+			id
+			name
+		}
+		details {
+			title
+			description
+			gallery
+		}
+	}
+}

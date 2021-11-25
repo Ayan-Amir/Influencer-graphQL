@@ -3,5 +3,5 @@
 //     IMG_BASE: "https://images.hostify.one/"
 // }
 export const config = {
-    IMG_HOST : "https://images.hostify.one/"
+    IMG_HOST : "https://images.hostify.one"
 }
