@@ -1,6 +1,6 @@
 <template>
 	<div class="offerDetail container">
-		<div class="row col-gap-40">
+		<div class="row col-gap-40 align-items-center mb-3">
 			<div class="col-md-6">
 				<div class="image">
 					<img
@@ -9,12 +9,11 @@
 						class="img-fluid"
 					/>
 				</div>
-				<p>How to get this free offers?</p>
 			</div>
 			<div class="col-md-6">
 				<h1>Extra 30% off any purchase</h1>
-				<div class="offerDetail__request">
-					<div class="offerDetail__request--brandLogo">
+				<div class="offerDetail__purchase">
+					<div class="offerDetail__purchase--brandLogo">
 						<img
 							src="@/assets/images/brandlogo/logo.png"
 							alt=""
@@ -35,10 +34,11 @@
 				</div>
 			</div>
 		</div>
+		<p>How to get this free offers?</p>
 		<h2>Post 4 stories on your Instagram</h2>
 		<h3>1. One video/phone story with our product</h3>
 		<span>Tap to view examples:</span>
-		<div class="row mt-3">
+		<div class="row products">
 			<div class="col-md-3">
 				<div class="image">
 					<img
@@ -78,7 +78,7 @@
 		</div>
 		<h3>2. One video/phone story with our product</h3>
 		<span>Tap to view examples:</span>
-		<div class="row mt-3">
+		<div class="row products">
 			<div class="col-md-3">
 				<div class="image">
 					<img
@@ -160,9 +160,9 @@ export default {};
 <style lang="scss" scoped>
 .offerDetail {
 	.image {
+		height: 225px;
 		border-radius: 30px;
 		overflow: hidden;
-		margin-bottom: 14px;
 	}
 	p {
 		font-size: rem(18px);
@@ -176,12 +176,26 @@ export default {};
 		color: #77838f;
 		font-family: $secondary-font;
 	}
-	&__request {
+	.products {
+		margin: rem(18px) 0;
+		.col-md-3 {
+			padding-left: 0;
+			padding-right: 0;
+		}
+		.image {
+			height: 345px;
+			width: 295px;
+			border-radius: 28px;
+		}
+	}
+	&__purchase {
 		display: flex;
 		align-items: center;
-		margin-bottom: 12px;
+		margin-bottom: 8px;
 		&--brandLogo {
 			margin-right: 10px;
+			width: 55px;
+			height: 55px;
 			border-radius: 50%;
 			overflow: hidden;
 		}
@@ -206,7 +220,7 @@ export default {};
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin-top: rem(26px);
+		margin-top: rem(18px);
 		&__time {
 			position: relative;
 			font-family: $primary-font;
