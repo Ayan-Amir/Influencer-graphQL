@@ -22,28 +22,29 @@
 				</div>
 			</div>
 			<div class="offerCard__detail--watcher">
-				<router-link to="" class="btn btn-primary small">
+				<router-link
+					:to="`offer/${offer.id}/${name}`"
+					class="btn btn-primary small"
+				>
 					<svg-icon
 						class="arrow"
 						icon-id="watch_icon"
 						icon-viewbox="0 0 11.999 9"
 					>
 					</svg-icon>
-					Watch Now
+					View Offer
 				</router-link>
-				<!-- <offer-watcher  /> -->
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import OfferWatcher from './partials/OfferWatcher.vue';
 export default {
-	components: { OfferWatcher },
 	data() {
 		return {
 			time: '',
+			name: this.offer.name,
 		};
 	},
 	props: {
@@ -70,11 +71,17 @@ export default {
 			}
 			return hours + ':' + minutes + ':' + seconds;
 		},
+		url: function () {
+			let name = this.name.replace(' ', '-').toLowerCase();
+			return name;
+		},
 	},
 	mounted() {
 		this.hhmmss();
 		this.time = document.querySelector('.timeValue').innerHTML =
 			this.hhmmss();
+		this.url();
+		this.name = this.url();
 	},
 };
 </script>

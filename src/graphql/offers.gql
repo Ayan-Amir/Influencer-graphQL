@@ -3,6 +3,7 @@ query offers($page: Int) {
 		id
 		name
 		image
+		logo
 		type
 		description
 		expirationDate

@@ -1,10 +1,10 @@
 <template>
-	<div class="offerDetail container"  v-if="$apollo.data">
+	<div class="offerDetail container" v-if="$apollo.data">
 		<div class="row col-gap-40 align-items-center mb-3">
 			<div class="col-md-6">
 				<div class="image">
 					<img
-						:src="`${$config.IMG_HOST}/629x226/${offer.image}`"
+						:src="`${$config.IMG_HOST}/629x230/${offer.image}`"
 						alt=""
 						class="img-fluid"
 					/>
@@ -15,22 +15,25 @@
 				<div class="offerDetail__purchase">
 					<div class="offerDetail__purchase--brandLogo">
 						<img
-							:src="`${$config.IMG_HOST}/629x226/${offer.logo}`"
+							:src="`${$config.IMG_HOST}/55x55/${offer.logo}`"
 							alt=""
 							class="img-fluid"
 						/>
 					</div>
 					<p>
 						{{ offer.company }}
-						<span>{{ offer.location }}</span>
+						<span>{{ offer.location.name }}</span>
 					</p>
 				</div>
 				<span>{{ offer.description }}</span>
 				<div class="requestOffer">
-					<router-link to="#" class="btn btn-primary"
+					<router-link to="#" class="btn btn-primary large"
 						>Request offer
 					</router-link>
-					<div class="requestOffer__time">
+					<div
+						class="requestOffer__time"
+						v-if="offer.expirationDate !== null"
+					>
 						Ends in: {{ offer.expirationDate }}
 						<span>{{ offer.left }} Left</span>
 					</div>
@@ -44,7 +47,6 @@
 <script>
 import OfferDetails from '@/components/user/OfferDetails.vue';
 export default {
-	
 	data() {
 		return {
 			offer: [],
@@ -52,25 +54,17 @@ export default {
 		};
 	},
 	components: { OfferDetails },
-	created(){
-		this.id= parseInt(this.$route.params.id);
+	created() {
+		this.id = parseInt(this.$route.params.id);
 	},
 	apollo: {
 		offer: {
 			query: require('../../graphql/OfferDetails.gql'),
 			variables() {
 				return {
-					id: parseInt(this.$route.params.id)
+					id: parseInt(this.$route.params.id),
 				};
 			},
-			update(data) {
-				//console.log(data);
-				console.log(data.offer.location.name)
-				return data.offer;
-			},
-			error(e){
-				console.log(e);
-			}
 		},
 	},
 };
@@ -101,10 +95,14 @@ export default {
 		margin-bottom: 8px;
 		&--brandLogo {
 			margin-right: 10px;
-			width: 55px;
-			height: 55px;
+			width: 50px;
+			height: 50px;
 			border-radius: 50%;
 			overflow: hidden;
+			img {
+				height: 100%;
+				width: 100%;
+			}
 		}
 		p {
 			font-size: rem(18px);
