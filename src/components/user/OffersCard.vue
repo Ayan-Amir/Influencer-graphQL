@@ -23,7 +23,7 @@
 			</div>
 			<div class="offerCard__detail--watcher">
 				<router-link
-					:to="`offer/${offer.id}/${name}`"
+					:to="`offer/${offer.id}/${friendURL(name)}`"
 					class="btn btn-primary small"
 				>
 					<svg-icon
@@ -69,7 +69,7 @@ export default {
 			let sDisplay = s > 0 ? s + (s == 1 ? ' second' : ' seconds') : '';
 			return dDisplay + hDisplay + mDisplay + sDisplay;
 		},
-		url: function () {
+		friendURL: function () {
 			let name = this.name.replace(' ', '-').toLowerCase();
 			return name;
 		},
