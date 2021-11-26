@@ -458,7 +458,7 @@ h6 {
 		&:hover {
 			&:not(.default-option) {
 				background-color: var(--primary) !important;
-				color: #fff;
+				color: #fff !important;
 			}
 		}
 	}

@@ -75,7 +75,7 @@ export default {
 	min-height: 40px;
 	width: 142px;
 	padding-top: 6px;
-	padding-bottom: 8px;
+	padding-bottom: 6px;
 	font-size: rem(14px);
 	font-weight: 700;
 	border-radius: 8px;
@@ -149,6 +149,15 @@ export default {
 				transform: translateY(-50%);
 				left: -24px;
 			}
+		}
+		.btn.btn-primary {
+			min-height: 40px;
+			width: 142px;
+			padding-top: 6px;
+			padding-bottom: 6px;
+			font-size: rem(14px);
+			font-weight: 700;
+			border-radius: 8px;
 		}
 	}
 }

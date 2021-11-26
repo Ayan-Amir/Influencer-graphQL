@@ -1,6 +1,12 @@
 <template>
 	<div class="freeOffers container">
+		<!-- <div class="filters">
+			<base-select :options="location" :selected="selected" />
+			<base-select :options="category" :selected="selected" />
+		</div> -->
 		<base-filters
+			v-if="$apollo.data"
+			:filters="filters"
 			@locationvalue="locationValue"
 			@categoryvalue="categoryValue"
 		/>
@@ -18,7 +24,6 @@
 			>
 				<offers-card :offer="offer"></offers-card>
 			</div>
-			
 		</div>
 		<!-- <infinite-loading @infinite="infiniteHandler" force-use-infinite-wrapper></infinite-loading> -->
 	</div>
@@ -27,21 +32,32 @@
 <script>
 import OffersCard from '@/components/user/OffersCard.vue';
 import InfiniteLoading from 'vue-infinite-loading';
+import BaseSelect from '../../components/base/BaseSelect.vue';
 export default {
-	components: { 
+	components: {
 		OffersCard,
-		InfiniteLoading
+		InfiniteLoading,
+		BaseSelect,
 	},
 	//components: { OffersCardBaseSkeletonLoader },
 	data() {
 		return {
+			filters: [],
 			offers: [],
-			locations: '',
-			category: '',
+			location: '',
+			categories: '',
 			page: 1,
+			selected: '',
 		};
 	},
 	apollo: {
+		filters: {
+			query: require('../../graphql/filters.gql'),
+			update(data) {
+				// this.selected = data.offersFilters.default.locations[0];
+				return data.offersFilters;
+			},
+		},
 		offers: {
 			query: require('../../graphql/offers.gql'),
 			variables() {
@@ -56,38 +72,42 @@ export default {
 		},
 	},
 	methods: {
-		locationValue: function (e) {
-			this.locations = e;
-			// console.log(this.locations);
+		locationValue(e) {
+			this.location = e.value;
+			console.log(this.location);
 		},
-		categoryValue: function (e) {
-			this.category = e;
-			// console.log(this.category);
+		categoryValue(e) {
+			this.categories = e.value;
+			console.log(e.value);
 		},
+		// categoryValue: function (e) {
+		// 	this.categories = e;
+		// 	// console.log(this.categories);
+		// },
+
 		infiniteHandler($state) {
-			this.page++
+			this.page++;
 			this.$apollo.queries.offers.fetchMore({
 				variables: {
 					page: this.page,
 				},
 				updateQuery: (previousResult, { fetchMoreResult }) => {
-					const mewoffers = fetchMoreResult.tagsPage
+					const mewoffers = fetchMoreResult.tagsPage;
 					//const hasMore = fetchMoreResult.tagsPage.hasMore
 
 					//this.showMoreEnabled = hasMore
 					// console.log(previousResult);
 					return {
-						
 						offers: {
-						__typename: previousResult.offers.__typename,
-						// Merging the tag list
-						offers: [...previousResult.offers, ...mewoffers],
+							__typename: previousResult.offers.__typename,
+							// Merging the tag list
+							offers: [...previousResult.offers, ...mewoffers],
 						},
-					}
+					};
 				},
 			});
 			$state.loaded();
-		}
+		},
 	},
 };
 </script>

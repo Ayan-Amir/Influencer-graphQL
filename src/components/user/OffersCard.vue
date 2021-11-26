@@ -55,23 +55,36 @@ export default {
 	methods: {
 		hhmmss: function () {
 			let value = this.offer.expirationDate;
-			// let value = 72224564652;
-			const sec = parseInt(value);
-			let d = Math.floor(sec / (3600 * 24));
-			let h = Math.floor((sec % (3600 * 24)) / 3600);
-			let m = Math.floor((sec % 3600) / 60);
-			let s = Math.floor(sec % 60);
+			const sec = parseInt(value, 10);
+			let month = Math.floor((sec % 31536000) / 2628000);
+			let d = Math.floor(((sec % 31536000) % 2628000) / 86400);
+			let h = Math.floor((((sec % 31536000) % 2628000) % 86400) / 3600);
+			let m = Math.floor((((sec % 31536000) % 86400) % 3600) / 60);
+			// let s = Math.floor(sec % 60);
 
+			let monthDisplay =
+				month > 0
+					? month + (month == 1 ? ' month, ' : ' months, ')
+					: '';
 			let dDisplay = d > 0 ? d + (d == 1 ? ' day, ' : ' days, ') : '';
 			let hDisplay = h > 0 ? h + (h == 1 ? ' hour, ' : ' hours, ') : '';
 			let mDisplay =
-				m > 0 ? m + (m == 1 ? ' minute, ' : ' minutes, ') : '';
-			let sDisplay = s > 0 ? s + (s == 1 ? ' second' : ' seconds') : '';
-			return dDisplay + hDisplay + mDisplay + sDisplay;
+				m > 0 ? m + (m == 1 ? ' minute, ' : ' minutes ') : '';
+			// let sDisplay = s > 0 ? s + (s == 1 ? ' second' : ' seconds') : '';
+			return monthDisplay + dDisplay + hDisplay + mDisplay;
 		},
-		friendURL: function () {
-			let name = this.name.replace(' ', '-').toLowerCase();
-			return name;
+		friendURL: function (url) {
+			let encodedUrl = url.toString().toLowerCase();
+
+			encodedUrl = encodedUrl.split(/\&+/).join('-and-');
+
+			encodedUrl = encodedUrl.split(/[^a-z0-9]/).join('-');
+
+			encodedUrl = encodedUrl.split(/-+/).join('-');
+
+			encodedUrl = encodedUrl.trim('-');
+
+			return encodedUrl;
 		},
 	},
 	mounted() {

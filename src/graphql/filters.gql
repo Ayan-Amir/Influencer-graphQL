@@ -1,0 +1,16 @@
+query {
+	offersFilters {
+		locations {
+			value: id
+			text: name
+		}
+		categories {
+			value: id
+			text: name
+		}
+		default {
+			locations
+			categories
+		}
+	}
+}

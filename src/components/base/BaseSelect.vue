@@ -8,7 +8,9 @@
 export default {
 	props: {
 		options: Array,
-		selected: String,
+		selected: {
+			type: String | Object | Array,
+		},
 	},
 };
 </script>

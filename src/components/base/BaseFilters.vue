@@ -1,33 +1,14 @@
 <template>
 	<div class="filters">
 		<!-- Dropdown -->
-		<div class="dropdownWrapper">
-			<b-dropdown
-				@click.native="handleLocation"
-				text="moscow"
-				variant="white"
-			>
-				<b-dropdown-item
-					href="#"
-					v-for="list in locations"
-					:key="list.id"
-					:value="list.name"
-					>{{ list.name }}</b-dropdown-item
-				>
-			</b-dropdown>
-			<b-dropdown
-				@click.native="handleCategory"
-				text="travel"
-				variant="white"
-			>
-				<b-dropdown-item
-					href="#"
-					v-for="list in categories"
-					:key="list.id"
-					:value="list.name"
-					>{{ list.name }}</b-dropdown-item
-				>
-			</b-dropdown>
+		<div class="d-flex">
+			<div class="form-group">
+				<v-select :options="filters.locations" v-model="locate" />
+			</div>
+
+			<div class="form-group">
+				<v-select :options="filters.categories" v-model="category" />
+			</div>
 		</div>
 		<!-- Search -->
 		<div class="search">
@@ -48,48 +29,24 @@
 export default {
 	data() {
 		return {
+			locate: '',
 			location: '',
-			locations: [],
 			category: '',
-			categories: [],
 		};
 	},
-	apollo: {
-		locations: {
-			query: require('../../graphql/locations.gql'),
-			variable() {
-				return {
-					location: this.location,
-				};
-			},
-			update(data) {
-				return data.offersFilters.locations;
-			},
+	props: {
+		filters: {
+			type: Object | Array,
 		},
-		categories: {
-			query: require('../../graphql/categories.gql'),
-			variable() {
-				return {
-					category: this.category,
-				};
-			},
-			update(data) {
-				return data.offersFilters.categories;
-			},
-		},
+		selected: String,
 	},
-	methods: {
-		handleLocation(evt) {
-			this.location = evt.target.getAttribute('value');
-			this.$emit('locationvalue', this.location);
+	watch: {
+		locate: function () {
+			this.$emit('locationvalue', this.locate);
 		},
-		handleCategory(evt) {
-			this.category = evt.target.getAttribute('value');
+		category: function () {
 			this.$emit('categoryvalue', this.category);
 		},
-	},
-	mounted() {
-		// this.handleChange();
 	},
 };
 </script>
@@ -102,39 +59,49 @@ export default {
 	@media screen and (max-width: 767px) {
 		margin-bottom: rem(15px);
 	}
-	.dropdownWrapper {
-		display: flex;
-		@media screen and (max-width: 767px) {
-			width: 100%;
-			margin-bottom: rem(15px);
-		}
-		/deep/ {
-			.dropdown {
-				@media screen and (max-width: 767px) {
-					width: 48%;
+	/deep/ {
+		.v-select {
+			margin-right: rem(16px);
+			.v-select-toggle {
+				position: relative;
+				width: 120px;
+				min-width: 40px;
+				align-items: center;
+				justify-content: center;
+				font-size: rem(14px) !important;
+				color: var(--textPrimary) !important;
+				font-weight: 700 !important;
+				&::after {
+					width: 8px;
+					height: 14px;
+					border: 0;
+					background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='7.765' height='13.441' viewBox='0 0 7.765 13.441'%3E%3Cpath id='Path_210' data-name='Path 210' d='M4871.166,592.811l5.351,5.225-5.351,5.388' transform='translate(-4869.752 -591.396)' fill='none' stroke='%239637f1' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E%0A");
+					background-repeat: no-repeat;
+					transform: rotate(90deg);
+					position: relative;
+					right: -10px;
 				}
-				&:not(:last-child) {
-					margin-right: rem(16px);
-				}
-				.dropdown-toggle {
-					width: 120px;
-					min-height: 40px;
-					border-radius: 8px !important;
-					padding: 10px;
-					&::after {
-						width: 8px;
-						height: 14px;
-						border: 0;
-						background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='7.765' height='13.441' viewBox='0 0 7.765 13.441'%3E%3Cpath id='Path_210' data-name='Path 210' d='M4871.166,592.811l5.351,5.225-5.351,5.388' transform='translate(-4869.752 -591.396)' fill='none' stroke='%239637f1' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E%0A");
-						background-repeat: no-repeat;
-						transform: rotate(90deg);
-						position: relative;
-						right: -10px;
+			}
+			.v-dropdown-container {
+				width: 160px;
+				border-radius: 4px !important;
+				ul {
+					padding: 0;
+					border: 2px solid var(--primary);
+					width: 100%;
+					border-radius: 4px !important;
+					li {
+						padding: 13px;
+						color: var(--textPrimary);
+						font-size: rem(14px);
+						border: 0 !important;
 					}
-					@media screen and (min-width: 1025px) {
-						&:hover {
-							opacity: 0.7;
-						}
+				}
+			}
+			&:hover {
+				@media screen and (min-width: 1025px) {
+					.v-select-toggle {
+						opacity: 0.8;
 					}
 				}
 			}
