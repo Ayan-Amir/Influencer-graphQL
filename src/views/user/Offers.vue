@@ -5,7 +5,10 @@
 			@categoryvalue="categoryValue"
 		/>
 		<div v-if="$apollo.loading">
-			<base-skeleton-loader type="offer" :count="8"></base-skeleton-loader>
+			<base-skeleton-loader
+				type="offer"
+				:count="8"
+			></base-skeleton-loader>
 		</div>
 		<div class="row" v-if="$apollo.data">
 			<div
@@ -23,7 +26,7 @@
 import OffersCard from '@/components/user/OffersCard.vue';
 
 export default {
-  components: { OffersCard },
+	components: { OffersCard },
 	//components: { OffersCardBaseSkeletonLoader },
 	data() {
 		return {
@@ -49,11 +52,11 @@ export default {
 	methods: {
 		locationValue: function (e) {
 			this.locations = e;
-			console.log(this.locations);
+			// console.log(this.locations);
 		},
 		categoryValue: function (e) {
 			this.category = e;
-			console.log(this.category);
+			// console.log(this.category);
 		},
 	},
 };

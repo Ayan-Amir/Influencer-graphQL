@@ -55,21 +55,19 @@ export default {
 	methods: {
 		hhmmss: function () {
 			let value = this.offer.expirationDate;
-			const sec = parseInt(value, 10);
-			let hours = Math.floor(sec / 3600);
-			let minutes = Math.floor((sec - hours * 3600) / 60);
-			let seconds = sec - hours * 3600 - minutes * 60;
+			// let value = 72224564652;
+			const sec = parseInt(value);
+			let d = Math.floor(sec / (3600 * 24));
+			let h = Math.floor((sec % (3600 * 24)) / 3600);
+			let m = Math.floor((sec % 3600) / 60);
+			let s = Math.floor(sec % 60);
 
-			if (hours < 10) {
-				hours = '0' + hours;
-			}
-			if (minutes < 10) {
-				minutes = '0' + minutes;
-			}
-			if (seconds < 10) {
-				seconds = '0' + seconds;
-			}
-			return hours + ':' + minutes + ':' + seconds;
+			let dDisplay = d > 0 ? d + (d == 1 ? ' day, ' : ' days, ') : '';
+			let hDisplay = h > 0 ? h + (h == 1 ? ' hour, ' : ' hours, ') : '';
+			let mDisplay =
+				m > 0 ? m + (m == 1 ? ' minute, ' : ' minutes, ') : '';
+			let sDisplay = s > 0 ? s + (s == 1 ? ' second' : ' seconds') : '';
+			return dDisplay + hDisplay + mDisplay + sDisplay;
 		},
 		url: function () {
 			let name = this.name.replace(' ', '-').toLowerCase();
@@ -77,9 +75,13 @@ export default {
 		},
 	},
 	mounted() {
-		this.hhmmss();
-		this.time = document.querySelector('.timeValue').innerHTML =
+		setInterval(() => {
+			this.offer.expirationDate -= 1;
 			this.hhmmss();
+			this.time = document.querySelector('.timeValue').innerHTML =
+				this.hhmmss();
+		}, 1000);
+
 		this.url();
 		this.name = this.url();
 	},
@@ -136,9 +138,15 @@ export default {
 			@include truncate(2);
 		}
 		&--brandLogo {
-			min-width: 50px;
+			width: 40px;
+			min-width: 40px;
+			height: 40px;
 			border-radius: 50%;
 			overflow: hidden;
+			img {
+				height: 100%;
+				width: 100%;
+			}
 		}
 		&--watcher {
 			@include flex(center, space-between);
