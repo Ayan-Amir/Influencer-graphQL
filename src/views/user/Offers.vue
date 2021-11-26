@@ -18,15 +18,20 @@
 			>
 				<offers-card :offer="offer"></offers-card>
 			</div>
+			
 		</div>
+		<!-- <infinite-loading @infinite="infiniteHandler" force-use-infinite-wrapper></infinite-loading> -->
 	</div>
 </template>
 
 <script>
 import OffersCard from '@/components/user/OffersCard.vue';
-
+import InfiniteLoading from 'vue-infinite-loading';
 export default {
-	components: { OffersCard },
+	components: { 
+		OffersCard,
+		InfiniteLoading
+	},
 	//components: { OffersCardBaseSkeletonLoader },
 	data() {
 		return {
@@ -45,7 +50,8 @@ export default {
 				};
 			},
 			// update(data) {
-			// 	console.log(data);
+			// 	this.offers.push(data.offers);
+			// 	console.log(this.offers);
 			// },
 		},
 	},
@@ -58,6 +64,30 @@ export default {
 			this.category = e;
 			// console.log(this.category);
 		},
+		infiniteHandler($state) {
+			this.page++
+			this.$apollo.queries.offers.fetchMore({
+				variables: {
+					page: this.page,
+				},
+				updateQuery: (previousResult, { fetchMoreResult }) => {
+					const mewoffers = fetchMoreResult.tagsPage
+					//const hasMore = fetchMoreResult.tagsPage.hasMore
+
+					//this.showMoreEnabled = hasMore
+					// console.log(previousResult);
+					return {
+						
+						offers: {
+						__typename: previousResult.offers.__typename,
+						// Merging the tag list
+						offers: [...previousResult.offers, ...mewoffers],
+						},
+					}
+				},
+			});
+			$state.loaded();
+		}
 	},
 };
 </script>

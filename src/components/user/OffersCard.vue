@@ -81,9 +81,6 @@ export default {
 			this.time = document.querySelector('.timeValue').innerHTML =
 				this.hhmmss();
 		}, 1000);
-
-		this.url();
-		this.name = this.url();
 	},
 };
 </script>
