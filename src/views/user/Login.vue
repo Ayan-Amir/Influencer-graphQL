@@ -7,18 +7,20 @@
 					{{ subTitle }}
 				</p>
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
-					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
+					<b-form @submit.stop.prevent="handleSubmit(userLogin)">
 						<base-input
 							className="userName"
 							placeholder="Username"
 							type="text"
 							:required="true"
+							v-model="loginDetails.email"
 						/>
 						<base-input
 							className="email"
 							placeholder="Email"
 							type="text"
 							:required="true"
+							v-model="loginDetails.password"
 						/>
 						<div class="button-row">
 							<button
@@ -50,17 +52,26 @@
 
 <script>
 import SocialLinks from '@/components/user/layout/SocialLinks.vue';
+import { mapActions } from 'vuex';
 export default {
 	data() {
 		return {
+			loginDetails:{
+				email:'',
+				password: ''
+			},
 			title: 'Welcome',
-			subTitle:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
+			subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
 		};
 	},
 	methods: {
-		onSubmit() {
-			this.$router.push('/user');
+		//...mapActions(['login']),
+		userLogin: function() {
+			this.$store.dispatch('login',
+			{
+				email: this.loginDetails.email,
+				password: this.loginDetails.password
+			});
 		},
 	},
 	components: { SocialLinks },

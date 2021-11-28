@@ -1,6 +1,8 @@
 import Vue from "vue";
+
 import App from "./App.vue";
 import router from "./router";
+import store from "./store";
 import "@/assets/sccs/utility/_variables.scss";
 
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
@@ -25,6 +27,7 @@ Vue.component("VSelect", VSelect);
 
 new Vue({
   router,
+  store,
   apolloProvider: createProvider(),
   render: (h) => h(App),
 }).$mount("#app");

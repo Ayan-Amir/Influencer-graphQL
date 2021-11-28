@@ -1,5 +1,8 @@
 import Vue from "vue";
 import VueApollo from "vue-apollo";
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import {
   createApolloClient,
   restartWebsockets,
@@ -55,15 +58,23 @@ const defaultOptions = {
   // Client local data (see apollo-link-state)
   // clientState: { resolvers: { ... }, defaults: { ... } }
 };
+const httpLink = new HttpLink({
+  uri: 'https://instars.hostify.one/graphql'
+});
+const apolloClient = new ApolloClient({
+  link: httpLink,
+    cache: new InMemoryCache(),
+    connectToDevTools: true
 
+});
 // Call this in the Vue app file
 export function createProvider(options = {}) {
   // Create apollo client
-  const { apolloClient, wsClient } = createApolloClient({
-    ...defaultOptions,
-    ...options,
-  });
-  apolloClient.wsClient = wsClient;
+  // const { apolloClient, wsClient } = createApolloClient({
+  //   ...defaultOptions,
+  //   ...options,
+  // });
+  // apolloClient.wsClient = wsClient;
 
   // Create vue apollo provider
   const apolloProvider = new VueApollo({
