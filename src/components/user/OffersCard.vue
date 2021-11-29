@@ -60,7 +60,6 @@ export default {
 			let d = Math.floor(((sec % 31536000) % 2628000) / 86400);
 			let h = Math.floor((((sec % 31536000) % 2628000) % 86400) / 3600);
 			let m = Math.floor((((sec % 31536000) % 86400) % 3600) / 60);
-			// let s = Math.floor(sec % 60);
 
 			let monthDisplay =
 				month > 0
@@ -70,7 +69,6 @@ export default {
 			let hDisplay = h > 0 ? h + (h == 1 ? ' hour, ' : ' hours, ') : '';
 			let mDisplay =
 				m > 0 ? m + (m == 1 ? ' minute, ' : ' minutes ') : '';
-			// let sDisplay = s > 0 ? s + (s == 1 ? ' second' : ' seconds') : '';
 			return monthDisplay + dDisplay + hDisplay + mDisplay;
 		},
 		friendURL: function (url) {
@@ -90,9 +88,12 @@ export default {
 	mounted() {
 		setInterval(() => {
 			this.offer.expirationDate -= 1;
-			this.hhmmss();
-			this.time = document.querySelector('.timeValue').innerHTML =
+			if (this.hhmmss() != null) {
+				// console.log(this.hhmmss());
 				this.hhmmss();
+				this.time = document.querySelector('.timeValue').innerHTML =
+					this.hhmmss();
+			}
 		}, 1000);
 	},
 };

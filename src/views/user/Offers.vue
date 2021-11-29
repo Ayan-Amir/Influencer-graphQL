@@ -25,6 +25,7 @@
 				<offers-card :offer="offer"></offers-card>
 			</div>
 		</div>
+		<div v-if="norecord">No Record Found</div>
 		<!-- <infinite-loading @infinite="infiniteHandler" force-use-infinite-wrapper></infinite-loading> -->
 	</div>
 </template>
@@ -44,10 +45,11 @@ export default {
 		return {
 			filters: [],
 			offers: [],
-			location: '',
-			categories: '',
+			locations: 'moscow',
+			categories: '1',
 			page: 1,
 			selected: '',
+			norecord: false,
 		};
 	},
 	apollo: {
@@ -63,7 +65,16 @@ export default {
 			variables() {
 				return {
 					page: this.page,
+					locations: this.locations,
+					categories: this.categories,
 				};
+			},
+			result(data) {
+				if (data.data.offers.length == 0) {
+					this.norecord = true;
+				} else {
+					this.norecord = false;
+				}
 			},
 			// update(data) {
 			// 	this.offers.push(data.offers);
@@ -73,8 +84,8 @@ export default {
 	},
 	methods: {
 		locationValue(e) {
-			this.location = e.value;
-			console.log(this.location);
+			this.locations = e.value;
+			console.log(this.locations);
 		},
 		categoryValue(e) {
 			this.categories = e.value;
