@@ -76,25 +76,17 @@ export default {
 					this.norecord = false;
 				}
 			},
-			// update(data) {
-			// 	this.offers.push(data.offers);
-			// 	console.log(this.offers);
-			// },
 		},
 	},
 	methods: {
 		locationValue(e) {
 			this.locations = e.value;
-			console.log(this.locations);
+			// console.log(this.locations);
 		},
 		categoryValue(e) {
 			this.categories = e.value;
-			console.log(e.value);
+			// console.log(e.value);
 		},
-		// categoryValue: function (e) {
-		// 	this.categories = e;
-		// 	// console.log(this.categories);
-		// },
 
 		infiniteHandler($state) {
 			this.page++;

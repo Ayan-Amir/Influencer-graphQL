@@ -48,6 +48,9 @@ export default {
 			this.$emit('categoryvalue', this.category);
 		},
 	},
+	mounted() {
+		// this.locate = this.filters.default.locations[0];
+	},
 };
 </script>
 
@@ -64,7 +67,8 @@ export default {
 			margin-right: rem(16px);
 			.v-select-toggle {
 				position: relative;
-				width: 120px;
+				// width: 120px;
+				width: 185px;
 				min-width: 40px;
 				align-items: center;
 				justify-content: center;
