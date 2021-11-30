@@ -1,60 +1,94 @@
 <template>
-    <div class="skeleton">
-        <div class="skeleton__offer" v-if="this.type=='offer'">
-            <div class="row">
-                <div
-                    class="col-xl-3 col-lg-4 col-sm-6"
-                    v-for="(item, index) in count"
-                    :key="index"
-                >
-                    <div class="offerCard card">
-                        <div class="offerCard__image">
-                            <vue-skeleton-loader
-                                :width="450"
-                                :height="200"
-                                animation="wave"
-                            />
-                        </div>
-                        <div class="offerCard__detail">
-                            <div class="d-flex justify-content-between">
-                                <vue-skeleton-loader
-                                    animation="wave"
-                                    :width="350"
-                                    :height="20"
-                                />
-                            </div>
-                            <div class="offerCard__detail--watcher">
-                                <vue-skeleton-loader
-                                    :width="100"
-                                    :height="35"
-                                    animation="wave"
-                                    :rounded="true"
-                                    :radius="8"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="skeleton">
+		<div class="skeleton__offer" v-if="this.type == 'offer'">
+			<div class="row">
+				<div
+					class="col-xl-3 col-lg-4 col-sm-6"
+					v-for="(item, index) in count"
+					:key="index"
+				>
+					<div class="offerCard card">
+						<div class="offerCard__image">
+							<vue-skeleton-loader
+								:width="450"
+								:height="200"
+								animation="wave"
+							/>
+						</div>
+						<div class="offerCard__detail">
+							<div class="d-flex justify-content-between">
+								<vue-skeleton-loader
+									animation="wave"
+									:width="350"
+									:height="20"
+								/>
+							</div>
+							<div class="offerCard__detail--watcher">
+								<vue-skeleton-loader
+									:width="100"
+									:height="35"
+									animation="wave"
+									:rounded="true"
+									:radius="8"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="skeleton__offer" v-if="this.type == 'notification'">
+			<div class="row">
+				<div
+					class="col-md-12"
+					v-for="(item, index) in count"
+					:key="index"
+				>
+					<div class="card notificationCard">
+						<div>
+							<div class="notificationCard__image">
+								<vue-skeleton-loader
+									:width="450"
+									:height="200"
+									animation="wave"
+								/>
+							</div>
+							<div class="notificationCard__title">
+								<vue-skeleton-loader
+									animation="wave"
+									:width="350"
+									:height="20"
+								/>
+								<br />
+								<vue-skeleton-loader
+									animation="wave"
+									:width="150"
+									:height="20"
+								/>
+								<!-- <p>{{ notification.title }}</p> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
-
 
 <script>
 import VueSkeletonLoader from 'skeleton-loader-vue';
 export default {
-    props:{
-        type: String,
-        count: {
-            type: Number,
-            default: 3
-        }
-    },
-    components:{
-        VueSkeletonLoader
-    }
-}
+	props: {
+		type: String,
+		count: {
+			type: Number,
+			default: 3,
+		},
+	},
+	components: {
+		VueSkeletonLoader,
+	},
+};
 </script>
 
 <style lang="scss" scoped>
@@ -126,6 +160,63 @@ export default {
 	@media screen and (max-width: 575px) {
 		max-width: 375px;
 		margin: auto auto rem(25px) auto;
+	}
+}
+
+.notification {
+	h3 {
+		margin-bottom: rem(16px);
+	}
+	.notificationCard {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		padding: rem(13px) rem(25px);
+		border-radius: 16px;
+		margin-bottom: rem(15px);
+		border: 2px solid transparent;
+		transition: 0.4s ease all;
+		cursor: pointer;
+		@media screen and (min-width: 1025px) {
+			&:hover {
+				border: 2px solid var(--primary);
+			}
+		}
+		&.active {
+			border: 2px solid var(--primary);
+		}
+		> div {
+			display: flex;
+			align-items: flex-start;
+		}
+		&__image {
+			width: 50px;
+			height: 50px;
+			overflow: hidden;
+			border-radius: 50%;
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
+		&__title {
+			font-size: rem(14px);
+			font-weight: 400;
+			margin-left: rem(18px);
+			color: var(--textSecondary);
+			p {
+				display: block;
+				font-size: rem(16px);
+				font-weight: 400;
+				color: var(--textPrimary);
+				margin: 0;
+				@include truncate(1);
+				span {
+					font-weight: 500;
+				}
+			}
+		}
 	}
 }
 </style>

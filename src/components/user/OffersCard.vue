@@ -6,7 +6,7 @@
 				class="img-fluid"
 				alt=""
 			/>
-			<span class="timeValue">{{ time }}</span>
+			<span class="timeValue">{{ hhmmss(offer.expirationDate) }}</span>
 		</div>
 		<div class="offerCard__detail">
 			<div class="d-flex justify-content-between">
@@ -53,8 +53,7 @@ export default {
 		},
 	},
 	methods: {
-		hhmmss: function () {
-			let value = this.offer.expirationDate;
+		hhmmss: function (value) {
 			const sec = parseInt(value, 10);
 			let month = Math.floor((sec % 31536000) / 2628000);
 			let d = Math.floor(((sec % 31536000) % 2628000) / 86400);
@@ -88,12 +87,6 @@ export default {
 	mounted() {
 		setInterval(() => {
 			this.offer.expirationDate -= 1;
-			if (this.hhmmss() != null) {
-				// console.log(this.hhmmss());
-				this.hhmmss();
-				this.time = document.querySelector('.timeValue').innerHTML =
-					this.hhmmss();
-			}
 		}, 1000);
 	},
 };
