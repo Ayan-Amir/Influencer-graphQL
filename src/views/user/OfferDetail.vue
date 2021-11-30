@@ -12,18 +12,27 @@
 			</div>
 			<div class="col-md-6">
 				<h1>{{ offer.name }}</h1>
-				<div class="offerDetail__purchase">
-					<div class="offerDetail__purchase--brandLogo">
-						<img
-							:src="`${$config.IMG_HOST}/55x55/${offer.logo}`"
-							alt=""
-							class="img-fluid"
-						/>
+				<div class="offerDetail__wrapper">
+					<div class="offerDetail__purchase">
+						<div class="offerDetail__purchase--brandLogo">
+							<img
+								:src="`${$config.IMG_HOST}/55x55/${offer.logo}`"
+								alt=""
+								class="img-fluid"
+							/>
+						</div>
+						<p>
+							{{ offer.company }}
+							<span>{{ offer.location.name }}</span>
+						</p>
 					</div>
-					<p>
-						{{ offer.company }}
-						<span>{{ offer.location.name }}</span>
-					</p>
+					<div
+						class="requestOffer__time"
+						v-if="offer.expirationDate !== null"
+					>
+						Ends in: {{ offer.expirationDate }}
+						<span>{{ offer.left }} Left</span>
+					</div>
 				</div>
 				<span>{{ offer.description }}</span>
 				<div class="requestOffer">
@@ -84,15 +93,36 @@ export default {
 
 <style lang="scss" scoped>
 .offerDetail {
+	&__wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 8px;
+		.requestOffer__time {
+			display: none;
+		}
+		@media screen and (max-width: 767px) {
+			margin-bottom: rem(16px);
+
+			.requestOffer__time {
+				display: block !important;
+			}
+		}
+	}
 	.image {
 		height: 225px;
 		border-radius: 30px;
 		overflow: hidden;
+		@media screen and (max-width: 767px) {
+			margin-bottom: rem(30px);
+		}
+		img {
+			height: 100%;
+		}
 	}
 	&__purchase {
 		display: flex;
 		align-items: center;
-		margin-bottom: 8px;
 		&--brandLogo {
 			margin-right: 10px;
 			width: 50px;
@@ -148,6 +178,9 @@ export default {
 				top: 50%;
 				transform: translateY(-50%);
 				left: -24px;
+			}
+			@media screen and (max-width: 767px) {
+				display: none;
 			}
 		}
 		.btn.btn-primary {
