@@ -14,6 +14,7 @@ import SvgIcon from "@/components/base/BaseSvgIcon.vue";
 import VueEllipseProgress from "vue-ellipse-progress";
 import VSelect from "@alfsnd/vue-bootstrap-select";
 import "@/components/global_components";
+import utilities from "@/mixin/utilities";
 import { createProvider } from "./vue-apollo";
 import {config} from "@/config.js";
 Vue.prototype.$config = config;
@@ -24,6 +25,7 @@ Vue.use(IconsPlugin);
 Vue.component("svg-icon", SvgIcon);
 Vue.use(VueEllipseProgress);
 Vue.component("VSelect", VSelect);
+Vue.mixin(utilities)
 
 new Vue({
   router,

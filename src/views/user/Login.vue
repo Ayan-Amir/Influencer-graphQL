@@ -57,21 +57,23 @@ export default {
 	data() {
 		return {
 			loginDetails:{
-				email:'',
-				password: ''
+				email:'ddd',
+				password: 'ddd'
 			},
 			title: 'Welcome',
 			subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
 		};
 	},
 	methods: {
-		//...mapActions(['login']),
+		...mapActions(['login']),
 		userLogin: function() {
-			this.$store.dispatch('login',
-			{
-				email: this.loginDetails.email,
-				password: this.loginDetails.password
-			});
+			// this.$store.dispatch('login', this.loginDetails)
+			// {
+			// 	email: this.loginDetails.email,
+			// 	password: this.loginDetails.password
+			// });
+			this.login(this.loginDetails)
+        		.then(() => this.$router.push('/dashboard'))
 		},
 	},
 	components: { SocialLinks },
