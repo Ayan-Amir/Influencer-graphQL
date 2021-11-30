@@ -3,12 +3,22 @@
 		<!-- Dropdown -->
 		<div class="d-flex">
 			<div class="form-group">
+				<multiselect
+					v-model="locate"
+					label="name"
+					track-by="code"
+					:options="options"
+					:multiple="true"
+					@tag="addTag"
+				></multiselect>
+			</div>
+			<!-- <div class="form-group">
 				<v-select :options="filters.locations" v-model="locate" />
 			</div>
 
 			<div class="form-group">
 				<v-select :options="filters.categories" v-model="category" />
-			</div>
+			</div> -->
 		</div>
 		<!-- Search -->
 		<div class="search">
@@ -18,6 +28,7 @@
 						type="text "
 						class="form-control"
 						placeholder="Search.."
+						v-model="search"
 					/>
 				</div>
 			</form>
@@ -32,6 +43,13 @@ export default {
 			locate: '',
 			location: '',
 			category: '',
+			search: '',
+			value: [{ name: 'Javascript', code: 'js' }],
+			options: [
+				{ name: 'Vue.js', code: 'vu' },
+				{ name: 'Javascript', code: 'js' },
+				{ name: 'Open Source', code: 'os' },
+			],
 		};
 	},
 	props: {
@@ -47,6 +65,21 @@ export default {
 		category: function () {
 			this.$emit('categoryvalue', this.category);
 		},
+		search: function () {
+			this.$emit('searchvalue', this.search);
+		},
+	},
+	methods: {
+		addTag(newTag) {
+			const tag = {
+				name: newTag,
+				code:
+					newTag.substring(0, 2) +
+					Math.floor(Math.random() * 10000000),
+			};
+			this.options.push(tag);
+			this.value.push(tag);
+		},
 	},
 	mounted() {
 		//console.log(this.filters.default.categories)
@@ -55,7 +88,7 @@ export default {
 	},
 };
 </script>
-
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style lang="scss" scoped>
 .filters {
 	@include flex(center, space-between);
@@ -109,6 +142,82 @@ export default {
 					.v-select-toggle {
 						opacity: 0.8;
 					}
+				}
+			}
+		}
+
+		//multiSelect
+
+		.multiselect {
+			width: 185px;
+			margin-right: rem(20px);
+			&__select {
+				width: 30px;
+				height: 18px;
+				right: 5px;
+				top: 10px;
+				&::after {
+					content: '';
+					position: absolute;
+					width: 8px;
+					height: 14px;
+					border: 0;
+					background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='7.765' height='13.441' viewBox='0 0 7.765 13.441'%3E%3Cpath id='Path_210' data-name='Path 210' d='M4871.166,592.811l5.351,5.225-5.351,5.388' transform='translate(-4869.752 -591.396)' fill='none' stroke='%239637f1' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E%0A");
+					background-repeat: no-repeat;
+					right: 12px;
+					transform: translateY(-50%) rotate(90deg);
+					top: 50%;
+				}
+				&::before {
+					border: 0;
+				}
+			}
+			&__tags {
+				border-radius: 8px;
+				border: 0;
+				min-height: 42px;
+				background: #fff;
+			}
+			&__tag {
+				position: relative;
+				background: var(--primary);
+				width: 100%;
+				min-width: 40px;
+				font-size: rem(14px);
+				font-weight: 700;
+			}
+			&__tag-icon {
+				&:after {
+					color: #fff;
+				}
+				&:hover {
+					background: unset;
+					opacity: 0.7;
+				}
+			}
+			&__input {
+				display: none;
+			}
+			&__option--highlight {
+				background: var(--primary);
+				outline: none;
+				color: #fff;
+			}
+			&__option {
+				background: transparent !important;
+				color: var(--primary);
+				font-size: rem(16px);
+				&:hover {
+					background: var(--primary) !important;
+					color: #fff;
+				}
+				&--highlight {
+					&::after {
+						display: none;
+					}
+				}
+				&--selected:after {
+					display: none;
 				}
 			}
 		}

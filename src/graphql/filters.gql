@@ -9,8 +9,14 @@ query {
 			text: name
 		}
 		default {
-			locations
-			categories
+			locations {
+				id
+				name
+			}
+			categories {
+				id
+				name
+			}
 		}
 	}
 }

@@ -5,6 +5,7 @@
 			:filters="offersFilters"
 			@locationvalue="locationValue"
 			@categoryvalue="categoryValue"
+			@searchvalue="searchvalue"
 		/>
 		<div v-if="$apollo.loading">
 			<base-skeleton-loader
@@ -43,6 +44,7 @@ export default {
 			offers: [],
 			filterLocations: [],
 			filterCategories: [],
+			saerch: '',
 			page: 1,
 			selected: '',
 			norecord: false,
@@ -51,13 +53,22 @@ export default {
 	apollo: {
 		offersFilters: {
 			query: require('../../graphql/filters.gql'),
-			result(data){
-				if(data){
-					this.filterCategories = data.data.offersFilters.default.categories;					
-					this.filterLocations = data.data.offersFilters.default.locations;
-					this.$apollo.queries.offers.skip=false;
+			result(data) {
+				if (data) {
+					let newCategory =
+						data.data.offersFilters.default.categories.map(
+							(item) => item.id
+						);
+					let newLocation =
+						data.data.offersFilters.default.locations.map(
+							(item) => item.id
+						);
+
+					this.filterCategories = newCategory;
+					this.filterLocations = newLocation;
+					this.$apollo.queries.offers.skip = false;
 				}
-			}
+			},
 		},
 		offers: {
 			query: require('../../graphql/offers.gql'),
@@ -66,6 +77,7 @@ export default {
 					page: this.page,
 					locations: this.filterLocations,
 					categories: this.filterCategories,
+					// search: this.search,
 				};
 			},
 			result(data) {
@@ -76,7 +88,7 @@ export default {
 				}
 			},
 			skip() {
-				return this.skipQuery
+				return this.skipQuery;
 			},
 		},
 	},
@@ -88,6 +100,10 @@ export default {
 		categoryValue(e) {
 			this.categories = e.value;
 			// console.log(e.value);
+		},
+		searchvalue(e) {
+			this.search = e;
+			console.log(e);
 		},
 
 		infiniteHandler($state) {
