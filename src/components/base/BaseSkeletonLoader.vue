@@ -58,13 +58,13 @@
 								<vue-skeleton-loader
 									animation="wave"
 									:width="350"
-									:height="20"
+									:height="15"
 								/>
 								<br />
 								<vue-skeleton-loader
 									animation="wave"
 									:width="150"
-									:height="20"
+									:height="15"
 								/>
 								<!-- <p>{{ notification.title }}</p> -->
 							</div>

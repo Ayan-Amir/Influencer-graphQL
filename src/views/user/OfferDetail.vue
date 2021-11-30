@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import { OFFER_DETAILS } from '@/graphql/query';
 import OfferDetails from '@/components/user/OfferDetails.vue';
 export default {
 	data() {
@@ -68,7 +69,7 @@ export default {
 	},
 	apollo: {
 		offer: {
-			query: require('../../graphql/OfferDetails.gql'),
+			query: OFFER_DETAILS,
 			variables() {
 				return {
 					id: parseInt(this.$route.params.id),

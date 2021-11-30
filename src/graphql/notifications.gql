@@ -1,9 +1,0 @@
-query {
-	notifications {
-		id
-		timestamp
-		title
-		image
-		url
-	}
-}
