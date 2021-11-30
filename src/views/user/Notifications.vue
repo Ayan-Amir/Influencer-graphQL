@@ -112,6 +112,7 @@ export default {
 			height: 50px;
 			overflow: hidden;
 			border-radius: 50%;
+			flex: 0 0 50px;
 			img {
 				height: 100%;
 				width: 100%;
@@ -122,6 +123,7 @@ export default {
 			font-weight: 400;
 			margin-left: rem(18px);
 			color: var(--textSecondary);
+			flex: 1;
 			p {
 				display: block;
 				font-size: rem(16px);

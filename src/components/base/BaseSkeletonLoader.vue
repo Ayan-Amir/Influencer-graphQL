@@ -50,6 +50,7 @@
 								<vue-skeleton-loader
 									:width="450"
 									:height="200"
+									:rounded="true"
 									animation="wave"
 								/>
 							</div>

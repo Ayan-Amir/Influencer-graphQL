@@ -38,7 +38,7 @@
 										>
 									</li>
 									<li>
-										<router-link to="/user/free-offer"
+										<router-link to="/user/offers"
 											>Free offers</router-link
 										>
 									</li>
