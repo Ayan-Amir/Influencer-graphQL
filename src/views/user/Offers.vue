@@ -1,12 +1,8 @@
 <template>
 	<div class="freeOffers container">
-		<!-- <div class="filters">
-			<base-select :options="location" :selected="selected" />
-			<base-select :options="category" :selected="selected" />
-		</div> -->
 		<base-filters
-			v-if="$apollo.data"
-			:filters="filters"
+			v-if="$apollo.data.offersFilters"
+			:filters="offersFilters"
 			@locationvalue="locationValue"
 			@categoryvalue="categoryValue"
 		/>
@@ -16,7 +12,7 @@
 				:count="8"
 			></base-skeleton-loader>
 		</div>
-		<div class="row" v-if="$apollo.data">
+		<div class="row" v-if="$apollo.data.offers">
 			<div
 				class="col-xl-3 col-lg-4 col-sm-6"
 				v-for="offer in offers"
@@ -43,30 +39,33 @@ export default {
 	//components: { OffersCardBaseSkeletonLoader },
 	data() {
 		return {
-			filters: [],
+			offersFilters: [],
 			offers: [],
-			locations: 'moscow',
-			categories: '1',
+			filterLocations: [],
+			filterCategories: [],
 			page: 1,
 			selected: '',
 			norecord: false,
 		};
 	},
 	apollo: {
-		filters: {
+		offersFilters: {
 			query: require('../../graphql/filters.gql'),
-			update(data) {
-				// this.selected = data.offersFilters.default.locations[0];
-				return data.offersFilters;
-			},
+			result(data){
+				if(data){
+					this.filterCategories = data.data.offersFilters.default.categories;					
+					this.filterLocations = data.data.offersFilters.default.locations;
+					this.$apollo.queries.offers.skip=false;
+				}
+			}
 		},
 		offers: {
 			query: require('../../graphql/offers.gql'),
 			variables() {
 				return {
 					page: this.page,
-					locations: this.locations,
-					categories: this.categories,
+					locations: this.filterLocations,
+					categories: this.filterCategories,
 				};
 			},
 			result(data) {
@@ -76,12 +75,15 @@ export default {
 					this.norecord = false;
 				}
 			},
+			skip() {
+				return this.skipQuery
+			},
 		},
 	},
 	methods: {
 		locationValue(e) {
-			this.locations = e.value;
-			// console.log(this.locations);
+			this.filterLocations = [];
+			this.filterLocations.push(e.value);
 		},
 		categoryValue(e) {
 			this.categories = e.value;

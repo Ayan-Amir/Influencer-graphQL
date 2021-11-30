@@ -49,7 +49,9 @@ export default {
 		},
 	},
 	mounted() {
-		// this.locate = this.filters.default.locations[0];
+		//console.log(this.filters.default.categories)
+		//this.locate = this.filters.default.locations[0];
+		//this.category = this.filters.deafult.categories[1];
 	},
 };
 </script>
