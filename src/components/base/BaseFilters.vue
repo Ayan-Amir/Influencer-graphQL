@@ -7,7 +7,17 @@
 					v-model="locate"
 					label="name"
 					track-by="code"
-					:options="options"
+					:options="filters.locations"
+					:multiple="true"
+					@tag="addTag"
+				></multiselect>
+			</div>
+			<div class="form-group">
+				<multiselect
+					v-model="category"
+					label="name"
+					track-by="code"
+					:options="filters.categories"
 					:multiple="true"
 					@tag="addTag"
 				></multiselect>
@@ -40,16 +50,14 @@
 export default {
 	data() {
 		return {
-			locate: '',
-			location: '',
-			category: '',
+			locate: [{ code: 'moscow', name: 'Moscow' }],
+			category: [{ code: 'travel', name: 'Travel' }],
 			search: '',
-			value: [{ name: 'Javascript', code: 'js' }],
-			options: [
-				{ name: 'Vue.js', code: 'vu' },
-				{ name: 'Javascript', code: 'js' },
-				{ name: 'Open Source', code: 'os' },
-			],
+			// options: [
+			// 	{ name: 'Vue.js', code: 'vu' },
+			// 	{ name: 'Javascript', code: 'js' },
+			// 	{ name: 'Open Source', code: 'os' },
+			// ],
 		};
 	},
 	props: {
@@ -82,7 +90,10 @@ export default {
 		},
 	},
 	mounted() {
-		//console.log(this.filters.default.categories)
+		setTimeout(() => {
+			console.log('filter value', this.filters.locations);
+		}, 5000);
+
 		//this.locate = this.filters.default.locations[0];
 		//this.category = this.filters.deafult.categories[1];
 	},
@@ -149,7 +160,7 @@ export default {
 		//multiSelect
 
 		.multiselect {
-			width: 185px;
+			width: 200px;
 			margin-right: rem(20px);
 			&__select {
 				width: 30px;
@@ -177,11 +188,12 @@ export default {
 				border: 0;
 				min-height: 42px;
 				background: #fff;
+				padding-right: 27px;
 			}
 			&__tag {
 				position: relative;
 				background: var(--primary);
-				width: 100%;
+				// width: 100%;
 				min-width: 40px;
 				font-size: rem(14px);
 				font-weight: 700;
@@ -219,6 +231,10 @@ export default {
 				&--selected:after {
 					display: none;
 				}
+			}
+			&__content-wrapper {
+				overflow: hidden;
+				max-height: unset !important;
 			}
 		}
 	}

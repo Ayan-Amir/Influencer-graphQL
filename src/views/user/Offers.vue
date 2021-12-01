@@ -31,6 +31,7 @@
 import OffersCard from '@/components/user/OffersCard.vue';
 import InfiniteLoading from 'vue-infinite-loading';
 import BaseSelect from '../../components/base/BaseSelect.vue';
+import { OFFERS_FILTERS, OFFERS } from '@/graphql/query';
 export default {
 	components: {
 		OffersCard,
@@ -52,26 +53,28 @@ export default {
 	},
 	apollo: {
 		offersFilters: {
-			query: require('../../graphql/filters.gql'),
+			query: OFFERS_FILTERS,
 			result(data) {
 				if (data) {
-					let newCategory =
-						data.data.offersFilters.default.categories.map(
-							(item) => item.id
-						);
 					let newLocation =
 						data.data.offersFilters.default.locations.map(
-							(item) => item.id
+							(item) => item.code
+						);
+					// console.log('new location', newLocation);
+
+					let newCategory =
+						data.data.offersFilters.default.categories.map(
+							(item) => item.code
 						);
 
-					this.filterCategories = newCategory;
 					this.filterLocations = newLocation;
+					this.filterCategories = newCategory;
 					this.$apollo.queries.offers.skip = false;
 				}
 			},
 		},
 		offers: {
-			query: require('../../graphql/offers.gql'),
+			query: OFFERS,
 			variables() {
 				return {
 					page: this.page,
@@ -95,11 +98,21 @@ export default {
 	methods: {
 		locationValue(e) {
 			this.filterLocations = [];
-			this.filterLocations.push(e.value);
+			this.filterLocations.push(e);
+			// console.log('oldfilter', this.filterLocations);
+
+			let newFilter = this.filterLocations[0].map((item) => item.code);
+			// console.log('newfilter', newFilter);
+			this.filterLocations = newFilter;
 		},
 		categoryValue(e) {
-			this.categories = e.value;
-			// console.log(e.value);
+			this.categories = [];
+			this.filterCategories.push(e);
+			let newFilter = this.filterCategories
+				.slice(-1)[0]
+				.map((item) => item.code);
+			// console.log('newfilter', newFilter);
+			this.filterCategories = newFilter;
 		},
 		searchvalue(e) {
 			this.search = e;
@@ -129,6 +142,9 @@ export default {
 			});
 			$state.loaded();
 		},
+	},
+	mounted() {
+		console.log('filter value', this.offersFilters);
 	},
 };
 </script>
