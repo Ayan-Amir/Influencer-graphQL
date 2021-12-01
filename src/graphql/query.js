@@ -42,29 +42,29 @@ export const OFFERS_FILTERS = gql`
 query {
 	offersFilters {
 		locations {
-			code: id
-			name: name
+			id
+			name
 		}
 		categories {
-			code: id
-			name: name
+			id
+			name
 		}
 		default {
 			locations {
-				code: id
-				name: name
+				id
+				name
 			}
 			categories {
-				code: id
-				name: name
+				id
+				name
 			}
 		}
 	}
 }`
 
 export const OFFERS = gql`
-query offers($page: Int, $locations: [String], $categories: [String]) {
-	offers(page: $page, locations: $locations, categories: $categories) {
+query offers($page: Int, $locations: [String], $categories: [String] , $search : String) {
+	offers(page: $page, locations: $locations, categories: $categories, search: $search ) {
 		id
 		name
 		image

@@ -6,29 +6,22 @@
 				<multiselect
 					v-model="locate"
 					label="name"
-					track-by="code"
+					track-by="id"
 					:options="this.locations"
 					:multiple="true"
 					@tag="addTag"
 				></multiselect>
 			</div>
 			<div class="form-group">
-				<!-- <multiselect
+				<multiselect
 					v-model="category"
 					label="name"
-					track-by="code"
-					:options="filters.categories"
+					track-by="id"
+					:options="this.categories"
 					:multiple="true"
 					@tag="addTag"
-				></multiselect> -->
+				></multiselect>
 			</div>
-			<!-- <div class="form-group">
-				<v-select :options="filters.locations" v-model="locate" />
-			</div>
-
-			<div class="form-group">
-				<v-select :options="filters.categories" v-model="category" />
-			</div> -->
 		</div>
 		<!-- Search -->
 		<div class="search">
@@ -50,16 +43,11 @@
 export default {
 	data() {
 		return {
-			locate: [{ code: 'moscow', name: 'Moscow' }],
-			category: [{ code: 'travel', name: 'Travel' }],
+			locate: [],
+			category: [],
 			search: '',
-			locations:[],
+			locations: [],
 			categories: [],
-			// options: [
-			// 	{ name: 'Vue.js', code: 'vu' },
-			// 	{ name: 'Javascript', code: 'js' },
-			// 	{ name: 'Open Source', code: 'os' },
-			// ],
 		};
 	},
 	props: {
@@ -78,14 +66,17 @@ export default {
 		search: function () {
 			this.$emit('searchvalue', this.search);
 		},
-		filters:{
-			handler(){
-				if(this.filters.locations){
-					this.locations = this.filters.locations
+		filters: {
+			handler() {
+				if (this.filters.default) {
+					this.locations = this.filters.locations;
+					this.categories = this.filters.categories;
+					this.locate = this.filters.default.locations;
+					this.category = this.filters.default.categories;
 				}
 			},
-			immediate: true
-		}
+			immediate: true,
+		},
 	},
 	methods: {
 		addTag(newTag) {

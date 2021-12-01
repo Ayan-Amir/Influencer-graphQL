@@ -58,13 +58,13 @@ export default {
 				if (data) {
 					let newLocation =
 						data.data.offersFilters.default.locations.map(
-							(item) => item.code
+							(item) => item.id
 						);
 					// console.log('new location', newLocation);
 
 					let newCategory =
 						data.data.offersFilters.default.categories.map(
-							(item) => item.code
+							(item) => item.id
 						);
 
 					this.filterLocations = newLocation;
@@ -80,7 +80,7 @@ export default {
 					page: this.page,
 					locations: this.filterLocations,
 					categories: this.filterCategories,
-					// search: this.search,
+					search: this.search,
 				};
 			},
 			result(data) {
@@ -90,33 +90,40 @@ export default {
 					this.norecord = false;
 				}
 			},
+			error(e) {
+				console.log(e);
+			},
 			skip() {
 				return this.skipQuery;
 			},
 		},
 	},
 	methods: {
-		locationValue(e) {
-			this.filterLocations = [];
-			this.filterLocations.push(e);
-			// console.log('oldfilter', this.filterLocations);
+		locationValue(data) {
+			this.filterLocations = data;
 
-			let newFilter = this.filterLocations[0].map((item) => item.code);
-			// console.log('newfilter', newFilter);
-			this.filterLocations = newFilter;
+			let newFilter = this.filterLocations.map((item) => item.id);
+			if (this.filterLocations.length == 0) {
+				this.filterLocations = null;
+			} else {
+				this.filterLocations = newFilter;
+			}
 		},
-		categoryValue(e) {
-			this.categories = [];
-			this.filterCategories.push(e);
-			let newFilter = this.filterCategories
-				.slice(-1)[0]
-				.map((item) => item.code);
-			// console.log('newfilter', newFilter);
-			this.filterCategories = newFilter;
+		categoryValue(data) {
+			this.categories = data;
+			console.log(this.categories);
+
+			let newFilter = this.categories.map((item) => item.id);
+
+			if (this.filterCategories.length == 0) {
+				this.filterCategories = null;
+			} else {
+				this.filterCategories = newFilter;
+			}
 		},
 		searchvalue(e) {
 			this.search = e;
-			console.log(e);
+			// console.log(e);
 		},
 
 		infiniteHandler($state) {
@@ -143,8 +150,8 @@ export default {
 			$state.loaded();
 		},
 	},
-	mounted() {
-		console.log('filter value', this.offersFilters);
+	updated() {
+		// console.log('value', this.filterLocations.length);
 	},
 };
 </script>

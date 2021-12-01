@@ -1,9 +1,6 @@
 export default{
     methods:{
         timeStampToDate(timestamp) {
-            setInterval(() => {
-                timestamp -= 1;
-            }, 1000);
 			const sec = parseInt(timestamp, 10);
 			let month = Math.floor((sec % 31536000) / 2628000);
 			let d = Math.floor(((sec % 31536000) % 2628000) / 86400);
@@ -57,7 +54,7 @@ export default{
             }
         },
         friendURL(title){
-            let encodedUrl = url.toString().toLowerCase();
+            let encodedUrl = title.toString().toLowerCase();
 
 			encodedUrl = encodedUrl.split(/\&+/).join('-and-');
 

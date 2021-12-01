@@ -6,7 +6,9 @@
 				class="img-fluid"
 				alt=""
 			/>
-			<span class="timeValue">{{ hhmmss(offer.expirationDate) }}</span>
+			<span class="timeValue">{{
+				timeStampToDate(offer.expirationDate)
+			}}</span>
 		</div>
 		<div class="offerCard__detail">
 			<div class="d-flex justify-content-between">
@@ -23,7 +25,7 @@
 			</div>
 			<div class="offerCard__detail--watcher">
 				<router-link
-					:to="`offer/${offer.id}/${friendURL(name)}`"
+					:to="`offer/${offer.id}/${friendURL(offer.name)}`"
 					class="btn btn-primary small"
 				>
 					<svg-icon
@@ -41,47 +43,9 @@
 
 <script>
 export default {
-	data() {
-		return {
-			time: '',
-			name: this.offer.name,
-		};
-	},
 	props: {
 		offer: {
 			type: Object | Array,
-		},
-	},
-	methods: {
-		hhmmss: function (value) {
-			const sec = parseInt(value, 10);
-			let month = Math.floor((sec % 31536000) / 2628000);
-			let d = Math.floor(((sec % 31536000) % 2628000) / 86400);
-			let h = Math.floor((((sec % 31536000) % 2628000) % 86400) / 3600);
-			let m = Math.floor((((sec % 31536000) % 86400) % 3600) / 60);
-
-			let monthDisplay =
-				month > 0
-					? month + (month == 1 ? ' month, ' : ' months, ')
-					: '';
-			let dDisplay = d > 0 ? d + (d == 1 ? ' day, ' : ' days, ') : '';
-			let hDisplay = h > 0 ? h + (h == 1 ? ' hour, ' : ' hours, ') : '';
-			let mDisplay =
-				m > 0 ? m + (m == 1 ? ' minute, ' : ' minutes ') : '';
-			return monthDisplay + dDisplay + hDisplay + mDisplay;
-		},
-		friendURL: function (url) {
-			let encodedUrl = url.toString().toLowerCase();
-
-			encodedUrl = encodedUrl.split(/\&+/).join('-and-');
-
-			encodedUrl = encodedUrl.split(/[^a-z0-9]/).join('-');
-
-			encodedUrl = encodedUrl.split(/-+/).join('-');
-
-			encodedUrl = encodedUrl.trim('-');
-
-			return encodedUrl;
 		},
 	},
 	mounted() {
