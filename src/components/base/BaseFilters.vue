@@ -7,20 +7,20 @@
 					v-model="locate"
 					label="name"
 					track-by="code"
-					:options="filters.locations"
+					:options="this.locations"
 					:multiple="true"
 					@tag="addTag"
 				></multiselect>
 			</div>
 			<div class="form-group">
-				<multiselect
+				<!-- <multiselect
 					v-model="category"
 					label="name"
 					track-by="code"
 					:options="filters.categories"
 					:multiple="true"
 					@tag="addTag"
-				></multiselect>
+				></multiselect> -->
 			</div>
 			<!-- <div class="form-group">
 				<v-select :options="filters.locations" v-model="locate" />
@@ -53,6 +53,8 @@ export default {
 			locate: [{ code: 'moscow', name: 'Moscow' }],
 			category: [{ code: 'travel', name: 'Travel' }],
 			search: '',
+			locations:[],
+			categories: [],
 			// options: [
 			// 	{ name: 'Vue.js', code: 'vu' },
 			// 	{ name: 'Javascript', code: 'js' },
@@ -76,6 +78,14 @@ export default {
 		search: function () {
 			this.$emit('searchvalue', this.search);
 		},
+		filters:{
+			handler(){
+				if(this.filters.locations){
+					this.locations = this.filters.locations
+				}
+			},
+			immediate: true
+		}
 	},
 	methods: {
 		addTag(newTag) {
@@ -88,14 +98,6 @@ export default {
 			this.options.push(tag);
 			this.value.push(tag);
 		},
-	},
-	mounted() {
-		setTimeout(() => {
-			console.log('filter value', this.filters.locations);
-		}, 5000);
-
-		//this.locate = this.filters.default.locations[0];
-		//this.category = this.filters.deafult.categories[1];
 	},
 };
 </script>
