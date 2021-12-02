@@ -1,5 +1,23 @@
 import gql from 'graphql-tag'
 
+export const LOGGED_IN_USER = gql`
+query{
+	me{
+		id,
+		email,
+		state,
+		type,
+		first_name,
+		last_name,
+		city,
+		country,
+		pin,
+		gender,
+		phone
+	}
+}
+`
+
 export const NOTIFICATION = gql`
 query {
 	notifications {

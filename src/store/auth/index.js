@@ -1,5 +1,6 @@
-import { onLogout, apolloClient } from '@/vue-apollo'
+import { onLogin, apolloClient } from '@/vue-apollo'
 import { LOGIN_USER } from '@/graphql/mutations'
+import {LOGGED_IN_USER} from '@/graphql/query'
 import { getDefaultValues } from '@apollo/client/utilities'
 // import apolloClient from 'vue-apollo'
 const state = {
@@ -13,38 +14,52 @@ const getters = {
     user: state => state.user
 }
 const mutations = {
-
+    SET_TOKEN (state, token) {
+        state.token = token
+    },
+    LOGIN_USER (state, user) {
+        state.authStatus = true
+        state.user = { ...user }
+    },
+    LOGOUT_USER (state) {
+        state.authStatus = false
+        state.user = {}
+    }
 }
 const actions = {
-    // async login({commit, state}, payloads){
-    //     console.log(LOGIN_USER);
-    //     try{
-    //         // const {data} = await apolloClient.mutate(
-    //         //     {
-    //         //         mutations: LOGIN_USER,
-    //         //         variables: payloads
-    //         //     }
-    //         // )
-    //         const data = await apolloClient.mutate({ mutation: LOGIN_USER, variables: { ...payloads } })
-    //         console.log(data);
-    //     }
-    //     catch(e){
-    //         console.log(e);
-    //     }
-    //     console.log("enter here");
-    // }
     async login ({ commit, dispatch }, authDetails) {
-        console.log(LOGIN_USER);
-        try {
-          const { data } = await apolloClient.mutate({ mutation: LOGIN_USER, variables: authDetails })
-        //   const token = JSON.stringify(data.login.token)
-        //   commit('SET_TOKEN', token)
-        //   localStorage.setItem('apollo-token', token)
-        //   dispatch('setUser')
-        } catch (e) {
-          console.log(e)
-        }
-      },
+      
+        await apolloClient.mutate({ mutation: LOGIN_USER, variables: { ...authDetails } })
+        .then((data) => {
+            // Result
+            if(data){
+                console.log(data);
+                const token = JSON.stringify(data.data.createSession.token)
+                commit('SET_TOKEN', token)
+                onLogin(apolloClient, token)
+                .then(()=>{
+                    dispatch('setUser')
+                })
+            }
+        })
+        .catch((error) => {
+            dispatch('alert/error', error.message);
+        })
+    
+        
+      
+    },
+    async setUser ({ commit }) {
+        const { data } = await apolloClient.query({ query: LOGGED_IN_USER })
+        .then((data)=>{
+            if(data){
+                commit('LOGIN_USER', data.me)
+            }
+        })
+        .catch((error)=>{
+
+        })
+    },
 }
 export default{
     state,

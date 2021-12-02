@@ -14,7 +14,6 @@
 							type="text"
 							:required="true"
 							v-model="loginDetails.email"
-							:value="loginDetails.email"
 							@input="userInput"
 						/>
 						<base-input
@@ -23,7 +22,6 @@
 							type="text"
 							:required="true"
 							v-model="loginDetails.password"
-							:value="loginDetails.password"
 							@input="passwordInput"
 						/>
 						<div class="button-row">
@@ -56,46 +54,45 @@
 
 <script>
 import SocialLinks from '@/components/user/layout/SocialLinks.vue';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 export default {
 	data() {
 		return {
 			loginDetails: {
-				email: 'ddd',
-				password: 'ddd',
+				email: 'ciprian1',
+				password: '123321',
 			},
 			title: 'Welcome',
 			subTitle:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
 		};
 	},
+	computed:{
+		...mapState({
+			alert: state => state.alert
+		})
+	},
+	mounted:()=>{
+		console.log(alert);
+	},
 	methods: {
 		...mapActions(['login']),
 		userLogin: function () {
-			// this.$store.dispatch('login', this.loginDetails)
-			// {
-			// 	email: this.loginDetails.email,
-			// 	password: this.loginDetails.password
-			// });
-			this.login(this.loginDetails).then(() =>
-				this.$router.push('/user/')
-			);
+			this.login(this.loginDetails)
+			.then(()=>{
+				console.log(this.$store.state);
+			})
+			.catch((error)=>{
+				console.log(error.message);
+			});
 		},
 		userInput(data) {
 			this.loginDetails.email = data;
-			console.log('user', this.loginDetails.email);
 		},
 		passwordInput(data) {
 			this.loginDetails.password = data;
-			console.log('password', this.loginDetails.password);
 		},
 	},
-	// mounted() {
-	// 	console.log('v', this.loginDetails.email);
-	// },
-	// updated() {
-	// 	console.log('v', this.loginDetails.email);
-	// },
 	components: { SocialLinks },
 };
 </script>
