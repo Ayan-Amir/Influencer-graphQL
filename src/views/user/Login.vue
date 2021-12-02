@@ -78,7 +78,7 @@ export default {
 			// 	password: this.loginDetails.password
 			// });
 			this.login(this.loginDetails).then(() =>
-				this.$router.push('/dashboard')
+				this.$router.push('/user/')
 			);
 		},
 		userInput(data) {
