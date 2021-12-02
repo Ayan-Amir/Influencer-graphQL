@@ -13,7 +13,7 @@
 							placeholder="Username"
 							type="text"
 							:required="true"
-							:v-model="loginDetails.email"
+							v-model="loginDetails.email"
 							:value="loginDetails.email"
 							@input="userInput"
 						/>
