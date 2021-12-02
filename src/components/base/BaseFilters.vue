@@ -90,6 +90,9 @@ export default {
 			this.value.push(tag);
 		},
 	},
+	updated() {
+		// console.log('s', this.search);
+	},
 };
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
@@ -192,6 +195,10 @@ export default {
 				font-weight: 700;
 			}
 			&__tag-icon {
+				line-height: 20px;
+				@media screen and (max-width: 991px) {
+					line-height: 17px;
+				}
 				&:after {
 					color: #fff;
 				}

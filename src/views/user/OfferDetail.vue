@@ -23,7 +23,7 @@
 						</div>
 						<p>
 							{{ offer.company }}
-							<span>{{ offer.location.name }}</span>
+							<span>{{ locations.name }}</span>
 						</p>
 					</div>
 					<div
@@ -61,6 +61,7 @@ export default {
 		return {
 			offer: [],
 			id: 0,
+			locations: [],
 		};
 	},
 	components: { OfferDetails },
@@ -74,6 +75,15 @@ export default {
 				return {
 					id: parseInt(this.$route.params.id),
 				};
+			},
+		},
+	},
+	watch: {
+		offer: {
+			handler() {
+				if (this.offer.location) {
+					this.locations = this.offer.location;
+				}
 			},
 		},
 	},

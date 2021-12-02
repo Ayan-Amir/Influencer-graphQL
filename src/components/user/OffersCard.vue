@@ -11,9 +11,9 @@
 			}}</span>
 		</div>
 		<div class="offerCard__detail">
-			<div class="d-flex justify-content-between">
+			<div class="d-flex justify-content-between align-items-center">
 				<a href="#" class="offerCard__detail--title">{{
-					offer.description
+					offer.name
 				}}</a>
 				<div class="offerCard__detail--brandLogo">
 					<img
@@ -75,8 +75,8 @@ export default {
 			&:before {
 				content: '';
 				position: absolute;
-				width: 20px;
-				height: 20px;
+				width: 18px;
+				height: 18px;
 				background-image: url("data:image/svg+xml,%3Csvg id='time' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath id='Path_115' data-name='Path 115' d='M7.992,0A8,8,0,1,0,16,8,8,8,0,0,0,7.992,0ZM8,14.4A6.4,6.4,0,1,1,14.4,8,6.4,6.4,0,0,1,8,14.4ZM8.4,4H7.2V8.8l4.2,2.52.6-.984L8.4,8.2Z' fill='%23fff'/%3E%3C/svg%3E");
 				background-repeat: no-repeat;
 				left: -25px;

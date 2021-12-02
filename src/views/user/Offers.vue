@@ -60,7 +60,6 @@ export default {
 						data.data.offersFilters.default.locations.map(
 							(item) => item.id
 						);
-					// console.log('new location', newLocation);
 
 					let newCategory =
 						data.data.offersFilters.default.categories.map(
@@ -110,10 +109,9 @@ export default {
 			}
 		},
 		categoryValue(data) {
-			this.categories = data;
-			console.log(this.categories);
+			this.filterCategories = data;
 
-			let newFilter = this.categories.map((item) => item.id);
+			let newFilter = this.filterCategories.map((item) => item.id);
 
 			if (this.filterCategories.length == 0) {
 				this.filterCategories = null;
@@ -121,9 +119,9 @@ export default {
 				this.filterCategories = newFilter;
 			}
 		},
-		searchvalue(e) {
-			this.search = e;
-			// console.log(e);
+		searchvalue(data) {
+			this.search = data;
+			console.log(this.search);
 		},
 
 		infiniteHandler($state) {
