@@ -13,7 +13,9 @@
 							placeholder="Username"
 							type="text"
 							:required="true"
-							v-model="loginDetails.email"
+							:v-model="loginDetails.email"
+							:value="loginDetails.email"
+							@input="userInput"
 						/>
 						<base-input
 							className="email"
@@ -21,6 +23,8 @@
 							type="text"
 							:required="true"
 							v-model="loginDetails.password"
+							:value="loginDetails.password"
+							@input="passwordInput"
 						/>
 						<div class="button-row">
 							<button
@@ -56,26 +60,42 @@ import { mapActions } from 'vuex';
 export default {
 	data() {
 		return {
-			loginDetails:{
-				email:'ddd',
-				password: 'ddd'
+			loginDetails: {
+				email: 'ddd',
+				password: 'ddd',
 			},
 			title: 'Welcome',
-			subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
+			subTitle:
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
 		};
 	},
 	methods: {
 		...mapActions(['login']),
-		userLogin: function() {
+		userLogin: function () {
 			// this.$store.dispatch('login', this.loginDetails)
 			// {
 			// 	email: this.loginDetails.email,
 			// 	password: this.loginDetails.password
 			// });
-			this.login(this.loginDetails)
-        		.then(() => this.$router.push('/dashboard'))
+			this.login(this.loginDetails).then(() =>
+				this.$router.push('/dashboard')
+			);
+		},
+		userInput(data) {
+			this.loginDetails.email = data;
+			console.log('user', this.loginDetails.email);
+		},
+		passwordInput(data) {
+			this.loginDetails.password = data;
+			console.log('password', this.loginDetails.password);
 		},
 	},
+	// mounted() {
+	// 	console.log('v', this.loginDetails.email);
+	// },
+	// updated() {
+	// 	console.log('v', this.loginDetails.email);
+	// },
 	components: { SocialLinks },
 };
 </script>

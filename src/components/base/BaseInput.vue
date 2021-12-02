@@ -9,7 +9,8 @@
 				class="form-control"
 				:placeholder="placeholder"
 				:state="getValidationState(validationContext)"
-				v-model="value"
+				:value="value"
+				@input="input"
 				autocomplete="off"
 			></b-form-input>
 			<b-form-invalid-feedback
@@ -26,15 +27,14 @@ export default {
 		placeholder: String,
 		type: String,
 		required: Boolean,
-	},
-	data() {
-		return {
-			value: '',
-		};
+		value: String,
 	},
 	methods: {
 		getValidationState({ dirty, validated, valid = null }) {
 			return dirty || validated ? valid : null;
+		},
+		input(value) {
+			this.$emit('input', value);
 		},
 	},
 	mounted() {

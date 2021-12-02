@@ -45,7 +45,7 @@ export default {
 			offers: [],
 			filterLocations: [],
 			filterCategories: [],
-			saerch: '',
+			search: '',
 			page: 1,
 			selected: '',
 			norecord: false,
@@ -121,7 +121,6 @@ export default {
 		},
 		searchvalue(data) {
 			this.search = data;
-			console.log(this.search);
 		},
 
 		infiniteHandler($state) {
@@ -147,9 +146,6 @@ export default {
 			});
 			$state.loaded();
 		},
-	},
-	updated() {
-		// console.log('value', this.filterLocations.length);
 	},
 };
 </script>
