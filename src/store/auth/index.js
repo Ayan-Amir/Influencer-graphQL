@@ -1,4 +1,4 @@
-import { onLogin, apolloClient } from '@/vue-apollo'
+import { onLogin, apolloClient, onLogout } from '@/vue-apollo'
 import { LOGIN_USER } from '@/graphql/mutations'
 import {LOGGED_IN_USER} from '@/graphql/query'
 import { getDefaultValues } from '@apollo/client/utilities'
@@ -45,21 +45,24 @@ const actions = {
         .catch((error) => {
             dispatch('alert/error', error.message);
         })
-    
-        
-      
     },
     async setUser ({ commit }) {
         const { data } = await apolloClient.query({ query: LOGGED_IN_USER })
-        .then((data)=>{
-            if(data){
-                commit('LOGIN_USER', data.me)
-            }
-        })
-        .catch((error)=>{
+        commit('LOGIN_USER', data.me)
+        // .then((data)=>{
+        //     if(data){
+        //         commit('LOGIN_USER', data.me)
+        //     }
+        // })
+        // .catch((error)=>{
 
-        })
+        // })
     },
+    async logOut ({ commit, dispatch }) {
+        console.log("enter here");
+        commit('LOGOUT_USER')
+        onLogout(apolloClient)
+    }
 }
 export default{
     state,

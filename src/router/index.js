@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import LoginOrRegister from "@/layouts/LoginOrRegister.vue";
 import DashboardLayout from "@/layouts/DashboardLayout.vue";
 import user from "@/views/user/router";
+import store from '../store'
+// import {MESSAGE} from '@/_helpers/alertMessages';
 Vue.use(VueRouter);
 
 const routes = [
@@ -62,9 +64,44 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes,
-});
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes,
+  });
+
+router.beforeEach((to, from, next) => {
+  // Check if the user is logged in
+
+    const isLoggedIn = store.getters.isAuthenticated
+    if(store.getters.user){
+        const userType = store.getters.user.type;
+    }
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (!isLoggedIn) {
+            store.dispatch('logOut')
+            
+            next({
+                path: 'user/login',
+                query: { redirect: to.fullPath }
+            })
+            store.dispatch('alert/error', "Please login to continue.")
+        }
+        else if(!userType==record.meta.userType)
+        {
+            store.dispatch('logOut')
+            store.dispatch('alert/error', "You aren't authorized for this request.")
+            next({
+                path: '/login',
+                query: { redirect: to.fullPath }
+            })
+        } else {
+            next()
+        }
+    } else {
+        next()
+    }
+})
+
+
 
 export default router;

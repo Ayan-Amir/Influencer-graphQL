@@ -2,6 +2,7 @@ export default [
 	{
 		path: "",
 		component: () => import("@/views/user/Dashboard.vue"),
+		meta: { requiresAuth: true, userType: "0" }
 	},
 	{
 		path: "offers",

@@ -6,6 +6,7 @@
 				<p class="subTitle">
 					{{ subTitle }}
 				</p>
+				<div v-if="alert.message" :class="'alert ' + alert.type">{{alert.message}}</div>
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
 					<b-form @submit.stop.prevent="handleSubmit(userLogin)">
 						<base-input
@@ -55,11 +56,12 @@
 <script>
 import SocialLinks from '@/components/user/layout/SocialLinks.vue';
 import { mapActions, mapGetters, mapState } from 'vuex';
+import alert from '@/mixin/alert';
 export default {
 	data() {
 		return {
 			loginDetails: {
-				email: 'ciprian1',
+				email: 'ciprian',
 				password: '123321',
 			},
 			title: 'Welcome',
@@ -67,20 +69,20 @@ export default {
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
 		};
 	},
+    mixins:['alert'],
 	computed:{
 		...mapState({
 			alert: state => state.alert
 		})
-	},
-	mounted:()=>{
-		console.log(alert);
 	},
 	methods: {
 		...mapActions(['login']),
 		userLogin: function () {
 			this.login(this.loginDetails)
 			.then(()=>{
-				console.log(this.$store.state);
+				if(this.$store.state.auth.authStatus){
+                    this.$router.push('/user')
+                }
 			})
 			.catch((error)=>{
 				console.log(error.message);
