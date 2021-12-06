@@ -63,13 +63,14 @@
 				</div>
 			</div>
 		</div>
-		<offer-details :details="offer.details" />
+		<Details :details="offer.details" />
 	</div>
 </template>
 
 <script>
 import { OFFER_DETAILS } from '@/graphql/query';
-import OfferDetails from '@/components/user/OfferDetails.vue';
+import Details from '@/components/user/common/Details.vue';
+
 export default {
 	data() {
 		return {
@@ -78,7 +79,7 @@ export default {
 			locations: [],
 		};
 	},
-	components: { OfferDetails },
+	components: { Details },
 	created() {
 		this.id = parseInt(this.$route.params.id);
 	},

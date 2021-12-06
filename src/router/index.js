@@ -48,9 +48,13 @@ const routes = [
         component: () => import("@/views/user/register/ProfilePhoto.vue"),
       },
       {
-        path: "payment-details",
-        component: () => import("@/views/user/register/PaymentDetails.vue"),
+        path: "connect-social",
+        component: () => import("@/views/user/register/ConnectSocial.vue"),
       },
+      // {
+      //   path: "payment-details",
+      //   component: () => import("@/views/user/register/PaymentDetails.vue"),
+      // },
       {
         path: "password",
         component: () => import("@/views/user/register/Password.vue"),

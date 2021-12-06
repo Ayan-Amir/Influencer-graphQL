@@ -57,7 +57,7 @@ export default {
 	},
 	methods: {
 		onSubmit() {
-			this.$router.push('payment-details');
+			this.$router.push('connect-social');
 		},
 	},
 };

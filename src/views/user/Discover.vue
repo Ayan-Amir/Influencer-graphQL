@@ -1,89 +1,77 @@
 <template>
-  <div class="discover container">
-    <base-filters />
-    <discover-card v-for="card in cardData" :key="card.index" :card="card" />
-  </div>
+	<div class="discover container">
+		<base-filters
+			v-if="$apollo.data.campaigns"
+			:filters="campaigns"
+			@locationvalue="locationValue"
+			@categoryvalue="categoryValue"
+			@searchvalue="searchvalue"
+		/>
+		<discover-card
+			v-for="campaign in campaigns"
+			:key="campaign.id"
+			:campaign="campaign"
+			:isApply="true"
+		/>
+	</div>
 </template>
 
 <script>
-import BaseFilters from "@/components/base/BaseFilters.vue";
-import DiscoverCard from "@/components/user/DiscoverCard.vue";
-
+import DiscoverCard from '@/components/user/DiscoverCard.vue';
+import { CAMPAIGNS } from '@/graphql/query';
 export default {
-  data() {
-    return {
-      cardData: [
-        {
-          index: 0,
-          icon: "brand-logo.svg",
-          title: "Palas Mall",
-          subTitle: "Nullam convallis sollicitudin",
-          btn: "Apply Now",
-          isApply: true,
-        },
-        {
-          index: 1,
-          icon: "brand-logo.svg",
-          title: "5 TO GO",
-          subTitle: "Nullam convallis sollicitudin",
-          btn: "Apply Now",
-          isApply: true,
-        },
-        {
-          index: 2,
-          icon: "brand-logo.svg",
-          title: "Shop Online",
-          subTitle: "Nullam convallis sollicitudin",
-          btn: "Apply Now",
-          isApply: true,
-        },
-        {
-          index: 3,
-          icon: "brand-logo.svg",
-          title: "Pizza Papa",
-          subTitle: "Nullam convallis sollicitudin",
-          btn: "Apply Now",
-          isApply: true,
-        },
-        {
-          index: 4,
-          icon: "brand-logo.svg",
-          title: "Gsm Iasi",
-          subTitle: "Nullam convallis sollicitudin",
-          btn: "Apply Now",
-          isApply: true,
-        },
-        {
-          index: 5,
-          icon: "brand-logo.svg",
-          title: "Beer Zone",
-          subTitle: "Nullam convallis sollicitudin",
-          btn: "Apply Now",
-          isApply: true,
-        },
-        {
-          index: 6,
-          icon: "brand-logo.svg",
-          title: "Liria",
-          subTitle: "Nullam convallis sollicitudin",
-          btn: "Apply Now",
-          isApply: true,
-        },
-        {
-          index: 7,
-          icon: "brand-logo.svg",
-          title: "Camping",
-          subTitle: "Nullam convallis sollicitudin",
-          btn: "Apply Now",
-          isApply: true,
-        },
-      ],
-    };
-  },
-  components: {
-    BaseFilters,
-    DiscoverCard,
-  },
+	data() {
+		return {
+			campaigns: [],
+			filterLocations: [],
+			filterCategories: [],
+			search: '',
+			page: 1,
+			selected: '',
+		};
+	},
+	components: {
+		DiscoverCard,
+	},
+	apollo: {
+		campaigns: {
+			query: CAMPAIGNS,
+			variables() {
+				return {
+					page: this.page,
+					// locations: this.filterLocations,
+					// categories: this.filterCategories,
+					// search: this.search,
+				};
+			},
+		},
+	},
+	methods: {
+		locationValue(data) {
+			this.filterLocations = data;
+
+			let newFilter = this.filterLocations.map((item) => item.id);
+			if (this.filterLocations.length == 0) {
+				this.filterLocations = null;
+			} else {
+				this.filterLocations = newFilter;
+			}
+		},
+		categoryValue(data) {
+			this.filterCategories = data;
+
+			let newFilter = this.filterCategories.map((item) => item.id);
+
+			if (this.filterCategories.length == 0) {
+				this.filterCategories = null;
+			} else {
+				this.filterCategories = newFilter;
+			}
+		},
+		searchvalue(data) {
+			this.search = data;
+		},
+	},
 };
 </script>
 

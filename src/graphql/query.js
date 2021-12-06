@@ -120,3 +120,30 @@ query offer($id: Int!) {
 		}
 	}
 }`
+
+export const CAMPAIGNS = gql`
+query campaign($page: Int){
+	campaigns(page: $page) {
+		id
+	  	name
+	  	logo
+	  	type
+	  	company
+	  	category{
+			id
+			name
+	  	}
+	  	location{
+			id
+			name
+	  	}
+	  	price
+	  	description
+	  	image
+	  	details{
+			title
+			description
+			gallery
+	  	}
+	}
+}`
