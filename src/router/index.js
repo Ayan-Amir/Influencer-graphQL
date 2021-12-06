@@ -73,9 +73,12 @@ router.beforeEach((to, from, next) => {
   // Check if the user is logged in
 
     const isLoggedIn = store.getters.isAuthenticated
-    if(store.getters.user){
-        const userType = store.getters.user.type;
-    }
+    //console.log(isLoggedIn);
+    let userType = 0;
+    // console.log(store.getters.user);
+    // if(store.getters.user){
+    //     userType = store.getters.user.type;
+    // }
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (!isLoggedIn) {
             store.dispatch('logOut')
@@ -86,7 +89,7 @@ router.beforeEach((to, from, next) => {
             })
             store.dispatch('alert/error', "Please login to continue.")
         }
-        else if(!userType==record.meta.userType)
+        else if(!userType==to.meta.userType)
         {
             store.dispatch('logOut')
             store.dispatch('alert/error', "You aren't authorized for this request.")

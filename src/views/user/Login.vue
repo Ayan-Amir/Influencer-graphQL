@@ -80,9 +80,7 @@ export default {
 		userLogin: function () {
 			this.login(this.loginDetails)
 			.then(()=>{
-				if(this.$store.state.auth.authStatus){
-                    this.$router.push('/user')
-                }
+				this.$router.push('/user')
 			})
 			.catch((error)=>{
 				console.log(error.message);
