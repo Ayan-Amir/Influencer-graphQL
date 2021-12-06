@@ -5,7 +5,9 @@
 			<h2 v-html="detail.description"></h2>
 			<gallery v-if="detail.gallery" :gallery="detail.gallery" />
 		</div>
-		<router-link to="#" class="btn btn-primary">Request offer </router-link>
+		<div class="button-row">
+			<router-link to="#" class="btn btn-primary">Apply Now</router-link>
+		</div>
 	</div>
 </template>
 
@@ -31,8 +33,10 @@ export default {
 			margin: 0;
 		}
 	}
-	a {
-		margin-top: rem(24px);
+	.button-row {
+		@media screen and (max-width: 575px) {
+			text-align: center;
+		}
 	}
 }
 </style>

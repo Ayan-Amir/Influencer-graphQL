@@ -1,6 +1,6 @@
 <template>
 	<div class="offerDetail container" v-if="$apollo.data">
-		<div class="row col-gap-40 align-items-center mb-3">
+		<div class="row align-items-center mb-3">
 			<div class="col-md-6">
 				<div class="image">
 					<img
@@ -11,8 +11,22 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<h1>{{ offer.name }}</h1>
-				<div class="offerDetail__wrapper">
+				<div class="pageHead">
+					<div class="d-flex align-items-center">
+						<div class="pageHead__icon">
+							<img
+								:src="`${$config.IMG_HOST}/55x55/${offer.logo}`"
+								alt=""
+								class="img-fluid"
+							/>
+						</div>
+						<h1>{{ offer.name }}</h1>
+					</div>
+
+					<span class="pageHead__price"> $250 </span>
+				</div>
+				<base-social-link />
+				<!-- <div class="offerDetail__wrapper">
 					<div class="offerDetail__purchase">
 						<div class="offerDetail__purchase--brandLogo">
 							<img
@@ -33,11 +47,11 @@
 						Ends in: {{ offer.expirationDate }}
 						<span>{{ offer.left }} Left</span>
 					</div>
-				</div>
-				<span>{{ offer.description }}</span>
+				</div> -->
+				<p class="desc">{{ offer.description }}</p>
 				<div class="requestOffer">
 					<router-link to="#" class="btn btn-primary large"
-						>Request offer
+						>Apply Now
 					</router-link>
 					<div
 						class="requestOffer__time"
@@ -91,19 +105,38 @@ export default {
 </script>
 
 <style lang="scss">
-.btn.btn-primary {
-	min-height: 40px;
-	width: 142px;
-	padding-top: 6px;
-	padding-bottom: 6px;
-	font-size: rem(14px);
-	font-weight: 700;
-	border-radius: 8px;
-}
+// .btn.btn-primary {
+// 	min-height: 40px;
+// 	width: 142px;
+// 	padding-top: 6px;
+// 	padding-bottom: 6px;
+// 	font-size: rem(14px);
+// 	font-weight: 700;
+// 	border-radius: 8px;
+// }
 </style>
 
 <style lang="scss" scoped>
 .offerDetail {
+	.pageHead {
+		margin-bottom: rem(20px);
+		&__icon {
+			margin-right: 10px;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			overflow: hidden;
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+	.desc {
+		font-size: rem(15px);
+		color: #77838f;
+		font-family: $secondary-font;
+	}
 	&__wrapper {
 		display: flex;
 		align-items: center;
@@ -129,22 +162,12 @@ export default {
 		}
 		img {
 			height: 100%;
+			width: 100%;
 		}
 	}
 	&__purchase {
 		display: flex;
 		align-items: center;
-		&--brandLogo {
-			margin-right: 10px;
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
-			overflow: hidden;
-			img {
-				height: 100%;
-				width: 100%;
-			}
-		}
 		p {
 			font-size: rem(18px);
 			font-weight: 500;
@@ -169,7 +192,7 @@ export default {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin-top: rem(18px);
+		margin-top: rem(22px);
 		&__time {
 			position: relative;
 			font-family: $primary-font;
@@ -201,7 +224,12 @@ export default {
 			padding-bottom: 6px;
 			font-size: rem(14px);
 			font-weight: 700;
-			border-radius: 8px;
+			border-radius: 6px;
+		}
+	}
+	/deep/ {
+		.socialLinks {
+			margin-bottom: rem(18px);
 		}
 	}
 }
