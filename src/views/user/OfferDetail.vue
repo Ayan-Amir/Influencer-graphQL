@@ -11,21 +11,6 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<!-- <div class="pageHead">
-					<div class="d-flex align-items-center">
-						<div class="pageHead__icon">
-							<img
-								:src="`${$config.IMG_HOST}/55x55/${offer.logo}`"
-								alt=""
-								class="img-fluid"
-							/>
-						</div>
-						<h1>{{ offer.name }}</h1>
-					</div>
-
-					<span class="pageHead__price"> $250 </span>
-				</div>
-				<base-social-link /> -->
 				<div class="offerDetail__wrapper">
 					<div class="offerDetail__purchase">
 						<div class="offerDetail__purchase--brandLogo">

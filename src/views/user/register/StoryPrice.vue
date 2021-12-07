@@ -40,9 +40,7 @@
 </template>
 
 <script>
-import BaseTouchSpin from '../../../components/base/BaseTouchSpin.vue';
 export default {
-	components: { BaseTouchSpin },
 	data() {
 		return {
 			title: 'Modify Story Price',

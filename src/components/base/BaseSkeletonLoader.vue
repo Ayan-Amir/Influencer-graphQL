@@ -37,7 +37,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="skeleton__offer" v-if="this.type == 'notification'">
+		<div class="skeleton__notification" v-if="this.type == 'notification'">
 			<div class="row">
 				<div
 					class="col-md-12"
@@ -60,16 +60,63 @@
 									:width="350"
 									:height="15"
 								/>
-								<br />
+								<span>
+									<vue-skeleton-loader
+										animation="wave"
+										:width="0"
+										:height="5"
+									/>
+								</span>
 								<vue-skeleton-loader
 									animation="wave"
 									:width="150"
 									:height="15"
 								/>
-								<!-- <p>{{ notification.title }}</p> -->
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div class="skeleton__discover" v-if="this.type == 'discover'">
+			<div class="card discoverCard">
+				<div>
+					<div class="discoverCard__image">
+						<vue-skeleton-loader
+							:width="450"
+							:height="200"
+							:rounded="true"
+							animation="wave"
+						/>
+					</div>
+					<div class="discoverCard__title">
+						<vue-skeleton-loader
+							animation="wave"
+							:width="150"
+							:height="20"
+						/>
+						<span>
+							<vue-skeleton-loader
+								animation="wave"
+								:width="0"
+								:height="5"
+							/>
+						</span>
+						<vue-skeleton-loader
+							animation="wave"
+							:width="350"
+							:height="15"
+						/>
+					</div>
+				</div>
+				<div v-if="isApply">
+					<vue-skeleton-loader
+						:width="110"
+						:height="40"
+						animation="wave"
+						:rounded="true"
+						:radius="8"
+					/>
 				</div>
 			</div>
 		</div>
@@ -85,6 +132,7 @@ export default {
 			type: Number,
 			default: 3,
 		},
+		isApply: Boolean,
 	},
 	components: {
 		VueSkeletonLoader,
@@ -215,6 +263,86 @@ export default {
 				@include truncate(1);
 				span {
 					font-weight: 500;
+				}
+			}
+		}
+	}
+}
+
+.discoverCard {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: rem(15px);
+	border-radius: 8px !important;
+	margin-bottom: rem(15px);
+	> div {
+		display: flex;
+		align-items: center;
+	}
+	&__image {
+		width: 50px;
+		height: 50px;
+		min-width: 50px;
+		border-radius: 50%;
+		overflow: hidden;
+		img {
+			height: 100%;
+			width: 100%;
+		}
+	}
+	&__title {
+		font-size: rem(18px);
+		font-weight: 500;
+		margin-left: rem(18px);
+		color: var(--textPrimary);
+		font-family: $secondary-font;
+		span {
+			display: block;
+			font-size: rem(14px);
+			font-weight: 400;
+			color: var(--textSecondary);
+			@include truncate(2);
+		}
+	}
+	.btn.btn-primary {
+		margin-left: rem(20px);
+	}
+
+	&__price {
+		margin: 0;
+		font-size: 14px;
+		color: var(--primary);
+		font-weight: 700;
+		position: relative;
+		margin-right: rem(42px);
+		padding-left: rem(16px);
+		font-family: $secondary-font;
+		&::before {
+			position: absolute;
+			content: '';
+			height: 24px;
+			width: 24px;
+			background-image: url(../../assets/images/icons/arrow.png);
+			background-repeat: no-repeat;
+			top: 50%;
+			transform: translateY(-50%);
+			right: -25px;
+			transition: 0.5s ease all;
+		}
+		@media screen and (max-width: 1024px) {
+			margin-right: rem(30px);
+			&::before {
+				right: -35px;
+			}
+		}
+	}
+	@media screen and (min-width: 1025px) {
+		&:hover {
+			.discoverCard__price {
+				&::before {
+					right: -35px;
 				}
 			}
 		}

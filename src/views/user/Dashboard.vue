@@ -1,106 +1,86 @@
 <template>
-	<div>
-		<div v-if="$apollo.loading">
-			<base-skeleton-loader
-				type="dashboard"
-				:count="8"
-			></base-skeleton-loader>
-		</div>
-		<div class="dashboard container">
-			<div class="row">
-				<div class="col-lg-4">
-					<profile-card />
-					<div class="dashboard__earningStatistic">
-						<p>See earnings statistics</p>
+	<div class="dashboard container">
+		<div class="row">
+			<div class="col-lg-4">
+				<profile-card />
+				<div class="dashboard__earningStatistic">
+					<p>See earnings statistics</p>
+				</div>
+				<div class="dashboard__statistic">
+					<div class="dashboard__statistic--counter">
+						<base-progress-circle
+							:progress="complete"
+							color="#9637F1"
+						/>
+						Completion
 					</div>
-					<div class="dashboard__statistic">
-						<div class="dashboard__statistic--counter">
-							<base-progress-circle
-								:progress="complete"
-								color="#9637F1"
-							/>
-							Completion
-						</div>
-						<div class="dashboard__statistic--counter">
-							<base-progress-circle
-								:progress="response"
-								color="#57B894"
-							/>
-							Respone Rate
-						</div>
-						<div class="dashboard__statistic--counter">
-							<base-progress-circle
-								:progress="onTime"
-								color="#F70101"
-							/>
-							Job Ontime
-						</div>
+					<div class="dashboard__statistic--counter">
+						<base-progress-circle
+							:progress="response"
+							color="#57B894"
+						/>
+						Respone Rate
+					</div>
+					<div class="dashboard__statistic--counter">
+						<base-progress-circle
+							:progress="onTime"
+							color="#F70101"
+						/>
+						Job Ontime
 					</div>
 				</div>
-				<div class="col-lg-8">
-					<div>
-						<ul class="statesLinks">
-							<li class="statesLinks__item">
-								<a
-									class="statesLinks__item--link"
-									href="javascript:void(0)"
-									@click="handleTab('active')"
-									>Active</a
-								>
-							</li>
-							<li class="statesLinks__item">
-								<a
-									class="statesLinks__item--link"
-									href="javascript:void(0)"
-									@click="handleTab('revision')"
-									>Revision</a
-								>
-							</li>
-							<li class="statesLinks__item">
-								<a
-									class="statesLinks__item--link"
-									href="javascript:void(0)"
-									@click="handleTab('complete')"
-									>Completed</a
-								>
-							</li>
-							<li class="statesLinks__item">
-								<a
-									class="statesLinks__item--link active"
-									href="javascript:void(0)"
-									@click="handleTab('pending')"
-									>Pending</a
-								>
-							</li>
-						</ul>
-						<div v-if="norecord">No Record Found</div>
-						<div class="campaigns" v-else>
-							<compaign-card
-								v-for="campaign in myCampaignsSubscription"
-								:key="campaign.id"
-								:campaign="campaign"
-								:isApply="false"
-								:islink="true"
-							/>
-						</div>
-						<!-- <b-tabs content-class="mt-3">
-						<b-tab title="Active" @click="handleTab('active')"
-							><p>I'm the Active tab</p></b-tab
-						>
-						<b-tab title="Revision" @click="handleTab('revision')"
-							><p>I'm the Revision tab</p></b-tab
-						>
-						<b-tab title="Completed" @click="handleTab('complete')">
-							<p>I'm the Completed tab</p>
-						</b-tab>
-						<b-tab
-							title="Pending"
-							@click="handleTab('pending')"
-							active
-						>
-							
-						</b-tab>
-					</b-tabs> -->
+			</div>
+			<div class="col-lg-8">
+				<div>
+					<ul class="statesLinks">
+						<li class="statesLinks__item">
+							<a
+								class="statesLinks__item--link"
+								href="javascript:void(0)"
+								@click="state = 'active'"
+								>Active</a
+							>
+						</li>
+						<li class="statesLinks__item">
+							<a
+								class="statesLinks__item--link"
+								href="javascript:void(0)"
+								@click="state = 'revision'"
+								>Revision</a
+							>
+						</li>
+						<li class="statesLinks__item">
+							<a
+								class="statesLinks__item--link"
+								href="javascript:void(0)"
+								@click="state = 'complete'"
+								>Completed</a
+							>
+						</li>
+						<li class="statesLinks__item">
+							<a
+								class="statesLinks__item--link active"
+								href="javascript:void(0)"
+								@click="state = 'pending'"
+								>Pending</a
+							>
+						</li>
+					</ul>
+					<div v-if="$apollo.loading">
+						<base-skeleton-loader
+							type="discover"
+							:count="8"
+						></base-skeleton-loader>
+					</div>
+					<div v-if="norecord">No Record Found</div>
+					<div class="campaigns" v-else>
+						<compaign-card
+							v-for="campaign in myCampaignsSubscription"
+							:key="campaign.id"
+							:campaign="campaign"
+							:isApply="false"
+							:islink="true"
+						/>
 					</div>
 				</div>
 			</div>
@@ -164,11 +144,6 @@ export default {
 					this.norecord = false;
 				}
 			},
-		},
-	},
-	methods: {
-		handleTab: function (data) {
-			this.state = data;
 		},
 	},
 	mounted() {
@@ -261,6 +236,9 @@ export default {
 			margin-right: rem(13px);
 			border-radius: 8px;
 			overflow: hidden;
+			@media screen and (max-width: 575px) {
+				width: 23%;
+			}
 			&--link {
 				display: flex;
 				align-items: center;
@@ -276,6 +254,9 @@ export default {
 				&.active {
 					background: var(--primary);
 					color: #fff;
+				}
+				@media screen and (max-width: 575px) {
+					min-width: auto;
 				}
 			}
 			&:hover {

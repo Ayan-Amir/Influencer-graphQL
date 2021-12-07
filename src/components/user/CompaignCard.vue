@@ -15,7 +15,7 @@
 		</div>
 		<router-link
 			v-if="isApply"
-			:to="`discover-detail/${campaign.id}/${friendURL(campaign.name)}`"
+			:to="`campaign/${campaign.id}/${friendURL(campaign.name)}`"
 			class="btn btn-primary small"
 			>Apply Now</router-link
 		>
