@@ -182,6 +182,7 @@ export default {
 				min-height: 42px;
 				background: #fff;
 				padding-right: 27px;
+				padding-top: 10px;
 			}
 			&__tag {
 				position: relative;

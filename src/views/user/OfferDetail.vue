@@ -11,7 +11,7 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="pageHead">
+				<!-- <div class="pageHead">
 					<div class="d-flex align-items-center">
 						<div class="pageHead__icon">
 							<img
@@ -25,8 +25,8 @@
 
 					<span class="pageHead__price"> $250 </span>
 				</div>
-				<base-social-link />
-				<!-- <div class="offerDetail__wrapper">
+				<base-social-link /> -->
+				<div class="offerDetail__wrapper">
 					<div class="offerDetail__purchase">
 						<div class="offerDetail__purchase--brandLogo">
 							<img
@@ -47,7 +47,7 @@
 						Ends in: {{ offer.expirationDate }}
 						<span>{{ offer.left }} Left</span>
 					</div>
-				</div> -->
+				</div>
 				<p class="desc">{{ offer.description }}</p>
 				<div class="requestOffer">
 					<router-link to="#" class="btn btn-primary large"
@@ -169,6 +169,17 @@ export default {
 	&__purchase {
 		display: flex;
 		align-items: center;
+		&--brandLogo {
+			margin-right: 10px;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			overflow: hidden;
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
 		p {
 			font-size: rem(18px);
 			font-weight: 500;
@@ -228,10 +239,10 @@ export default {
 			border-radius: 6px;
 		}
 	}
-	/deep/ {
-		.socialLinks {
-			margin-bottom: rem(18px);
-		}
-	}
+	// /deep/ {
+	// 	.socialLinks {
+	// 		margin-bottom: rem(18px);
+	// 	}
+	// }
 }
 </style>
