@@ -1,14 +1,14 @@
 <template>
-	<div class="card discoverCard">
+	<div class="card campaignCard">
 		<div>
-			<div class="discoverCard__image">
+			<div class="campaignCard__image">
 				<img
 					:src="`${$config.IMG_HOST}/304x206/${campaign.image}`"
 					alt=""
 					class="img-fluid"
 				/>
 			</div>
-			<div class="discoverCard__title">
+			<div class="campaignCard__title">
 				{{ campaign.name }}
 				<span>{{ campaign.description }}</span>
 			</div>
@@ -20,7 +20,7 @@
 			>Apply Now</router-link
 		>
 		<p
-			class="discoverCard__price"
+			class="campaignCard__price"
 			v-if="campaign.price != null && isApply == false"
 		>
 			{{ campaign.price }}
@@ -47,7 +47,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.discoverCard {
+.campaignCard {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -57,7 +57,7 @@ export default {
 	margin-bottom: rem(15px);
 	> div {
 		display: flex;
-		align-items: center;
+		// align-items: center;
 	}
 	&__image {
 		width: 50px;
@@ -78,6 +78,7 @@ export default {
 		font-family: $secondary-font;
 		span {
 			display: block;
+			margin-top: 6px;
 			font-size: rem(14px);
 			font-weight: 400;
 			color: var(--textSecondary);
@@ -118,7 +119,7 @@ export default {
 	}
 	@media screen and (min-width: 1025px) {
 		&:hover {
-			.discoverCard__price {
+			.campaignCard__price {
 				&::before {
 					right: -35px;
 				}

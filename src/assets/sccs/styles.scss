@@ -5,7 +5,9 @@ p {
 	font-weight: 400;
 	line-height: 1.4;
 }
-
+.dashboard {
+	min-height: calc(100vh - 98px);
+}
 .contentWrapper {
 	padding-top: 130px;
 	padding-bottom: rem(30px);

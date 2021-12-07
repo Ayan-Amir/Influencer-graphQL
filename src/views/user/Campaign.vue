@@ -27,7 +27,9 @@
 							</div>
 							<h1>{{ campaign.name }}</h1>
 						</div>
-						<span class="pageHead__price"> $250 </span>
+						<span class="pageHead__price">
+							{{ campaign.price }}
+						</span>
 					</div>
 					<base-social-link />
 					<p class="desc">{{ campaign.description }}</p>

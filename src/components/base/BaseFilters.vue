@@ -153,7 +153,8 @@ export default {
 		//multiSelect
 
 		.multiselect {
-			width: 200px;
+			min-width: 200px;
+			width: auto;
 			margin-right: rem(20px);
 			&__select {
 				width: 30px;
@@ -232,6 +233,9 @@ export default {
 			&__content-wrapper {
 				overflow: hidden;
 				max-height: unset !important;
+			}
+			&__placeholder {
+				padding-top: 0;
 			}
 		}
 	}

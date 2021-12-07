@@ -15,9 +15,9 @@ export default [
 		component: () => import("@/views/user/Discover.vue"),
 	},
 	{
-		path: "discover-detail/:id/:name",
+		path: "campaign/:id/:name",
 		name: "Discover Detail",
-		component: () => import("@/views/user/DiscoverDetail.vue"),
+		component: () => import("@/views/user/Campaign.vue"),
 	},
 	{
 		path: "discover-detail-deleivery",

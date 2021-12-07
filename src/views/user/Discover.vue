@@ -8,7 +8,14 @@
 				@categoryvalue="categoryValue"
 				@searchvalue="searchvalue"
 			/>
-			<discover-card
+			<div v-if="$apollo.loading">
+				<base-skeleton-loader
+					type="discover"
+					:count="8"
+					:isApply="true"
+				></base-skeleton-loader>
+			</div>
+			<compaign-card
 				v-for="campaign in campaigns"
 				:key="campaign.id"
 				:campaign="campaign"
@@ -20,7 +27,7 @@
 </template>
 
 <script>
-import DiscoverCard from '@/components/user/DiscoverCard.vue';
+import CompaignCard from '@/components/user/CompaignCard.vue';
 import { CAMPAIGNS, COMPAIGNS_FILTER } from '@/graphql/query';
 export default {
 	data() {
@@ -36,7 +43,7 @@ export default {
 		};
 	},
 	components: {
-		DiscoverCard,
+		CompaignCard,
 	},
 	apollo: {
 		campaigns: {

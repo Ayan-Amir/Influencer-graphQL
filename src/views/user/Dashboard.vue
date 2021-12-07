@@ -1,52 +1,107 @@
 <template>
-	<div class="dashboard container">
-		<div class="row">
-			<div class="col-md-5 col-lg-4">
-				<profile-card />
-				<div class="dashboard__earningStatistic">
-					<p>See earnings statistics</p>
+	<div>
+		<div v-if="$apollo.loading">
+			<base-skeleton-loader
+				type="dashboard"
+				:count="8"
+			></base-skeleton-loader>
+		</div>
+		<div class="dashboard container">
+			<div class="row">
+				<div class="col-lg-4">
+					<profile-card />
+					<div class="dashboard__earningStatistic">
+						<p>See earnings statistics</p>
+					</div>
+					<div class="dashboard__statistic">
+						<div class="dashboard__statistic--counter">
+							<base-progress-circle
+								:progress="complete"
+								color="#9637F1"
+							/>
+							Completion
+						</div>
+						<div class="dashboard__statistic--counter">
+							<base-progress-circle
+								:progress="response"
+								color="#57B894"
+							/>
+							Respone Rate
+						</div>
+						<div class="dashboard__statistic--counter">
+							<base-progress-circle
+								:progress="onTime"
+								color="#F70101"
+							/>
+							Job Ontime
+						</div>
+					</div>
 				</div>
-				<div class="dashboard__statistic">
-					<div class="dashboard__statistic--counter">
-						<base-progress-circle
-							:progress="complete"
-							color="#9637F1"
-						/>
-						Completion
-					</div>
-					<div class="dashboard__statistic--counter">
-						<base-progress-circle
-							:progress="response"
-							color="#57B894"
-						/>
-						Respone Rate
-					</div>
-					<div class="dashboard__statistic--counter">
-						<base-progress-circle
-							:progress="onTime"
-							color="#F70101"
-						/>
-						Job Ontime
-					</div>
-				</div>
-			</div>
-			<div class="col-md-7 col-lg-8">
-				<div>
-					<b-tabs content-class="mt-3">
-						<b-tab title="Active"><p>I'm the first tab</p></b-tab>
-						<b-tab title="Revision"
-							><p>I'm the second tab</p></b-tab
-						>
-						<b-tab title="Completed" active>
-							<discover-card
+				<div class="col-lg-8">
+					<div>
+						<ul class="statesLinks">
+							<li class="statesLinks__item">
+								<a
+									class="statesLinks__item--link"
+									href="javascript:void(0)"
+									@click="handleTab('active')"
+									>Active</a
+								>
+							</li>
+							<li class="statesLinks__item">
+								<a
+									class="statesLinks__item--link"
+									href="javascript:void(0)"
+									@click="handleTab('revision')"
+									>Revision</a
+								>
+							</li>
+							<li class="statesLinks__item">
+								<a
+									class="statesLinks__item--link"
+									href="javascript:void(0)"
+									@click="handleTab('complete')"
+									>Completed</a
+								>
+							</li>
+							<li class="statesLinks__item">
+								<a
+									class="statesLinks__item--link active"
+									href="javascript:void(0)"
+									@click="handleTab('pending')"
+									>Pending</a
+								>
+							</li>
+						</ul>
+						<div v-if="norecord">No Record Found</div>
+						<div class="campaigns" v-else>
+							<compaign-card
 								v-for="campaign in myCampaignsSubscription"
 								:key="campaign.id"
 								:campaign="campaign"
 								:isApply="false"
 								:islink="true"
 							/>
+						</div>
+						<!-- <b-tabs content-class="mt-3">
+						<b-tab title="Active" @click="handleTab('active')"
+							><p>I'm the Active tab</p></b-tab
+						>
+						<b-tab title="Revision" @click="handleTab('revision')"
+							><p>I'm the Revision tab</p></b-tab
+						>
+						<b-tab title="Completed" @click="handleTab('complete')">
+							<p>I'm the Completed tab</p>
 						</b-tab>
-					</b-tabs>
+						<b-tab
+							title="Pending"
+							@click="handleTab('pending')"
+							active
+						>
+							
+						</b-tab>
+					</b-tabs> -->
+					</div>
 				</div>
 			</div>
 		</div>
@@ -54,7 +109,7 @@
 </template>
 
 <script>
-import DiscoverCard from '@/components/user/DiscoverCard.vue';
+import CompaignCard from '@/components/user/CompaignCard.vue';
 import ProfileCard from '@/components/user/partials/ProfileCard.vue';
 import { CAMPAIGNS, COMPAIGN_SUBSCRIPTION } from '@/graphql/query';
 
@@ -66,89 +121,12 @@ export default {
 			page: 1,
 			state: '',
 			norecord: false,
-			// cardData: [
-			// 	{
-			// 		index: 0,
-			// 		icon: 'brand-logo.svg',
-			// 		title: 'Palas Mall',
-			// 		subTitle: 'Nullam convallis sollicitudin',
-			// 		btn: 'Apply Now',
-			// 		isDiscoverBtn: false,
-			// 		price: '$250',
-			// 		islink: true,
-			// 		link: 'discover-detail-deleivery',
-			// 		path: 'discover-detail-deleivery',
-			// 	},
-			// 	{
-			// 		index: 1,
-			// 		icon: 'brand-logo.svg',
-			// 		title: '5 TO GO',
-			// 		subTitle: 'Nullam convallis sollicitudin',
-			// 		btn: 'Apply Now',
-			// 		isDiscoverBtn: false,
-			// 		price: '$250',
-			// 	},
-			// 	{
-			// 		index: 2,
-			// 		icon: 'brand-logo.svg',
-			// 		title: 'Shop Online',
-			// 		subTitle: 'Nullam convallis sollicitudin',
-			// 		btn: 'Apply Now',
-			// 		isDiscoverBtn: false,
-			// 		price: '$250',
-			// 	},
-			// 	{
-			// 		index: 3,
-			// 		icon: 'brand-logo.svg',
-			// 		title: 'Pizza Papa',
-			// 		subTitle: 'Nullam convallis sollicitudin',
-			// 		btn: 'Apply Now',
-			// 		isDiscoverBtn: false,
-			// 		price: '$250',
-			// 	},
-			// 	{
-			// 		index: 4,
-			// 		icon: 'brand-logo.svg',
-			// 		title: 'Gsm Iasi',
-			// 		subTitle: 'Nullam convallis sollicitudin',
-			// 		btn: 'Apply Now',
-			// 		isDiscoverBtn: false,
-			// 		price: '$250',
-			// 	},
-			// 	{
-			// 		index: 5,
-			// 		icon: 'brand-logo.svg',
-			// 		title: 'Beer Zone',
-			// 		subTitle: 'Nullam convallis sollicitudin',
-			// 		btn: 'Apply Now',
-			// 		isDiscoverBtn: false,
-			// 		price: '$250',
-			// 	},
-			// 	{
-			// 		index: 6,
-			// 		icon: 'brand-logo.svg',
-			// 		title: 'Liria',
-			// 		subTitle: 'Nullam convallis sollicitudin',
-			// 		btn: 'Apply Now',
-			// 		isDiscoverBtn: false,
-			// 		price: '$250',
-			// 	},
-			// 	{
-			// 		index: 7,
-			// 		icon: 'brand-logo.svg',
-			// 		title: 'Camping',
-			// 		subTitle: 'Nullam convallis sollicitudin',
-			// 		btn: 'Apply Now',
-			// 		isDiscoverBtn: false,
-			// 		price: '$250',
-			// 	},
-			// ],
 			complete: 61,
 			response: 68,
 			onTime: 95,
 		};
 	},
-	components: { DiscoverCard, ProfileCard },
+	components: { CompaignCard, ProfileCard },
 	apollo: {
 		campaigns: {
 			query: CAMPAIGNS,
@@ -179,21 +157,32 @@ export default {
 					// search: this.search,
 				};
 			},
-		},
-	},
-	watch: {
-		myCampaignsSubscription: {
-			handler() {
-				if (this.myCampaignsSubscription[0].state) {
-					this.state = this.myCampaignsSubscription[0].state;
-					console.log('state', this.state);
+			result(data) {
+				if (data.data.myCampaignsSubscription.length == 0) {
+					this.norecord = true;
+				} else {
+					this.norecord = false;
 				}
 			},
 		},
 	},
-	// mounted() {
-	// 	console.log('mounted', this.state);
-	// },
+	methods: {
+		handleTab: function (data) {
+			this.state = data;
+		},
+	},
+	mounted() {
+		let items = document.querySelectorAll('.statesLinks__item--link');
+		items.forEach((item) => {
+			item.addEventListener('click', () => {
+				items.forEach((i) => i.classList.remove('active'));
+				item.classList.add('active');
+			});
+		});
+	},
+	updated() {
+		// console.log('update state :', this.state);
+	},
 };
 </script>
 
@@ -247,7 +236,7 @@ export default {
 		@media screen and (max-width: 1199px) {
 			padding: rem(16px);
 		}
-		@media screen and (max-width: 767px) {
+		@media screen and (max-width: 991px) {
 			margin: rem(12px) 0 rem(16px) 0;
 			padding: rem(16px) rem(28px);
 		}
@@ -262,7 +251,48 @@ export default {
 			}
 		}
 	}
+	.statesLinks {
+		list-style: none;
+		display: flex;
+		align-items: center;
+		margin-bottom: rem(18px);
+		&__item {
+			background: #fff;
+			margin-right: rem(13px);
+			border-radius: 8px;
+			overflow: hidden;
+			&--link {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 40px;
+				min-width: 120px;
+				padding: rem(9px);
+				font-weight: 700;
+				font-size: rem(14px);
+				text-align: center;
+				background: #fff;
+				color: var(--textPrimary);
+				&.active {
+					background: var(--primary);
+					color: #fff;
+				}
+			}
+			&:hover {
+				@media screen and (min-width: 1025px) {
+					a {
+						opacity: 0.8;
+					}
+				}
+			}
+		}
+	}
 	/deep/ {
+		.nav-item {
+			@media screen and (max-width: 767px) {
+				width: 22% !important;
+			}
+		}
 		.tab-content {
 			.card {
 				cursor: pointer;
