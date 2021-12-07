@@ -1,8 +1,6 @@
 <template>
 	<div>
-		<div v-if="alert.message" :class="'alert ' + alert.type">
-			{{ alert.message }}
-		</div>
+        <base-alerts :alert="alert"></base-alerts>
 		<validation-observer ref="observer" v-slot="{ handleSubmit }">
 			<b-form @submit.stop.prevent="handleSubmit(userLogin)">
 				<base-input
@@ -41,6 +39,7 @@
 <script>
 import SocialLinks from '@/components/user/layout/SocialLinks.vue';
 import { mapActions, mapGetters, mapState } from 'vuex';
+import BaseAlerts from '../base/BaseAlerts.vue';
 export default {
 	data() {
 		return {
@@ -51,7 +50,7 @@ export default {
 		};
 	},
 	components: {
-		SocialLinks,
+		SocialLinks
 	},
 	computed: {
 		...mapState({
@@ -62,12 +61,6 @@ export default {
 		...mapActions(['login']),
 		userLogin: function () {
 			this.login(this.loginDetails)
-				.then(() => {
-					this.$router.push('/user');
-				})
-				.catch((error) => {
-					console.log(error.message);
-				});
 		},
 		userInput(data) {
 			this.loginDetails.email = data;

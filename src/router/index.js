@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import LoginOrRegister from "@/layouts/LoginOrRegister.vue";
-import DashboardLayout from "@/layouts/DashboardLayout.vue";
+import loginOrRegister from "@/layouts/LoginOrRegister.vue";
+import dashboardLayout from "@/layouts/DashboardLayout.vue";
 import user from "@/views/user/router";
+import userRegister from "@/views/user/router/register";
 import store from '../store'
 // import {MESSAGE} from '@/_helpers/alertMessages';
 Vue.use(VueRouter);
@@ -14,12 +15,12 @@ const routes = [
   },
   {
     path: "/user",
-    component: DashboardLayout,
+    component: dashboardLayout,
     children: [...user],
   },
   {
     path: "/user/login",
-    component: LoginOrRegister,
+    component: loginOrRegister,
     children: [
       {
         path: "",
@@ -29,40 +30,9 @@ const routes = [
   },
   {
     path: "/user/register",
-    component: LoginOrRegister,
+    component: loginOrRegister,
     children: [
-      {
-        path: "",
-        component: () => import("@/views/user/register/Register.vue"),
-      },
-      {
-        path: "welcome",
-        component: () => import("@/views/user/register/Welcome.vue"),
-      },
-      {
-        path: "profile",
-        component: () => import("@/views/user/register/Profile.vue"),
-      },
-      {
-        path: "profile-photo",
-        component: () => import("@/views/user/register/ProfilePhoto.vue"),
-      },
-      {
-        path: "connect-social",
-        component: () => import("@/views/user/register/ConnectSocial.vue"),
-      },
-      // {
-      //   path: "payment-details",
-      //   component: () => import("@/views/user/register/PaymentDetails.vue"),
-      // },
-      {
-        path: "password",
-        component: () => import("@/views/user/register/Password.vue"),
-      },
-      {
-        path: "story-price",
-        component: () => import("@/views/user/register/StoryPrice.vue"),
-      },
+        ...userRegister
     ],
   },
 ];
