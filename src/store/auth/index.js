@@ -1,6 +1,6 @@
 import { onLogin, apolloClient, onLogout } from '@/vue-apollo'
 import { LOGIN_USER } from '@/graphql/mutations'
-import {LOGGED_IN_USER} from '@/graphql/query'
+import {LOGGED_IN_USER} from '@/graphql/user/query'
 import { getDefaultValues } from '@apollo/client/utilities'
 // import apolloClient from 'vue-apollo'
 const state = {

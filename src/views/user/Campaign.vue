@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { CAMPAIGNS } from '@/graphql/query';
+import { CAMPAIGNS } from '@/graphql/user/query';
 import Details from '@/components/user/common/Details.vue';
 
 export default {

@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { NOTIFICATION } from '@/graphql/query';
+import { NOTIFICATION } from '@/graphql/user/query';
 export default {
 	data() {
 		return {

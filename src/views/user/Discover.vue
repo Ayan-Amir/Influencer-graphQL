@@ -28,7 +28,7 @@
 
 <script>
 import CompaignCard from '@/components/user/CompaignCard.vue';
-import { CAMPAIGNS, COMPAIGNS_FILTER } from '@/graphql/query';
+import { CAMPAIGNS, COMPAIGNS_FILTER } from '@/graphql/user/query';
 export default {
 	data() {
 		return {

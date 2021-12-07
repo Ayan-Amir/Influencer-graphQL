@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { OFFER_DETAILS } from '@/graphql/query';
+import { OFFER_DETAILS } from '@/graphql/user/query';
 import Details from '@/components/user/common/Details.vue';
 
 export default {

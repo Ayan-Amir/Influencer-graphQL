@@ -91,7 +91,7 @@
 <script>
 import CompaignCard from '@/components/user/CompaignCard.vue';
 import ProfileCard from '@/components/user/partials/ProfileCard.vue';
-import { CAMPAIGNS, COMPAIGN_SUBSCRIPTION } from '@/graphql/query';
+import { CAMPAIGNS, COMPAIGN_SUBSCRIPTION } from '@/graphql/user/query';
 
 export default {
 	data() {
