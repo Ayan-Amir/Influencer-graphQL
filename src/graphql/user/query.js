@@ -17,6 +17,13 @@ query{
 	}
 }
 `
+export const CHECK_USERNAME = gql` query usernameAvailable($email: String){
+    usernameAvailable(email: $email){
+        state,
+        msg
+    }
+}
+`
 
 export const NOTIFICATION = gql`
 query {

@@ -63,6 +63,7 @@ const actions = {
     },
     async setUser ({ commit }) {
         const { data } = await apolloClient.query({ query: LOGGED_IN_USER })
+        console.log(data.me);
         commit('LOGIN_USER', data.me)
         // .then((data)=>{
         //     if(data){

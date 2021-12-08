@@ -8,6 +8,7 @@ const actions = {
         commit('success', message);
     },
     error({ commit }, message) {
+        console.log("enter here");
         commit('error', message);
     },
     clear({ commit }) {
