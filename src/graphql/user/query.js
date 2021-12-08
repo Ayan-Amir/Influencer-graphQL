@@ -122,8 +122,8 @@ query offer($id: Int!) {
 }`
 
 export const CAMPAIGNS = gql`
-query campaign($page: Int, $locations: [String], $categories: [String] , $search : String){
-	campaigns(page: $page, locations: $locations, categories: $categories, search: $search ) {
+query campaigns($page: Int, $locations: [String], $categories: [String] , $search : String, $subscriptions: [String]){
+	campaigns(page: $page, locations: $locations, categories: $categories, search: $search, subscriptions: $subscriptions ) {
 		id
 	  	name
 	  	logo
@@ -145,6 +145,35 @@ query campaign($page: Int, $locations: [String], $categories: [String] , $search
 			description
 			gallery
 	  	}
+		subscription
+	}
+}`
+
+export const CAMPAIGN_DETAILS = gql`
+query campaign($id: Int) {
+	campaign(id: $id) {
+		id
+		name
+		logo
+		type
+		company
+		category{
+		  id
+		  name
+		}
+		location{
+		  id
+		  name
+		}
+		price
+		description
+		image
+		details{
+		  title
+		  description
+		  gallery
+		}
+		subscription
 	}
 }`
 

@@ -298,3 +298,88 @@ p {
 	border-radius: 20px;
 	border: 0;
 }
+
+.mainLinks {
+	list-style: none;
+	@include flex(center, start);
+	margin-bottom: rem(25px);
+	li {
+		&:not(:last-child) {
+			margin-right: rem(14px);
+		}
+		a {
+			@include flex(center, center);
+			font-size: rem(14px);
+			font-weight: 700;
+			color: var(--textPrimary);
+			background: #fff;
+			padding: 8px;
+			border-radius: 6px;
+			border: 0;
+			min-width: 120px;
+			height: 40px;
+			svg {
+				fill: var(--textPrimary);
+				color: var(--textPrimary);
+				width: 22px;
+				margin-right: 6px;
+			}
+		}
+		&.active {
+			a {
+				color: #fff;
+				background: var(--primary);
+				svg {
+					fill: #fff;
+					color: #fff;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 991px) {
+		flex-direction: column;
+		margin: 0;
+		li {
+			width: 100%;
+			&:not(:last-child) {
+				margin: 0;
+			}
+			a {
+				color: var(--textPrimary);
+				font-size: rem(20px);
+				font-weight: 700;
+				background: #fff;
+				justify-content: start;
+				border-radius: 0;
+				border-bottom: 1px solid var(--borderColor);
+				height: 65px;
+				padding-left: 20px;
+				padding-right: 0;
+				position: relative;
+				&:after {
+					content: '';
+					position: absolute;
+					width: 20px;
+					height: 20px;
+					background-repeat: no-repeat;
+					background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='8.414' height='14.828' viewBox='0 0 8.414 14.828'%3E%3Cpath id='Path_934' data-name='Path 934' d='M1,1,7,7l6-6' transform='translate(0.414 14.414) rotate(-90)' fill='none' stroke='%239637f1' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E%0A");
+					right: 0;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+				svg {
+					margin-right: 15px;
+				}
+			}
+			&.active {
+				a {
+					background: transparent;
+					color: var(--primary);
+					svg {
+						color: var(--primary);
+					}
+				}
+			}
+		}
+	}
+}

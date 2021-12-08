@@ -37,7 +37,7 @@
 							<a
 								class="statesLinks__item--link"
 								href="javascript:void(0)"
-								@click="state = 'active'"
+								@click="handleTab('active')"
 								>Active</a
 							>
 						</li>
@@ -45,7 +45,7 @@
 							<a
 								class="statesLinks__item--link"
 								href="javascript:void(0)"
-								@click="state = 'revision'"
+								@click="handleTab('revision')"
 								>Revision</a
 							>
 						</li>
@@ -53,7 +53,7 @@
 							<a
 								class="statesLinks__item--link"
 								href="javascript:void(0)"
-								@click="state = 'complete'"
+								@click="handleTab('complete')"
 								>Completed</a
 							>
 						</li>
@@ -61,7 +61,7 @@
 							<a
 								class="statesLinks__item--link active"
 								href="javascript:void(0)"
-								@click="state = 'pending'"
+								@click="handleTab('pending')"
 								>Pending</a
 							>
 						</li>
@@ -75,7 +75,7 @@
 					<div v-if="norecord">No Record Found</div>
 					<div class="campaigns" v-else>
 						<compaign-card
-							v-for="campaign in myCampaignsSubscription"
+							v-for="campaign in campaigns"
 							:key="campaign.id"
 							:campaign="campaign"
 							:isApply="false"
@@ -91,15 +91,14 @@
 <script>
 import CompaignCard from '@/components/user/CompaignCard.vue';
 import ProfileCard from '@/components/user/partials/ProfileCard.vue';
-import { CAMPAIGNS, COMPAIGN_SUBSCRIPTION } from '@/graphql/user/query';
+import { CAMPAIGNS } from '@/graphql/user/query';
 
 export default {
 	data() {
 		return {
 			campaigns: [],
-			myCampaignsSubscription: [],
 			page: 1,
-			state: '',
+			subscriptions: 'pending',
 			norecord: false,
 			complete: 61,
 			response: 68,
@@ -113,6 +112,7 @@ export default {
 			variables() {
 				return {
 					page: this.page,
+					subscriptions: this.subscriptions,
 					// locations: this.filterLocations,
 					// categories: this.filterCategories,
 					// search: this.search,
@@ -126,22 +126,24 @@ export default {
 				}
 			},
 		},
-		myCampaignsSubscription: {
-			query: COMPAIGN_SUBSCRIPTION,
-			variables() {
-				return {
-					page: this.page,
-					state: this.state,
-					// locations: this.filterLocations,
-					// categories: this.filterCategories,
-					// search: this.search,
-				};
-			},
-			result(data) {
-				if (data.data.myCampaignsSubscription.length == 0) {
-					this.norecord = true;
-				} else {
-					this.norecord = false;
+	},
+	methods: {
+		handleTab(data) {
+			this.subscriptions = data;
+
+			if (this.subscriptions == null) {
+				this.subscriptions = null;
+			} else {
+				this.subscriptions = data;
+			}
+			console.log(this.subscriptions);
+		},
+	},
+	watch: {
+		subscriptions: {
+			handler() {
+				if (this.campaigns.subscriptions) {
+					this.subscriptions = this.campaigns[0].subscriptions;
 				}
 			},
 		},
@@ -154,9 +156,6 @@ export default {
 				item.classList.add('active');
 			});
 		});
-	},
-	updated() {
-		// console.log('update state :', this.state);
 	},
 };
 </script>

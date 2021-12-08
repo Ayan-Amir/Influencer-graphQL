@@ -38,6 +38,7 @@ export default {
 			filterCategories: [],
 			search: '',
 			page: 1,
+			subscription: [],
 			selected: '',
 			norecord: false,
 		};
@@ -54,6 +55,7 @@ export default {
 					locations: this.filterLocations,
 					categories: this.filterCategories,
 					search: this.search,
+					subscription: this.subscription,
 				};
 			},
 			result(data) {

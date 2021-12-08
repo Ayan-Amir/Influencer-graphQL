@@ -30,13 +30,11 @@
 <script>
 import OffersCard from '@/components/user/OffersCard.vue';
 import InfiniteLoading from 'vue-infinite-loading';
-import BaseSelect from '../../components/base/BaseSelect.vue';
 import { OFFERS_FILTERS, OFFERS } from '@/graphql/user/query';
 export default {
 	components: {
 		OffersCard,
 		InfiniteLoading,
-		BaseSelect,
 	},
 	data() {
 		return {

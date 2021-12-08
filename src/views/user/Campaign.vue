@@ -1,66 +1,59 @@
 <template>
-	<div>
-		<div
-			class="discoverDetail container"
-			v-for="campaign in campaigns"
-			:key="campaign.id"
-		>
-			<div class="row align-items-center mb-3">
-				<div class="col-md-6">
-					<div class="image">
-						<img
-							:src="`${$config.IMG_HOST}/629x230/${campaign.image}`"
-							alt=""
-							class="img-fluid"
-						/>
-					</div>
+	<div class="campaignDetail container" v-if="$apollo.data">
+		<div class="row align-items-center mb-3">
+			<div class="col-md-6">
+				<div class="image">
+					<img
+						:src="`${$config.IMG_HOST}/629x230/${campaign.image}`"
+						alt=""
+						class="img-fluid"
+					/>
 				</div>
-				<div class="col-md-6">
-					<div class="pageHead">
-						<div class="d-flex align-items-center">
-							<div class="pageHead__icon">
-								<img
-									:src="`${$config.IMG_HOST}/55x55/${campaign.logo}`"
-									alt=""
-									class="img-fluid"
-								/>
-							</div>
-							<h1>{{ campaign.name }}</h1>
+			</div>
+			<div class="col-md-6">
+				<div class="pageHead">
+					<div class="d-flex align-items-center">
+						<div class="pageHead__icon">
+							<img
+								:src="`${$config.IMG_HOST}/55x55/${campaign.logo}`"
+								alt=""
+								class="img-fluid"
+							/>
 						</div>
-						<span class="pageHead__price">
-							{{ campaign.price }}
-						</span>
+						<h1>{{ campaign.name }}</h1>
 					</div>
-					<base-social-link />
-					<p class="desc">{{ campaign.description }}</p>
-					<div class="requestOffer">
-						<router-link to="#" class="btn btn-primary large"
-							>Apply Now
-						</router-link>
-						<!-- <div
+					<span class="pageHead__price">
+						{{ campaign.price }}
+					</span>
+				</div>
+				<base-social-link />
+				<p class="desc">{{ campaign.description }}</p>
+				<div class="requestOffer">
+					<router-link to="#" class="btn btn-primary large"
+						>Apply Now
+					</router-link>
+					<!-- <div
 						class="requestOffer__time"
 						v-if="campaign.expirationDate !== null"
 					>
 						Ends in: {{ campaign.expirationDate }}
 						<span>{{ campaign.left }} Left</span>
 					</div> -->
-					</div>
 				</div>
 			</div>
-			<Details :details="campaign.details" />
 		</div>
+		<Details :details="campaign.details" />
 	</div>
 </template>
 
 <script>
-import { CAMPAIGNS } from '@/graphql/user/query';
+import { CAMPAIGN_DETAILS } from '@/graphql/user/query';
 import Details from '@/components/user/common/Details.vue';
 
 export default {
 	data() {
 		return {
-			campaigns: [],
-			page: 1,
+			campaign: [],
 			id: 0,
 		};
 	},
@@ -69,27 +62,33 @@ export default {
 		this.id = parseInt(this.$route.params.id);
 	},
 	apollo: {
-		campaigns: {
-			query: CAMPAIGNS,
+		campaign: {
+			query: CAMPAIGN_DETAILS,
 			variables() {
 				return {
 					id: parseInt(this.$route.params.id),
-					page: this.page,
 				};
 			},
 			data(e) {
-				// console.log(e);
+				console.log(e);
+			},
+			errror(err) {
+				console.log(err);
 			},
 		},
 	},
 	mounted() {
-		// console.log(this.campaigns[this.id]);
+		console.log(this.campaign);
+		console.log('mounted', this.id);
+	},
+	updated() {
+		console.log('updates', this.id);
 	},
 };
 </script>
 
 <style lang="scss" scoped>
-.discoverDetail {
+.campaignDetail {
 	.pageHead {
 		margin-bottom: rem(20px);
 		&__icon {

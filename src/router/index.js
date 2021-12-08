@@ -3,38 +3,44 @@ import VueRouter from "vue-router";
 import loginOrRegister from "@/layouts/LoginOrRegister.vue";
 import dashboardLayout from "@/layouts/DashboardLayout.vue";
 import user from "@/views/user/router";
+import brand from "@/views/brand/router";
 import userRegister from "@/views/user/router/register";
 import store from '../store'
 // import {MESSAGE} from '@/_helpers/alertMessages';
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/login",
-    component: () => import("@/views/common/Login.vue"),
-  },
-  {
-    path: "/user",
-    component: dashboardLayout,
-    children: [...user],
-  },
-  {
-    path: "/user/login",
-    component: loginOrRegister,
-    children: [
-      {
-        path: "",
-        component: () => import("@/views/user/Login.vue"),
-      },
-    ],
-  },
-  {
-    path: "/user/register",
-    component: loginOrRegister,
-    children: [
-        ...userRegister
-    ],
-  },
+	{
+		path: "/login",
+		component: () => import("@/views/common/Login.vue"),
+	},
+	{
+		path: "/user",
+		component: dashboardLayout,
+		children: [...user],
+	},
+	{
+		path: "/user/login",
+		component: loginOrRegister,
+		children: [
+		{
+			path: "",
+			component: () => import("@/views/user/Login.vue"),
+		},
+		],
+	},
+	{
+		path: "/user/register",
+		component: loginOrRegister,
+		children: [
+			...userRegister
+		],
+	},
+	{
+		path: "/brand",
+		component: dashboardLayout,
+		children: [...brand],
+	},
 ];
 
 const router = new VueRouter({
