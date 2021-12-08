@@ -9,12 +9,12 @@ query {
       influencers
       posts
       locations{
-        id
-        name
+        value: id
+        text: name
       }
       interests{
-        id
-        name
+        index: id
+        value: name
       }
       gender{
         id

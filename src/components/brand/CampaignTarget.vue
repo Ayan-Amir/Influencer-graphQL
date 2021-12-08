@@ -132,12 +132,6 @@ export default {
 			this.newCampaignFilters.priceEnd = end;
 		},
 	},
-	mounted() {
-		console.log('gender', this.gender);
-		console.log('interest', this.interest);
-		console.log('location', this.location);
-		// console.log(this.newCampaignFilters);
-	},
 };
 </script>
 

@@ -18,10 +18,10 @@
 				<div class="checkboxWrapper">
 					<base-smooth-scrollbar height="120px">
 						<ul class="checkbox">
-							<li v-for="int in interests" :key="int.id">
+							<li v-for="int in interests" :key="int.index">
 								<label>
-									<input type="checkbox" :name="int.name" />
-									<span>{{ int.name }}</span>
+									<input type="checkbox" :name="int.value" />
+									<span>{{ int.value }}</span>
 								</label>
 							</li>
 						</ul>

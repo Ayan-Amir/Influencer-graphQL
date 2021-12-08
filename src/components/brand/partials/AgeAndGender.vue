@@ -21,7 +21,7 @@
 				<ul class="radio age">
 					<li v-for="i in gender" :key="i.id">
 						<label>
-							<input type="radio" name="radio" />
+							<input type="radio" name="radio" checked />
 							<span>{{ i.name }}</span>
 						</label>
 					</li>
