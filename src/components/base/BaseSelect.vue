@@ -1,6 +1,6 @@
 <template>
 	<div class="form-group">
-		<v-select :options="options" v-model="selected" />
+		<v-select :options="options" v-model="initialValue" />
 	</div>
 </template>
 
@@ -8,6 +8,7 @@
 export default {
 	props: {
 		options: Array,
+		initialValue: String,
 		selected: {
 			type: String | Object | Array,
 		},

@@ -19,16 +19,10 @@
 			<b-card-body>
 				<!-- radio buttopns -->
 				<ul class="radio age">
-					<li>
-						<label>
-							<input type="radio" name="radio" checked />
-							<span>M</span>
-						</label>
-					</li>
-					<li>
+					<li v-for="i in gender" :key="i.id">
 						<label>
 							<input type="radio" name="radio" />
-							<span>F</span>
+							<span>{{ i.name }}</span>
 						</label>
 					</li>
 				</ul>
@@ -67,13 +61,15 @@ export default {
 		return {
 			initialValue: '18',
 			endValue: '65',
-			loaded: true,
 			lstgender: [],
 		};
 	},
 	props: {
 		ageStart: Number,
 		ageEnd: Number,
+		gender: {
+			type: Object | Array,
+		},
 	},
 	methods: {
 		UpdateAgeValue(e) {
@@ -93,18 +89,6 @@ export default {
 			this.endValue = end;
 		},
 	},
-	// apollo: {
-	// 	lstgender: {
-	// 		query: require('../../../graphql/gender.gql'),
-	// 		update(data) {
-	// 			this.loaded = true;
-	// 			return data.campaignFilterLimits.gender;
-	// 		},
-	// 		error(e) {
-	// 			this.loaded = false;
-	// 		},
-	// 	},
-	// },
 };
 </script>
 

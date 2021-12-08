@@ -195,7 +195,7 @@ export default {
 			&__tag-icon {
 				line-height: 19px;
 				@media screen and (max-width: 991px) {
-					line-height: 15px;
+					line-height: 17px;
 				}
 				&:after {
 					color: #fff;

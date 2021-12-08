@@ -39,8 +39,13 @@
 					<div class="col-lg-6">
 						<!-- Target Section -->
 						<campaign-target />
+						<!-- Budget Section -->
+						<compaign-budget />
 					</div>
-					<div class="col-lg-6">right</div>
+					<div class="col-lg-6">
+						<!-- Audience Definition Section -->
+						<compaign-audience-defination />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -49,8 +54,11 @@
 
 <script>
 import CampaignTarget from '@/components/brand/CampaignTarget.vue';
+import CompaignBudget from '@/components/brand/CompaignBudget.vue';
+import CompaignAudienceDefination from '@/components/brand/CompaignAudienceDefination.vue';
+
 export default {
-	components: { CampaignTarget },
+	components: { CampaignTarget, CompaignBudget, CompaignAudienceDefination },
 };
 </script>
 

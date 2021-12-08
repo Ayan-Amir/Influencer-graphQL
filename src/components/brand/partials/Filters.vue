@@ -15,7 +15,7 @@
 		>
 			<b-card-body>
 				<div class="title">
-					<span>45</span>Local influencers Available
+					<span>0</span>Local influencers Available
 				</div>
 				<div class="row">
 					<div class="col-md-6">
@@ -67,16 +67,12 @@ export default {
 			input.classList.remove('active');
 		},
 	},
-	// props: {
-	// 	campaignDefaultFilter: {
-	// 		type: Array | Object,
-	// 		default: Array,
-	// 	},
-	// 	gender: {
-	// 		type: Array | Object,
-	// 		default: Array,
-	// 	},
-	// },
+	props: {
+		newCampaignFilters: {
+			type: Array | Object,
+			default: Array,
+		},
+	},
 	components: { StarRating },
 };
 </script>

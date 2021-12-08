@@ -15,12 +15,10 @@
 		>
 			<b-card-body>
 				<!-- dropdown -->
-				<template v-if="this.loaded">
-					<base-select
-						:data="locations"
-						initialValue="Entire Country"
-					/>
-				</template>
+				<base-select
+					:options="locations"
+					initialValue="Entire Country"
+				/>
 			</b-card-body>
 		</b-collapse>
 	</b-card>
@@ -29,10 +27,12 @@
 <script>
 export default {
 	data() {
-		return {
-			locations: [],
-			loaded: true,
-		};
+		return {};
+	},
+	props: {
+		locations: {
+			type: Object | Array,
+		},
 	},
 	methods: {
 		show(id) {
@@ -44,18 +44,9 @@ export default {
 			input.classList.remove('active');
 		},
 	},
-	// apollo: {
-	// 	locations: {
-	// 		query: require('../../../graphql/locations.gql'),
-	// 		update(data) {
-	// 			this.loaded = true;
-	// 			return data.campaignFilterLimits.locations;
-	// 		},
-	// 		error() {
-	// 			this.loaded = false;
-	// 		},
-	// 	},
-	// },
+	mounted() {
+		console.log('loc', this.locations);
+	},
 };
 </script>
 

@@ -4,7 +4,7 @@
 		<div class="contentBox__body">
 			<template v-if="this.loaded">
 				<div class="contentBox__body--title">
-					<span>45</span>
+					<span>{{ newCampaignFilters.followers }}</span>
 					Local influencers availabe
 				</div>
 				<div
@@ -16,13 +16,15 @@
 					"
 				>
 					<p class="heading m-0">Followers</p>
-					<span class="range">600+</span>
+					<span class="range">{{
+						newCampaignFilters.followers
+					}}</span>
 				</div>
 				<!-- Rang slider -->
 				<base-slider
 					:min="1"
 					:max="2000"
-					:input="600"
+					:input="newCampaignFilters.followers"
 					@value="selectedValue"
 				/>
 				<div
@@ -34,14 +36,17 @@
 					"
 				>
 					<p class="heading m-0">Price rage / post</p>
-					<span class="range">1 - 50</span>
+					<span class="range"
+						>{{ newCampaignFilters.priceStart }} -
+						{{ newCampaignFilters.priceEnd }}</span
+					>
 				</div>
 				<!-- MultiRang slider -->
 				<base-range-slider
 					:min="1"
-					:max="50"
-					:start="1"
-					:end="40"
+					:max="60"
+					:start="newCampaignFilters.priceStart"
+					:end="newCampaignFilters.priceEnd"
 					@rangeValue="selectedRangeValue"
 				/>
 				<!-- rating -->
@@ -52,13 +57,17 @@
 			<!-- Accordions -->
 			<div class="accordion" role="tablist">
 				<!-- (1 Age and Gender) -->
-				<age-and-gender :ageStart="16" :ageEnd="65" />
+				<age-and-gender
+					:ageStart="16"
+					:ageEnd="65"
+					:gender="newCampaignFilters.gender"
+				/>
 				<!-- (2 Location) -->
-				<location />
+				<location :locations="newCampaignFilters.locations" />
 				<!-- (3 Interests) -->
 				<interest />
 				<!-- (4 Quality Filters) -->
-				<filters />
+				<filters :newCampaignFilters="newCampaignFilters" />
 			</div>
 			<!-- End Accordions -->
 		</div>
@@ -72,7 +81,7 @@ import Location from '@/components/brand/partials/Location.vue';
 import Interest from '@/components/brand/partials/Interest.vue';
 import Filters from '@/components/brand/partials/Filters.vue';
 
-import { CAMPAIGN_DEFAULT_FILTER } from '@/graphql/brand/query';
+import { CAMPAIGN_FILTER } from '@/graphql/brand/query';
 
 export default {
 	components: {
@@ -84,40 +93,45 @@ export default {
 	},
 	data() {
 		return {
-			gender: [],
-			campaignDefaultFilter: [],
-			data: '1000',
-			initialValue: '1',
-			endValue: '5',
-			loaded: true,
-			genderloaded: false,
+			newCampaignFilters: [],
+			loaded: false,
 			followers: 0,
 			priceMin: 0,
 			priceMax: 0,
-			campaignFilterLimits: [],
 		};
 	},
-	// apollo: {
-	// 	campaignDefaultFilter: {
-	// 		query: CAMPAIGN_DEFAULT_FILTER,
-	// 		update(data) {
-	// 			this.loaded = true;
-	// 			this.followers = data.campaignDefaultFilter.followers;
-	// 			this.priceMin = data.campaignDefaultFilter.priceStart;
-	// 			this.priceMax = data.campaignDefaultFilter.priceEnd;
-	// 			return data.campaignDefaultFilter;
-	// 		},
-	// 	},
-	// },
-
+	apollo: {
+		newCampaignFilters: {
+			query: CAMPAIGN_FILTER,
+			update(data) {
+				this.loaded = true;
+				return data.newCampaignFilters;
+			},
+		},
+	},
+	watch: {
+		newCampaignFilters: {
+			handler() {
+				if (this.newCampaignFilters.location) {
+					this.loaded = true;
+					this.followers = data.newCampaignFilters.followers;
+					this.priceMin = data.newCampaignFilters.priceStart;
+					this.priceMax = data.newCampaignFilters.priceEnd;
+				}
+			},
+		},
+	},
 	methods: {
 		selectedValue(e) {
-			this.followers = e;
+			this.newCampaignFilters.followers = e;
 		},
 		selectedRangeValue(start, end) {
-			this.priceMin = start;
-			this.priceMax = end;
+			this.newCampaignFilters.priceStart = start;
+			this.newCampaignFilters.priceEnd = end;
 		},
+	},
+	mounted() {
+		console.log(this.newCampaignFilters);
 	},
 };
 </script>
