@@ -2,27 +2,7 @@
 	<div class="password">
 		<div class="row justify-content-between align-items-center">
 			<div class="col-md-6">
-				<h1>Register</h1>
-				<p class="subTitle">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.
-				</p>
-				<validation-observer ref="observer" v-slot="{ handleSubmit }">
-                    <b-form @submit.stop.prevent="handleSubmit(userLogin)">
-                        <base-input
-                            className="email"
-                            placeholder="Email"
-                            type="text"
-                            :required="true"
-                            v-model="registerEmail"
-                            @input="emailInput"
-                        />
-                        <div class="button-row">
-                            <button type="submit" class="btn btn-primary large">
-                                Continue
-                            </button>
-                        </div>
-                    </b-form>
-                </validation-observer>
+                <register-email :user-type="0"></register-email>
 			</div>
 			<div class="col-md-6">
 				<div class="image">
@@ -39,32 +19,21 @@
 
 <script>
 import SocialLinks from '@/components/user/layout/SocialLinks.vue';
+import RegisterEmail from '@/components/common/RegisterEmail.vue';
 export default {
 	data() {
 		return {
 			title: 'Password',
 			subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
-            registerEmail: ''
+            currentStep: 'email'
+            
 		};
 	},
-	components: { SocialLinks },
-    methods: {
-		// ...mapActions(['login']),
-		// userLogin: function () {
-		// 	this.login(this.loginDetails)
-		// 		.then(() => {
-		// 			this.$router.push('/user');
-		// 		})
-		// 		.catch((error) => {
-		// 			console.log(error.message);
-		// 		});
-		// },
-		emailInput(email) {
-			this.registerEmail = email;
-		},
-	},
+	components: { SocialLinks, RegisterEmail },
+    
 };
 </script>
+RegisterEmail
 <style lang="scss">
 .LoginRegister {
 	.contentWrapper {
