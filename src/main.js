@@ -16,12 +16,14 @@ import VSelect from "@alfsnd/vue-bootstrap-select";
 import "@/components/global_components";
 import utilities from "@/mixin/utilities";
 import Multiselect from 'vue-multiselect'
+import StarRating from 'vue-star-rating'
 import { createProvider } from "./vue-apollo";
 import {config} from "@/config.js";
 Vue.prototype.$config = config;
 Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
+Vue.component('star-rating', StarRating);
 Vue.use(IconsPlugin);
 Vue.component('multiselect', Multiselect)
 Vue.component("svg-icon", SvgIcon);

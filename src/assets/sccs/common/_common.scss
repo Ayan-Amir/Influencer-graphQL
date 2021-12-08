@@ -110,7 +110,7 @@ h6 {
 			padding: 0;
 			.btn {
 				background: transparent;
-				font-weight: 500;
+				font-weight: 400;
 				font-size: rem(14px);
 				color: #8998ac;
 				position: relative;
@@ -122,8 +122,8 @@ h6 {
 				align-items: start;
 				height: auto;
 				border-radius: 0 !important;
+				border: 0;
 				overflow: visible;
-				// padding-left: rem(10px);
 				p {
 					margin: 0;
 					font-size: rem(16px);

@@ -91,7 +91,7 @@
 <script>
 import CompaignCard from '@/components/user/CompaignCard.vue';
 import ProfileCard from '@/components/user/partials/ProfileCard.vue';
-import { CAMPAIGNS } from '@/graphql/user/query';
+import { CAMPAIGN_SUBSCRIPTION } from '@/graphql/user/query';
 
 export default {
 	data() {
@@ -108,10 +108,13 @@ export default {
 	components: { CompaignCard, ProfileCard },
 	apollo: {
 		campaigns: {
-			query: CAMPAIGNS,
+			query: CAMPAIGN_SUBSCRIPTION,
 			variables() {
 				return {
-					page: this.page,
+					page: null,
+					locations: null,
+					categories: null,
+					search: null,
 					subscriptions: this.subscriptions,
 					// locations: this.filterLocations,
 					// categories: this.filterCategories,
@@ -120,6 +123,7 @@ export default {
 			},
 			result(data) {
 				if (data.data.campaigns.length == 0) {
+					console.log(data.data.campaigns.length);
 					this.norecord = true;
 				} else {
 					this.norecord = false;
@@ -130,20 +134,18 @@ export default {
 	methods: {
 		handleTab(data) {
 			this.subscriptions = data;
-
-			if (this.subscriptions == null) {
-				this.subscriptions = null;
-			} else {
-				this.subscriptions = data;
-			}
-			console.log(this.subscriptions);
+			// if (this.campaigns.subscriptions == null) {
+			// 	this.subscriptions = null;
+			// } else {
+			// }
+			// console.log(this.subscriptions);
 		},
 	},
 	watch: {
 		subscriptions: {
 			handler() {
 				if (this.campaigns.subscriptions) {
-					this.subscriptions = this.campaigns[0].subscriptions;
+					this.subscriptions = this.campaigns;
 				}
 			},
 		},
@@ -156,6 +158,7 @@ export default {
 				item.classList.add('active');
 			});
 		});
+		console.log('query :', this.subscriptions);
 	},
 };
 </script>

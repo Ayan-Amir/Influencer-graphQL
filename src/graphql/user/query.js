@@ -201,30 +201,30 @@ query {
 	}
 }`
 
-export const COMPAIGN_SUBSCRIPTION = gql`
-query myCampaignsSubscription($page: Int, $state: String){
-	myCampaignsSubscription(page: $page, state: $state){
+export const CAMPAIGN_SUBSCRIPTION = gql`
+query campaigns($page: Int, $locations: [String], $categories: [String] , $search : String, $subscriptions: [String]){
+	campaigns(page: $page, locations: $locations, categories: $categories, search: $search, subscriptions: $subscriptions ) {
 		id
-		name
-		logo
-		type
-		category{
+	  	name
+	  	logo
+	  	type
+	  	company
+	  	category{
 			id
 			name
-		}
-		location{
+	  	}
+	  	location{
 			id
 			name
-		}
-		description
-		price
-		image
-		state
-		details{
+	  	}
+	  	price
+	  	description
+	  	image
+	  	details{
 			title
 			description
 			gallery
-		}
+	  	}
+		subscription
 	}
-}
-  `
+}`
