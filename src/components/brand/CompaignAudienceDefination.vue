@@ -15,7 +15,7 @@
 			</div>
 			<div class="col-md-7">
 				<!-- Chart -->
-				<!-- <chart /> -->
+				<chart />
 			</div>
 		</div>
 		<!-- Statistics -->
@@ -26,6 +26,7 @@
 <script>
 import { CAMPAIGN_FILTER, CAMPAIGN_ESTIMATE } from '@/graphql/brand/query';
 import Statics from '@/components/brand/partials/Statics.vue';
+import Chart from '@/components/brand/partials/Chart.vue';
 
 export default {
 	data() {
@@ -55,7 +56,7 @@ export default {
 			},
 		},
 	},
-	components: { Statics },
+	components: { Statics, Chart },
 };
 </script>
 

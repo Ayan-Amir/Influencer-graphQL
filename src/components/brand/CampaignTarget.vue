@@ -65,7 +65,7 @@
 				<!-- (2 Location) -->
 				<location :locations="newCampaignFilters.locations" />
 				<!-- (3 Interests) -->
-				<interest />
+				<interest :interests="interest" />
 				<!-- (4 Quality Filters) -->
 				<filters :newCampaignFilters="newCampaignFilters" />
 			</div>
@@ -95,9 +95,9 @@ export default {
 		return {
 			newCampaignFilters: [],
 			loaded: false,
-			followers: 0,
-			priceMin: 0,
-			priceMax: 0,
+			interest: [],
+			location: [],
+			gender: [],
 		};
 	},
 	apollo: {
@@ -107,6 +107,11 @@ export default {
 				this.loaded = true;
 				return data.newCampaignFilters;
 			},
+			result(data) {
+				this.gender = data.data.newCampaignFilters.gender;
+				this.location = data.data.newCampaignFilters.locations;
+				this.interest = data.data.newCampaignFilters.interests;
+			},
 		},
 	},
 	watch: {
@@ -114,9 +119,6 @@ export default {
 			handler() {
 				if (this.newCampaignFilters.location) {
 					this.loaded = true;
-					this.followers = data.newCampaignFilters.followers;
-					this.priceMin = data.newCampaignFilters.priceStart;
-					this.priceMax = data.newCampaignFilters.priceEnd;
 				}
 			},
 		},
@@ -131,7 +133,10 @@ export default {
 		},
 	},
 	mounted() {
-		console.log(this.newCampaignFilters);
+		console.log('gender', this.gender);
+		console.log('interest', this.interest);
+		console.log('location', this.location);
+		// console.log(this.newCampaignFilters);
 	},
 };
 </script>

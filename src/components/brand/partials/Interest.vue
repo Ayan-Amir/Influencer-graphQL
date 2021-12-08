@@ -15,9 +15,8 @@
 		>
 			<b-card-body>
 				<!-- interests checkbox -->
-				<template v-if="this.loaded">
-					<div class="checkboxWrapper">
-						<!-- <base-inner-scrollbar height="120px"> -->
+				<div class="checkboxWrapper">
+					<base-smooth-scrollbar height="120px">
 						<ul class="checkbox">
 							<li v-for="int in interests" :key="int.id">
 								<label>
@@ -26,9 +25,8 @@
 								</label>
 							</li>
 						</ul>
-						<!-- </base-inner-scrollbar> -->
-					</div>
-				</template>
+					</base-smooth-scrollbar>
+				</div>
 				<!-- End interests checkbox -->
 			</b-card-body>
 		</b-collapse>
@@ -37,11 +35,10 @@
 
 <script>
 export default {
-	data() {
-		return {
-			interests: [],
-			loaded: true,
-		};
+	props: {
+		interests: {
+			type: Object | Array,
+		},
 	},
 	methods: {
 		show(id) {
@@ -53,19 +50,6 @@ export default {
 			input.classList.remove('active');
 		},
 	},
-	// apollo:{
-	// 	interests:{
-	// 		query: require('../../../graphql/interests.gql'),
-	// 		update(data){
-	// 			this.loaded=true
-	// 			return data.campaignFilterLimits.interests
-	// 		},
-	// 		error(){
-	// 			this.loaded=false
-	// 		}
-
-	// 	}
-	// },
 };
 </script>
 

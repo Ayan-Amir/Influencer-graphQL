@@ -45,7 +45,7 @@ export default {
 		},
 	},
 	mounted() {
-		console.log('loc', this.locations);
+		// console.log('loc', this.locations);
 	},
 };
 </script>
