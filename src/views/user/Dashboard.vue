@@ -122,9 +122,9 @@ export default {
 				if (data.data.campaigns.length == 0) {
 					console.log(data.data.campaigns);
 					this.subscription = null;
-					this.norecord = true;
+					// this.norecord = true;
 				} else {
-					this.norecord = false;
+					// this.norecord = false;
 				}
 			},
 		},
