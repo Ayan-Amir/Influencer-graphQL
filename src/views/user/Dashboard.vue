@@ -53,7 +53,7 @@
 							<a
 								class="statesLinks__item--link"
 								href="javascript:void(0)"
-								@click="handleTab('complete')"
+								@click="handleTab('completed')"
 								>Completed</a
 							>
 						</li>
@@ -98,7 +98,7 @@ export default {
 		return {
 			campaigns: [],
 			page: 1,
-			subscriptions: 'pending',
+			subscription: 'pending',
 			norecord: false,
 			complete: 61,
 			response: 68,
@@ -115,15 +115,13 @@ export default {
 					locations: null,
 					categories: null,
 					search: null,
-					subscriptions: this.subscriptions,
-					// locations: this.filterLocations,
-					// categories: this.filterCategories,
-					// search: this.search,
+					subscriptions: this.subscription,
 				};
 			},
 			result(data) {
 				if (data.data.campaigns.length == 0) {
-					console.log(data.data.campaigns.length);
+					console.log(data.data.campaigns);
+					this.subscription = null;
 					this.norecord = true;
 				} else {
 					this.norecord = false;
@@ -133,21 +131,8 @@ export default {
 	},
 	methods: {
 		handleTab(data) {
-			this.subscriptions = data;
-			// if (this.campaigns.subscriptions == null) {
-			// 	this.subscriptions = null;
-			// } else {
-			// }
-			// console.log(this.subscriptions);
-		},
-	},
-	watch: {
-		subscriptions: {
-			handler() {
-				if (this.campaigns.subscriptions) {
-					this.subscriptions = this.campaigns;
-				}
-			},
+			this.subscription = data;
+			// console.log('data :', data);
 		},
 	},
 	mounted() {
@@ -158,7 +143,7 @@ export default {
 				item.classList.add('active');
 			});
 		});
-		console.log('query :', this.subscriptions);
+		// console.log('query :', this.campaigns[0].subscription);
 	},
 };
 </script>

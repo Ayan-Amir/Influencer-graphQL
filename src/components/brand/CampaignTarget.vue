@@ -65,7 +65,7 @@
 				<!-- (2 Location) -->
 				<location :locations="newCampaignFilters.locations" />
 				<!-- (3 Interests) -->
-				<interest :interests="interest" />
+				<interest :interests="newCampaignFilters.interests" />
 				<!-- (4 Quality Filters) -->
 				<filters :newCampaignFilters="newCampaignFilters" />
 			</div>
@@ -95,9 +95,6 @@ export default {
 		return {
 			newCampaignFilters: [],
 			loaded: false,
-			interest: [],
-			location: [],
-			gender: [],
 		};
 	},
 	apollo: {
@@ -106,11 +103,6 @@ export default {
 			update(data) {
 				this.loaded = true;
 				return data.newCampaignFilters;
-			},
-			result(data) {
-				this.gender = data.data.newCampaignFilters.gender;
-				this.location = data.data.newCampaignFilters.locations;
-				this.interest = data.data.newCampaignFilters.interests;
 			},
 		},
 	},
