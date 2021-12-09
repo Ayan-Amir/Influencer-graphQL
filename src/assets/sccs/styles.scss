@@ -9,7 +9,7 @@ p {
 	min-height: calc(100vh - 98px);
 }
 .contentWrapper {
-	padding-top: 130px;
+	padding-top: 120px;
 	padding-bottom: rem(30px);
 	@media screen and (max-width: 991px) {
 		padding-top: 100px;
@@ -318,6 +318,7 @@ p {
 			border: 0;
 			min-width: 120px;
 			height: 40px;
+			text-decoration: unset !important;
 			svg {
 				fill: var(--textPrimary);
 				color: var(--textPrimary);
@@ -453,5 +454,13 @@ p {
 				font-size: rem(13px);
 			}
 		}
+	}
+}
+.topHead {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	* {
+		margin: 0;
 	}
 }

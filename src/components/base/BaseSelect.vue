@@ -9,9 +9,6 @@ export default {
 	props: {
 		options: Array,
 		initialValue: String,
-		selected: {
-			type: String | Object | Array,
-		},
 	},
 };
 </script>

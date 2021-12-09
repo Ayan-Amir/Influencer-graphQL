@@ -24,7 +24,7 @@
 			</div>
 		</div>
 		<!-- Search -->
-		<div class="search">
+		<div class="search" v-if="isSeacrh == false">
 			<form>
 				<div class="form-group">
 					<input
@@ -55,6 +55,7 @@ export default {
 			type: Object | Array,
 		},
 		selected: String,
+		isSeacrh: Boolean,
 	},
 	watch: {
 		locate: function () {
