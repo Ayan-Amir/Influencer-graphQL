@@ -2,21 +2,45 @@
 	<div class="container">
 		<div class="influencerDetail">
 			<div class="influencerDetail__left">
-				<div class="influencerDetail__left--image">
+				<div class="influencerDetail__left--image onDesktop">
 					<img
 						src="@/assets/images/iPhone-12.png"
 						alt=""
 						class="img-fluid"
 					/>
 				</div>
+				<!-- hide on Desktop -->
+
+				<div class="onMobile">
+					<ul>
+						<li class="influencerDetail__left--icon">
+							<img
+								src="@/assets/images/iPhone-12.png"
+								alt=""
+								class="img-fluid"
+							/>
+						</li>
+						<li>
+							<h1>Dorian Hâtz Popa</h1>
+							<span class="influencerDetail__right--subTitle"
+								>Bucharest</span
+							>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<div class="influencerDetail__right">
-				<h1>Dorian Hâtz Popa</h1>
-				<span class="influencerDetail__right--subTitle">Bucharest</span>
+				<!-- hide on Mobile -->
+				<div class="onDesktop">
+					<h1>Dorian Hâtz Popa</h1>
+					<span class="influencerDetail__right--subTitle"
+						>Bucharest</span
+					>
+				</div>
 				<div class="row">
-					<div class="col-md-6 col-xl-3">
+					<div class="col-6 col-xl-3">
 						<ul class="influencerDetail__right--socialMedia">
-							<li class="logo">
+							<li class="icon">
 								<img
 									src="@/assets/images/svg/socialLogo.svg"
 									alt=""
@@ -29,9 +53,9 @@
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-6 col-xl-3">
+					<div class="col-6 col-xl-3">
 						<ul class="influencerDetail__right--socialMedia">
-							<li class="logo">
+							<li class="icon">
 								<img
 									src="@/assets/images/svg/socialLogo.svg"
 									alt=""
@@ -44,9 +68,9 @@
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-6 col-xl-3">
+					<div class="col-6 col-xl-3">
 						<ul class="influencerDetail__right--socialMedia">
-							<li class="logo">
+							<li class="icon">
 								<img
 									src="@/assets/images/svg/socialLogo.svg"
 									alt=""
@@ -59,9 +83,9 @@
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-6 col-xl-3">
+					<div class="col-6 col-xl-3">
 						<ul class="influencerDetail__right--socialMedia">
-							<li class="logo">
+							<li class="icon">
 								<img
 									src="@/assets/images/svg/socialLogo.svg"
 									alt=""
@@ -76,11 +100,11 @@
 					</div>
 				</div>
 				<ul class="influencerDetail__right--hashtags">
-					<li>#newpost.</li>
-					<li>#influencer.</li>
-					<li>#blogger.</li>
-					<li>#digitalmarketing.</li>
-					<li>#fashionblogger.</li>
+					<li><a href="#">#newpost.</a></li>
+					<li><a href="#">#influencer.</a></li>
+					<li><a href="#">#blogger.</a></li>
+					<li><a href="#">#digitalmarketing.</a></li>
+					<li><a href="#">#fashionblogger.</a></li>
 				</ul>
 				<p>
 					Dorian Hâtz Popa August 7, 1988, Constanța, Romanian
@@ -92,13 +116,16 @@
 				</p>
 				<div class="influencerDetail__right--btnWrapper">
 					<h2>Price: 1.000 RON</h2>
-					<div class="inline-btns">
+					<div class="inline-btns onDesktop">
 						<a href="#" class="btn btn-primary">Buy</a>
 						<a href="#" class="btn btn-primary">Message</a>
 					</div>
+					<div class="inline-btns onMobile">
+						<a href="#" class="btn btn-primary">Buy Offer</a>
+					</div>
 				</div>
 				<div class="d-flex align-items-center mt-3">
-					<div class="icon">
+					<div class="influencerDetail__right--icon">
 						<img
 							src="@/assets/images/icons/avatar.png"
 							alt=""
@@ -146,7 +173,21 @@ export default {};
 			max-width: 215px;
 		}
 		@media screen and (max-width: 767px) {
-			margin: auto;
+			// margin: auto;
+			max-width: 100%;
+			flex: 100%;
+		}
+		&--icon {
+			width: 100px;
+			min-width: 100px;
+			height: 100px;
+			overflow: hidden;
+			border-radius: 50%;
+			margin-right: rem(18px);
+			img {
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 	&__right {
@@ -173,7 +214,7 @@ export default {};
 			@media screen and (max-width: 1199px) {
 				margin-bottom: rem(20px) !important;
 			}
-			.logo {
+			.icon {
 				height: 39px;
 				width: 39px;
 				min-width: 39px;
@@ -200,11 +241,19 @@ export default {};
 			margin: rem(12px) 0;
 			list-style: none;
 			display: flex;
+			flex-wrap: wrap;
 			li {
-				font-size: rem(18px);
-				font-weight: 500;
-				color: var(--textPrimary);
 				margin-right: 6px;
+				margin-bottom: 6px;
+				a {
+					font-size: rem(18px);
+					font-weight: 500;
+					color: var(--textPrimary);
+					transition: 0.3s ease-in-out;
+					&:hover {
+						opacity: 0.8;
+					}
+				}
 			}
 		}
 		&--btnWrapper {
@@ -213,6 +262,7 @@ export default {};
 			align-items: center;
 			@media screen and (max-width: 500px) {
 				flex-direction: column;
+				align-items: flex-start;
 				h2 {
 					margin-bottom: rem(16px);
 				}
@@ -239,7 +289,7 @@ export default {};
 				}
 			}
 		}
-		.icon {
+		&--icon {
 			height: 50px;
 			width: 50px;
 			background: #1997cc;
@@ -253,6 +303,22 @@ export default {};
 			font-size: rem(14px);
 			font-weight: 600;
 			color: var(--primary);
+		}
+	}
+	.onDesktop {
+		@media screen and (max-width: 767px) {
+			display: none;
+		}
+	}
+	.onMobile {
+		display: none;
+		@media screen and (max-width: 767px) {
+			display: block !important;
+		}
+		ul {
+			list-style: none;
+			display: flex;
+			align-items: center;
 		}
 	}
 }
