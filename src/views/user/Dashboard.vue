@@ -2,7 +2,7 @@
 	<div class="dashboard container">
 		<div class="row">
 			<div class="col-lg-4">
-				<profile-card />
+				<profile-card title="Ruby and Rails" subTitle="Influencers" />
 				<base-statictics
 					:complete="complete"
 					:response="response"

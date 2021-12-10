@@ -1,5 +1,11 @@
 export default [
 	{
+		path: "",
+		name: "Dashboard",
+		component: () => import("@/views/brand/Dashboard.vue"),
+		
+	},
+	{
 		path: "new-campaign",
 		name: "New Camapaign",
 		component: () => import("@/views/brand/NewCampaign.vue"),

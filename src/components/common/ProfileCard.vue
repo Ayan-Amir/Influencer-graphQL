@@ -7,8 +7,8 @@
 				class="img-fluid"
 			/>
 		</div>
-		<div class="profile__title">Ruby Von Rails</div>
-		<p class="profile__subTitle">Influencer</p>
+		<div class="profile__title">{{ title }}</div>
+		<p class="profile__subTitle">{{ subTitle }}</p>
 		<div class="button-row">
 			<router-link to="user/edit-profile" class="btn btn-primary small"
 				>Edit Profile</router-link
@@ -18,7 +18,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+	props: {
+		title: String,
+		subTitle: String,
+	},
+};
 </script>
 
 <style lang="scss" scoped>
