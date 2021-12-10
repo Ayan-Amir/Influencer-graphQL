@@ -38,65 +38,12 @@
 					>
 				</div>
 				<div class="row">
-					<div class="col-6 col-xl-3">
-						<ul class="influencerDetail__right--socialMedia">
-							<li class="icon">
-								<img
-									src="@/assets/images/svg/socialLogo.svg"
-									alt=""
-									class="img-fluid"
-								/>
-							</li>
-							<li>
-								Instagram
-								<p>2.000.000</p>
-							</li>
-						</ul>
-					</div>
-					<div class="col-6 col-xl-3">
-						<ul class="influencerDetail__right--socialMedia">
-							<li class="icon">
-								<img
-									src="@/assets/images/svg/socialLogo.svg"
-									alt=""
-									class="img-fluid"
-								/>
-							</li>
-							<li>
-								Instagram
-								<p>2.000.000</p>
-							</li>
-						</ul>
-					</div>
-					<div class="col-6 col-xl-3">
-						<ul class="influencerDetail__right--socialMedia">
-							<li class="icon">
-								<img
-									src="@/assets/images/svg/socialLogo.svg"
-									alt=""
-									class="img-fluid"
-								/>
-							</li>
-							<li>
-								Instagram
-								<p>2.000.000</p>
-							</li>
-						</ul>
-					</div>
-					<div class="col-6 col-xl-3">
-						<ul class="influencerDetail__right--socialMedia">
-							<li class="icon">
-								<img
-									src="@/assets/images/svg/socialLogo.svg"
-									alt=""
-									class="img-fluid"
-								/>
-							</li>
-							<li>
-								Instagram
-								<p>2.000.000</p>
-							</li>
-						</ul>
+					<div
+						class="col-6 col-xl-3"
+						v-for="item in socialMedia"
+						:key="item.id"
+					>
+						<social-media :socialMedia="item" />
 					</div>
 				</div>
 				<ul class="influencerDetail__right--hashtags">
@@ -135,14 +82,8 @@
 					<span>Sep 10, 2021</span>
 				</div>
 				<div class="row mt-3">
-					<div class="col-md-8">
-						<div class="image">
-							<img
-								src="@/assets/images/happyHopes.png"
-								alt=""
-								class="img-fluid"
-							/>
-						</div>
+					<div class="col-md-4">
+						<influencer-detail-gallery />
 					</div>
 				</div>
 			</div>
@@ -151,7 +92,42 @@
 </template>
 
 <script>
-export default {};
+import SocialMedia from '@/components/brand/SocialMedia.vue';
+import InfluencerDetailGallery from '@/components/brand/InfluencerDetailGallery.vue';
+
+export default {
+	components: { SocialMedia, InfluencerDetailGallery },
+	data() {
+		return {
+			socialMedia: [
+				{
+					id: 1,
+					icon: 'socialLogo.svg',
+					title: 'Instagram',
+					subTitle: '2.000.000',
+				},
+				{
+					id: 2,
+					icon: 'socialLogo.svg',
+					title: 'Instagram',
+					subTitle: '2.000.000',
+				},
+				{
+					id: 3,
+					icon: 'socialLogo.svg',
+					title: 'Instagram',
+					subTitle: '2.000.000',
+				},
+				{
+					id: 4,
+					icon: 'socialLogo.svg',
+					title: 'Instagram',
+					subTitle: '2.000.000',
+				},
+			],
+		};
+	},
+};
 </script>
 
 <style lang="scss" scoped>
