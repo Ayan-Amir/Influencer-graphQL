@@ -22,5 +22,11 @@ export default [
 		name: "InfluencersDetail",
 		component: () => import("@/views/brand/InfluencerDetail.vue"),
 		
+	},
+	{
+		path: "campaign-detail",
+		name: "Campaign Detail",
+		component: () => import("@/views/brand/CampaignDetail.vue"),
+		
 	}
 ];

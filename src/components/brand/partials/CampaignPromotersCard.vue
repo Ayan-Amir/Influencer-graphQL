@@ -1,8 +1,7 @@
 <template>
-	<div class="campaignCard card">
-		<ul class="campaignCard__user">
-			<li class="campaignCard__user--icon">
-				<span class="status"></span>
+	<div class="promotersCard card">
+		<ul class="promotersCard__user">
+			<li class="promotersCard__user--image">
 				<img
 					src="@/assets/images/icons/user.png"
 					alt=""
@@ -10,14 +9,17 @@
 				/>
 			</li>
 			<li>
-				Paid Campaign 1
-				<span>Active</span>
+				Dorian Popa
+				<span>2.000.000 Followers</span>
 			</li>
 		</ul>
-		<ul class="campaignCard__date">
-			<li>Sep 10, 2021</li>
+		<ul class="promotersCard__actions">
+			<li>1.000 Ron</li>
 			<li>
-				<a href="#">0/95 Ron</a>
+				<div class="inline-btns">
+					<a href="#" class="btn btn-secondary">Decline</a>
+					<a href="#" class="btn btn-green">Accept</a>
+				</div>
 			</li>
 		</ul>
 	</div>
@@ -28,9 +30,8 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.campaignCard {
-	padding: rem(14px);
-	padding-right: rem(20px);
+.promotersCard {
+	padding: rem(14px) rem(22px);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -40,7 +41,7 @@ export default {};
 		display: flex;
 		align-items: center;
 		list-style: none;
-		&--icon {
+		&--image {
 			position: relative;
 			width: 50px;
 			min-width: 50px;
@@ -77,7 +78,7 @@ export default {};
 			}
 		}
 	}
-	&__date {
+	&__actions {
 		list-style: none;
 		display: flex;
 		align-items: center;
@@ -86,28 +87,7 @@ export default {};
 			font-weight: 400;
 			color: var(--primary);
 			padding: 0 rem(12px);
-			a {
-				font-weight: 700;
-				color: var(--primary);
-				position: relative;
-				&::before {
-					position: absolute;
-					content: '';
-					background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='13.538' height='23.913' viewBox='0 0 13.538 23.913'%3E%3Cpath id='Path_217' data-name='Path 217' d='M4871.167,592.811l9.916,9.683-9.916,9.987' transform='translate(-4869.045 -590.69)' fill='none' stroke='%239637f1' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'/%3E%3C/svg%3E%0A");
-					background-repeat: no-repeat;
-					width: 14px;
-					height: 24px;
-					top: 0;
-					right: -15px;
-					transition: 0.3s ease-in-out;
-				}
-				&:hover {
-					opacity: 0.8;
-					&::before {
-						right: -20px;
-					}
-				}
-			}
+			font-weight: 700;
 			&:first-child {
 				position: relative;
 				&::before {
@@ -120,6 +100,12 @@ export default {};
 					border: 1px solid #c9ced6;
 					border-radius: 50px;
 					overflow: hidden;
+				}
+			}
+			.inline-btns {
+				display: flex;
+				.btn-secondary {
+					margin-right: 6px;
 				}
 			}
 		}

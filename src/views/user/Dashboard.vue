@@ -171,20 +171,5 @@ export default {
 			}
 		}
 	}
-	/deep/ {
-		.nav-item {
-			@media screen and (max-width: 767px) {
-				width: 22% !important;
-			}
-		}
-		.tab-content {
-			.card {
-				cursor: pointer;
-			}
-		}
-		.ep-container {
-			margin-bottom: rem(8px);
-		}
-	}
 }
 </style>
