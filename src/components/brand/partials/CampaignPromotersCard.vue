@@ -1,12 +1,9 @@
 <template>
 	<div class="promotersCard card">
+		<router-link to="/brand/influencer-detail" class="abs-link"></router-link>
 		<ul class="promotersCard__user">
 			<li class="promotersCard__user--image">
-				<img
-					src="@/assets/images/icons/user.png"
-					alt=""
-					class="img-fluid"
-				/>
+				<img src="@/assets/images/icons/user.png" alt="" class="img-fluid" />
 			</li>
 			<li>
 				Dorian Popa
@@ -31,6 +28,7 @@ export default {};
 
 <style lang="scss" scoped>
 .promotersCard {
+	position: relative;
 	padding: rem(14px) rem(22px);
 	display: flex;
 	align-items: center;

@@ -1,55 +1,37 @@
 <template>
-	<div class="influencer">
-		<div class="container">
-			<div class="topHead">
-				<ul class="mainLinks hide-on-lg">
-					<li class="active">
-						<router-link to="/brand/influencers">
-							<svg-icon
-								icon-id="Influencers"
-								icon-viewbox="0 0 20.738 11.668"
-							>
-							</svg-icon>
-							Influencers
-						</router-link>
-					</li>
-					<li>
-						<router-link to="/brand">
-							<svg-icon
-								icon-id="compaign"
-								icon-viewbox="0 0 14.788 13.238"
-							>
-							</svg-icon>
-							Campaign
-						</router-link>
-					</li>
-					<li>
-						<router-link to="#">
-							<svg-icon
-								icon-id="deal"
-								icon-viewbox=" 0 0 14.788 13.238"
-							>
-							</svg-icon>
-							Deal
-						</router-link>
-					</li>
-				</ul>
-				<base-filters
-					v-if="$apollo.data.offersFilters"
-					:filters="offersFilters"
-					:isSeacrh="true"
-					@locationvalue="locationValue"
-					@categoryvalue="categoryValue"
-				/>
-			</div>
-			<div class="row">
-				<div
-					class="col-xl-3 col-lg-4 col-sm-6"
-					v-for="influencer in cardData"
-					:key="influencer.index"
-				>
-					<influencer-card :influencer="influencer" />
-				</div>
+	<div class="deals container">
+		<div class="topHead hide-on-lg">
+			<ul class="mainLinks">
+				<li>
+					<router-link to="/">
+						<svg-icon icon-id="compaign" icon-viewbox="0 0 14.788 13.238"> </svg-icon>
+						Campaign
+					</router-link>
+				</li>
+				<li>
+					<router-link to="/brand/influencers">
+						<svg-icon icon-id="Influencers" icon-viewbox="0 0 20.738 11.668"> </svg-icon>
+						Influencers
+					</router-link>
+				</li>
+				<li class="active">
+					<router-link to="/brand/deals">
+						<svg-icon icon-id="deal" icon-viewbox=" 0 0 14.788 13.238"> </svg-icon>
+						Deal
+					</router-link>
+				</li>
+			</ul>
+			<base-filters
+				v-if="$apollo.data.offersFilters"
+				:filters="offersFilters"
+				:isSeacrh="true"
+				@locationvalue="locationValue"
+				@categoryvalue="categoryValue"
+			/>
+		</div>
+		<div class="row">
+			<div class="col-xl-3 col-lg-4 col-sm-6" v-for="influencer in cardData" :key="influencer.index">
+				<deal-card :influencer="influencer" />
 			</div>
 		</div>
 	</div>
@@ -57,18 +39,23 @@
 
 <script>
 import { OFFERS_FILTERS } from '@/graphql/user/query';
-import InfluencerCard from '@/components/brand/InfluencerCard.vue';
+import DealCard from '@/components/brand/DealCard.vue';
 export default {
-	components: { InfluencerCard },
+	components: { DealCard },
 	data() {
 		return {
 			offersFilters: [],
 			filterLocations: [],
 			filterCategories: [],
+			options: [
+				{ value: null, text: 'Please select an option' },
+				{ value: 'a', text: 'This is First option' },
+				{ value: 'b', text: 'Selected Option' },
+			],
 			cardData: [
 				{
 					index: 1,
-					image: 'influencer.png',
+					image: 'deals.png',
 					title: 'Dorian Popa',
 					icon: 'share.svg',
 					subTitle: 'Bucuresti',
@@ -147,6 +134,9 @@ export default {
 					popularity: '2.000.000',
 				},
 			],
+			complete: 51,
+			response: 68,
+			onTime: 95,
 		};
 	},
 	apollo: {
@@ -154,15 +144,9 @@ export default {
 			query: OFFERS_FILTERS,
 			result(data) {
 				if (data) {
-					let newLocation =
-						data.data.offersFilters.default.locations.map(
-							(item) => item.id
-						);
+					let newLocation = data.data.offersFilters.default.locations.map((item) => item.id);
 
-					let newCategory =
-						data.data.offersFilters.default.categories.map(
-							(item) => item.id
-						);
+					let newCategory = data.data.offersFilters.default.categories.map((item) => item.id);
 
 					this.filterLocations = newLocation;
 					this.filterCategories = newCategory;
@@ -206,12 +190,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.influencer {
-	/deep/ {
-		.filters {
-			margin-bottom: 0;
-		}
-	}
+.deals {
 	.topHead {
 		margin-bottom: rem(18px);
 	}

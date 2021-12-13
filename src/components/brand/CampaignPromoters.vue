@@ -2,16 +2,16 @@
 	<div class="campaignPromoters">
 		<ul class="campaignPromoters__links">
 			<li class="active">
-				<router-link to="#">
-					Awaiting
+				<router-link to="#"
+					>Awaiting
 					<span>1</span>
 				</router-link>
 			</li>
 			<li>
-				<router-link to="#"> In progress </router-link>
+				<router-link to="#">In progress </router-link>
 			</li>
 			<li>
-				<router-link to="#"> Completed </router-link>
+				<router-link to="#">Completed </router-link>
 			</li>
 		</ul>
 		<h2>1 local influencer</h2>
@@ -42,6 +42,15 @@ export default {
 		top: -62px;
 		margin-bottom: rem(25px);
 		@include flex(center, start);
+		@media screen and (max-width: 991px) {
+			left: 0;
+			right: auto;
+			top: -50px;
+			width: 100%;
+		}
+		@media screen and (max-width: 767px) {
+			justify-content: space-between;
+		}
 		li {
 			&:not(:last-child) {
 				margin-right: rem(14px);
@@ -53,7 +62,7 @@ export default {
 				font-weight: 700;
 				color: #060606;
 				background: transparent;
-				padding: 8px;
+				padding: rem(8px);
 				border-radius: 6px;
 				border: 2px solid #e0e5ec;
 				min-width: 120px;
@@ -71,11 +80,20 @@ export default {
 					font-size: 8px;
 					font-weight: 700;
 					color: #fff;
+					@media screen and (max-width: 400px) {
+						right: 10px;
+					}
 				}
 			}
 			&.active {
 				a {
 					border: 2px solid #9637f1;
+				}
+			}
+			@media screen and (max-width: 767px) {
+				width: 31%;
+				a {
+					min-width: auto;
 				}
 			}
 		}
@@ -84,6 +102,9 @@ export default {
 		font-size: rem(18px);
 		padding-left: rem(16px);
 		margin-bottom: rem(20px);
+		@media screen and (max-width: 991px) {
+			margin-top: rem(75px);
+		}
 	}
 	&__budget {
 		margin-top: rem(16px);

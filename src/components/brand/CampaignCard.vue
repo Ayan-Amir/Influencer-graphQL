@@ -3,11 +3,7 @@
 		<ul class="campaignCard__user">
 			<li class="campaignCard__user--icon">
 				<span class="status"></span>
-				<img
-					src="@/assets/images/icons/user.png"
-					alt=""
-					class="img-fluid"
-				/>
+				<img src="@/assets/images/icons/user.png" alt="" class="img-fluid" />
 			</li>
 			<li>
 				Paid Campaign 1
@@ -20,6 +16,7 @@
 				<a href="#">0/95 Ron</a>
 			</li>
 		</ul>
+		<router-link to="/brand/campaign-detail" class="abs-link"></router-link>
 	</div>
 </template>
 
@@ -29,6 +26,7 @@ export default {};
 
 <style lang="scss" scoped>
 .campaignCard {
+	position: relative;
 	padding: rem(14px);
 	padding-right: rem(20px);
 	display: flex;
@@ -97,9 +95,12 @@ export default {};
 					background-repeat: no-repeat;
 					width: 14px;
 					height: 24px;
-					top: 0;
+					top: -1px;
 					right: -15px;
 					transition: 0.3s ease-in-out;
+					@media screen and (max-width: 991px) {
+						top: -3px;
+					}
 				}
 				&:hover {
 					opacity: 0.8;
