@@ -5,7 +5,7 @@
 			<b-tab title="Overview"><campaign-overview /></b-tab>
 			<b-tab title="Promoters"><campaign-promoters /></b-tab>
 			<b-tab title="Insights">
-				<p>I'm the Completed tab</p>
+				<campaign-insights />
 			</b-tab>
 		</b-tabs>
 	</div>
@@ -14,9 +14,10 @@
 <script>
 import CampaignOverview from '@/components/brand/CampaignOverview.vue';
 import CampaignPromoters from '@/components/brand/CampaignPromoters.vue';
+import CampaignInsights from '@/components/brand/CampaignInsights.vue';
 
 export default {
-	components: { CampaignOverview, CampaignPromoters },
+	components: { CampaignOverview, CampaignPromoters, CampaignInsights },
 };
 </script>
 

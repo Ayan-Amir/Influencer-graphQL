@@ -33,18 +33,7 @@
 					</router-link>
 				</li>
 			</ul>
-           <b-dropdown text="Active">
-                <b-dropdown-item href="#"
-                    >Action</b-dropdown-item
-                >
-                <b-dropdown-item href="#"
-                    >Another action</b-dropdown-item
-                >
-                <b-dropdown-item href="#"
-                    >Something else
-                    here...</b-dropdown-item
-                >
-            </b-dropdown>
+			<base-select :options="options" initialValue="Active" />
 		</div>
 		<div class="row">
 			<div class="col-lg-4">
@@ -68,6 +57,11 @@ export default {
 	components: { ProfileCard, CampaignCard },
 	data() {
 		return {
+			options: [
+				{ value: null, text: 'Please select an option' },
+				{ value: 'a', text: 'This is First option' },
+				{ value: 'b', text: 'Selected Option' },
+			],
 			complete: 51,
 			response: 68,
 			onTime: 95,
@@ -80,6 +74,22 @@ export default {
 .dashboard {
 	.topHead {
 		margin-bottom: rem(20px);
+		/deep/ {
+			.v-select-toggle {
+				color: var(--textPrimary) !important;
+				font-weight: 700 !important;
+				height: 40px !important;
+				min-width: 170px;
+				padding-left: rem(16px);
+				padding-right: rem(50px);
+				.arrow-down {
+					width: 16px;
+					height: 8px;
+					transform: translateY(-50%);
+					background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14.828' height='8.414' viewBox='0 0 14.828 8.414'%3E%3Cg id='dropdown' transform='translate(0.414 0.414)'%3E%3Cpath id='Path_180' data-name='Path 180' d='M1,1,7,7l6-6' fill='none' stroke='%23c9ced6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E");
+				}
+			}
+		}
 	}
 }
 </style>

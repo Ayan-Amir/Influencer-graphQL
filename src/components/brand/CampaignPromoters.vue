@@ -16,9 +16,9 @@
 		</ul>
 		<h2>1 local influencer</h2>
 		<campaign-promoters-card />
-		<div>
+		<div class="campaignPromoters__budget">
 			<p>Budget: <span>0.00 Ron / 1.000</span></p>
-			<a href="#" class="btn btn-green">Accept</a>
+			<a href="#" class="btn btn-green">Accept All</a>
 		</div>
 	</div>
 </template>
@@ -84,6 +84,25 @@ export default {
 		font-size: rem(18px);
 		padding-left: rem(16px);
 		margin-bottom: rem(20px);
+	}
+	&__budget {
+		margin-top: rem(16px);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		p {
+			font-size: rem(18px);
+			font-family: $secondary-font;
+			color: var(--textPrimary);
+			font-weight: 700;
+			span {
+				font-weight: 500;
+			}
+		}
+		.btn-green {
+			padding-left: rem(25px);
+			padding-right: rem(25px);
+		}
 	}
 }
 </style>
