@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xl-3 col-lg-4 col-sm-6" v-for="deal in cardData" :key="deal.index">
+			<div class="col-xl-3 col-lg-4 col-sm-6" v-for="deal in deals" :key="deal.index">
 				<deal-card :deal="deal" />
 			</div>
 		</div>
@@ -54,7 +54,7 @@ export default {
 				{ value: 'a', text: 'This is First option' },
 				{ value: 'b', text: 'Selected Option' },
 			],
-			cardData: [
+			deals: [
 				{
 					index: 1,
 					image: 'deals.png',
