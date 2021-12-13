@@ -21,17 +21,19 @@
 					</router-link>
 				</li>
 			</ul>
-			<base-filters
-				v-if="$apollo.data.offersFilters"
-				:filters="offersFilters"
-				:isSeacrh="true"
-				@locationvalue="locationValue"
-				@categoryvalue="categoryValue"
-			/>
+			<div>
+				<base-filters
+					v-if="$apollo.data.offersFilters"
+					:filters="offersFilters"
+					:isSeacrh="true"
+					@locationvalue="locationValue"
+					@categoryvalue="categoryValue"
+				/>
+			</div>
 		</div>
 		<div class="row">
-			<div class="col-xl-3 col-lg-4 col-sm-6" v-for="influencer in cardData" :key="influencer.index">
-				<deal-card :influencer="influencer" />
+			<div class="col-xl-3 col-lg-4 col-sm-6" v-for="deal in cardData" :key="deal.index">
+				<deal-card :deal="deal" />
 			</div>
 		</div>
 	</div>
@@ -56,82 +58,58 @@ export default {
 				{
 					index: 1,
 					image: 'deals.png',
-					title: 'Dorian Popa',
-					icon: 'share.svg',
-					subTitle: 'Bucuresti',
-					logo: 'socialLogo.svg',
-					socialMedia: 'Instagram',
-					popularity: '2.000.000',
+					time: '02 : 48 : 03',
+					title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+					icon: 'waterDrop.svg',
 				},
 				{
 					index: 2,
-					image: 'influencer.png',
-					title: 'Dorian Popa',
-					icon: 'share.svg',
-					subTitle: 'Bucuresti',
-					logo: 'socialLogo.svg',
-					socialMedia: 'Instagram',
-					popularity: '2.000.000',
+					image: 'deals.png',
+					time: '02 : 48 : 03',
+					title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+					icon: 'waterDrop.svg',
 				},
 				{
 					index: 3,
-					image: 'influencer.png',
-					title: 'Dorian Popa',
-					icon: 'share.svg',
-					subTitle: 'Bucuresti',
-					logo: 'socialLogo.svg',
-					socialMedia: 'Instagram',
-					popularity: '2.000.000',
+					image: 'deals.png',
+					time: '02 : 48 : 03',
+					title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+					icon: 'waterDrop.svg',
 				},
 				{
 					index: 4,
-					image: 'influencer.png',
-					title: 'Dorian Popa',
-					icon: 'share.svg',
-					subTitle: 'Bucuresti',
-					logo: 'socialLogo.svg',
-					socialMedia: 'Instagram',
-					popularity: '2.000.000',
+					image: 'deals.png',
+					time: '02 : 48 : 03',
+					title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+					icon: 'waterDrop.svg',
 				},
 				{
 					index: 5,
-					image: 'influencer.png',
-					title: 'Dorian Popa',
-					icon: 'share.svg',
-					subTitle: 'Bucuresti',
-					logo: 'socialLogo.svg',
-					socialMedia: 'Instagram',
-					popularity: '2.000.000',
+					image: 'deals.png',
+					time: '02 : 48 : 03',
+					title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+					icon: 'waterDrop.svg',
 				},
 				{
 					index: 6,
-					image: 'influencer.png',
-					title: 'Dorian Popa',
-					icon: 'share.svg',
-					subTitle: 'Bucuresti',
-					logo: 'socialLogo.svg',
-					socialMedia: 'Instagram',
-					popularity: '2.000.000',
+					image: 'deals.png',
+					time: '02 : 48 : 03',
+					title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+					icon: 'waterDrop.svg',
 				},
 				{
 					index: 7,
-					image: 'influencer.png',
-					title: 'Dorian Popa',
-					icon: 'share.svg',
-					subTitle: 'Bucuresti',
-					logo: 'socialLogo.svg',
-					socialMedia: 'Instagram',
-					popularity: '2.000.000',
+					image: 'deals.png',
+					time: '02 : 48 : 03',
+					title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+					icon: 'waterDrop.svg',
 				},
 				{
 					index: 8,
-					image: 'influencer.png',
-					title: 'Dorian Popa',
-					icon: 'share.svg',
-					subTitle: 'Bucuresti',
-					logo: 'socialLogo.svg',
-					socialMedia: 'Instagram',
-					popularity: '2.000.000',
+					image: 'deals.png',
+					time: '02 : 48 : 03',
+					title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+					icon: 'waterDrop.svg',
 				},
 			],
 			complete: 51,

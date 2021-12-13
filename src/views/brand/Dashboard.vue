@@ -4,31 +4,19 @@
 			<ul class="mainLinks">
 				<li class="active">
 					<router-link to="/">
-						<svg-icon
-							icon-id="compaign"
-							icon-viewbox="0 0 14.788 13.238"
-						>
-						</svg-icon>
+						<svg-icon icon-id="compaign" icon-viewbox="0 0 14.788 13.238"> </svg-icon>
 						Campaign
 					</router-link>
 				</li>
 				<li>
 					<router-link to="/brand/influencers">
-						<svg-icon
-							icon-id="Influencers"
-							icon-viewbox="0 0 20.738 11.668"
-						>
-						</svg-icon>
+						<svg-icon icon-id="Influencers" icon-viewbox="0 0 20.738 11.668"> </svg-icon>
 						Influencers
 					</router-link>
 				</li>
 				<li>
-					<router-link to="#">
-						<svg-icon
-							icon-id="deal"
-							icon-viewbox=" 0 0 14.788 13.238"
-						>
-						</svg-icon>
+					<router-link to="/brand/deals">
+						<svg-icon icon-id="deal" icon-viewbox=" 0 0 14.788 13.238"> </svg-icon>
 						Deal
 					</router-link>
 				</li>
@@ -38,18 +26,10 @@
 		<div class="row">
 			<div class="col-lg-4">
 				<profile-card title="Palas Mall" subTitle="Iasi" />
-				<base-statictics
-					:complete="complete"
-					:response="response"
-					:onTime="onTime"
-				/>
+				<base-statictics :complete="complete" :response="response" :onTime="onTime" />
 			</div>
 			<div class="col-lg-8">
-				<base-select
-					class="onMobile"
-					:options="options"
-					initialValue="Active"
-				/>
+				<base-select class="onMobile" :options="options" initialValue="Active" />
 				<campaign-card />
 			</div>
 		</div>
