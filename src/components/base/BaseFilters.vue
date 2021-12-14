@@ -27,12 +27,7 @@
 		<div class="search" v-if="isSeacrh == false">
 			<form>
 				<div class="form-group">
-					<input
-						type="text "
-						class="form-control"
-						placeholder="Search.."
-						v-model="search"
-					/>
+					<input type="text " class="form-control" placeholder="Search.." v-model="search" />
 				</div>
 			</form>
 		</div>
@@ -83,9 +78,7 @@ export default {
 		addTag(newTag) {
 			const tag = {
 				name: newTag,
-				code:
-					newTag.substring(0, 2) +
-					Math.floor(Math.random() * 10000000),
+				code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000),
 			};
 			this.options.push(tag);
 			this.value.push(tag);

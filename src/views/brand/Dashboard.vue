@@ -3,7 +3,7 @@
 		<div class="topHead hide-on-lg">
 			<ul class="mainLinks">
 				<li class="active">
-					<router-link to="/">
+					<router-link to="/brand">
 						<svg-icon icon-id="compaign" icon-viewbox="0 0 14.788 13.238"> </svg-icon>
 						Campaign
 					</router-link>
