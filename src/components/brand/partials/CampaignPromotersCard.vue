@@ -82,10 +82,10 @@ export default {};
 		align-items: center;
 		li {
 			font-size: rem(14px);
-			font-weight: 400;
 			color: var(--primary);
 			padding: 0 rem(12px);
 			font-weight: 700;
+			font-family: $secondary-font;
 			&:first-child {
 				position: relative;
 				&::before {

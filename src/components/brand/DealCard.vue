@@ -102,6 +102,12 @@ export default {
 			padding-top: rem(15px);
 			.btn {
 				padding: 11px 15px;
+				@media screen and (max-width: 767px) and (min-width: 575px) {
+					padding: 11px 5px;
+					&.small {
+						min-width: 90px;
+					}
+				}
 				svg {
 					width: 12px;
 					margin-right: 7px;
@@ -122,6 +128,10 @@ export default {
 						border-radius: 50%;
 						background: #e8e8f0;
 						border: 2px solid #fff;
+						@media screen and (max-width: 767px) and (min-width: 575px) {
+							width: 28px;
+							height: 28px;
+						}
 					}
 					&:nth-child(1) {
 						left: 30px;

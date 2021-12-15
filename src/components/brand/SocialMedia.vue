@@ -1,11 +1,7 @@
 <template>
 	<ul class="socialMedia">
 		<li class="socialMedia__icon">
-			<img
-				:src="require(`@/assets/images/svg/${socialMedia.icon}`)"
-				alt=""
-				class="img-fluid"
-			/>
+			<img :src="require(`@/assets/images/svg/${socialMedia.icon}`)" alt="" class="img-fluid" />
 		</li>
 		<li>
 			{{ socialMedia.title }}
@@ -17,7 +13,9 @@
 <script>
 export default {
 	props: {
-		socialMedia: Array,
+		socialMedia: {
+			type: Array | Object,
+		},
 	},
 };
 </script>
@@ -31,7 +29,7 @@ export default {
 	background: #fff;
 	border-radius: 12px;
 	@media screen and (max-width: 1199px) {
-		margin-bottom: rem(20px) !important;
+		margin-bottom: rem(16px) !important;
 	}
 	&__icon {
 		height: 39px;

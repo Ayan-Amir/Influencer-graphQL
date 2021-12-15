@@ -2,9 +2,7 @@
 	<div class="campaignOverview">
 		<div class="campaignOverview__left">
 			<p>What to do for this deal:</p>
-			<p class="green">
-				Post 1 Story on your Instagram to promote our brand
-			</p>
+			<p class="green">Post 1 Story on your Instagram to promote our brand</p>
 			<ul class="campaignOverview__left--info">
 				<li>
 					Campaign type:
@@ -26,11 +24,7 @@
 				</li>
 			</ul>
 			<div class="campaignOverview__left--image">
-				<img
-					src="@/assets/images/happyHope.png"
-					alt=""
-					class="img-fluid"
-				/>
+				<img src="@/assets/images/happyHope.png" alt="" class="img-fluid" />
 			</div>
 		</div>
 	</div>
@@ -57,12 +51,15 @@ export default {};
 			&.green {
 				font-weight: 700;
 				color: #23d293;
+				@media screen and (max-width: 767px) {
+					margin-top: rem(12px);
+				}
 			}
 		}
 		&--info {
 			list-style: none;
 			display: flex;
-			margin-top: rem(16px);
+			margin-top: rem(12px);
 			padding-bottom: rem(32px);
 			border-bottom: 2px solid #c9ced6;
 			@media screen and (max-width: 575px) {

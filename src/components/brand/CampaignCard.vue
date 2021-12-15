@@ -1,13 +1,14 @@
 <template>
 	<div class="campaignCard card">
 		<ul class="campaignCard__user">
+			<span class="campaignCard__user--status"></span>
 			<li class="campaignCard__user--icon">
-				<span class="status"></span>
 				<img src="@/assets/images/icons/user.png" alt="" class="img-fluid" />
 			</li>
 			<li>
 				Paid Campaign 1
 				<span>Active</span>
+				<span class="onMobile">Sep 10, 2021</span>
 			</li>
 		</ul>
 		<ul class="campaignCard__date">
@@ -38,6 +39,16 @@ export default {};
 		display: flex;
 		align-items: center;
 		list-style: none;
+		&--status {
+			position: absolute;
+			width: 14px;
+			height: 14px;
+			background: #24d694;
+			border-radius: 50%;
+			top: 50px;
+			z-index: 1;
+			left: 50px;
+		}
 		&--icon {
 			position: relative;
 			width: 50px;
@@ -49,19 +60,11 @@ export default {};
 			align-items: center;
 			justify-content: center;
 			margin-right: rem(15px);
+			overflow: hidden;
 			// img {
 			// 	height: 100%;
 			// 	width: 100%;
 			// }
-			.status {
-				position: absolute;
-				width: 14px;
-				height: 14px;
-				background: #24d694;
-				border-radius: 50%;
-				right: 0;
-				bottom: 0;
-			}
 		}
 		li {
 			font-size: rem(18px);
@@ -111,6 +114,9 @@ export default {};
 			}
 			&:first-child {
 				position: relative;
+				@media screen and (max-width: 991px) {
+					display: none;
+				}
 				&::before {
 					position: absolute;
 					content: '';
@@ -123,6 +129,14 @@ export default {};
 					overflow: hidden;
 				}
 			}
+		}
+	}
+	.onMobile {
+		display: none;
+		font-size: rem(14px);
+		color: var(--primary);
+		@media screen and (max-width: 991px) {
+			display: block !important;
 		}
 	}
 }
