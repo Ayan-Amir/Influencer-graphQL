@@ -1,8 +1,8 @@
-<template>
+<template> 
 	<div>
 		<div class="deals container">
-			<div class="topHead hide-on-lg">
-				<ul class="mainLinks">
+			<div class="topHead ">
+				<ul class="mainLinks hide-on-lg">
 					<li>
 						<router-link to="/brand">
 							<svg-icon icon-id="compaign" icon-viewbox="0 0 14.788 13.238"> </svg-icon>
@@ -204,6 +204,21 @@ export default {
 	/deep/ {
 		.filters {
 			padding-top: 0;
+			@media screen and (max-width:991px){
+				width:100%;
+				.d-flex{
+					width:100%;
+					.form-group{
+						width:50%;
+						&:not(:last-child){
+							margin-right:10px;
+						}
+					}
+				}
+				.multiselect{
+					margin:0;
+				}
+			}
 		}
 	}
 	.topHead {
@@ -218,6 +233,47 @@ export default {
 				a {
 					padding-left: 12px;
 					padding-right: 12px;
+				}
+			}
+		}
+		@media screen and (max-width:1350px){
+			flex-direction: column;
+			align-items: start;
+			&__left{
+				justify-content: space-between;
+				width: 100%;
+				margin-top: rem(20px);
+				@media screen and (min-width:992px){
+					*{
+						margin-bottom:5px !important;
+					}
+				}
+			}
+		}
+		@media screen and (max-width:991px){
+			&__left{
+				flex-direction: column;
+				align-items: center;
+				.mainLinks{
+					flex-direction: row;
+					flex-wrap: nowrap;
+					width: 100%;
+					margin-bottom:10px;
+					li{
+						a{
+							background: #fff;
+							height:40px;
+							border-radius: 8px;
+							text-align: center;
+    						display: block;
+							&:after{
+								display:none;
+							}
+						}
+						&:not(:last-child){
+							margin-right:10px;
+						}
+					}
 				}
 			}
 		}
