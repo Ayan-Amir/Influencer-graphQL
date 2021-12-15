@@ -3,27 +3,14 @@
 		<div class="row align-items-center justify-content-between">
 			<div class="col-md-6">
 				<h1>{{ title }}</h1>
+				<p>{{subTitle}}</p>
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
 					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
-						<div class="row">
-							<div class="col-md-6">
-								<base-input
-									placeholder="First Name"
-									type="text"
-								/>
-							</div>
-							<div class="col-md-6">
-								<base-input
-									placeholder="last Name"
-									type="text"
-								/>
-							</div>
-						</div>
-						<base-date-picker />
-						<base-select :options="Gender" :selected="selected" />
+						<base-select :options="country" :selected="selected" />
+						<base-input placeholder="Phone Number" type="tell"/>
 						<div class="button-row">
 							<button type="submit" class="btn btn-primary large">
-								Save
+								Continue
 							</button>
 						</div>
 					</b-form>
@@ -46,11 +33,12 @@
 export default {
 	data() {
 		return {
-			title: 'My Profile',
-			selected: { value: 'null', text: 'Male' },
-			Gender: [
-				{ value: null, text: 'Male' },
-				{ value: 'a', text: 'Female' },
+			title: 'Phone Number',
+			subTitle:'You will receive an sms with a numeric code',
+			selected: { value: 'null', text: 'Select the country' },
+			country: [
+				{ value: null, text: 'Pakistan' },
+				{ value: 'a', text: 'Kuwait' },
 				{ value: 'b', text: 'Other' },
 			],
 		};

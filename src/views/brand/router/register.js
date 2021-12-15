@@ -9,9 +9,9 @@ export default [{
             import ("@/views/brand/register/Welcome.vue"),
     },
     {
-        path: "profile",
+        path: "number-registration",
         component: () =>
-            import ("@/views/brand/register/Profile.vue"),
+            import ("@/views/brand/register/NumberRegistration.vue"),
     },
     {
         path: "profile-photo",
