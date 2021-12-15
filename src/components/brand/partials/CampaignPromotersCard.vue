@@ -1,17 +1,19 @@
 <template>
 	<div class="promotersCard card">
-		<router-link to="/brand/influencer-detail" class="abs-link"></router-link>
-		<ul class="promotersCard__user">
-			<li class="promotersCard__user--image">
-				<img src="@/assets/images/icons/user.png" alt="" class="img-fluid" />
-			</li>
-			<li>
-				Dorian Popa
-				<span>2.000.000 Followers</span>
-			</li>
-		</ul>
+		<div class="promotersCard__detail">
+			<ul class="promotersCard__detail--user">
+				<router-link to="/brand/influencer-detail" class="abs-link"></router-link>
+				<li class="promotersCard__detail--image">
+					<img src="@/assets/images/icons/user.png" alt="" class="img-fluid" />
+				</li>
+				<li>
+					Dorian Popa
+					<span>2.000.000 Followers</span>
+				</li>
+			</ul>
+			<span class="promotersCard__detail--price">1.000 Ron</span>
+		</div>
 		<ul class="promotersCard__actions">
-			<li>1.000 Ron</li>
 			<li>
 				<div class="inline-btns">
 					<a href="#" class="btn btn-secondary">Decline</a>
@@ -35,10 +37,32 @@ export default {};
 	justify-content: space-between;
 	flex-direction: row;
 	border-radius: 10px !important;
-	&__user {
+	@media screen and (max-width: 575px) {
+		flex-direction: column;
+		align-items: unset;
+	}
+	&__detail {
 		display: flex;
 		align-items: center;
-		list-style: none;
+		justify-content: space-between;
+		width: 100%;
+		&--user {
+			position: relative;
+			display: flex;
+			align-items: center;
+			list-style: none;
+			li {
+				font-size: rem(18px);
+				font-weight: 500;
+				color: var(--textPrimary);
+				span {
+					display: block;
+					color: var(--textSecondary);
+					font-size: rem(14px);
+					font-weight: 400;
+				}
+			}
+		}
 		&--image {
 			position: relative;
 			width: 50px;
@@ -64,40 +88,34 @@ export default {};
 				bottom: 0;
 			}
 		}
-		li {
-			font-size: rem(18px);
-			font-weight: 500;
-			color: var(--textPrimary);
-			span {
-				display: block;
-				color: var(--textSecondary);
-				font-size: rem(14px);
-				font-weight: 400;
-			}
-		}
-	}
-	&__actions {
-		list-style: none;
-		display: flex;
-		align-items: center;
-		li {
+		&--price {
 			font-size: rem(14px);
 			color: var(--primary);
 			padding: 0 rem(12px);
 			font-weight: 700;
 			font-family: $secondary-font;
-			&:first-child {
-				position: relative;
+		}
+	}
+	&__actions {
+		list-style: none;
+		display: flex;
+		justify-content: flex-end;
+		li {
+			position: relative;
+			padding-left: rem(12px);
+			@media screen and (min-width: 576px) {
 				&::before {
-					position: absolute;
 					content: '';
+					position: absolute;
 					height: 60px;
-					top: -20px;
-					right: 0;
-					background: #c9ced6;
+					top: -10px;
+					left: 0;
 					border: 1px solid #c9ced6;
 					border-radius: 50px;
 					overflow: hidden;
+					@media screen and (max-width: 991px) {
+						top: -13px;
+					}
 				}
 			}
 			.inline-btns {
