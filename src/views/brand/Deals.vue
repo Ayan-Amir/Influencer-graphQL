@@ -273,6 +273,9 @@ export default {
 						&:not(:last-child){
 							margin-right:10px;
 						}
+						&:last-child{
+							margin:0;
+						}
 					}
 				}
 			}

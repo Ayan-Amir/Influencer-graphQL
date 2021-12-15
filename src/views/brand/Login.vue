@@ -8,7 +8,6 @@
 				</p>
 
 				<login />
-				
 			</div>
 			<div class="col-lg-7 col-md-6">
 				<div class="image">

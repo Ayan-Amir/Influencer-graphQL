@@ -41,7 +41,7 @@ import SocialLinks from '@/components/user/layout/SocialLinks.vue';
 import { mapActions, mapGetters, mapState } from 'vuex';
 import BaseAlerts from '../base/BaseAlerts.vue';
 export default {
-	data() {
+	data() { 
 		return {
 			loginDetails: {
 				email: 'ciprian',

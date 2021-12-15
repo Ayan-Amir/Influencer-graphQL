@@ -1,0 +1,73 @@
+<template>
+	<div class="paymentDetail">
+		<div class="row justify-content-between">
+			<div class="col-lg-5 col-md-6">
+				<h1>{{ title }}</h1>
+				<validation-observer ref="observer" v-slot="{ handleSubmit }">
+					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
+						<base-input placeholder="Instagram" type="text" />
+						<div class="button-row">
+							<button
+								type="submit"
+								to=""
+								class="btn btn-primary large"
+							>
+								Save
+							</button>
+						</div>
+					</b-form>
+				</validation-observer>
+			</div>
+			<div class="col-lg-7 col-md-6">
+				<div class="image">
+					<img
+						src="@/assets/images/payment-detail.png"
+						class="img-fluid"
+						alt="payment-detail.png-img"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			title: 'Connect Social',
+		};
+	},
+	methods: {
+		onSubmit() {
+			this.$router.push('story-price');
+		},
+	},
+};
+</script>
+<style lang="scss" scoped>
+.LoginRegister {
+	.paymentDetail {
+		padding-top: rem(35px);
+		width: 100%;
+		h1 {
+			margin-bottom: rem(28px);
+		}
+		p {
+			margin-bottom: 10px;
+		}
+		.alertMessage {
+			color: var(--warning);
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='28' viewBox='0 0 27 28'%3E%3Cg id='Group_1341' data-name='Group 1341' transform='translate(-108 -329)'%3E%3Cg id='Component_1_1' data-name='Component 1 – 1' transform='translate(108 329)'%3E%3Cpath id='Polygon_1' data-name='Polygon 1' d='M11.74,3.259a2,2,0,0,1,3.52,0L25.407,22.05A2,2,0,0,1,23.647,25H3.353a2,2,0,0,1-1.76-2.95Z' fill='%23eeae2b'/%3E%3C/g%3E%3Ctext id='_' data-name='!' transform='translate(119 351)' fill='%23fff' font-size='18' font-family='NunitoSans-Bold, Nunito Sans' font-weight='700'%3E%3Ctspan x='0' y='0'%3E!%3C/tspan%3E%3C/text%3E%3C/g%3E%3C/svg%3E");
+		}
+		@media screen and (max-width: 767px) {
+			.image {
+				max-width: 450px;
+			}
+		}
+	}
+	.button-row {
+		margin-top: 10px;
+	}
+}
+</style>
