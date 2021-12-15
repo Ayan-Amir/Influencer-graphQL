@@ -13,14 +13,12 @@
 			</ul>
 			<span class="promotersCard__detail--price">1.000 Ron</span>
 		</div>
-		<ul class="promotersCard__actions">
-			<li>
-				<div class="inline-btns">
-					<a href="#" class="btn btn-secondary">Decline</a>
-					<a href="#" class="btn btn-green">Accept</a>
-				</div>
-			</li>
-		</ul>
+		<div class="promotersCard__actions">
+			<div class="inline-btns">
+				<a href="#" class="btn btn-secondary">Decline</a>
+				<a href="#" class="btn btn-green">Accept</a>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -97,32 +95,30 @@ export default {};
 		}
 	}
 	&__actions {
+		position: relative;
 		list-style: none;
 		display: flex;
 		justify-content: flex-end;
-		li {
-			position: relative;
-			padding-left: rem(12px);
-			@media screen and (min-width: 576px) {
-				&::before {
-					content: '';
-					position: absolute;
-					height: 60px;
-					top: -10px;
-					left: 0;
-					border: 1px solid #c9ced6;
-					border-radius: 50px;
-					overflow: hidden;
-					@media screen and (max-width: 991px) {
-						top: -13px;
-					}
+		padding-left: rem(16px);
+		@media screen and (min-width: 576px) {
+			&::before {
+				content: '';
+				position: absolute;
+				height: 60px;
+				top: -10px;
+				left: 0;
+				border: 1px solid #c9ced6;
+				border-radius: 50px;
+				overflow: hidden;
+				@media screen and (max-width: 991px) {
+					top: -13px;
 				}
 			}
-			.inline-btns {
-				display: flex;
-				.btn-secondary {
-					margin-right: 6px;
-				}
+		}
+		.inline-btns {
+			display: flex;
+			.btn-secondary {
+				margin-right: 6px;
 			}
 		}
 	}
