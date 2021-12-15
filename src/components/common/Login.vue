@@ -1,6 +1,6 @@
 <template>
 	<div>
-        <base-alerts :alert="alert"></base-alerts>
+		<base-alerts :alert="alert"></base-alerts>
 		<validation-observer ref="observer" v-slot="{ handleSubmit }">
 			<b-form @submit.stop.prevent="handleSubmit(userLogin)">
 				<base-input
@@ -20,37 +20,26 @@
 					@input="passwordInput"
 				/>
 				<div class="button-row">
-					<button
-						type="submit"
-						to="/user"
-						class="btn btn-primary large"
-					>
-						Login to Continue
-					</button>
+					<button type="submit" to="/user" class="btn btn-primary large">Login to Continue</button>
 				</div>
 				<div class="or"><span>or</span></div>
 				<!-- social links -->
-				<social-links />
 			</b-form>
 		</validation-observer>
 	</div>
 </template>
 
 <script>
-import SocialLinks from '@/components/user/layout/SocialLinks.vue';
 import { mapActions, mapGetters, mapState } from 'vuex';
 import BaseAlerts from '../base/BaseAlerts.vue';
 export default {
-	data() { 
+	data() {
 		return {
 			loginDetails: {
 				email: 'ciprian',
 				password: '123321',
 			},
 		};
-	},
-	components: {
-		SocialLinks
 	},
 	computed: {
 		...mapState({
@@ -60,7 +49,7 @@ export default {
 	methods: {
 		...mapActions(['login']),
 		userLogin: function () {
-			this.login(this.loginDetails)
+			this.login(this.loginDetails);
 		},
 		userInput(data) {
 			this.loginDetails.email = data;

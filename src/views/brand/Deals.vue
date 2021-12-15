@@ -1,7 +1,7 @@
-<template> 
+<template>
 	<div>
 		<div class="deals container">
-			<div class="topHead ">
+			<div class="topHead">
 				<ul class="mainLinks hide-on-lg">
 					<li>
 						<router-link to="/brand">
@@ -49,7 +49,7 @@
 
 		<!-- createOffer modal -->
 		<b-modal ref="createOffer" id="createOffer" centered>
-			<div class="title">What are you offering for free to the local influencers?</div>
+			<div class="title centered">What are you offering for free to the local influencers?</div>
 			<div class="row">
 				<div class="col-md-6">
 					<div class="image">
@@ -62,10 +62,53 @@
 					<div class="image">
 						<img src="@/assets/images/service.png" alt="" class="img-fluid" />
 					</div>
-					<a href="#" class="btn btn-primary">Free Service</a>
+					<a href="#" class="btn btn-primary" @click="hideModal" v-b-modal.freeService>Free Service</a>
 					<p>Ex: gym, entry, haircut, spa, salon etc.</p>
 				</div>
 			</div>
+		</b-modal>
+		<!-- modal End-->
+
+		<!-- Free Service modal -->
+		<b-modal ref="freeService" id="freeService" centered>
+			<div class="title">Offer type</div>
+			<p class="subTitle">What free Porduct are you offering?</p>
+			<form>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Product Name*" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Product Value*" />
+				</div>
+				<div class="form-group">
+					<label class="control-label">Product Description (obtional)</label>
+					<textarea
+						class="form-control"
+						placeholder="Ex: Iwant you to talk about Local Influencer"
+					></textarea>
+				</div>
+				<button type="button" class="btn btn-default full">Add an image for the offered product</button>
+				<p>How will the influencer get your offer?</p>
+				<ul class="checkbox list-unstyled">
+					<li>
+						<label>
+							<input type="checkbox" name="delivery" />
+							<span>Home delivery to the influencer</span>
+						</label>
+					</li>
+					<li>
+						<label>
+							<input type="checkbox" name="location" />
+							<span>Personal pick-up from our location</span>
+						</label>
+					</li>
+				</ul>
+				<p>How will the influencer get your offer?</p>
+				<base-select :options="options" initialValue="Active" />
+				<button type="button" class="btn btn-primary" @click="hideModal" v-b-modal.paymentMethod>
+					continue
+				</button>
+			</form>
 		</b-modal>
 		<!-- modal End-->
 	</div>
@@ -186,6 +229,9 @@ export default {
 				this.filterCategories = newFilter;
 			}
 		},
+		hideModal() {
+			this.$refs['createOffer'].hide();
+		},
 	},
 	mounted() {
 		let items = document.querySelectorAll('.topHead__left .mainLinks li');
@@ -204,19 +250,19 @@ export default {
 	/deep/ {
 		.filters {
 			padding-top: 0;
-			@media screen and (max-width:991px){
-				width:100%;
-				.d-flex{
-					width:100%;
-					.form-group{
-						width:50%;
-						&:not(:last-child){
-							margin-right:10px;
+			@media screen and (max-width: 991px) {
+				width: 100%;
+				.d-flex {
+					width: 100%;
+					.form-group {
+						width: 50%;
+						&:not(:last-child) {
+							margin-right: 10px;
 						}
 					}
 				}
-				.multiselect{
-					margin:0;
+				.multiselect {
+					margin: 0;
 				}
 			}
 		}
@@ -236,45 +282,45 @@ export default {
 				}
 			}
 		}
-		@media screen and (max-width:1350px){
+		@media screen and (max-width: 1350px) {
 			flex-direction: column;
 			align-items: start;
-			&__left{
+			&__left {
 				justify-content: space-between;
 				width: 100%;
 				margin-top: rem(20px);
-				@media screen and (min-width:992px){
-					*{
-						margin-bottom:5px !important;
+				@media screen and (min-width: 992px) {
+					* {
+						margin-bottom: 5px !important;
 					}
 				}
 			}
 		}
-		@media screen and (max-width:991px){
-			&__left{
+		@media screen and (max-width: 991px) {
+			&__left {
 				flex-direction: column;
 				align-items: center;
-				.mainLinks{
+				.mainLinks {
 					flex-direction: row;
 					flex-wrap: nowrap;
 					width: 100%;
-					margin-bottom:10px;
-					li{
-						a{
+					margin-bottom: 10px;
+					li {
+						a {
 							background: #fff;
-							height:40px;
+							height: 40px;
 							border-radius: 8px;
 							text-align: center;
-    						display: block;
-							&:after{
-								display:none;
+							display: block;
+							&:after {
+								display: none;
 							}
 						}
-						&:not(:last-child){
-							margin-right:10px;
+						&:not(:last-child) {
+							margin-right: 10px;
 						}
-						&:last-child{
-							margin:0;
+						&:last-child {
+							margin: 0;
 						}
 					}
 				}
@@ -287,16 +333,18 @@ export default {
 		padding: rem(48px);
 		.modal-body {
 			.title {
-				margin-left: auto;
-				margin-right: auto;
-				text-align: center;
-				max-width: 285px;
-				margin-bottom: rem(36px) !important;
-				@media screen and (max-width: 575px) {
-					max-width: 240px;
-				}
-				@media screen and (max-width: 575px) {
-					max-width: 220px;
+				&.centered {
+					margin-left: auto;
+					margin-right: auto;
+					text-align: center;
+					max-width: 285px;
+					margin-bottom: rem(36px) !important;
+					@media screen and (max-width: 575px) {
+						max-width: 240px;
+					}
+					@media screen and (max-width: 575px) {
+						max-width: 220px;
+					}
 				}
 			}
 			.image {
@@ -314,6 +362,30 @@ export default {
 					text-align: center;
 				}
 			}
+		}
+	}
+	&#freeService {
+		.modal-body {
+			p {
+				font-size: rem(16px);
+				text-align: left;
+				font-weight: 500;
+				margin-bottom: 10px;
+			}
+			.checkbox {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+		}
+	}
+	/deep/ {
+		.v-select {
+			border: 1px solid #ccd4e0;
+			border-radius: 8px;
+			font-size: rem(14px);
+			color: var(--textPrimary);
+			font-weight: 400;
 		}
 	}
 }

@@ -6,16 +6,12 @@
 				<p class="subTitle">
 					{{ subTitle }}
 				</p>
-
 				<login />
+				<social-links :linkItems="linkItems" />
 			</div>
 			<div class="col-lg-7 col-md-6">
 				<div class="image">
-					<img
-						src="@/assets/images/influencers-vloggers.png"
-						class="img-fluid"
-						alt="blogger-img"
-					/>
+					<img src="@/assets/images/influencers-vloggers.png" class="img-fluid" alt="blogger-img" />
 				</div>
 			</div>
 		</div>
@@ -23,11 +19,38 @@
 </template>
 
 <script>
+import SocialLinks from '@/components/user/layout/SocialLinks.vue';
 import Login from '@/components/common/Login.vue';
 import alert from '@/mixin/alert';
 export default {
 	data() {
 		return {
+			linkItems: [
+				{
+					index: 1,
+					icon: 'google-icon.svg',
+					title: 'Google',
+					link: 'register/welcome',
+				},
+				{
+					index: 2,
+					icon: 'facebook-icon.svg',
+					title: 'Facebook',
+					link: 'register/welcome',
+				},
+				{
+					index: 3,
+					icon: 'ios-icon.svg',
+					title: 'Apple',
+					link: 'register/welcome',
+				},
+				{
+					index: 4,
+					icon: 'email-icon.svg',
+					title: 'Email',
+					link: '',
+				},
+			],
 			loginDetails: {
 				email: 'ciprian',
 				password: '123321',
@@ -38,7 +61,7 @@ export default {
 		};
 	},
 	mixins: ['alert'],
-	components: { Login },
+	components: { Login, SocialLinks },
 };
 </script>
 <style lang="scss">
