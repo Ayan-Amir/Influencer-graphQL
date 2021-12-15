@@ -48,7 +48,7 @@ export default {
 					index: 4,
 					icon: 'email-icon.svg',
 					title: 'Email',
-					link: '',
+					link: 'register',
 				},
 			],
 			loginDetails: {

@@ -47,6 +47,11 @@
 											>Discover</router-link
 										>
 									</li>
+                                    <li>
+										<router-link to="/user/register/profile"
+											>Profile</router-link
+										>
+									</li>
 								</ul>
 							</nav>
 						</div>

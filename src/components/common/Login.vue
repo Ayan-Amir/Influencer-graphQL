@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="loginForm   ">
 		<base-alerts :alert="alert"></base-alerts>
 		<validation-observer ref="observer" v-slot="{ handleSubmit }">
 			<b-form @submit.stop.prevent="handleSubmit(userLogin)">
@@ -49,7 +49,7 @@ export default {
 	methods: {
 		...mapActions(['login']),
 		userLogin: function () {
-			this.login(this.loginDetails);
+			this.login(this.loginDetails)
 		},
 		userInput(data) {
 			this.loginDetails.email = data;

@@ -1,5 +1,5 @@
 import { onLogin, apolloClient, onLogout } from '@/vue-apollo'
-import { LOGIN_USER } from '@/graphql/user/mutations'
+import { LOGIN_USER, REGISTER_USER } from '@/graphql/user/mutations'
 import {LOGGED_IN_USER} from '@/graphql/user/query'
 import { getDefaultValues } from '@apollo/client/utilities'
 import router from '@/router'
@@ -30,14 +30,10 @@ const mutations = {
 }
 const actions = {
     async login ({ commit, dispatch }, authDetails) {
-        const getNetworkErrors = error => error.networkError.response.json().then(e => e.errors.map(e => e.message).join(','))
         await apolloClient.mutate(
         { 
             mutation: LOGIN_USER,
-            variables: { ...authDetails },
-            error(e){
-                console.log(e);
-            }
+            variables: { ...authDetails }
         })
         .then((data) => {
             // Result
@@ -49,6 +45,33 @@ const actions = {
                     dispatch('setUser')
                     router.push('/user');
                 })
+            }
+        })
+        .catch((e) => {
+            let error = e.message
+            if(e.networkError){
+                if(e.networkError.result.errors){
+                    error = e.networkError.result.errors[0].message;
+                }
+            }
+            dispatch('alert/error', error);
+        })
+    },
+    async register ({ commit, dispatch }, authDetails) {
+        await apolloClient.mutate(
+        { 
+            mutation: REGISTER_USER,
+            variables: { ...authDetails }
+        })
+        .then((data) => {
+            if(data){
+                const token = JSON.stringify(data.data.registerUser.token)
+                commit('SET_TOKEN', token)
+                onLogin(apolloClient, token)
+                .then(()=>{
+                    dispatch('setUser')
+                    router.push('/user/register/profile');
+                }) 
             }
         })
         .catch((e) => {

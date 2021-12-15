@@ -1,5 +1,5 @@
 <template>
-	<div class="password">
+	<div class="password loginForm">
 		<div class="row justify-content-between align-items-center">
 			<div class="col-md-6">
                 <register-email :user-type="0"></register-email>

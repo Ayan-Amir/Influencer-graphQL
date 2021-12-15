@@ -3,6 +3,7 @@
 		<div class="row align-items-center justify-content-between">
 			<div class="col-md-6">
 				<h1>{{ title }}</h1>
+                <base-alerts :alert="alert"></base-alerts>
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
 					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
 						<div class="row">
@@ -10,17 +11,23 @@
 								<base-input
 									placeholder="First Name"
 									type="text"
+                                    rules="required"
+                                    v-model="profile.firstName"
+                                    name="First Name"
 								/>
 							</div>
 							<div class="col-md-6">
 								<base-input
-									placeholder="last Name"
-									type="text"
-								/>
+                                    placeholder="Last Name"
+                                    type="text"
+                                    rules="required"
+                                    v-model="profile.lastName"
+                                    name="Last Name"
+                                />
 							</div>
 						</div>
-						<base-date-picker />
-						<base-select :options="Gender" :selected="selected" />
+						<base-date-picker @input="getDate" v-model="profile.birthdate" name="DOB" rules="required" />
+						<base-select :options="gender" v-model="profile.gender" name="Gender" rules="required" />
 						<div class="button-row">
 							<button type="submit" class="btn btn-primary large">
 								Save
@@ -43,23 +50,67 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
+import { UPDATE_USER } from '@/graphql/user/mutations'
 export default {
 	data() {
 		return {
 			title: 'My Profile',
-			selected: { value: 'null', text: 'Male' },
-			Gender: [
-				{ value: null, text: 'Male' },
-				{ value: 'a', text: 'Female' },
-				{ value: 'b', text: 'Other' },
+			gender: [
+				{ value: 'M', text: 'Male' },
+				{ value: 'F', text: 'Female' }
 			],
+            profile:{
+                firstName: '',
+                lastName: '',
+                email: this.$store.getters.user.email,
+                birthdate: '',
+                address: null,
+                city: null,
+                country: null,
+                phone: null,
+                gender: '',
+            },
 		};
 	},
-	methods: {
-		onSubmit() {
-			this.$router.push('connect-social');
-		},
+    computed: {
+		...mapState({
+			alert: (state) => state.alert,
+		}),
 	},
+	methods: {
+        ...mapActions ('alert', ['error','clear']),
+		onSubmit() {
+            this.updateProfile();
+		},
+        getDate(date){
+            this.profile.birthdate = date
+        },
+        async updateProfile(){
+            await this.$apollo.mutate({
+                mutation: UPDATE_USER,
+                variables: this.profile
+            })
+            .then((data)=>{
+                if(data){
+                    console.log("enere here");
+                    if(data.data.updateUser.state=="success"){
+                        console.log("enere here");
+                        this.$router.push('connect-social');
+                    }
+                }
+            })
+            .catch((e) => {
+                let error = e.message
+                if(e.networkError){
+                    if(e.networkError.result.errors){
+                        error = e.networkError.result.errors[0].message;
+                    }
+                }
+                //this.$store.dispatch('alert/error', error);
+            })
+        }
+	}
 };
 </script>
 <style lang="scss">

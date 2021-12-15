@@ -13,7 +13,7 @@
                         placeholder="Email/Username"
                         type="text"
                         rules="required"
-                        v-model="email"
+                        v-model="authDetails.email"
                     />
                 </div>
                 <div id="password" v-if="currentStep=='password'">
@@ -27,7 +27,7 @@
                         placeholder="Password"
                         type="password"
                         rules="required|length:8"
-                        v-model="password"
+                        v-model="authDetails.password"
                     />
                 </div>
                 <base-alerts :alert="alert"></base-alerts>
@@ -51,8 +51,11 @@ export default {
     },
 	data() {
 		return {
-			email: '',
-            password: '',
+            authDetails: {
+                email: '',
+                password: '',
+                type: 0
+            },
             currentStep: 'email'
 		};
 	},
@@ -63,13 +66,14 @@ export default {
 	},
 	methods: {
         ...mapActions ('alert', ['error','clear']),
+        ...mapActions(['register']),
 		async registerUser () {
             if(this.currentStep=="email"){
                 let alert = ""
                 const {data, error} = await this.$apollo.query({
                     query : CHECK_USERNAME,
                     variables:{
-                        email: this.email
+                        email: this.authDetails.email
                     },
                 });
                 if(data.usernameAvailable.state=="fail"){
@@ -90,7 +94,8 @@ export default {
                 }
             }
             else{
-
+                this.authDetails.type = this.userType
+                this.register(this.authDetails)
             }
             
 		}

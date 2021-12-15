@@ -15,8 +15,8 @@ mutation registerUser($email: String!, $password: String!, $type: Int!) {
 }`
 
 export const UPDATE_USER = gql`
-mutation updateUser($firstName: String, $lastName: String, $email: String, $birthdate:String , $address:String, $city:String, $country:String, $phone:String, $gender: String) {
-    updateUser(firstName: firstName, lastName: lastName, email: email, birthdate: birthdate , address: address, city: city, country: country, phone: phone, gender: gender) {
+mutation updateUser($firstName: String, $lastName: String, $email: String, $birthdate: String , $address:String, $city:String, $country:String, $phone:String, $gender: String) {
+    updateUser(firstName: $firstName, lastName: $lastName, email: $email, birthdate: $birthdate , address: $address, city: $city, country: $country, phone: $phone, gender: $gender) {
       state
     }
 }`
