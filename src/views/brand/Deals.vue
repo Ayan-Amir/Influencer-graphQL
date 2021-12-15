@@ -365,17 +365,19 @@ export default {
 		}
 	}
 	&#freeService {
-		.modal-body {
-			p {
-				font-size: rem(16px);
-				text-align: left;
-				font-weight: 500;
-				margin-bottom: 10px;
-			}
-			.checkbox {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
+		.modal-content {
+			.modal-body {
+				p {
+					font-size: rem(16px);
+					text-align: left;
+					font-weight: 500;
+					margin-bottom: 10px;
+				}
+				.checkbox {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+				}
 			}
 		}
 	}
