@@ -1,6 +1,6 @@
 <template>
 	<div class="login">
-		<div class="row justify-content-between">
+		<div class="row align-items-center justify-content-between">
 			<div class="col-lg-5 col-md-6">
 				<h1>{{ title }}</h1>
 				<p class="subTitle">
@@ -66,9 +66,18 @@ export default {
 </script>
 <style lang="scss">
 .LoginRegister {
+	min-height: calc(100vh + 300px) !important;
+	@media screen and (max-width: 991px) {
+		min-height: calc(100vh + 100px) !important;
+	}
+	@media screen and (max-width: 767px) {
+		min-height: calc(100vh + 200px) !important;
+	}
 	.login {
-		.subTitle {
-			margin-bottom: rem(70px);
+		h1 {
+			@media screen and (min-width: 768px) {
+				margin-top: rem(64px);
+			}
 		}
 	}
 }
