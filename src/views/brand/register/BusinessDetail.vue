@@ -73,7 +73,9 @@ export default {
 			&--location {
 				.profileUpload {
 					&::before {
-						background-image: url('../../../assets/images/icons/location.png');
+						width: 60px;
+						height: 76px;
+						background-image: url('../../../assets/images/icons/location.png') !important;
 						background-repeat: no-repeat;
 					}
 				}
