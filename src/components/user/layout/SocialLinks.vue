@@ -12,7 +12,7 @@
 <script>
 export default {
 	props: {
-		linkItems: Object,
+		linkItems: Array,
 	},
 };
 </script>

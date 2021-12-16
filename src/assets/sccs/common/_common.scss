@@ -286,8 +286,8 @@ h6 {
 			pointer-events: all;
 			background: #fff;
 			overflow: visible;
-			padding: env(safe-area-inset-top) env(safe-area-inset-right)
-				env(safe-area-inset-bottom) env(safe-area-inset-left);
+			padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+				env(safe-area-inset-left);
 			padding: rem(35px);
 			border: 0;
 			box-shadow: 0px 0px 24px rgba(107, 107, 107, 0.09);
@@ -495,27 +495,34 @@ h6 {
 	.__bar-is-vertical {
 		border-radius: 0 !important;
 		background: rgb(6, 28, 114) !important;
-		background: linear-gradient(
-			180deg,
-			rgba(6, 28, 114, 1) 51%,
-			rgba(150, 22, 158, 1) 51%
-		) !important;
+		background: linear-gradient(180deg, rgba(6, 28, 114, 1) 51%, rgba(150, 22, 158, 1) 51%) !important;
 	}
 }
 
 /deep/.v-select {
 	height: 42px !important;
 	.v-select-toggle {
-		border: 0 !important;
-		border-radius: 8px !important;
-		color: var(--textPrimary) !important;
-		font-size: rem(14px) !important;
-		font-weight: 300 !important;
-		color: rgba(37, 56, 88, 0.5) !important;
-		background: #fff !important;
-		height: 42px !important;
-		line-height: 34px !important;
+		border: 0;
+		border-radius: 8px;
+		color: var(--textPrimary);
+		font-size: rem(14px);
+		font-weight: 300;
+		color: rgba(37, 56, 88, 0.5);
+		background: #fff;
+		height: 42px;
+		line-height: 34px;
 		align-items: center;
+
+		// border: 0 !important;
+		// border-radius: 8px !important;
+		// color: var(--textPrimary) !important;
+		// font-size: rem(14px) !important;
+		// font-weight: 300 !important;
+		// color: rgba(37, 56, 88, 0.5) !important;
+		// background: #fff !important;
+		// height: 42px !important;
+		// line-height: 34px !important;
+		// align-items: center;
 		.arrow-down {
 			width: 9px;
 			height: 14px;
@@ -836,12 +843,7 @@ h6 {
 		}
 	}
 	.b-calendar-nav {
-		background: linear-gradient(
-			to bottom,
-			white 8%,
-			white 8%,
-			#f2f4f8 100%
-		);
+		background: linear-gradient(to bottom, white 8%, white 8%, #f2f4f8 100%);
 		margin: 0;
 		button {
 			background-color: var(--textSecondary);

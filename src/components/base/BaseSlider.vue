@@ -40,12 +40,12 @@ export default {
 		}
 	}
 	.vue-slider-process {
-		background: var(--bgColor);
+		background: var(--primary) !important;
 		border-radius: 1.5px;
 	}
 	.vue-slider-dot-handle {
 		margin-top: -5px;
-		background: var(--white);
+		background: #fff;
 		box-shadow: none;
 		border-radius: 50%;
 		width: 24px;

@@ -7,7 +7,7 @@
 					{{ message }}
 				</p>
 				<div>
-					<base-touch-spin />
+					<base-touch-spin sign="$" :quantity="1" text=".00" />
 				</div>
 				<p class="subTitle">
 					{{ subTitle }}
@@ -19,20 +19,12 @@
 					</label>
 				</div>
 				<div class="button-row">
-					<router-link
-						to="profile-photo"
-						class="btn btn-primary large"
-						>Save</router-link
-					>
+					<router-link to="profile-photo" class="btn btn-primary large">Save</router-link>
 				</div>
 			</div>
 			<div class="col-lg-7 col-md-6">
 				<div class="image">
-					<img
-						src="@/assets/images/story-price.png"
-						class="img-fluid"
-						alt="story-price-img"
-					/>
+					<img src="@/assets/images/story-price.png" class="img-fluid" alt="story-price-img" />
 				</div>
 			</div>
 		</div>
@@ -45,8 +37,7 @@ export default {
 		return {
 			title: 'Modify Story Price',
 			subTitle: 'We recommend choosing this price ',
-			message:
-				'More that 90% chances to receive deal proposals with this price',
+			message: 'More that 90% chances to receive deal proposals with this price',
 		};
 	},
 };

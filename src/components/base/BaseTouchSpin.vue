@@ -1,32 +1,31 @@
 <template>
 	<div class="quantityToggle">
-		<button
-			:disabled="quantity == 1 ? true : false"
-			@click="decrement"
-			class="decrement"
-		>
-			&mdash;
-		</button>
-		<input type="text" :value="`$${quantity}.00`" readonly />
+		<button :disabled="value == 1 ? true : false" @click="decrement" class="decrement">&mdash;</button>
+		<input type="text" :value="`${sign}${value}${text}`" readonly />
 		<button class="increament" @click="increment">&#xff0b;</button>
 	</div>
 </template>
 
 <script>
 export default {
+	props: {
+		quantity: Number,
+		text: String,
+		sign: String,
+	},
 	data() {
 		return {
-			quantity: 1,
+			value: this.quantity,
 		};
 	},
 	mounted() {},
 	methods: {
 		increment() {
-			this.quantity++;
+			this.value++;
 		},
 		decrement() {
-			if (this.quantity > 1) {
-				this.quantity--;
+			if (this.value > 1) {
+				this.value--;
 			}
 		},
 	},
@@ -77,16 +76,14 @@ export default {
 		}
 		&.decrement {
 			&:before {
-				background: url(../../assets/images/icons/minius.png) center
-					center no-repeat;
+				background: url(../../assets/images/icons/minius.png) center center no-repeat;
 				width: 12px;
 				height: 5px;
 			}
 		}
 		&.increament {
 			&:before {
-				background: url(../../assets/images/icons/plus.png) center
-					center no-repeat;
+				background: url(../../assets/images/icons/plus.png) center center no-repeat;
 				width: 17px;
 				height: 17px;
 			}
@@ -97,16 +94,14 @@ export default {
 				color: #fff;
 				&.decrement {
 					&:before {
-						background: url(../../assets/images/icons/minius-white.png)
-							center center no-repeat;
+						background: url(../../assets/images/icons/minius-white.png) center center no-repeat;
 						width: 12px;
 						height: 5px;
 					}
 				}
 				&.increament {
 					&:before {
-						background: url(../../assets/images/icons/plus-white.png)
-							center center no-repeat;
+						background: url(../../assets/images/icons/plus-white.png) center center no-repeat;
 						width: 17px;
 						height: 17px;
 					}

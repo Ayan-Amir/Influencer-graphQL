@@ -62,7 +62,9 @@
 					<div class="image">
 						<img src="@/assets/images/service.png" alt="" class="img-fluid" />
 					</div>
-					<a href="#" class="btn btn-primary" @click="hideModal" v-b-modal.freeService>Free Service</a>
+					<a href="#" class="btn btn-primary" @click="hideModal('createOffer')" v-b-modal.freeService
+						>Free Service</a
+					>
 					<p>Ex: gym, entry, haircut, spa, salon etc.</p>
 				</div>
 			</div>
@@ -75,10 +77,10 @@
 			<p class="subTitle">What free Porduct are you offering?</p>
 			<form>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Product Name*" />
+					<input type="text" class="form-control" placeholder="Product Name*" value="Product Name*" />
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Product Value*" />
+					<input type="text" class="form-control" placeholder="Product Value*" value="Product Value*" />
 				</div>
 				<div class="form-group">
 					<label class="control-label">Product Description (obtional)</label>
@@ -104,18 +106,100 @@
 					</li>
 				</ul>
 				<p>How will the influencer get your offer?</p>
-				<base-select :options="options" initialValue="Active" />
-				<button type="button" class="btn btn-primary" @click="hideModal" v-b-modal.paymentMethod>
+				<base-select :options="options" initialValue="Entry location" />
+				<p>What do you want the influencer to include in the story?</p>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="@our instagram" value="@our instagram" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Our atmosphere" value="Our atmosphere" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Our product" value="Our product" />
+				</div>
+				<div class="form-group">
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Other instruction for the local influencerz"
+						value="Other instruction for the local influencerz"
+					/>
+				</div>
+				<p>Can influencers accept the produc immediately?</p>
+				<ul class="checkbox list-unstyled">
+					<li>
+						<label>
+							<input type="checkbox" name="delivery" />
+							<span>Yes, of corse</span>
+						</label>
+					</li>
+					<li>
+						<label>
+							<input type="checkbox" name="location" />
+							<span>No, I will chech an approve personally every influencer</span>
+						</label>
+					</li>
+				</ul>
+				<button type="button" class="btn btn-primary" @click="hideModal('freeService')" v-b-modal.task>
 					continue
 				</button>
 			</form>
+		</b-modal>
+		<!-- modal End-->
+
+		<!-- Task modal -->
+		<b-modal ref="task" id="task" centered>
+			<div class="title">Task</div>
+			<p class="subTitle">What do you want the influencers to crate?</p>
+			<div class="touch-spin">
+				<base-touch-spin sign="" :quantity="1" text=" Instagram story" />
+				<base-touch-spin sign="" :quantity="3" text=" Instagram posts" />
+			</div>
+			<div class="title">Target</div>
+			<p class="subTitle">Choose the minimum number of followers for a local influencer</p>
+			<p class="number">43.334</p>
+			<h3>Local influencers available for you</h3>
+			<p class="green">Advanced filters</p>
+			<div class="d-flex align-items-center justify-content-between mb-15">
+				<p class="heading m-0">Followers</p>
+				<span class="range">{{ followers }}</span>
+			</div>
+			<!-- Rang slider -->
+			<base-slider :min="1" :max="1000" :input="followers" @value="selectedValue" />
+			<button type="button" class="btn btn-primary" @click="hideModal('task')" v-b-modal.filters>Finish</button>
+		</b-modal>
+		<!-- modal End-->
+
+		<!-- filters modal -->
+		<b-modal ref="filters" id="filters" centered>
+			<div class="title">Filters</div>
+			<h3>43.334<span>Local influencers available for you</span></h3>
+			<div class="row">
+				<div class="col-md-6"><base-select :options="gender" initialValue="Gender" /></div>
+				<div class="col-md-6">
+					<div class="d-flex align-items-center justify-content-between">
+						<p class="heading m-0">Age</p>
+						<span class="range">{{ priceStart }} - {{ priceEnd }}</span>
+					</div>
+					<!-- MultiRang slider -->
+					<base-range-slider
+						:min="1"
+						:max="80"
+						:start="priceStart"
+						:end="priceEnd"
+						@rangeValue="selectedRangeValue"
+					/>
+				</div>
+			</div>
+			<base-select :options="gender" initialValue="Gender" />
+			<button type="button" class="btn btn-primary" @click="hideModal('filters')">Show Results</button>
 		</b-modal>
 		<!-- modal End-->
 	</div>
 </template>
 
 <script>
-import { OFFERS_FILTERS } from '@/graphql/user/query';
+import { OFFERS_FILTERS, CAMPAIGN_FILTER } from '@/graphql/user/query';
 import DealCard from '@/components/brand/DealCard.vue';
 export default {
 	components: { DealCard },
@@ -124,10 +208,18 @@ export default {
 			offersFilters: [],
 			filterLocations: [],
 			filterCategories: [],
+			followers: 500,
+			priceStart: 16,
+			priceEnd: 65,
 			options: [
 				{ value: null, text: 'Please select an option' },
 				{ value: 'a', text: 'This is First option' },
 				{ value: 'b', text: 'Selected Option' },
+			],
+			gender: [
+				{ value: null, text: 'Gender' },
+				{ value: 'a', text: 'Male' },
+				{ value: 'b', text: 'Female' },
 			],
 			deals: [
 				{
@@ -229,8 +321,15 @@ export default {
 				this.filterCategories = newFilter;
 			}
 		},
-		hideModal() {
-			this.$refs['createOffer'].hide();
+		hideModal(data) {
+			this.$refs[data].hide();
+		},
+		selectedValue(e) {
+			this.followers = e;
+		},
+		selectedRangeValue(start, end) {
+			this.priceStart = start;
+			this.priceEnd = end;
 		},
 	},
 	mounted() {
@@ -378,17 +477,155 @@ export default {
 					justify-content: space-between;
 					align-items: center;
 				}
+				.btn.btn-primary {
+					width: 100%;
+					margin-top: rem(24px);
+				}
+			}
+		}
+		/deep/ {
+			.v-select {
+				.v-select-toggle {
+					border-radius: 8px;
+					font-size: rem(14px);
+					color: var(--textPrimary);
+					font-weight: 400;
+					border: 1px solid #ccd4e0 !important;
+					> div:first-child {
+						padding-left: rem(32px);
+						position: relative;
+						&::before {
+							content: '';
+							position: absolute;
+							background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='19.152' height='23.939' viewBox='0 0 19.152 23.939'%3E%3Cpath id='Path_889' data-name='Path 889' d='M9.576,0A9.577,9.577,0,0,0,0,9.577C0,18.195,7.661,23.94,9.576,23.94s9.576-5.746,9.576-14.362A9.577,9.577,0,0,0,9.576,0Zm0,13.407a3.83,3.83,0,1,1,3.83-3.83A3.831,3.831,0,0,1,9.576,13.408Z' transform='translate(0 -0.001)' fill='%239637f1'/%3E%3C/svg%3E%0A");
+							background-repeat: no-repeat;
+							width: 20px;
+							height: 24px;
+							top: 50%;
+							left: 0;
+							transform: translateY(-50%);
+						}
+					}
+				}
 			}
 		}
 	}
-	/deep/ {
-		.v-select {
-			border: 1px solid #ccd4e0;
-			border-radius: 8px;
-			font-size: rem(14px);
-			color: var(--textPrimary);
-			font-weight: 400;
+	&#task {
+		.modal-content {
+			.modal-body {
+				p {
+					font-size: rem(16px);
+					text-align: left;
+					font-weight: 500;
+					margin-bottom: 10px;
+					&.number {
+						font-size: rem(35px);
+						font-weight: 700;
+					}
+					&.green {
+						color: #24d694;
+						font-weight: 700;
+					}
+				}
+				h3 {
+					font-size: rem(25px);
+					font-weight: 700;
+					font-family: $primary-font;
+				}
+				.touch-spin {
+					display: flex;
+					align-items: center;
+					margin: rem(20px) 0;
+					div {
+						margin: 0;
+						&:first-child {
+							margin-right: rem(28px);
+						}
+					}
+				}
+				.btn.btn-primary {
+					width: 100%;
+					margin-top: rem(24px);
+				}
+			}
 		}
 	}
+	&#filters {
+		h3 {
+			font-size: rem(35px);
+			font-weight: 700;
+			display: flex;
+			align-items: center;
+			span {
+				font-size: rem(25px);
+				margin-left: 8px;
+			}
+		}
+		.btn.btn-primary {
+			width: 100%;
+			margin-top: rem(24px);
+		}
+	}
+}
+/deep/ {
+	.quantityToggle {
+		input {
+			padding: 0 !important;
+			width: 140px;
+			font-size: rem(14px);
+			font-weight: 400;
+			color: var(--primary);
+			background: transparent;
+			height: 28px;
+			@media screen and (max-width: 767px) {
+				width: 100%;
+			}
+		}
+		button {
+			width: 23px;
+			height: 23px;
+			min-width: 23px;
+			border-width: 2px;
+			background: #fff;
+			&.decrement {
+				&:before {
+					background: url(../../assets/images/icons/minus.png) center center no-repeat;
+					width: 11px;
+					height: 4px;
+				}
+			}
+			&.increament {
+				&:before {
+					background: url(../../assets/images/icons/pluss.png) center center no-repeat;
+					width: 10px;
+					height: 17px;
+				}
+			}
+		}
+	}
+	// .v-select {
+	// 	.v-select-toggle {
+	// 		border-radius: 8px;
+	// 		font-size: rem(14px);
+	// 		color: var(--textPrimary);
+	// 		font-weight: 400;
+	// 		border: 1px solid #ccd4e0 !important;
+	// 		> div:first-child {
+	// 			padding-left: rem(32px);
+	// 			position: relative;
+	// 			&::before {
+	// 				content: '';
+	// 				position: absolute;
+	// 				background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='19.152' height='23.939' viewBox='0 0 19.152 23.939'%3E%3Cpath id='Path_889' data-name='Path 889' d='M9.576,0A9.577,9.577,0,0,0,0,9.577C0,18.195,7.661,23.94,9.576,23.94s9.576-5.746,9.576-14.362A9.577,9.577,0,0,0,9.576,0Zm0,13.407a3.83,3.83,0,1,1,3.83-3.83A3.831,3.831,0,0,1,9.576,13.408Z' transform='translate(0 -0.001)' fill='%239637f1'/%3E%3C/svg%3E%0A");
+	// 				background-repeat: no-repeat;
+	// 				width: 20px;
+	// 				height: 24px;
+	// 				top: 50%;
+	// 				left: 0;
+	// 				transform: translateY(-50%);
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 </style>

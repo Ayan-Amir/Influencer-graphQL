@@ -1,5 +1,5 @@
 <template>
-	<div class="loginForm   ">
+	<div class="loginForm">
 		<base-alerts :alert="alert"></base-alerts>
 		<validation-observer ref="observer" v-slot="{ handleSubmit }">
 			<b-form @submit.stop.prevent="handleSubmit(userLogin)">
@@ -23,7 +23,6 @@
 					<button type="submit" to="/user" class="btn btn-primary large">Login to Continue</button>
 				</div>
 				<div class="or"><span>or</span></div>
-				<!-- social links -->
 			</b-form>
 		</validation-observer>
 	</div>
@@ -49,7 +48,7 @@ export default {
 	methods: {
 		...mapActions(['login']),
 		userLogin: function () {
-			this.login(this.loginDetails)
+			this.login(this.loginDetails);
 		},
 		userInput(data) {
 			this.loginDetails.email = data;

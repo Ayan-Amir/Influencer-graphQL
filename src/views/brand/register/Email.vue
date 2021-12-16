@@ -6,8 +6,7 @@
 				<p>{{ subTitle }}</p>
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
 					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
-						<base-select :options="country" :selected="selected" />
-						<base-input placeholder="Phone Number" type="tel" />
+						<base-input placeholder="Email" type="email" />
 						<div class="button-row">
 							<button type="submit" class="btn btn-primary large">Continue</button>
 						</div>
@@ -31,8 +30,8 @@
 export default {
 	data() {
 		return {
-			title: 'Phone Number',
-			subTitle: 'You will receive an sms with a numeric code',
+			title: 'Email',
+			subTitle: 'You will receive an email with a numeric code',
 			selected: { value: 'null', text: 'Select the country' },
 			country: [
 				{ value: null, text: 'Pakistan' },
