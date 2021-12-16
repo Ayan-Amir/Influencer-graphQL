@@ -5,7 +5,7 @@
 				<h1>{{ title }}</h1>
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
 					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
-						<base-input placeholder="Instagram" type="text" />
+						<base-input placeholder="Instagram" v-model="mediaAccount.username" type="text" name="Instagram Username" rules="required" />
 						<div class="button-row">
 							<button
 								type="submit"
@@ -32,16 +32,39 @@
 </template>
 
 <script>
+import { MEDIA_ACCOUNT } from '@/graphql/user/mutations'
 export default {
 	data() {
 		return {
 			title: 'Connect Social',
+            mediaAccount: {
+                type: "instagram",
+                username: null
+            }
 		};
 	},
 	methods: {
 		onSubmit() {
-			this.$router.push('story-price');
+			this.updateMediaAccount()
 		},
+        async updateMediaAccount(){
+            await this.$apollo.mutate({
+                mutation: MEDIA_ACCOUNT,
+                variables: this.mediaAccount
+            })
+            .then((data)=>{
+                console.log(data);
+                if(data){
+                    if(data.data.mediaAccount.state=="added" || data.data.mediaAccount.state=="updated"){
+                        this.$router.push('story-price');
+                    }
+                }
+            })
+            
+            .catch((e)=>{
+                this.handleError(e);
+            });
+        }
 	},
 };
 </script>

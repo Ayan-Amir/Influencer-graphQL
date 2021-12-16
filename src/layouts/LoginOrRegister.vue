@@ -20,7 +20,8 @@
         </div>
       </header>
       <div class="contentWrapper">
-        <router-view />
+            <base-alerts></base-alerts>
+            <router-view />
       </div>
     </div>
   </div>

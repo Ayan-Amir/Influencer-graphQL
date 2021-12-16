@@ -3,7 +3,7 @@
 		<div class="row align-items-center justify-content-between">
 			<div class="col-md-6">
 				<h1>{{ title }}</h1>
-                <base-alerts :alert="alert"></base-alerts>
+                
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
 					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
 						<div class="row">
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapState } from 'vuex';
 import { UPDATE_USER } from '@/graphql/user/mutations'
 export default {
 	data() {
@@ -63,7 +63,6 @@ export default {
             profile:{
                 firstName: '',
                 lastName: '',
-                email: this.$store.getters.user.email,
                 birthdate: '',
                 address: null,
                 city: null,
@@ -79,7 +78,6 @@ export default {
 		}),
 	},
 	methods: {
-        ...mapActions ('alert', ['error','clear']),
 		onSubmit() {
             this.updateProfile();
 		},
@@ -93,21 +91,13 @@ export default {
             })
             .then((data)=>{
                 if(data){
-                    console.log("enere here");
                     if(data.data.updateUser.state=="success"){
-                        console.log("enere here");
                         this.$router.push('connect-social');
                     }
                 }
             })
             .catch((e) => {
-                let error = e.message
-                if(e.networkError){
-                    if(e.networkError.result.errors){
-                        error = e.networkError.result.errors[0].message;
-                    }
-                }
-                //this.$store.dispatch('alert/error', error);
+                this.handleError(e);                
             })
         }
 	}

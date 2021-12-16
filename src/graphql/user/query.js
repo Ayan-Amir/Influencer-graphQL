@@ -235,3 +235,15 @@ query campaigns($page: Int, $locations: [String], $categories: [String] , $searc
 		subscription
 	}
 }`
+export const STORY_RECOMENDED_PRICE = gql`
+query mediaAccounts($type: [String]){
+    mediaAccounts(type: $type){
+        priceRecommendations{
+            story{
+                value,
+                description
+            }
+        }
+    }
+}
+`

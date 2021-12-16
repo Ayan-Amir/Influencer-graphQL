@@ -15,8 +15,22 @@ mutation registerUser($email: String!, $password: String!, $type: Int!) {
 }`
 
 export const UPDATE_USER = gql`
-mutation updateUser($firstName: String, $lastName: String, $email: String, $birthdate: String , $address:String, $city:String, $country:String, $phone:String, $gender: String) {
-    updateUser(firstName: $firstName, lastName: $lastName, email: $email, birthdate: $birthdate , address: $address, city: $city, country: $country, phone: $phone, gender: $gender) {
+mutation updateUser($firstName: String, $lastName: String, $birthdate: String , $address:String, $city:String, $country:String, $phone:String, $gender: String) {
+    updateUser(firstName: $firstName, lastName: $lastName, birthdate: $birthdate , address: $address, city: $city, country: $country, phone: $phone, gender: $gender) {
+      state
+    }
+}`
+
+export const MEDIA_ACCOUNT = gql`
+mutation mediaAccount($type: String!, $username: String) {
+    mediaAccount(type: $type, username:  $username) {
+      state
+    }
+}`
+
+export const UPDATE_STORY_PRICE = gql`
+mutation mediaAccount($type: String!, $price: String, $priceNegotiable: Boolean) {
+    mediaAccount(type: $type, price:  $price, priceNegotiable: $priceNegotiable) {
       state
     }
 }`

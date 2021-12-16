@@ -9,13 +9,13 @@
 <script>
 export default {
 	props: {
-		quantity: Number,
+		price: Number,
 		text: String,
 		sign: String,
 	},
 	data() {
 		return {
-			value: this.quantity,
+			value: this.price,
 		};
 	},
 	mounted() {},

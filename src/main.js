@@ -15,6 +15,7 @@ import VueEllipseProgress from "vue-ellipse-progress";
 import VSelect from "@alfsnd/vue-bootstrap-select";
 import "@/components/global_components";
 import utilities from "@/mixin/utilities";
+import exceptions from "@/mixin/exceptions";
 import Multiselect from 'vue-multiselect'
 import StarRating from 'vue-star-rating'
 import { createProvider } from "./vue-apollo";
@@ -31,6 +32,7 @@ Vue.component("svg-icon", SvgIcon);
 Vue.use(VueEllipseProgress);
 Vue.component("VSelect", VSelect);
 Vue.mixin(utilities)
+Vue.mixin(exceptions)
 
 new Vue({
   router,
