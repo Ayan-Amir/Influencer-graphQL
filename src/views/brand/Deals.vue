@@ -475,7 +475,7 @@ export default {
 				.checkbox {
 					display: flex;
 					justify-content: space-between;
-					align-items: center;
+					// align-items: center;
 				}
 				.btn.btn-primary {
 					width: 100%;
@@ -536,10 +536,18 @@ export default {
 					display: flex;
 					align-items: center;
 					margin: rem(20px) 0;
+					@media screen and (max-width: 460px) {
+						flex-wrap: wrap;
+						// align-items: flex-start;
+						flex-direction: column;
+					}
 					div {
 						margin: 0;
 						&:first-child {
 							margin-right: rem(28px);
+							@media screen and (max-width: 460px) {
+								margin: 0 0 rem(16px) 0;
+							}
 						}
 					}
 				}

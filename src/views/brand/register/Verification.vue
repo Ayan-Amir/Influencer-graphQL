@@ -1,7 +1,7 @@
 <template>
 	<div class="verification">
-		<div class="row align-items-center justify-content-between">
-			<div class="col-md-5">
+		<div class="row align-items-center justify-content-between col-gap-90">
+			<div class="col-md-6">
 				<h1>
 					Your <br />
 					verification <br />
@@ -12,7 +12,7 @@
 					<router-link to="password" class="btn btn-primary large">Continue</router-link>
 				</div>
 			</div>
-			<div class="col-md-7">
+			<div class="col-md-6">
 				<div class="image">
 					<img src="@/assets/images/Securitylogo.png" class="img-fluid" alt="Securitylogo-img" />
 				</div>
