@@ -1,6 +1,6 @@
 <template>
 	<div class="business">
-		<div class="row justify-content-between">
+		<div class="row justify-content-between col-gap-40">
 			<div class="col-md-5">
 				<h1>
 					Details about <br />
@@ -11,24 +11,21 @@
 						<div class="profileUpload">
 							<input type="file" name="file" @change="upload" />
 						</div>
-						<p class="subTitle">
-							Add the logo of your
-							<br />business
-						</p>
+						<p class="subTitle">Add the logo of your business</p>
 					</div>
 					<div class="business__detail--location">
 						<div class="profileUpload">
-							<input type="file" name="file" @change="upload" />
+							<!-- <input type="file" name="file" @change="upload" /> -->
 						</div>
-						<p class="subTitle">
-							Add the logo of your
-							<br />business
-						</p>
+						<p class="subTitle">Add the location of <br />your business</p>
 					</div>
 				</div>
 				<div class="button-row">
-					<router-link to="/user" class="btn btn-primary large">Finish</router-link>
+					<router-link to="/user" class="btn btn-primary large">Continue</router-link>
 				</div>
+				<p class="subTitle">
+					By continuing you accept our <span>Terms and Conditions and Privacy Policy </span>
+				</p>
 			</div>
 			<div class="col-md-7">
 				<div class="image">
@@ -68,13 +65,15 @@ export default {
 		&__detail {
 			display: flex;
 			&--logo {
+				flex: 0 0 150px;
+				// max-width: 150px;
 				margin-right: rem(20px);
 			}
 			&--location {
 				.profileUpload {
 					&::before {
-						width: 60px;
-						height: 76px;
+						width: 60px !important;
+						height: 76px !important;
 						background-image: url('../../../assets/images/icons/location.png') !important;
 						background-repeat: no-repeat;
 					}
@@ -108,7 +107,6 @@ export default {
 					transform: translate(-50%, -50%);
 					background-image: url('../../../assets/images/icons/house.png');
 					background-repeat: no-repeat;
-					// z-index: -1;
 				}
 				img {
 					width: 100%;
@@ -127,6 +125,15 @@ export default {
 					cursor: pointer;
 					z-index: 2;
 				}
+			}
+		}
+		.subTitle {
+			margin-top: rem(16px);
+			margin-bottom: 6px;
+			font-size: rem(16px);
+			span {
+				display: block;
+				font-weight: 700;
 			}
 		}
 		@media screen and (max-width: 1700px) {
