@@ -3,7 +3,7 @@
 		<b-form-group>
 			<v-select
 				placeholder="Gender"
-				v-model="selectedValue"
+				v-model="myGender"
 				:options="options_arr"
 				:state="errors[0] ? false : valid ? true : null"
 			></v-select>
@@ -19,7 +19,7 @@ export default {
 	// 	initialValue: String,
 	// },
 	props: {
-		value: [Number, String],
+		value: [Number, String, Object],
 		title: String,
 		options: Array,
 		rules: String,
@@ -27,6 +27,7 @@ export default {
 	},
 	data() {
 		return {
+			myGender: { value: null, text: 'Gender' },
 			selectedValueData: null,
 			selectedValue: null,
 			options_arr: [],

@@ -1,6 +1,6 @@
 <template>
 	<div class="profile">
-		<div class="row align-items-center justify-content-between col-gap-40">
+		<div class="row align-items-center justify-content-between col-gap-50">
 			<div class="col-xxl-5 col-md-6">
 				<h1>{{ title }}</h1>
 
@@ -27,8 +27,8 @@
 							</div>
 						</div>
 						<base-date-picker @input="getDate" v-model="profile.birthdate" name="DOB" rules="required" />
-						<!-- <base-select :options="gender" v-model="profile.gender" name="Gender" rules="required" /> -->
-						<base-select :options="gender" name="Gender" rules="required" />
+						<base-select :options="gender" v-model="profile.gender" name="Gender" rules="required" />
+						<!-- <base-select :options="gender" name="Gender" rules="required" /> -->
 
 						<div class="button-row">
 							<button type="submit" class="btn btn-primary large">Save</button>
@@ -57,8 +57,8 @@ export default {
 	data() {
 		return {
 			title: 'My Profile',
+			myGender: { value: null, text: 'Gender' },
 			gender: [
-				{ value: null, text: 'Gender' },
 				{ value: 'M', text: 'Male' },
 				{ value: 'F', text: 'Female' },
 			],

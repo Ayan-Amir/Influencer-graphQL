@@ -43,7 +43,7 @@ export default {
 	},
 	methods: {
 		onSubmit() {
-			this.$router.push('connect-social');
+			// this.$router.push('connect-social');
 		},
 	},
 };
