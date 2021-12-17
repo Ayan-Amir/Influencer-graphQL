@@ -1,31 +1,23 @@
 <template>
 	<div class="profile">
-		<div class="row justify-content-between">
-			<div class="col-md-5">
+		<div class="row justify-content-between align-items-center col-gap-120">
+			<div class="col-xxl-4 col-md-5">
 				<h1>Add Your <br />Profile Photo</h1>
 				<div class="profile__Photo">
 					<!-- profile Photo upload -->
 					<base-profile-upload />
 				</div>
 				<p class="subTitle">
-					By continuing you accept our <br /><span
-						>Terms and Conditions</span
-					>
-					and <span>Privacy Policy </span>
+					By continuing you accept our <br /><span>Terms and Conditions</span> and
+					<span>Privacy Policy </span>
 				</p>
 				<div class="button-row">
-					<router-link to="/user" class="btn btn-primary large"
-						>Finish</router-link
-					>
+					<router-link to="/user" class="btn btn-primary large">Finish</router-link>
 				</div>
 			</div>
-			<div class="col-md-7">
+			<div class="col-xxl-8 col-md-7">
 				<div class="image">
-					<img
-						src="@/assets/images/profile-img.png"
-						class="img-fluid"
-						alt="profile-img"
-					/>
+					<img src="@/assets/images/profile-img.png" class="img-fluid" alt="profile-img" />
 				</div>
 			</div>
 		</div>
@@ -41,6 +33,12 @@ export default {
 
 <style lang="scss">
 .LoginRegister {
+	@media screen and (max-width: 1199px) {
+		min-height: calc(100vh + 60px) !important;
+	}
+	p span {
+		font-weight: 700 !important;
+	}
 	.contentWrapper {
 		padding-top: 0 !important;
 	}

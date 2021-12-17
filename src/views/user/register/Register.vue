@@ -1,10 +1,10 @@
 <template>
 	<div class="password loginForm">
 		<div class="row justify-content-between align-items-center col-gap-70">
-			<div class="col-lg-5 col-md-6">
+			<div class="col-xxl-5 col-md-6">
 				<register-email :user-type="0"></register-email>
 			</div>
-			<div class="col-lg-7 col-md-6">
+			<div class="col-xxl-7 col-md-6">
 				<div class="image">
 					<img src="@/assets/images/hi-to-followers.png" class="img-fluid" alt="hi-to-followers-img" />
 				</div>

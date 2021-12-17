@@ -152,8 +152,8 @@
 			<div class="title">Task</div>
 			<p class="subTitle">What do you want the influencers to crate?</p>
 			<div class="touch-spin">
-				<base-touch-spin sign="" :quantity="1" text=" Instagram story" />
-				<base-touch-spin sign="" :quantity="3" text=" Instagram posts" />
+				<base-touch-spin sign="" :price="1" text=" Instagram story" />
+				<base-touch-spin sign="" :price="3" text=" Instagram posts" />
 			</div>
 			<div class="title">Target</div>
 			<p class="subTitle">Choose the minimum number of followers for a local influencer</p>
@@ -536,7 +536,7 @@ export default {
 					display: flex;
 					align-items: center;
 					margin: rem(20px) 0;
-					@media screen and (max-width: 460px) {
+					@media screen and (max-width: 500px) {
 						flex-wrap: wrap;
 						// align-items: flex-start;
 						flex-direction: column;
@@ -545,7 +545,7 @@ export default {
 						margin: 0;
 						&:first-child {
 							margin-right: rem(28px);
-							@media screen and (max-width: 460px) {
+							@media screen and (max-width: 500px) {
 								margin: 0 0 rem(16px) 0;
 							}
 						}
@@ -579,14 +579,14 @@ export default {
 	.quantityToggle {
 		input {
 			padding: 0 !important;
-			width: 140px;
+			width: 180px;
 			font-size: rem(14px);
 			font-weight: 400;
 			color: var(--primary);
 			background: transparent;
 			height: 28px;
-			@media screen and (max-width: 767px) {
-				width: 100%;
+			@media screen and (max-width: 991px) {
+				width: 150px;
 			}
 		}
 		button {

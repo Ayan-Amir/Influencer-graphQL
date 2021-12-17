@@ -1,7 +1,7 @@
 <template>
 	<div class="password">
 		<div class="row justify-content-between align-items-center col-gap-70">
-			<div class="col-md-6">
+			<div class="col-xxl-5 col-md-6">
 				<h1>{{ title }}</h1>
 				<p class="subTitle">
 					{{ subTitle }}
@@ -13,7 +13,7 @@
 					</div>
 				</b-form>
 			</div>
-			<div class="col-md-6">
+			<div class="col-xxl-7 col-md-6">
 				<div class="image">
 					<img src="@/assets/images/hi-to-followers.png" class="img-fluid" alt="hi-to-followers-img" />
 				</div>

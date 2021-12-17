@@ -1,7 +1,7 @@
 <template>
 	<div class="profile">
-		<div class="row align-items-center justify-content-between">
-			<div class="col-md-6">
+		<div class="row align-items-center justify-content-between col-gap-40">
+			<div class="col-xxl-5 col-md-6">
 				<h1>{{ title }}</h1>
 
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
@@ -34,7 +34,7 @@
 					</b-form>
 				</validation-observer>
 			</div>
-			<div class="col-md-6">
+			<div class="col-xxl-7 col-md-6">
 				<div class="image">
 					<img
 						src="@/assets/images/young-woman-with-smartphone.png"
@@ -47,6 +47,7 @@
 	</div>
 </template>
 
+}
 <script>
 import { mapState } from 'vuex';
 import { UPDATE_USER } from '@/graphql/user/mutations';
@@ -55,7 +56,7 @@ export default {
 		return {
 			title: 'My Profile',
 			gender: [
-				{ value: 'M', text: 'Male' },
+				{ value: null, text: 'Male' },
 				{ value: 'F', text: 'Female' },
 			],
 			profile: {
@@ -66,7 +67,7 @@ export default {
 				city: null,
 				country: null,
 				phone: null,
-				gender: '',
+				gender: 'Gender',
 			},
 		};
 	},
@@ -103,15 +104,20 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+/deep/.invalid-feedback {
+	position: static !important;
+}
+</style>
+<style lang="scss">
 .LoginRegister {
+	@media screen and (max-width: 1400px) {
+		min-height: calc(100vh + 60px) !important;
+	}
 	.contentWrapper {
 		padding-top: 0 !important;
 	}
 	.profile {
 		width: 100%;
 	}
-	// .invalid-feedback {
-	// 	position: static !important;
-	// }
 }
 </style>
