@@ -1,31 +1,21 @@
 <template>
 	<div class="password">
-		<div class="row justify-content-between align-items-center">
+		<div class="row justify-content-between align-items-center col-gap-70">
 			<div class="col-md-6">
 				<h1>{{ title }}</h1>
 				<p class="subTitle">
 					{{ subTitle }}
 				</p>
 				<b-form>
-					<base-input
-						className="password"
-						placeholder="Password"
-						type="password"
-					/>
+					<base-input className="password" placeholder="Password" type="password" />
 					<div class="button-row">
-						<router-link to="profile" class="btn btn-primary large">
-							Continue
-						</router-link>
+						<router-link to="profile" class="btn btn-primary large"> Continue </router-link>
 					</div>
 				</b-form>
 			</div>
 			<div class="col-md-6">
 				<div class="image">
-					<img
-						src="@/assets/images/hi-to-followers.png"
-						class="img-fluid"
-						alt="hi-to-followers-img"
-					/>
+					<img src="@/assets/images/hi-to-followers.png" class="img-fluid" alt="hi-to-followers-img" />
 				</div>
 			</div>
 		</div>
@@ -55,6 +45,23 @@ export default {
 			img {
 				max-width: 450px;
 			}
+		}
+	}
+	form {
+		max-width: 440px;
+		margin: 0;
+	}
+	.button-row {
+		margin-top: rem(40px);
+		// @include flex(center, center);
+		@media screen and (max-width: 767px) {
+			margin-top: rem(25px);
+		}
+	}
+	.form-group {
+		margin-bottom: rem(25px);
+		@media screen and (max-width: 767px) {
+			margin-bottom: rem(16px);
 		}
 	}
 }

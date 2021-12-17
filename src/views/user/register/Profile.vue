@@ -3,7 +3,7 @@
 		<div class="row align-items-center justify-content-between">
 			<div class="col-md-6">
 				<h1>{{ title }}</h1>
-                
+
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
 					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
 						<div class="row">
@@ -11,27 +11,25 @@
 								<base-input
 									placeholder="First Name"
 									type="text"
-                                    rules="required"
-                                    v-model="profile.firstName"
-                                    name="First Name"
+									rules="required"
+									v-model="profile.firstName"
+									name="First Name"
 								/>
 							</div>
 							<div class="col-md-6">
 								<base-input
-                                    placeholder="Last Name"
-                                    type="text"
-                                    rules="required"
-                                    v-model="profile.lastName"
-                                    name="Last Name"
-                                />
+									placeholder="Last Name"
+									type="text"
+									rules="required"
+									v-model="profile.lastName"
+									name="Last Name"
+								/>
 							</div>
 						</div>
 						<base-date-picker @input="getDate" v-model="profile.birthdate" name="DOB" rules="required" />
 						<base-select :options="gender" v-model="profile.gender" name="Gender" rules="required" />
 						<div class="button-row">
-							<button type="submit" class="btn btn-primary large">
-								Save
-							</button>
+							<button type="submit" class="btn btn-primary large">Save</button>
 						</div>
 					</b-form>
 				</validation-observer>
@@ -51,59 +49,60 @@
 
 <script>
 import { mapState } from 'vuex';
-import { UPDATE_USER } from '@/graphql/user/mutations'
+import { UPDATE_USER } from '@/graphql/user/mutations';
 export default {
 	data() {
 		return {
 			title: 'My Profile',
 			gender: [
 				{ value: 'M', text: 'Male' },
-				{ value: 'F', text: 'Female' }
+				{ value: 'F', text: 'Female' },
 			],
-            profile:{
-                firstName: '',
-                lastName: '',
-                birthdate: '',
-                address: null,
-                city: null,
-                country: null,
-                phone: null,
-                gender: '',
-            },
+			profile: {
+				firstName: '',
+				lastName: '',
+				birthdate: '',
+				address: null,
+				city: null,
+				country: null,
+				phone: null,
+				gender: '',
+			},
 		};
 	},
-    computed: {
+	computed: {
 		...mapState({
 			alert: (state) => state.alert,
 		}),
 	},
 	methods: {
 		onSubmit() {
-            this.updateProfile();
+			this.updateProfile();
 		},
-        getDate(date){
-            this.profile.birthdate = date
-        },
-        async updateProfile(){
-            await this.$apollo.mutate({
-                mutation: UPDATE_USER,
-                variables: this.profile
-            })
-            .then((data)=>{
-                if(data){
-                    if(data.data.updateUser.state=="success"){
-                        this.$router.push('connect-social');
-                    }
-                }
-            })
-            .catch((e) => {
-                this.handleError(e);                
-            })
-        }
-	}
+		getDate(date) {
+			this.profile.birthdate = date;
+		},
+		async updateProfile() {
+			await this.$apollo
+				.mutate({
+					mutation: UPDATE_USER,
+					variables: this.profile,
+				})
+				.then((data) => {
+					if (data) {
+						if (data.data.updateUser.state == 'success') {
+							this.$router.push('connect-social');
+						}
+					}
+				})
+				.catch((e) => {
+					this.handleError(e);
+				});
+		},
+	},
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .LoginRegister {
 	.contentWrapper {
 		padding-top: 0 !important;
@@ -111,5 +110,8 @@ export default {
 	.profile {
 		width: 100%;
 	}
+	// .invalid-feedback {
+	// 	position: static !important;
+	// }
 }
 </style>
