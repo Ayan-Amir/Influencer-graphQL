@@ -22,6 +22,7 @@ export default {
 </script>
 <style lang="scss">
 .LoginRegister {
+	min-height: 100vh !important;
 	.contentWrapper {
 		padding-top: 0 !important;
 	}

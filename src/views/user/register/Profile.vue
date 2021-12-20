@@ -27,7 +27,13 @@
 							</div>
 						</div>
 						<base-date-picker @input="getDate" v-model="profile.birthdate" name="DOB" rules="required" />
-						<base-select :options="gender" v-model="profile.gender" name="Gender" rules="required" />
+						<base-select
+							:options="gender"
+							v-model="profile.gender"
+							:myGender="myGender"
+							name="Gender"
+							rules="required"
+						/>
 						<!-- <base-select :options="gender" name="Gender" rules="required" /> -->
 
 						<div class="button-row">

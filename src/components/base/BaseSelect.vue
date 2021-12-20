@@ -24,10 +24,11 @@ export default {
 		options: Array,
 		rules: String,
 		name: String,
+		myGender: Object,
 	},
 	data() {
 		return {
-			myGender: { value: null, text: 'Gender' },
+			// myGender: { value: null, text: 'Gender' },
 			selectedValueData: null,
 			selectedValue: null,
 			options_arr: [],
