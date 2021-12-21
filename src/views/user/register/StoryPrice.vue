@@ -10,6 +10,7 @@
 					<div>
 						<base-touch-spin
 							sign="$"
+                            v-model="storyPrice.price"
 							:price="this.mediaAccounts[0].priceRecommendations.story.value"
 							text=".00"
 						/>
@@ -48,6 +49,11 @@ export default {
 			title: 'Modify Story Price',
 			subTitle: 'We recommend choosing this price ',
 			type: 'instagram',
+            storyPrice:{
+                type: 'instagram',
+                price: null,
+                priceNegotiable: true
+            }
 		};
 	},
 	apollo: {
