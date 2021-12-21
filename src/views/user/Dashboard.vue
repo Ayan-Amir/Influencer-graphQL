@@ -3,36 +3,23 @@
 		<div class="row">
 			<div class="col-lg-4">
 				<profile-card title="Ruby and Rails" subTitle="Influencers" />
-				<base-statictics
-					:complete="complete"
-					:response="response"
-					:onTime="onTime"
-				/>
+				<base-statictics :complete="complete" :response="response" :onTime="onTime" />
 			</div>
 			<div class="col-lg-8">
 				<div>
 					<ul class="statesLinks">
 						<li class="statesLinks__item">
-							<a
-								class="statesLinks__item--link"
-								href="javascript:void(0)"
-								@click="handleTab('active')"
+							<a class="statesLinks__item--link" href="javascript:void(0)" @click="handleTab('active')"
 								>Active</a
 							>
 						</li>
 						<li class="statesLinks__item">
-							<a
-								class="statesLinks__item--link"
-								href="javascript:void(0)"
-								@click="handleTab('revision')"
+							<a class="statesLinks__item--link" href="javascript:void(0)" @click="handleTab('revision')"
 								>Revision</a
 							>
 						</li>
 						<li class="statesLinks__item">
-							<a
-								class="statesLinks__item--link"
-								href="javascript:void(0)"
-								@click="handleTab('completed')"
+							<a class="statesLinks__item--link" href="javascript:void(0)" @click="handleTab('completed')"
 								>Completed</a
 							>
 						</li>
@@ -46,10 +33,7 @@
 						</li>
 					</ul>
 					<div v-if="$apollo.loading">
-						<base-skeleton-loader
-							type="discover"
-							:count="8"
-						></base-skeleton-loader>
+						<base-skeleton-loader type="discover" :count="8"></base-skeleton-loader>
 					</div>
 					<div v-if="norecord">No Record Found</div>
 					<div class="campaigns" v-else>
@@ -99,11 +83,11 @@ export default {
 			},
 			result(data) {
 				if (data.data.campaigns.length == 0) {
-					console.log(data.data.campaigns);
-					this.subscription = null;
-					// this.norecord = true;
+					console.log('apollo Data', data.data.campaigns);
+					// this.subscription = null;
+					this.norecord = true;
 				} else {
-					// this.norecord = false;
+					this.norecord = false;
 				}
 			},
 		},
@@ -111,10 +95,11 @@ export default {
 	methods: {
 		handleTab(data) {
 			this.subscription = data;
-			// console.log('data :', data);
+			console.log('subscription :', this.subscription);
 		},
 	},
 	mounted() {
+		// console.log('camp', this.subscription);
 		let items = document.querySelectorAll('.statesLinks__item--link');
 		items.forEach((item) => {
 			item.addEventListener('click', () => {
