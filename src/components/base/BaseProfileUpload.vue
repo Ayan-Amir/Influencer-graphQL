@@ -1,11 +1,21 @@
 <template>
-	<div class="profilePhoto">
-		<input type="file" name="file" @change="upload" />
-	</div>
+	
+    <validation-provider :name="name" mode="eager" :rules="rules" v-slot="{ valid, errors }">
+        <b-form-group>
+            <div class="profilePhoto">
+                <b-form-file :state="errors[0] ? false : valid ? true : null" ref="file-input" class="mb-2" @change="upload"></b-form-file>
+                <b-form-invalid-feedback>{{errors[0]}}</b-form-invalid-feedback>
+            </div>
+        </b-form-group>
+    </validation-provider>
 </template>
 
 <script>
 export default {
+    props: {
+        name: String,
+        rules: String
+	},
 	methods: {
 		upload: function (e) {
 			let wrapper = e.target.parentNode;
@@ -17,6 +27,7 @@ export default {
 			img = document.createElement('img');
 			img.src = URL.createObjectURL(e.target.files[0]);
 			wrapper.appendChild(img);
+            this.$emit('input', e.target.files[0]);
 		},
 	},
 };

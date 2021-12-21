@@ -35,7 +35,7 @@ mutation mediaAccount($type: String!, $price: String, $priceNegotiable: Boolean)
     }
 }`
 
-export const UPLOAD_PHOTO = gql`
+export const UPLOAD_IMAGE = gql`
 mutation uploadProfile($image: Upload) {
   uploadProfile(image: $image) {
       value

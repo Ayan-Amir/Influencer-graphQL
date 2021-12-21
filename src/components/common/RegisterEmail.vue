@@ -28,7 +28,7 @@
 						className="password"
 						placeholder="Password"
 						type="password"
-						rules="required|length:8"
+						rules="required|min:8"
 						v-model="authDetails.password"
 					/>
 				</div>

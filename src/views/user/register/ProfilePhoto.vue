@@ -3,17 +3,20 @@
 		<div class="row justify-content-between align-items-center col-gap-120">
 			<div class="col-xxl-4 col-md-5">
 				<h1>Add Your <br />Profile Photo</h1>
-				<div class="profile__Photo">
-					<!-- profile Photo upload -->
-					<base-profile-upload />
-				</div>
-				<p class="subTitle">
-					By continuing you accept our <br /><span>Terms and Conditions</span> and
-					<span>Privacy Policy </span>
-				</p>
-				<div class="button-row">
-					<router-link to="/user" class="btn btn-primary large">Finish</router-link>
-				</div>
+                <validation-observer ref="observer" v-slot="{ handleSubmit }">
+                    <b-form @submit.stop.prevent="handleSubmit(uploadImage)">
+                        <div class="profile__Photo">
+                            <base-profile-upload rules="required|ext:jpg,png" v-model="image" />
+                        </div>
+                        <p class="subTitle">
+                            By continuing you accept our <br /><span>Terms and Conditions</span> and
+                            <span>Privacy Policy </span>
+                        </p>
+                        <div class="button-row">
+                            <input type="submit"  class="btn btn-primary large" value="Finish">
+                        </div>
+                    </b-form>
+                </validation-observer>
 			</div>
 			<div class="col-xxl-8 col-md-7">
 				<div class="image">
@@ -26,8 +29,42 @@
 
 <script>
 import BaseProfileUpload from '@/components/base/BaseProfileUpload.vue';
+import { UPLOAD_IMAGE } from '@/graphql/user/mutations';
 export default {
 	components: { BaseProfileUpload },
+    data(){
+        return{
+            image: null
+        }
+    },
+    methods:{
+        uploadImage(){
+            if(this.image==null){
+                this.$router.push("/user/");
+                return;
+            }
+            this.uploadProfilePhoto()
+        },
+        async uploadProfilePhoto() {
+			await this.$apollo
+				.mutate({
+					mutation: UPLOAD_IMAGE,
+					variables: this.image,
+				})
+				.then((data) => {
+					console.log(data);
+					// if (data) {
+					// 	if (data.data.mediaAccount.state == 'added' || data.data.mediaAccount.state == 'updated') {
+					// 		this.$router.push('story-price');
+					// 	}
+					// }
+				})
+				.catch((e) => {
+					this.handleError(e);
+                    console.log(e);
+				});
+		},
+    }
 };
 </script>
 
