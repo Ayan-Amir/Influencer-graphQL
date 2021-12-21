@@ -9,7 +9,7 @@
 <script>
 export default {
 	props: {
-		price: Number,
+		price: String,
 		text: String,
 		sign: String,
 	},
@@ -22,10 +22,12 @@ export default {
 	methods: {
 		increment() {
 			this.value++;
+			this.$emit('input', this.value);
 		},
 		decrement() {
 			if (this.value > 1) {
 				this.value--;
+				this.$emit('input', this.value);
 			}
 		},
 	},

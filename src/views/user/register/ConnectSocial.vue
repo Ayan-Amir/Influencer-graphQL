@@ -13,7 +13,7 @@
 							rules="required"
 						/>
 						<div class="button-row">
-							<button type="submit" to="" class="btn btn-primary large">Save</button>
+							<button type="submit" class="btn btn-primary large">Save</button>
 						</div>
 					</b-form>
 				</validation-observer>

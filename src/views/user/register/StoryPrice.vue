@@ -10,7 +10,7 @@
 					<div>
 						<base-touch-spin
 							sign="$"
-                            v-model="storyPrice.price"
+							v-model="storyPrice.price"
 							:price="this.mediaAccounts[0].priceRecommendations.story.value"
 							text=".00"
 						/>
@@ -18,14 +18,11 @@
 					<p class="subTitle">
 						{{ subTitle }}
 					</p>
-					<div class="checkbox">
-						<label>
-							<input type="checkbox" name="all" checked />
-							<span>My price is negotiable</span>
-						</label>
-					</div>
+					<b-form-checkbox v-model="storyPrice.priceNegotiable" :value="true" :unchecked-value="false">
+						My price is negotiable
+					</b-form-checkbox>
 					<div class="button-row">
-						<router-link to="profile-photo" class="btn btn-primary large">Save</router-link>
+						<button type="submit" class="btn btn-primary large" @click="onSubmit">Save</button>
 					</div>
 				</div>
 				<div v-if="this.$apollo.error">
@@ -43,17 +40,18 @@
 
 <script>
 import { STORY_RECOMENDED_PRICE } from '@/graphql/user/query';
+import { UPDATE_STORY_PRICE } from '@/graphql/user/mutations';
 export default {
 	data() {
 		return {
 			title: 'Modify Story Price',
 			subTitle: 'We recommend choosing this price ',
 			type: 'instagram',
-            storyPrice:{
-                type: 'instagram',
-                price: null,
-                priceNegotiable: true
-            }
+			storyPrice: {
+				type: 'instagram',
+				price: null,
+				priceNegotiable: true,
+			},
 		};
 	},
 	apollo: {
@@ -61,7 +59,7 @@ export default {
 			query: STORY_RECOMENDED_PRICE,
 			variables() {
 				return {
-					type: 'instagram',
+					type: this.storyPrice.type,
 				};
 			},
 			result(data) {
@@ -69,6 +67,32 @@ export default {
 			},
 		},
 	},
+	methods: {
+		onSubmit() {
+			this.updateStoryPrice();
+		},
+		async updateStoryPrice() {
+			await this.$apollo
+				.mutate({
+					mutation: UPDATE_STORY_PRICE,
+					variables: this.storyPrice,
+				})
+				.then((data) => {
+					console.log(data);
+					if (data) {
+						if (data.data.mediaAccount.state == 'added' || data.data.mediaAccount.state == 'updated') {
+							this.$router.push('profile-photo');
+						}
+					}
+				})
+				.catch((e) => {
+					this.handleError(e);
+				});
+		},
+	},
+	// updated() {
+	// 	console.log('update', this.storyPrice.priceNegotiable);
+	// },
 };
 </script>
 <style lang="scss">

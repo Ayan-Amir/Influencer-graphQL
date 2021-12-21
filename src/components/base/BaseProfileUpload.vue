@@ -6,7 +6,6 @@
 
 <script>
 export default {
-	data() {},
 	methods: {
 		upload: function (e) {
 			let wrapper = e.target.parentNode;

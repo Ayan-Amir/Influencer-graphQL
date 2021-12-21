@@ -730,7 +730,7 @@ h6 {
 	text-indent: -2px;
 }
 
-/deep/.b-form-datepicker {
+.b-form-datepicker {
 	padding: 0 !important;
 	border: 0 !important;
 	background: #fff !important;
@@ -786,8 +786,8 @@ h6 {
 	}
 	.form-control.text-muted {
 		color: var(--textPrimary) !important;
-		// opacity: 0.5 !important;
-		opacity: 1 !important;
+		opacity: 0.5;
+		// opacity: 1 !important;
 		font-size: rem(14px) !important;
 		height: 42px;
 		border-radius: 12px;
@@ -820,7 +820,7 @@ h6 {
 		right: auto !important;
 	}
 	&.b-form-btn-label-control.form-control > .form-control {
-		color: var(--textPrimary) !important;
+		color: var(--textSecondary) !important;
 		font-size: rem(14px) !important;
 		height: 42px;
 		border-radius: 12px;
