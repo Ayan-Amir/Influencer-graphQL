@@ -16,6 +16,7 @@
 <script>
 import SocialLinks from '@/components/user/layout/SocialLinks.vue';
 import RegisterEmail from '@/components/common/RegisterEmail.vue';
+
 export default {
 	components: { SocialLinks, RegisterEmail },
 };

@@ -32,7 +32,7 @@
 						v-model="authDetails.password"
 					/>
 				</div>
-				<base-alerts :alert="alert"></base-alerts>
+				<base-alerts></base-alerts>
 				<div class="button-row">
 					<button type="submit" class="btn btn-primary large">Continue</button>
 				</div>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions } from 'vuex';
 import { CHECK_USERNAME } from '@/graphql/user/query';
 
 export default {
@@ -58,11 +58,6 @@ export default {
 			},
 			currentStep: 'email',
 		};
-	},
-	computed: {
-		...mapState({
-			alert: (state) => state.alert,
-		}),
 	},
 	methods: {
 		...mapActions('alert', ['error', 'clear']),

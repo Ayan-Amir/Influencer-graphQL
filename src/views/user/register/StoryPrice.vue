@@ -62,9 +62,6 @@ export default {
 					type: this.storyPrice.type,
 				};
 			},
-			result(data) {
-				console.log(data);
-			},
 		},
 	},
 	methods: {

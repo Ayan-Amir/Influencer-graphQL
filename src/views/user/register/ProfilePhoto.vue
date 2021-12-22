@@ -30,9 +30,11 @@
 <script>
 import BaseProfileUpload from '@/components/base/BaseProfileUpload.vue';
 import { UPLOAD_IMAGE } from '@/graphql/user/mutations';
+import register from '../mixin/register.js'
 import { mapActions} from 'vuex';
 export default {
 	components: { BaseProfileUpload },
+    mixins:[register],
 	data() {
 		return {
 			image: null,
@@ -41,32 +43,25 @@ export default {
 	methods: {
         ...mapActions(['setUser']),
 		uploadImage() {
-			if (this.image == null) {
-                this.setUser()
-                .then((data)=>{
-                    this.$router.push('/user/');
-                });
-				return;
-			}
 			this.uploadProfilePhoto();
 		},
 		 uploadProfilePhoto() {
-            console.log(this.image);
 			this.$apollo
 				.mutate({
 					mutation: UPLOAD_IMAGE,
-					variables: this.image,
-					// context: {
-					// 	hasUpload: true,
-					// },
+					variables: {
+                        image: this.image
+                    }
 				})
 				.then((data) => {
 					console.log(data);
-					// if (data) {
-					// 	if (data.data.mediaAccount.state == 'added' || data.data.mediaAccount.state == 'updated') {
-					// 		this.$router.push('story-price');
-					// 	}
-					// }
+                    if(data.data.uploadProfile.value!=""){
+                        this.setUser()
+                        .then((data)=>{
+                            this.$router.push('/user/');
+                        });
+                        return;
+                    }
 				})
 				.catch((e) => {
 					//this.handleError(e);

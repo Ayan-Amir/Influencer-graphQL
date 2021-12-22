@@ -1,14 +1,14 @@
 <template>
-    <div v-if="alert!=null" :class="'alert ' + alert.type">
+    <div v-if="alert.message!=null" :class="'alert ' + alert.type">
         {{ alert.message }}
     </div>
 </template>
 
 <script>
 export default {
-    props:{
-        alert: Object
-    }
+    // props:{
+    //     alert: Object
+    // }
 }
 </script>
 

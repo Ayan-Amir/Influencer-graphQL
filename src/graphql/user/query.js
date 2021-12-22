@@ -7,13 +7,19 @@ query{
 		email,
 		state,
 		type,
+        avatar,
 		first_name,
 		last_name,
 		city,
+        birth_date,
+        addres,
 		country,
 		pin,
 		gender,
-		phone
+		phone,
+        responseRate,
+        jobOnTime,
+        completion
 	}
 }
 `

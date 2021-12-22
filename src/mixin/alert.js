@@ -1,5 +1,10 @@
-import {mapActions } from 'vuex'
+import {mapActions, mapState} from 'vuex'
 export default {
+    computed:{
+        ...mapState({
+			alert: (state) => state.alert,
+		}),
+    },
     methods: {
         ...mapActions({
             clearAlert: 'alert/clear' 
@@ -10,5 +15,5 @@ export default {
             // clear alert on location change
             this.clearAlert();
         }
-      }
+    }
 }
