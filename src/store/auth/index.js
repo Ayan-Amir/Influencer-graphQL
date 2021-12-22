@@ -69,7 +69,7 @@ const actions = {
                 commit('SET_TOKEN', token)
                 onLogin(apolloClient, token)
                 .then(()=>{
-                    dispatch('setUser')
+                    //dispatch('setUser')
                     router.push('/user/register/profile');
                 }) 
             }
@@ -86,16 +86,7 @@ const actions = {
     },
     async setUser ({ commit }) {
         const { data } = await apolloClient.query({ query: LOGGED_IN_USER })
-        console.log(data.me);
         commit('LOGIN_USER', data.me)
-        // .then((data)=>{
-        //     if(data){
-        //         commit('LOGIN_USER', data.me)
-        //     }
-        // })
-        // .catch((error)=>{
-
-        // })
     },
     async logOut ({ commit, dispatch }) {
         commit('LOGOUT_USER')

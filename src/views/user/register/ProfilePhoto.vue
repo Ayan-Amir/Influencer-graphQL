@@ -4,9 +4,9 @@
 			<div class="col-xxl-4 col-md-5">
 				<h1>Add Your <br />Profile Photo</h1>
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
-					<b-form @submit.stop.prevent="handleSubmit(uploadImage)">
+					<b-form @submit.stop.prevent="handleSubmit(uploadImage)" enctype="multipart/form-data">
 						<div class="profile__Photo">
-							<base-profile-upload rules="required|ext:jpg,png" @input="input" v-model="image" />
+							<base-profile-upload rules="ext:jpg,png" v-model="image" />
 						</div>
 						<p class="subTitle">
 							By continuing you accept our <br /><span>Terms and Conditions</span> and
@@ -30,6 +30,7 @@
 <script>
 import BaseProfileUpload from '@/components/base/BaseProfileUpload.vue';
 import { UPLOAD_IMAGE } from '@/graphql/user/mutations';
+import { mapActions} from 'vuex';
 export default {
 	components: { BaseProfileUpload },
 	data() {
@@ -38,15 +39,20 @@ export default {
 		};
 	},
 	methods: {
+        ...mapActions(['setUser']),
 		uploadImage() {
 			if (this.image == null) {
-				this.$router.push('/user/');
+                this.setUser()
+                .then((data)=>{
+                    this.$router.push('/user/');
+                });
 				return;
 			}
 			this.uploadProfilePhoto();
 		},
-		async uploadProfilePhoto() {
-			await this.$apollo
+		 uploadProfilePhoto() {
+            console.log(this.image);
+			this.$apollo
 				.mutate({
 					mutation: UPLOAD_IMAGE,
 					variables: this.image,
@@ -63,16 +69,10 @@ export default {
 					// }
 				})
 				.catch((e) => {
-					this.handleError(e);
+					//this.handleError(e);
 					console.log(e);
 				});
-		},
-		input(data) {
-			this.image = data.name;
-		},
-	},
-	updated() {
-		console.log('img', this.image);
+		}
 	},
 };
 </script>
