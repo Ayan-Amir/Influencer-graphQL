@@ -9,48 +9,26 @@
 						<div class="left-side">
 							<!--Mobile menu-icon -->
 							<a href="#" class="menuIcon d-none show-on-md">
-								<svg-icon
-									class="menu"
-									icon-id="menuIcon"
-									icon-viewbox="0 0 44 44"
-								>
-								</svg-icon>
-								<svg-icon
-									class="arrow"
-									icon-id="arrowIcon"
-									icon-viewbox="0 0 38 38"
-								>
-								</svg-icon>
+								<svg-icon class="menu" icon-id="menuIcon" icon-viewbox="0 0 44 44"> </svg-icon>
+								<svg-icon class="arrow" icon-id="arrowIcon" icon-viewbox="0 0 38 38"> </svg-icon>
 							</a>
 							<!-- logo -->
 							<router-link to="#" class="logo">
-								<img
-									src="@/assets/images/svg/logo.svg"
-									class="img-fluid"
-									alt=" logo"
-								/>
+								<img src="@/assets/images/svg/logo.svg" class="img-fluid" alt=" logo" />
 							</router-link>
 							<nav>
 								<ul>
 									<li>
-										<router-link to="/user"
-											>Dashboard</router-link
-										>
+										<router-link to="/user">Dashboard</router-link>
 									</li>
 									<li>
-										<router-link to="/user/offers"
-											>Free offers</router-link
-										>
+										<router-link to="/user/offers">Free offers</router-link>
 									</li>
 									<li>
-										<router-link to="/user/discover"
-											>Discover</router-link
-										>
+										<router-link to="/user/discover">Discover</router-link>
 									</li>
-                                    <li>
-										<router-link to="/user/register/profile"
-											>Profile</router-link
-										>
+									<li>
+										<router-link to="/user/register/profile">Profile</router-link>
 									</li>
 								</ul>
 							</nav>
@@ -59,15 +37,8 @@
 							<ul class="list-unstyled">
 								<!-- Notification -->
 								<li class="notifaction_Wrapper hide-on-md">
-									<router-link
-										to="/user/notifications"
-										class="notification"
-									>
-										<svg-icon
-											icon-id="notiffication_icon"
-											icon-viewbox="0 0 20 22"
-										>
-										</svg-icon>
+									<router-link to="/user/notifications" class="notification">
+										<svg-icon icon-id="notiffication_icon" icon-viewbox="0 0 20 22"> </svg-icon>
 										<span></span>
 									</router-link>
 								</li>
@@ -75,18 +46,11 @@
 								<li class="hide-on-md">
 									<router-link to="/user/edit-profile">
 										<div class="userProfile">
-											Sandu Cosm
+											{{ user.first_name }} {{ user.last_name }}
 											<span
-												><img
-													src="@/assets/images/user-img.jpg"
-													alt=""
-													class="img-fluid"
+												><img src="@/assets/images/user-img.jpg" alt="" class="img-fluid"
 											/></span>
-											<svg-icon
-												icon-id="dropdown"
-												icon-viewbox="0 0 14.828 8.414"
-											>
-											</svg-icon>
+											<svg-icon icon-id="dropdown" icon-viewbox="0 0 14.828 8.414"> </svg-icon>
 										</div>
 									</router-link>
 								</li>
@@ -95,11 +59,7 @@
 						<!-- Setting Icon on Responsive -->
 						<div class="settingIcon d-none show-on-md">
 							<router-link to="#">
-								<svg-icon
-									icon-id="setting"
-									icon-viewbox="0 0 23.469 25.246"
-								>
-								</svg-icon>
+								<svg-icon icon-id="setting" icon-viewbox="0 0 23.469 25.246"> </svg-icon>
 							</router-link>
 						</div>
 						<!-- Menu on mobile -->
@@ -107,28 +67,18 @@
 							<div>
 								<!-- Mobile Search -->
 								<div class="search">
-									<input
-										type="text"
-										class="form-control"
-										placeholder="Search Everything"
-									/>
+									<input type="text" class="form-control" placeholder="Search Everything" />
 								</div>
 								<!-- Mobile Main links -->
 								<ul>
 									<li>
-										<router-link to="#"
-											>Dashboard</router-link
-										>
+										<router-link to="#">Dashboard</router-link>
 									</li>
 									<li>
-										<router-link to="/user/free-offer"
-											>Free offers</router-link
-										>
+										<router-link to="/user/free-offer">Free offers</router-link>
 									</li>
 									<li>
-										<router-link to="/user/discover"
-											>Discover</router-link
-										>
+										<router-link to="/user/discover">Discover</router-link>
 									</li>
 								</ul>
 								<!-- Mobile Notification -->
@@ -146,6 +96,7 @@
 	</div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 import BaseIcons from '@/components/base/BaseSvgIcons.vue';
 import FixedHeader from 'vue-fixed-header';
 export default {
@@ -158,17 +109,15 @@ export default {
 			let item = document.querySelector('.menuIcon');
 			item.addEventListener('click', () => {
 				document.body.classList.toggle('menu-active');
-				document
-					.getElementsByTagName('html')[0]
-					.classList.toggle('no-scroll');
+				document.getElementsByTagName('html')[0].classList.toggle('no-scroll');
 			});
 		},
 	},
+	computed: {
+		...mapGetters(['user']),
+	},
 	mounted() {
 		this.menuIcon();
-	},
-	data() {
-		return {};
 	},
 };
 </script>

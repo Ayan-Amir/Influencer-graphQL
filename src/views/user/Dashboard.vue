@@ -2,7 +2,11 @@
 	<div class="dashboard container">
 		<div class="row">
 			<div class="col-lg-4">
-				<profile-card title="Ruby and Rails" subTitle="Influencers" />
+				<profile-card
+					:firstName="user.first_name"
+					:lastName="user.last_name"
+					:subTitle="`${user.type == 0 ? 'influencer' : 'brand'}`"
+				/>
 				<base-statictics :complete="complete" :response="response" :onTime="onTime" />
 			</div>
 			<div class="col-lg-8">
@@ -52,6 +56,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import CompaignCard from '@/components/user/CompaignCard.vue';
 import ProfileCard from '@/components/common/ProfileCard.vue';
 import { CAMPAIGN_SUBSCRIPTION } from '@/graphql/user/query';
@@ -98,7 +103,13 @@ export default {
 			console.log('subscription :', this.subscription);
 		},
 	},
+	computed: {
+		...mapGetters(['user']),
+	},
 	mounted() {
+		// console.log('user', this.user);
+		// console.log('campaigns', this.campaigns);
+
 		// console.log('camp', this.subscription);
 		let items = document.querySelectorAll('.statesLinks__item--link');
 		items.forEach((item) => {
@@ -109,6 +120,9 @@ export default {
 		});
 		// console.log('query :', this.campaigns[0].subscription);
 	},
+	// updated() {
+	// 	console.log('update', this.user);
+	// },
 };
 </script>
 

@@ -1,18 +1,12 @@
 <template>
 	<div class="card profile">
 		<div class="profile__image">
-			<img
-				src="@/assets/images/profile-image.png"
-				alt=""
-				class="img-fluid"
-			/>
+			<img src="@/assets/images/profile-image.png" alt="" class="img-fluid" />
 		</div>
-		<div class="profile__title">{{ title }}</div>
+		<div class="profile__title">{{ firstName }} {{ lastName }}</div>
 		<p class="profile__subTitle">{{ subTitle }}</p>
 		<div class="button-row">
-			<router-link to="user/edit-profile" class="btn btn-primary small"
-				>Edit Profile</router-link
-			>
+			<router-link to="/user/edit-profile" class="btn btn-primary small">Edit Profile</router-link>
 		</div>
 	</div>
 </template>
@@ -20,7 +14,8 @@
 <script>
 export default {
 	props: {
-		title: String,
+		firstName: String,
+		lastName: String,
 		subTitle: String,
 	},
 };

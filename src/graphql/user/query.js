@@ -232,7 +232,13 @@ query campaigns($page: Int, $locations: [String], $categories: [String] , $searc
 			description
 			gallery
 	  	}
-		subscription
+		subscription {
+			state
+			images {
+				id
+			  	value
+			}
+		}
 	}
 }`
 export const STORY_RECOMENDED_PRICE = gql`
