@@ -11,20 +11,18 @@
 									placeholder="First Name"
 									type="text"
 									rules="required"
-									v-model="editProfile.firstName"
+									v-model="user.first_name"
 									name="First Name"
-									:value="user.first_name"
 								/>
 							</div>
 							<div class="col-md-6">
-								<div class="form-group">
-									<input
-										type="text"
-										class="form-control"
-										placeholder="Last name"
-										:value="user.last_name"
-									/>
-								</div>
+								<base-input
+									placeholder="Last Name"
+									type="text"
+									rules="required"
+									v-model="user.last_name"
+									name="Last Name"
+								/>
 							</div>
 						</div>
 						<div class="row">
@@ -35,11 +33,22 @@
 								rules="required"
 							/>
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="password" />
+								<input
+									type="password"
+									class="form-control"
+									v-model="editProfile.password"
+									name="Password"
+									placeholder="Password"
+								/>
 							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Adress" />
-							</div>
+							<base-input
+								placeholder="Address"
+								type="text"
+								rules="required"
+								v-model="editProfile.address"
+								name="Address"
+								:value="user.address"
+							/>
 							<div class="form-group upload">
 								<input
 									type="file"
@@ -83,6 +92,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { UPDATE_PASSWORD } from '@/graphql/user/mutations';
 import BaseSocialLink from '@/components/base/BaseSocialLink.vue';
 import DeleiveryImages from '@/components/user/partials/DeleiveryImages.vue';
 export default {
@@ -92,11 +102,8 @@ export default {
 				firstName: '',
 				lastName: '',
 				birthdate: '',
+				password: '',
 				address: null,
-				city: null,
-				country: null,
-				phone: null,
-				gender: 'Gender',
 			},
 		};
 	},
@@ -113,7 +120,28 @@ export default {
 			}
 		},
 		getDate(date) {
-			this.profile.birthdate = date;
+			this.editProfile.birthdate = date;
+		},
+		onSubmit() {
+			this.updateProfile();
+		},
+		async updateProfile() {
+			await this.$apollo
+				.mutate({
+					mutation: UPDATE_PASSWORD,
+					variables: this.editProfile.password,
+				})
+				.then((data) => {
+					console.log('data', data);
+					// if (data) {
+					// 	if (data.data.updatePassword.state == 'success') {
+					// 		this.$router.push('/user');
+					// 	}
+					// }
+				})
+				.catch((e) => {
+					this.handleError(e);
+				});
 		},
 	},
 	computed: {
@@ -154,9 +182,9 @@ export default {
 	.form-control {
 		height: 42px;
 		padding: rem(14px) rem(10px);
-		border: 1px solid #ccd4e0;
-		border-radius: 8px;
-		font-size: rem(14px);
+		border: 1px solid #caced5;
+		border-radius: 4px;
+		font-size: rem(16px);
 		font-weight: 400;
 		color: var(--textPrimary);
 		&:focus {
@@ -272,15 +300,16 @@ export default {
 		}
 	}
 }
-// /deep/ {
-// 	.b-form-btn-label-control {
-// 		border-radius: 8px;
-// 		border: 2px solid #ccd4e0;
-// 	}
-// 	.b-form-datepicker.b-form-btn-label-control.form-control > .form-control {
-// 		border-radius: 8px;
-// 		border: 2px solid #ccd4e0;
-// 		color: var(--textPrimary);
-// 	}
-// }
+/deep/ {
+	.b-form-btn-label-control {
+		border-radius: 8px;
+		border: 2px solid #ced4da;
+	}
+	.b-form-datepicker.b-form-btn-label-control.form-control > .form-control {
+		border-radius: 8px;
+		color: #6c757d !important;
+		font-size: rem(16px) !important;
+		font-weight: 400 !important;
+	}
+}
 </style>

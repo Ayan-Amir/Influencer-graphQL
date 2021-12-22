@@ -65,11 +65,7 @@ export default {
 				firstName: '',
 				lastName: '',
 				birthdate: '',
-				address: null,
-				city: null,
-				country: null,
-				phone: null,
-				gender: 'Gender',
+				gender: '',
 			},
 		};
 	},
