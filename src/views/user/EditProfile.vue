@@ -33,7 +33,7 @@
 									class="form-control"
 									v-model="editProfile.password"
 									name="Password"
-									placeholder="Password"
+									placeholder="Change the password"
 								/>
 							</div>
 							<base-input
@@ -199,13 +199,15 @@ export default {
 		margin-bottom: rem(16px);
 	}
 	.form-control {
-		height: 42px;
 		padding: rem(14px) rem(10px);
 		border: 1px solid #caced5;
 		border-radius: 4px;
 		font-size: rem(16px);
 		font-weight: 400;
 		color: var(--textPrimary);
+		&::placeholder {
+			opacity: 0.8;
+		}
 		&:focus {
 			border: 1px solid var(--primary) !important;
 		}
@@ -326,9 +328,12 @@ export default {
 	}
 	.b-form-datepicker.b-form-btn-label-control.form-control > .form-control {
 		border-radius: 8px;
-		color: #6c757d !important;
+		color: var(--textPrimary) !important;
 		font-size: rem(16px) !important;
 		font-weight: 400 !important;
+	}
+	.b-form-datepicker .form-control.text-muted {
+		opacity: 0.8;
 	}
 }
 </style>
