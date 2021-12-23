@@ -26,12 +26,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<base-date-picker
-								@input="getDate"
-								v-model="editProfile.birthdate"
-								name="DOB"
-								rules="required"
-							/>
+							<base-date-picker @input="getDate" v-model="user.birth_date" name="DOB" rules="required" />
 							<div class="form-group">
 								<input
 									type="password"
@@ -45,9 +40,8 @@
 								placeholder="Address"
 								type="text"
 								rules="required"
-								v-model="editProfile.address"
+								v-model="user.address"
 								name="Address"
-								:value="user.address"
 							/>
 							<div class="form-group upload">
 								<input
@@ -92,7 +86,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { UPDATE_PASSWORD } from '@/graphql/user/mutations';
+import { UPDATE_USER, UPDATE_PASSWORD } from '@/graphql/user/mutations';
 import BaseSocialLink from '@/components/base/BaseSocialLink.vue';
 import DeleiveryImages from '@/components/user/partials/DeleiveryImages.vue';
 export default {
@@ -102,7 +96,8 @@ export default {
 				firstName: '',
 				lastName: '',
 				birthdate: '',
-				password: '',
+				password: null,
+				retype: null,
 				address: null,
 			},
 		};
@@ -126,22 +121,43 @@ export default {
 			this.updateProfile();
 		},
 		async updateProfile() {
-			await this.$apollo
-				.mutate({
-					mutation: UPDATE_PASSWORD,
-					variables: this.editProfile.password,
-				})
-				.then((data) => {
-					console.log('data', data);
-					// if (data) {
-					// 	if (data.data.updatePassword.state == 'success') {
-					// 		this.$router.push('/user');
-					// 	}
-					// }
-				})
-				.catch((e) => {
-					this.handleError(e);
-				});
+			if (this.editProfile.password != null) {
+				alert('password update');
+				await this.$apollo
+					.mutate({
+						mutation: UPDATE_PASSWORD,
+						variables: { password: this.editProfile.password },
+					})
+					.then((data) => {
+						console.log('data', data);
+						// if (data) {
+						// 	if (data.data.updatePassword.state == 'success') {
+						// 		this.$router.push('/user');
+						// 	}
+						// }
+					})
+					.catch((e) => {
+						this.handleError(e);
+					});
+			} else {
+				alert('password null');
+				await this.$apollo
+					.mutate({
+						mutation: UPDATE_USER,
+						variables: this.user,
+					})
+					.then((data) => {
+						console.log('data', data);
+						// if (data) {
+						// 	if (data.data.updatePassword.state == 'success') {
+						// 		this.$router.push('/user');
+						// 	}
+						// }
+					})
+					.catch((e) => {
+						this.handleError(e);
+					});
+			}
 		},
 	},
 	computed: {
@@ -149,7 +165,10 @@ export default {
 	},
 	components: { BaseSocialLink, DeleiveryImages },
 	mounted() {
-		console.log(this.user);
+		console.log(this.editProfile.password);
+	},
+	updated() {
+		console.log(this.editProfile.password);
 	},
 };
 </script>
@@ -302,8 +321,8 @@ export default {
 }
 /deep/ {
 	.b-form-btn-label-control {
-		border-radius: 8px;
-		border: 2px solid #ced4da;
+		border-radius: 4px;
+		border: 1px solid #ced4da !important;
 	}
 	.b-form-datepicker.b-form-btn-label-control.form-control > .form-control {
 		border-radius: 8px;

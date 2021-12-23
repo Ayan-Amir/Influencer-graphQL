@@ -50,7 +50,7 @@ export default {
 					variables: this.mediaAccount,
 				})
 				.then((data) => {
-					console.log(data);
+					// console.log(data);
 					if (data) {
 						if (data.data.mediaAccount.state == 'added' || data.data.mediaAccount.state == 'updated') {
 							this.$router.push('story-price');

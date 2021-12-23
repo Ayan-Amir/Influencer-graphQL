@@ -3,22 +3,22 @@ import gql from 'graphql-tag'
 export const LOGGED_IN_USER = gql`
 query{
 	me{
-		id,
-		email,
-		state,
-		type,
-        avatar,
-		first_name,
-		last_name,
-		city,
-        birth_date,
-        addres,
-		country,
-		pin,
-		gender,
-		phone,
-        responseRate,
-        jobOnTime,
+		id
+		email
+		state
+		type
+        avatar
+		first_name
+		last_name
+		city
+        birth_date
+        address
+		country
+		pin
+		gender
+		phone
+        responseRate
+        jobOnTime
         completion
 	}
 }
