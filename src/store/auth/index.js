@@ -38,12 +38,13 @@ const actions = {
         .then((data) => {
             // Result
             if(data){
+                console.log(data);
                 const token = JSON.stringify(data.data.createSession.token)
                 commit('SET_TOKEN', token)
                 onLogin(apolloClient, token)
                 .then(()=>{
                     dispatch('setUser')
-                    //router.push('/user');
+                    router.push('/user');
                 })
             }
         })
@@ -54,7 +55,7 @@ const actions = {
                     error = e.networkError.result.errors[0].message;
                 }
             }
-            dispatch('alert/error', error);
+            store.dispatch('alert/error', error);
         })
     },
     async register ({ commit, dispatch }, authDetails) {
@@ -69,7 +70,7 @@ const actions = {
                 commit('SET_TOKEN', token)
                 onLogin(apolloClient, token)
                 .then(()=>{
-                    //dispatch('setUser')
+                    dispatch('setUser')
                     router.push('/user/register/profile');
                 }) 
             }
@@ -81,22 +82,25 @@ const actions = {
                     error = e.networkError.result.errors[0].message;
                 }
             }
-            dispatch('alert/error', error);
+            commit('alert/error', error);
         })
     },
     async setUser ({ commit }) {
-        const { data } = await apolloClient.query({ query: LOGGED_IN_USER })
+        await apolloClient.query({ query: LOGGED_IN_USER })
         .then((data)=>{
-            commit('LOGIN_USER', data.me)
+            if(data){
+                commit('LOGIN_USER', data.data.me)
+            }
         })
         .catch((e)=>{
+            console.log(e.message);
             let error = e.message
             if(e.networkError){
                 if(e.networkError.result.errors){
                     error = e.networkError.result.errors[0].message;
                 }
             }
-            dispatch('alert/error', error);
+            commit('alert/error', error);
         })
         
     },
