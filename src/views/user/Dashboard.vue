@@ -6,8 +6,9 @@
 					:firstName="user.first_name"
 					:lastName="user.last_name"
 					:subTitle="`${user.type == 0 ? 'influencer' : 'brand'}`"
+					:avatar="user.avatar"
 				/>
-				<base-statictics :complete="complete" :response="response" :onTime="onTime" />
+				<base-statictics :complete="user.completion" :response="user.responseRate" :onTime="user.jobOnTime" />
 			</div>
 			<div class="col-lg-8">
 				<div>
@@ -83,7 +84,7 @@ export default {
 					locations: null,
 					categories: null,
 					search: null,
-					subscriptions: this.subscription,
+					subscriptions: null,
 				};
 			},
 			result(data) {

@@ -1,7 +1,7 @@
 <template>
 	<div class="card profile">
 		<div class="profile__image">
-			<img src="@/assets/images/profile-image.png" alt="" class="img-fluid" />
+			<img :src="`${$config.IMG_HOST}/160x160/${avatar}`" alt="" class="img-fluid" />
 		</div>
 		<div class="profile__title">{{ firstName }} {{ lastName }}</div>
 		<p class="profile__subTitle">{{ subTitle }}</p>
@@ -17,6 +17,7 @@ export default {
 		firstName: String,
 		lastName: String,
 		subTitle: String,
+		avatar: String,
 	},
 };
 </script>

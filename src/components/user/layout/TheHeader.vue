@@ -48,7 +48,10 @@
 										<div class="userProfile">
 											{{ user.first_name }} {{ user.last_name }}
 											<span
-												><img src="@/assets/images/user-img.jpg" alt="" class="img-fluid"
+												><img
+													:src="`${$config.IMG_HOST}/160x160/${user.avatar}`"
+													alt=""
+													class="img-fluid"
 											/></span>
 											<svg-icon icon-id="dropdown" icon-viewbox="0 0 14.828 8.414"> </svg-icon>
 										</div>

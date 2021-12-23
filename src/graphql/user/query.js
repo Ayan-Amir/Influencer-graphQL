@@ -158,7 +158,13 @@ query campaigns($page: Int, $locations: [String], $categories: [String] , $searc
 			description
 			gallery
 	  	}
-		subscription
+		subscription{
+			state
+			images{
+				id
+			  	value
+			}
+		}
 	}
 }`
 
@@ -186,7 +192,13 @@ query campaign($id: Int) {
 		  description
 		  gallery
 		}
-		subscription
+		subscription{
+			state
+			images{
+				id
+			  	value
+			}
+		}
 	}
 }`
 

@@ -93,6 +93,9 @@ export default {
 			@media screen and (max-width: 1199px) {
 				font-size: 12px;
 			}
+			.ep-container {
+				margin-bottom: rem(12px);
+			}
 		}
 	}
 }

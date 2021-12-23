@@ -2,11 +2,7 @@
 	<div class="card campaignCard">
 		<div>
 			<div class="campaignCard__image">
-				<img
-					:src="`${$config.IMG_HOST}/304x206/${campaign.image}`"
-					alt=""
-					class="img-fluid"
-				/>
+				<img :src="`${$config.IMG_HOST}/304x206/${campaign.image}`" alt="" class="img-fluid" />
 			</div>
 			<div class="campaignCard__title">
 				{{ campaign.name }}
@@ -19,18 +15,10 @@
 			class="btn btn-primary small"
 			>Apply Now</router-link
 		>
-		<p
-			class="campaignCard__price"
-			v-if="campaign.price != null && isApply == false"
-		>
+		<p class="campaignCard__price" v-if="campaign.price != null && isApply == false">
 			{{ campaign.price }}
 		</p>
-		<router-link
-			v-if="islink"
-			to="/user/discover-detail-deleivery"
-			class="abs-link"
-			>discover-detail-deleivery</router-link
-		>
+		<router-link v-if="islink" :to="`Subscription/${campaign.id}/${friendURL(campaign.name)}`" class="abs-link" />
 	</div>
 </template>
 

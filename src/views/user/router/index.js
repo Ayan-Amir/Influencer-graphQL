@@ -25,6 +25,11 @@ export default [
 		component: () => import("@/views/user/DiscoverDetailDeleivery.vue"),
 	},
 	{
+		path: "subscription/:id/:name",
+		name: "subscription",
+		component: () => import("@/views/user/Subscription.vue"),
+	},
+	{
 		path: "notifications",
 		name: "Notifications",
 		component: () => import("@/views/user/Notifications.vue"),

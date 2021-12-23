@@ -3,22 +3,14 @@
 		<div class="row align-items-center mb-3">
 			<div class="col-md-6">
 				<div class="image">
-					<img
-						:src="`${$config.IMG_HOST}/629x230/${campaign.image}`"
-						alt=""
-						class="img-fluid"
-					/>
+					<img :src="`${$config.IMG_HOST}/629x230/${campaign.image}`" alt="" class="img-fluid" />
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="pageHead">
 					<div class="d-flex align-items-center">
 						<div class="pageHead__icon">
-							<img
-								:src="`${$config.IMG_HOST}/55x55/${campaign.logo}`"
-								alt=""
-								class="img-fluid"
-							/>
+							<img :src="`${$config.IMG_HOST}/55x55/${campaign.logo}`" alt="" class="img-fluid" />
 						</div>
 						<h1>{{ campaign.name }}</h1>
 					</div>
@@ -29,9 +21,7 @@
 				<base-social-link />
 				<p class="desc">{{ campaign.description }}</p>
 				<div class="requestOffer">
-					<router-link to="#" class="btn btn-primary large"
-						>Apply Now
-					</router-link>
+					<router-link to="#" class="btn btn-primary large">Apply Now </router-link>
 					<!-- <div
 						class="requestOffer__time"
 						v-if="campaign.expirationDate !== null"
@@ -77,13 +67,13 @@ export default {
 			},
 		},
 	},
-	mounted() {
-		console.log(this.campaign);
-		console.log('mounted', this.id);
-	},
-	updated() {
-		console.log('updates', this.id);
-	},
+	// mounted() {
+	// 	console.log(this.campaign);
+	// 	console.log('mounted', this.id);
+	// },
+	// updated() {
+	// 	console.log('updates', this.id);
+	// },
 };
 </script>
 
