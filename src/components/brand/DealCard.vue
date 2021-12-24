@@ -136,20 +136,12 @@ export default {
 					&:not(:first-child) {
 						margin-left: -10px;
 					}
-					// &:nth-child(1) {
-					// 	left: 30px;
-					// }
-					// &:nth-child(2) {
-					// 	left: 20px;
-					// }
-					// &:nth-child(3) {
-					// 	left: 10px;
-					// }
-					// &:last-child {
-					// 	left: 5px;
-					// 	top: -3px;
-					// }
 				}
+			}
+			span {
+				font-size: 10px;
+				font-weight: 500;
+				color: #4c4f57;
 			}
 		}
 	}
