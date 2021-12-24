@@ -16,13 +16,15 @@
 					<svg-icon class="arrow" icon-id="watch_icon" icon-viewbox="0 0 11.999 9"> </svg-icon>
 					Watch Now
 				</router-link>
-				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li>+149</li>
-				</ul>
+				<div class="d-flex">
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					<span>+149</span>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -122,30 +124,31 @@ export default {
 					font-size: 10px;
 					font-weight: 500;
 					color: #4c4f57;
-					&:not(:last-child) {
-						width: 31px;
-						height: 31px;
-						border-radius: 50%;
-						background: #e8e8f0;
-						border: 2px solid #fff;
-						@media screen and (max-width: 767px) and (min-width: 575px) {
-							width: 28px;
-							height: 28px;
-						}
+					width: 31px;
+					height: 31px;
+					border-radius: 50%;
+					background: #e8e8f0;
+					border: 2px solid #fff;
+					@media screen and (max-width: 767px) and (min-width: 575px) {
+						width: 28px;
+						height: 28px;
 					}
-					&:nth-child(1) {
-						left: 30px;
+					&:not(:first-child) {
+						margin-left: -10px;
 					}
-					&:nth-child(2) {
-						left: 20px;
-					}
-					&:nth-child(3) {
-						left: 10px;
-					}
-					&:last-child {
-						left: 5px;
-						top: -3px;
-					}
+					// &:nth-child(1) {
+					// 	left: 30px;
+					// }
+					// &:nth-child(2) {
+					// 	left: 20px;
+					// }
+					// &:nth-child(3) {
+					// 	left: 10px;
+					// }
+					// &:last-child {
+					// 	left: 5px;
+					// 	top: -3px;
+					// }
 				}
 			}
 		}

@@ -2,7 +2,6 @@
 	<div class="subscription container" v-if="$apollo.data">
 		<div class="row">
 			<div class="col-md-6">
-				<!-- <div class="orderID">{{ orderId }}</div> -->
 				<div class="pageHead">
 					<div class="d-flex align-items-center">
 						<div class="pageHead__icon">
@@ -25,7 +24,6 @@
 						<input type="file" />
 					</div>
 				</div>
-				<!-- <a href="#" class="btn btn-primary small">Delivery</a> -->
 				<div class="subscription__delivery">
 					<h3>You delivered:</h3>
 					<span class="subscription__delivery--date">Sep 10 ,2021</span>
@@ -91,14 +89,6 @@ export default {
 			},
 		},
 	},
-	mounted() {
-		// let type = this.campaign.subscription.state;
-		// console.log(typeof type);
-		console.log('apollo Data', this.campaign);
-	},
-	// updated() {
-	// 	console.log('apollo Data', this.campaign.subscription.state);
-	// },
 };
 </script>
 
@@ -112,12 +102,6 @@ export default {
 			overflow: hidden;
 		}
 	}
-	// .orderID {
-	// 	font-size: rem(20px);
-	// 	font-weight: 700;
-	// 	color: var(--textPrimary);
-	// 	margin-bottom: rem(30px);
-	// }
 	p {
 		font-family: $secondary-font;
 	}

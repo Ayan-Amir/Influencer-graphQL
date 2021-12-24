@@ -52,9 +52,9 @@
 <script>
 import { mapState } from 'vuex';
 import { UPDATE_USER } from '@/graphql/user/mutations';
-import register from '../mixin/register'
+import register from '../mixin/register';
 export default {
-    mixins:[register],
+	mixins: [register],
 	data() {
 		return {
 			title: 'My Profile',
@@ -104,6 +104,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.profile {
+	/deep/ {
+		.v-select-toggle {
+			padding-left: 12px;
+		}
+	}
+}
 /deep/.invalid-feedback {
 	position: static !important;
 }

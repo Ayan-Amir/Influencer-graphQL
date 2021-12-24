@@ -2,26 +2,14 @@
 	<div class="skeleton">
 		<div class="skeleton__offer" v-if="this.type == 'offer'">
 			<div class="row">
-				<div
-					class="col-xl-3 col-lg-4 col-sm-6"
-					v-for="(item, index) in count"
-					:key="index"
-				>
+				<div class="col-xl-3 col-lg-4 col-sm-6" v-for="(item, index) in count" :key="index">
 					<div class="offerCard card">
 						<div class="offerCard__image">
-							<vue-skeleton-loader
-								:width="450"
-								:height="200"
-								animation="wave"
-							/>
+							<vue-skeleton-loader :width="450" :height="200" animation="wave" />
 						</div>
 						<div class="offerCard__detail">
 							<div class="d-flex justify-content-between">
-								<vue-skeleton-loader
-									animation="wave"
-									:width="350"
-									:height="20"
-								/>
+								<vue-skeleton-loader animation="wave" :width="350" :height="20" />
 							</div>
 							<div class="offerCard__detail--watcher">
 								<vue-skeleton-loader
@@ -39,39 +27,18 @@
 		</div>
 		<div class="skeleton__notification" v-if="this.type == 'notification'">
 			<div class="row">
-				<div
-					class="col-md-12"
-					v-for="(item, index) in count"
-					:key="index"
-				>
+				<div class="col-md-12" v-for="(item, index) in count" :key="index">
 					<div class="card notificationCard">
 						<div>
 							<div class="notificationCard__image">
-								<vue-skeleton-loader
-									:width="450"
-									:height="200"
-									:rounded="true"
-									animation="wave"
-								/>
+								<vue-skeleton-loader :width="450" :height="200" :rounded="true" animation="wave" />
 							</div>
 							<div class="notificationCard__title">
-								<vue-skeleton-loader
-									animation="wave"
-									:width="350"
-									:height="15"
-								/>
+								<vue-skeleton-loader animation="wave" :width="350" :height="15" />
 								<span>
-									<vue-skeleton-loader
-										animation="wave"
-										:width="0"
-										:height="5"
-									/>
+									<vue-skeleton-loader animation="wave" :width="0" :height="5" />
 								</span>
-								<vue-skeleton-loader
-									animation="wave"
-									:width="150"
-									:height="15"
-								/>
+								<vue-skeleton-loader animation="wave" :width="150" :height="15" />
 							</div>
 						</div>
 					</div>
@@ -82,42 +49,46 @@
 			<div class="card discoverCard">
 				<div>
 					<div class="discoverCard__image">
-						<vue-skeleton-loader
-							:width="450"
-							:height="200"
-							:rounded="true"
-							animation="wave"
-						/>
+						<vue-skeleton-loader :width="450" :height="200" :rounded="true" animation="wave" />
 					</div>
 					<div class="discoverCard__title">
-						<vue-skeleton-loader
-							animation="wave"
-							:width="150"
-							:height="20"
-						/>
+						<vue-skeleton-loader animation="wave" :width="150" :height="20" />
 						<span>
-							<vue-skeleton-loader
-								animation="wave"
-								:width="0"
-								:height="5"
-							/>
+							<vue-skeleton-loader animation="wave" :width="0" :height="5" />
 						</span>
-						<vue-skeleton-loader
-							animation="wave"
-							:width="350"
-							:height="15"
-						/>
+						<vue-skeleton-loader animation="wave" :width="350" :height="15" />
 					</div>
 				</div>
 				<div v-if="isApply">
-					<vue-skeleton-loader
-						:width="110"
-						:height="40"
-						animation="wave"
-						:rounded="true"
-						:radius="8"
-					/>
+					<vue-skeleton-loader :width="110" :height="40" animation="wave" :rounded="true" :radius="8" />
 				</div>
+			</div>
+		</div>
+		<div class="skeleton__profile" v-if="this.type == 'dashboard'">
+			<div class="card profile">
+				<div class="profile__image">
+					<vue-skeleton-loader type="circle" :width="160" :height="160" :rounded="true" animation="wave" />
+				</div>
+				<div class="profile__title">
+					<vue-skeleton-loader animation="wave" :width="120" :height="15" />
+					<span>
+						<vue-skeleton-loader animation="wave" :width="0" :height="5" />
+						<vue-skeleton-loader animation="wave" :width="0" :height="5" />
+					</span>
+					<vue-skeleton-loader animation="wave" :width="70" :height="15" />
+					<span>
+						<vue-skeleton-loader animation="wave" :width="0" :height="5" />
+						<vue-skeleton-loader animation="wave" :width="0" :height="5" />
+					</span>
+					<div class="button-row">
+						<vue-skeleton-loader :width="100" :height="35" animation="wave" :rounded="true" :radius="8" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="skeleton__header" v-if="this.type == 'header'">
+			<div class="header__image">
+				<vue-skeleton-loader type="circle" :width="50" :height="50" :rounded="true" animation="wave" />
 			</div>
 		</div>
 	</div>
@@ -345,6 +316,37 @@ export default {
 					right: -35px;
 				}
 			}
+		}
+	}
+}
+
+.profile {
+	padding: rem(24px) rem(16px) rem(16px) rem(16px);
+	border-radius: 12px !important;
+	text-align: center;
+	&__image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: rem(14px);
+	}
+	&__title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+	&__subTitle {
+		font-size: rem(16px);
+		font-weight: 300;
+		margin-bottom: rem(12px);
+	}
+	.button-row {
+		margin: 0;
+		.btn.btn-primary {
+			font-size: rem(14px);
+			padding-right: rem(24px);
+			padding-left: rem(24px);
 		}
 	}
 }

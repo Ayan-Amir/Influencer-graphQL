@@ -27,9 +27,6 @@
 									<li>
 										<router-link to="/user/discover">Discover</router-link>
 									</li>
-									<li>
-										<router-link to="/user/register/profile">Profile</router-link>
-									</li>
 								</ul>
 							</nav>
 						</div>
@@ -106,6 +103,11 @@ export default {
 	components: {
 		FixedHeader,
 		BaseIcons,
+	},
+	data() {
+		return {
+			isLoading: true,
+		};
 	},
 	methods: {
 		menuIcon: function () {
