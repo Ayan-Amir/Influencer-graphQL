@@ -18,7 +18,11 @@
 		<p class="campaignCard__price" v-if="campaign.price != null && isApply == false">
 			{{ campaign.price }}
 		</p>
-		<router-link v-if="islink" :to="`Subscription/${campaign.id}/${friendURL(campaign.name)}`" class="abs-link" />
+		<router-link
+			v-if="islink"
+			:to="`/user/Subscription/${campaign.id}/${friendURL(campaign.name)}`"
+			class="abs-link"
+		/>
 	</div>
 </template>
 

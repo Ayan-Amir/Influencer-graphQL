@@ -1,5 +1,5 @@
 <template>
-	<div class="subscription container">
+	<div class="subscription container" v-if="$apollo.data">
 		<div class="row">
 			<div class="col-md-6">
 				<!-- <div class="orderID">{{ orderId }}</div> -->
@@ -17,20 +17,19 @@
 					{{ campaign.description }}
 				</p>
 				<div class="subscription__control">
-					<label
-						v-if="campaign.subscription.state != active"
-						class="btn btn-primary small"
-						:class="campaign.subscription.state"
-						for=""
-						>Delivery</label
-					>
-					<input class="subscription__control--upload" type="file" />
+					<label v-if="state != 'active'" class="btn btn-primary small" :class="state" for="">{{
+						state == 'completed' ? 'Completed' : 'Delivery'
+					}}</label>
+					<div class="form-group btn btn-primary" v-if="state == 'active'">
+						Upload
+						<input type="file" />
+					</div>
 				</div>
 				<!-- <a href="#" class="btn btn-primary small">Delivery</a> -->
 				<div class="subscription__delivery">
 					<h3>You delivered:</h3>
 					<span class="subscription__delivery--date">Sep 10 ,2021</span>
-					<deleivery-images />
+					<deleivery-images v-for="img in images" :key="img.id" :images="img" />
 				</div>
 				<div class="subscription__revision">
 					<h3>Revision</h3>
@@ -57,6 +56,8 @@ export default {
 		return {
 			campaign: [],
 			id: 0,
+			state: '',
+			images: [],
 		};
 	},
 	components: { BaseSocialLink, DeleiveryImages },
@@ -79,12 +80,25 @@ export default {
 			},
 		},
 	},
+	watch: {
+		campaign: {
+			handler() {
+				if (this.campaign.subscription.state) {
+					this.state = this.campaign.subscription.state;
+					this.images = this.campaign.subscription.images;
+					console.log('state', this.images);
+				}
+			},
+		},
+	},
 	mounted() {
+		// let type = this.campaign.subscription.state;
+		// console.log(typeof type);
 		console.log('apollo Data', this.campaign);
 	},
-	updated() {
-		console.log('apollo Data', this.campaign);
-	},
+	// updated() {
+	// 	console.log('apollo Data', this.campaign.subscription.state);
+	// },
 };
 </script>
 
@@ -113,12 +127,45 @@ export default {
 		color: var(--textPrimary);
 		margin-bottom: rem(6px);
 	}
-	.btn.btn-primary {
-		font-size: rem(14px);
-		font-weight: 700;
-		border-radius: 6px;
-		padding-left: rem(42px);
-		padding-right: rem(42px);
+	&__control {
+		.btn.btn-primary {
+			font-size: rem(14px);
+			font-weight: 700;
+			border-radius: 6px;
+			padding-left: rem(42px);
+			padding-right: rem(42px);
+			&.completed {
+				background: #24d694 !important;
+				border: 2px solid #24d694 !important;
+			}
+		}
+		.form-group {
+			margin-bottom: 0 !important;
+			position: relative;
+			&::before {
+				content: '';
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: #fff;
+				font-size: rem(14px);
+				font-weight: 700;
+			}
+			&.btn.btn-primary {
+				width: 142px;
+				min-height: 42px;
+				height: 42px;
+				color: #fff !important;
+
+				input {
+					position: absolute;
+					opacity: 0;
+					height: 100%;
+					width: 100%;
+				}
+			}
+		}
 	}
 	&__delivery {
 		margin-top: rem(20px);

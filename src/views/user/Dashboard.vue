@@ -84,7 +84,7 @@ export default {
 					locations: null,
 					categories: null,
 					search: null,
-					subscriptions: null,
+					subscriptions: this.subscription,
 				};
 			},
 			result(data) {
