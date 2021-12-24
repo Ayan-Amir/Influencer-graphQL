@@ -27,6 +27,10 @@ const mutations = {
         state.authStatus = false
         state.user = {}
     }
+    ,
+    UPDATE_USER (state, user) {
+        state.user = { ...user }
+    },
 }
 const actions = {
     async login ({ commit, dispatch }, authDetails) {
@@ -94,6 +98,24 @@ const actions = {
         })
         .catch((e)=>{
             console.log(e.message);
+            let error = e.message
+            if(e.networkError){
+                if(e.networkError.result.errors){
+                    error = e.networkError.result.errors[0].message;
+                }
+            }
+            commit('alert/error', error);
+        })
+        
+    },
+    async updateUser ({ commit }) {
+        await apolloClient.query({ query: LOGGED_IN_USER })
+        .then((data)=>{
+            if(data){
+                commit('UPDATE_USER', data.data.me)
+            }
+        })
+        .catch((e)=>{
             let error = e.message
             if(e.networkError){
                 if(e.networkError.result.errors){

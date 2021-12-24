@@ -43,8 +43,9 @@ mutation uploadProfile($image: Upload) {
 }`
 
 export const UPDATE_PASSWORD = gql`
-mutation updatePassword($password:String , $retype: String) {
-  updatePassword(password: $password) {
-      state
+mutation updatePassword($password:String, $retype:String) {
+  updatePassword(password: $password, retype: $retype) {
+      state,
+      msg
     }
 }`

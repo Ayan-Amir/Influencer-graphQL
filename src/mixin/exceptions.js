@@ -9,6 +9,9 @@ export default {
                     error = e.networkError.result.errors[0].message;
                 }
             }
+            else if(e.graphQLErrors){
+                error = e.graphQLErrors[0].message;
+            }
             this.error(error);
         }
     }

@@ -65,7 +65,18 @@ export default{
 			encodedUrl = encodedUrl.trim('-');
 
 			return encodedUrl;
-        }
+        },
+        upload: function (e) {
+			let wrapper = document.querySelector('.UploadImage');
+			let image = document.querySelector('.UploadImage img');
+			if (image) {
+				image.src = URL.createObjectURL(e.target.files[0]);
+			} else {
+				let img = document.createElement('img');
+				img.src = URL.createObjectURL(e.target.files[0]);
+				wrapper.appendChild(img);
+			}
+		},
     }
     
 }

@@ -52,7 +52,9 @@
 <script>
 import { mapState } from 'vuex';
 import { UPDATE_USER } from '@/graphql/user/mutations';
+import register from '../mixin/register'
 export default {
+    mixins:[register],
 	data() {
 		return {
 			title: 'My Profile',

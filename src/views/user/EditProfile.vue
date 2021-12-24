@@ -3,6 +3,7 @@
 		<div class="row col-gap-60">
 			<div class="col-md-6">
 				<h1>Edit Profile</h1>
+                <base-alerts />
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
 					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
 						<div class="row">
@@ -10,8 +11,9 @@
 								<base-input
 									placeholder="First Name"
 									type="text"
-									rules="required"
-									v-model="user.first_name"
+									rules=""
+                                    :value="editProfile.first_name"
+                                    v-model="editProfile.first_name"
 									name="First Name"
 								/>
 							</div>
@@ -19,28 +21,41 @@
 								<base-input
 									placeholder="Last Name"
 									type="text"
-									rules="required"
-									v-model="user.last_name"
+									rules=""
+                                    :value="editProfile.last_name"
+                                    v-model="editProfile.last_name"
 									name="Last Name"
 								/>
 							</div>
 						</div>
 						<div class="row">
-							<base-date-picker @input="getDate" v-model="user.birth_date" name="DOB" rules="required" />
+							<base-date-picker @input="getDate" :value="editProfile.birth_date" v-model="editProfile.birth_date" name="DOB" rules="required" />
 							<div class="form-group">
 								<input
 									type="password"
 									class="form-control"
-									v-model="editProfile.password"
+                                    vid="password"
+									v-model="password"
 									name="Password"
-									placeholder="Change the password"
+                                    rules="required"
+									placeholder="Change the Password"
+								/>
+							</div>
+                            <div class="form-group">
+								<input
+									type="password"
+									class="form-control"
+									v-model="retype"
+									name="Confirm Password"
+                                    rules="confirmed:password"
+									placeholder="Confirm Password"
 								/>
 							</div>
 							<base-input
 								placeholder="Address"
 								type="text"
-								rules="required"
-								v-model="user.address"
+                                :value="editProfile.address"
+                                v-model="editProfile.address"
 								name="Address"
 							/>
 							<div class="form-group upload">
@@ -85,91 +100,101 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { UPDATE_USER, UPDATE_PASSWORD } from '@/graphql/user/mutations';
-import BaseSocialLink from '@/components/base/BaseSocialLink.vue';
-import DeleiveryImages from '@/components/user/partials/DeleiveryImages.vue';
+import {MESSAGES} from '@/_helpers/alertMessages.js';
+import cloneDeep from 'lodash/cloneDeep'
 export default {
 	data() {
 		return {
-			editProfile: {
-				firstName: '',
-				lastName: '',
-				birthdate: '',
-				password: null,
-				retype: null,
-				address: null,
-			},
+			editProfile: {},
+            password: null,
+            retype: null,
+            data:{
+                firstName: '',
+                lastName: '',
+                birthdate: '',
+                address: '' 
+            }
 		};
 	},
+    computed: {
+		...mapGetters(['user']),
+	},
+    created(){
+        this.setUser();
+    },
+    watch: {
+        user() {
+            this.setUser()
+        },
+    },
 	methods: {
-		upload: function (e) {
-			let wrapper = document.querySelector('.UploadImage');
-			let image = document.querySelector('.UploadImage img');
-			if (image) {
-				image.src = URL.createObjectURL(e.target.files[0]);
-			} else {
-				let img = document.createElement('img');
-				img.src = URL.createObjectURL(e.target.files[0]);
-				wrapper.appendChild(img);
-			}
-		},
+        ...mapActions(['updateUser']),
+        setUser(){
+            this.editProfile = cloneDeep(this.user)        
+        },
 		getDate(date) {
 			this.editProfile.birthdate = date;
 		},
 		onSubmit() {
+            this.data.firstName = this.editProfile.first_name,
+            this.data.lastName = this.editProfile.last_name,
+            this.data.birthdate = this.editProfile.birth_date,
+            this.data.address = this.editProfile.address
 			this.updateProfile();
 		},
 		async updateProfile() {
-			if (this.editProfile.password != null) {
-				alert('password update');
+			if (this.password != null) {
 				await this.$apollo
 					.mutate({
 						mutation: UPDATE_PASSWORD,
-						variables: { password: this.editProfile.password },
+						variables: { 
+                            password: this.password,
+                            retype: this.retype
+                        },
 					})
 					.then((data) => {
-						console.log('data', data);
-						// if (data) {
-						// 	if (data.data.updatePassword.state == 'success') {
-						// 		this.$router.push('/user');
-						// 	}
-						// }
+                        console.log(data);
+                        if(data){
+                            console.log(data);
+                            if(data.data.updatePassword.state=="success")
+                            {
+                                updateUserInfo()
+                            }
+                        }
 					})
 					.catch((e) => {
+                        //console.log(e.graphQLErrors.map(error => error.message).join(', '))
+                        //console.log(e)
 						this.handleError(e);
 					});
-			} else {
-				alert('password null');
-				await this.$apollo
-					.mutate({
-						mutation: UPDATE_USER,
-						variables: this.user,
-					})
-					.then((data) => {
-						console.log('data', data);
-						// if (data) {
-						// 	if (data.data.updatePassword.state == 'success') {
-						// 		this.$router.push('/user');
-						// 	}
-						// }
-					})
-					.catch((e) => {
-						this.handleError(e);
-					});
-			}
+			} 
+            
 		},
+        async updateUserInfo(){
+            await this.$apollo.mutate({
+                mutation: UPDATE_USER,
+                variables: this.data,
+            })
+            .then((data) => {
+                console.log(data)
+                if(data){
+                    if(data.data.updateUser.state=="success"){
+                        this.$store.commit('alert/success', MESSAGES.SUCCESS)
+                        this.updateUser();
+                    }
+                    else{
+                        this.$store.commit('alert/error', data.data.updateUser.state)
+                    }
+                }
+            })
+            .catch((e) => {
+                this.handleError(e);
+            });
+        }
 	},
-	computed: {
-		...mapGetters(['user']),
-	},
-	components: { BaseSocialLink, DeleiveryImages },
-	mounted() {
-		console.log(this.editProfile.password);
-	},
-	updated() {
-		console.log(this.editProfile.password);
-	},
+	
 };
 </script>
 

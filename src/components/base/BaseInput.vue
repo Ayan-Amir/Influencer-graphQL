@@ -3,6 +3,7 @@
 		<b-form-group :class="className">
 			<b-form-input
 				:type="type"
+                :vid="vid"
 				class="form-control"
 				:placeholder="placeholder"
 				:state="errors[0] ? false : valid ? true : null"
@@ -25,7 +26,8 @@ export default {
 		placeholder: String,
 		type: String,
 		value: String,
-        rules: String
+        rules: String,
+        vid: String
 	},
 	methods: {
 		getValidationState({ dirty, validated, valid = null }) {
