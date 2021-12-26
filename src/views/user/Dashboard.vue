@@ -101,7 +101,6 @@ export default {
 	methods: {
 		handleTab(data) {
 			this.subscription = data;
-			console.log('subscription :', this.subscription);
 		},
 	},
 	computed: {

@@ -11,7 +11,7 @@ query{
 		first_name
 		last_name
 		city
-        birth_date
+        birthdate
         address
 		country
 		pin

@@ -1,6 +1,6 @@
 <template>
-	<div class="subscription container" v-if="$apollo.data">
-		<div class="row">
+	<div class="subscription container" >
+		<div class="row" v-if="$apollo.data.campaign">
 			<div class="col-md-6">
 				<div class="pageHead">
 					<div class="d-flex align-items-center">
@@ -19,18 +19,20 @@
 					<label v-if="state != 'active'" class="btn btn-primary small" :class="state" for="">{{
 						state == 'completed' ? 'Completed' : 'Delivery'
 					}}</label>
-					<div class="form-group btn btn-primary" v-if="state == 'active'">
+					<div class="form-group btn btn-primary ld-ext-left" :class="processing?'processing':''" v-if="state == 'active'">
 						Upload
-						<input type="file" />
+						<input type="file" multiple @change="submitDelivery" />
 					</div>
+                    <button type="submit" class="btn btn-primary" v-if="state=='active' && images.length">Finish Delivery</button>
 				</div>
-				<div class="subscription__delivery">
+				<div class="subscription__delivery" v-if="this.images.length">
 					<h3>You delivered:</h3>
 					<span class="subscription__delivery--date">Sep 10 ,2021</span>
-					<deleivery-images v-for="img in images" :key="img.id" :images="img" />
+                    
+					<deleivery-images :images="images" />
 				</div>
 				<div class="subscription__revision">
-					<h3>Revision</h3>
+					<h3>Revision 1</h3>
 					<p>
 						{{ campaign.description }}
 					</p>
@@ -42,11 +44,13 @@
 				</div>
 			</div>
 		</div>
+        <div v-if="$apollo.loading">Loading ... </div>
 	</div>
 </template>
 
 <script>
 import { CAMPAIGN_DETAILS } from '@/graphql/user/query';
+import {CAMPAIGN_DELIVERY} from '@/graphql/user/mutations'
 import BaseSocialLink from '@/components/base/BaseSocialLink.vue';
 import DeleiveryImages from '@/components/user/partials/DeleiveryImages.vue';
 export default {
@@ -56,6 +60,7 @@ export default {
 			id: 0,
 			state: '',
 			images: [],
+            processing: false
 		};
 	},
 	components: { BaseSocialLink, DeleiveryImages },
@@ -65,28 +70,52 @@ export default {
 	apollo: {
 		campaign: {
 			query: CAMPAIGN_DETAILS,
+            fetchPolicy: "network-only",
 			variables() {
 				return {
 					id: parseInt(this.$route.params.id),
 				};
 			},
-			data(e) {
-				console.log(e);
-			},
-			errror(err) {
-				console.log(err);
+			error(err) {
+				this.$router.push('/404');
 			},
 		},
 	},
+    methods:{
+        async submitDelivery(e){
+            if(e.target.files.length>0){
+                this.processing=true
+                e.target.files.forEach(element => {
+                    this.$apollo.mutate({
+                        mutation: CAMPAIGN_DELIVERY,
+                        variables:{
+                            image: element,
+                            idCampaign: parseInt(this.$route.params.id),
+                        }
+                    })
+                    .then((data)=>{
+                        this.$apollo.queries.campaign.refetch()
+                        this.processing=false
+                    })
+                    .catch((e)=>{
+                        console.log(e)
+                        this.handleError(e);
+                    })
+                });
+            }
+        }
+    },
 	watch: {
-		campaign: {
-			handler() {
-				if (this.campaign.subscription.state) {
-					this.state = this.campaign.subscription.state;
-					this.images = this.campaign.subscription.images;
-					console.log('state', this.images);
-				}
-			},
+		campaign() {
+            setTimeout(() => {
+                
+            }, 1000);
+            if (this.campaign.subscription.state) {
+                this.state = this.campaign.subscription.state;
+                this.images = this.campaign.subscription.images;
+                //console.log('state', this.images);
+            }
+			
 		},
 	},
 };

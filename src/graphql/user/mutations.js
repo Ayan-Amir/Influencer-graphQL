@@ -49,3 +49,10 @@ mutation updatePassword($password:String, $retype:String) {
       msg
     }
 }`
+export const CAMPAIGN_DELIVERY = gql`
+mutation campaignDelivery($image: Upload!, $idCampaign: Int!){
+    campaignDelivery(image: $image, idCampaign:$idCampaign){
+        id,
+        value
+    }
+}`

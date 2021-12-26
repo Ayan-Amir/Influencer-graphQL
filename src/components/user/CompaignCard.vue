@@ -20,7 +20,7 @@
 		</p>
 		<router-link
 			v-if="islink"
-			:to="`/user/Subscription/${campaign.id}/${friendURL(campaign.name)}`"
+			:to="`/user/subscription/${campaign.id}/${friendURL(campaign.name)}`"
 			class="abs-link"
 		/>
 	</div>

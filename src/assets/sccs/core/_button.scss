@@ -108,6 +108,25 @@
 			}
 		}
 	}
+    &.processing{
+        position: relative;
+        opacity: 0.8;
+        pointer-events: none;
+        &::after{
+            position: absolute;
+            left: 10px;
+            display: inline-block;
+            content:'';
+            width: rem(20px);
+            height: rem(20px);
+            vertical-align: text-bottom;
+            -webkit-animation: ld-spin 1s infinite linear;
+            animation: ld-spin 1s infinite linear;
+            border-radius: 50%;
+            border: 3px solid currentColor;
+            border-left-color: transparent;
+        }
+    }
 	@keyframes ripple {
 		from {
 			opacity: 1;

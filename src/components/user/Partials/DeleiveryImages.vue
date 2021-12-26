@@ -1,8 +1,8 @@
 <template>
 	<div class="row">
-		<div class="col-lg-4 col-md-5 col-6">
+		<div class="col-lg-4 col-md-5 col-6" v-for="img in images" :key="img.id">
 			<div class="image">
-				<img :src="`${$config.IMG_HOST}/190x360/${images.value}`" alt="" class="img-fluid" />
+				<img :src="`${$config.IMG_HOST}/190x360/${img.value}`" alt="" class="img-fluid" />
 			</div>
 		</div>
 	</div>
@@ -11,7 +11,7 @@
 <script>
 export default {
 	props: {
-		images: Object,
+		images: Array,
 	},
 };
 </script>

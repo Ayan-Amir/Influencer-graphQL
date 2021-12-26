@@ -1,12 +1,12 @@
 <template>
-	<validation-provider :name="name" mode="eager" :rules="rules" v-slot="{ valid, errors }">
+	<validation-provider :name="name" mode="eager" :rules="rules" v-slot="{ errors }">
 		<b-form-group :class="className">
 			<b-form-input
 				:type="type"
                 :vid="vid"
 				class="form-control"
 				:placeholder="placeholder"
-				:state="errors[0] ? false : valid ? true : null"
+				:state="errors[0] ? false : null"
 				:value="value"
 				@input="input"
 				autocomplete="off"

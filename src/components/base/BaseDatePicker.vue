@@ -7,7 +7,8 @@
                 :value="value"
                 @input="input"
                 :state="errors[0] ? false : valid ? true : null"
-                required
+                locale="en-US"
+                :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
             ></b-form-datepicker>
             <b-form-invalid-feedback
             >{{errors[0]}}</b-form-invalid-feedback
@@ -31,12 +32,9 @@ export default {
 	// },
     methods:{
         input(value) {
+            console.log(value)
 			this.$emit('input', value);
-		},
-        getvalidation(v,e){
-            console.log(v)
-            console.log(e)
-        }
+		}
     }
 };
 </script>

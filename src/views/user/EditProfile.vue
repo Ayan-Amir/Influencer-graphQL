@@ -11,7 +11,7 @@
 								<base-input
 									placeholder="First Name"
 									type="text"
-									rules=""
+									rules="required"
                                     :value="editProfile.first_name"
                                     v-model="editProfile.first_name"
 									name="First Name"
@@ -21,7 +21,7 @@
 								<base-input
 									placeholder="Last Name"
 									type="text"
-									rules=""
+									rules="required"
                                     :value="editProfile.last_name"
                                     v-model="editProfile.last_name"
 									name="Last Name"
@@ -29,26 +29,25 @@
 							</div>
 						</div>
 						<div class="row">
-							<base-date-picker @input="getDate" :value="editProfile.birth_date" v-model="editProfile.birth_date" name="DOB" rules="required" />
+							<base-date-picker :value="editProfile.birthdate" v-model="editProfile.birthdate" name="DOB" rules="required" />
 							<div class="form-group">
-								<input
+                                <base-input
+									placeholder="Change Password"
 									type="password"
-									class="form-control"
-                                    vid="password"
-									v-model="password"
+									rules="min:8"
+                                    :value="password"
+                                    v-model="password"
 									name="Password"
-                                    rules="required"
-									placeholder="Change the Password"
 								/>
 							</div>
                             <div class="form-group">
-								<input
+                                <base-input
+									placeholder="Confirm Change Password"
 									type="password"
-									class="form-control"
-									v-model="retype"
+									rules="confirmed:password"
+                                    :value="retype"
+                                    v-model="retype"
 									name="Confirm Password"
-                                    rules="confirmed:password"
-									placeholder="Confirm Password"
 								/>
 							</div>
 							<base-input
@@ -56,6 +55,7 @@
 								type="text"
                                 :value="editProfile.address"
                                 v-model="editProfile.address"
+                                rules="required"
 								name="Address"
 							/>
 							<div class="form-group upload">
@@ -134,9 +134,6 @@ export default {
         setUser(){
             this.editProfile = cloneDeep(this.user)        
         },
-		getDate(date) {
-			this.editProfile.birthdate = date;
-		},
 		onSubmit() {
             this.data.firstName = this.editProfile.first_name,
             this.data.lastName = this.editProfile.last_name,
@@ -160,7 +157,7 @@ export default {
                             console.log(data);
                             if(data.data.updatePassword.state=="success")
                             {
-                                updateUserInfo()
+                                this.updateUserInfo()
                             }
                         }
 					})
@@ -170,6 +167,9 @@ export default {
 						this.handleError(e);
 					});
 			} 
+            else{
+                this.updateUserInfo()
+            }
             
 		},
         async updateUserInfo(){
