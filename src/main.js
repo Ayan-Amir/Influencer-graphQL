@@ -8,6 +8,8 @@ import "@/assets/sccs/utility/_variables.scss";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import "ldbutton/dist/ldbtn.min.css"
+import "@loadingio/loading.css/dist/loading.css"
 
 import SvgIcon from "@/components/base/BaseSvgIcon.vue";
 import VueScrollbar from 'vue-scrollbar-live';
@@ -21,6 +23,7 @@ import Multiselect from 'vue-multiselect'
 import StarRating from 'vue-star-rating'
 import { createProvider } from "./vue-apollo";
 import {config} from "@/config.js";
+import "@/plugins/veeValidate";
 Vue.prototype.$config = config;
 Vue.config.productionTip = false;
 
