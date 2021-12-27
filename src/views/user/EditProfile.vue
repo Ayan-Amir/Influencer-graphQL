@@ -3,7 +3,7 @@
 		<div class="row col-gap-60">
 			<div class="col-md-6">
 				<h1>Edit Profile</h1>
-                <base-alerts />
+				<base-alerts />
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
 					<b-form @submit.stop.prevent="handleSubmit(onSubmit)">
 						<div class="row">
@@ -12,8 +12,8 @@
 									placeholder="First Name"
 									type="text"
 									rules="required"
-                                    :value="editProfile.first_name"
-                                    v-model="editProfile.first_name"
+									:value="editProfile.first_name"
+									v-model="editProfile.first_name"
 									name="First Name"
 								/>
 							</div>
@@ -22,40 +22,45 @@
 									placeholder="Last Name"
 									type="text"
 									rules="required"
-                                    :value="editProfile.last_name"
-                                    v-model="editProfile.last_name"
+									:value="editProfile.last_name"
+									v-model="editProfile.last_name"
 									name="Last Name"
 								/>
 							</div>
 						</div>
 						<div class="row">
-							<base-date-picker :value="editProfile.birthdate" v-model="editProfile.birthdate" name="DOB" rules="required" />
+							<base-date-picker
+								:value="editProfile.birthdate"
+								v-model="editProfile.birthdate"
+								name="DOB"
+								rules="required"
+							/>
 							<div class="form-group">
-                                <base-input
+								<base-input
 									placeholder="Change Password"
 									type="password"
 									rules="min:8"
-                                    :value="password"
-                                    v-model="password"
+									:value="password"
+									v-model="password"
 									name="Password"
 								/>
 							</div>
-                            <div class="form-group">
-                                <base-input
+							<div class="form-group">
+								<base-input
 									placeholder="Confirm Change Password"
 									type="password"
 									rules="confirmed:password"
-                                    :value="retype"
-                                    v-model="retype"
+									:value="retype"
+									v-model="retype"
 									name="Confirm Password"
 								/>
 							</div>
 							<base-input
 								placeholder="Address"
 								type="text"
-                                :value="editProfile.address"
-                                v-model="editProfile.address"
-                                rules="required"
+								:value="editProfile.address"
+								v-model="editProfile.address"
+								rules="required"
 								name="Address"
 							/>
 							<div class="form-group upload">
@@ -63,7 +68,8 @@
 									type="file"
 									class="form-control"
 									placeholder="Add Profile Image"
-									@change="upload"
+									@input="uploadImg"
+									rules="ext:jpg,png"
 								/>
 								<span>Add Profile Images</span>
 							</div>
@@ -84,7 +90,7 @@
 								</li>
 							</ul>
 							<div class="button-row">
-								<button class="btn btn-primary">Save</button>
+								<button class="btn btn-primary" :class="processing ? 'processing' : ''">Save</button>
 							</div>
 						</div>
 					</b-form>
@@ -101,100 +107,126 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { UPDATE_USER, UPDATE_PASSWORD } from '@/graphql/user/mutations';
-import {MESSAGES} from '@/_helpers/alertMessages.js';
-import cloneDeep from 'lodash/cloneDeep'
+import { UPDATE_USER, UPDATE_PASSWORD, UPLOAD_IMAGE } from '@/graphql/user/mutations';
+import { MESSAGES } from '@/_helpers/alertMessages.js';
+import cloneDeep from 'lodash/cloneDeep';
+
 export default {
 	data() {
 		return {
+			processing: false,
 			editProfile: {},
-            password: null,
-            retype: null,
-            data:{
-                firstName: '',
-                lastName: '',
-                birthdate: '',
-                address: '' 
-            }
+			password: null,
+			retype: null,
+			image: null,
+			data: {
+				firstName: '',
+				lastName: '',
+				birthdate: '',
+				address: '',
+			},
 		};
 	},
-    computed: {
+	computed: {
 		...mapGetters(['user']),
 	},
-    created(){
-        this.setUser();
-    },
-    watch: {
-        user() {
-            this.setUser()
-        },
-    },
+	created() {
+		this.setUser();
+	},
+	watch: {
+		user() {
+			this.setUser();
+		},
+	},
 	methods: {
-        ...mapActions(['updateUser']),
-        setUser(){
-            this.editProfile = cloneDeep(this.user)        
-        },
+		...mapActions(['setUser']),
+		...mapActions(['updateUser']),
+
+		setUser() {
+			this.editProfile = cloneDeep(this.user);
+		},
+		uploadImg(data) {
+			this.image = data.target.files[0];
+		},
 		onSubmit() {
-            this.data.firstName = this.editProfile.first_name,
-            this.data.lastName = this.editProfile.last_name,
-            this.data.birthdate = this.editProfile.birth_date,
-            this.data.address = this.editProfile.address
+			(this.data.firstName = this.editProfile.first_name),
+				(this.data.lastName = this.editProfile.last_name),
+				(this.data.birthdate = this.editProfile.birth_date),
+				(this.data.address = this.editProfile.address);
 			this.updateProfile();
 		},
 		async updateProfile() {
+			this.processing = true;
 			if (this.password != null) {
 				await this.$apollo
 					.mutate({
 						mutation: UPDATE_PASSWORD,
-						variables: { 
-                            password: this.password,
-                            retype: this.retype
-                        },
+						variables: {
+							password: this.password,
+							retype: this.retype,
+						},
 					})
 					.then((data) => {
-                        console.log(data);
-                        if(data){
-                            console.log(data);
-                            if(data.data.updatePassword.state=="success")
-                            {
-                                this.updateUserInfo()
-                            }
-                        }
+						console.log(data);
+						if (data) {
+							console.log(data);
+							if (data.data.updatePassword.state == 'success') {
+								this.updateUserInfo();
+							}
+						}
 					})
 					.catch((e) => {
-                        //console.log(e.graphQLErrors.map(error => error.message).join(', '))
-                        //console.log(e)
+						//console.log(e.graphQLErrors.map(error => error.message).join(', '))
+						//console.log(e)
 						this.handleError(e);
 					});
-			} 
-            else{
-                this.updateUserInfo()
-            }
-            
+			} else {
+				if (this.image != null) {
+					await this.$apollo
+						.mutate({
+							mutation: UPLOAD_IMAGE,
+							variables: {
+								image: this.image,
+							},
+						})
+						.then((data) => {
+							console.log(data);
+							if (data.data.uploadProfile.value != null) {
+								this.setUser();
+							}
+						})
+						.catch((e) => {
+							console.log(e);
+						});
+				}
+				this.updateUserInfo();
+				// this.$router.push('/user/');
+			}
 		},
-        async updateUserInfo(){
-            await this.$apollo.mutate({
-                mutation: UPDATE_USER,
-                variables: this.data,
-            })
-            .then((data) => {
-                console.log(data)
-                if(data){
-                    if(data.data.updateUser.state=="success"){
-                        this.$store.commit('alert/success', MESSAGES.SUCCESS)
-                        this.updateUser();
-                    }
-                    else{
-                        this.$store.commit('alert/error', data.data.updateUser.state)
-                    }
-                }
-            })
-            .catch((e) => {
-                this.handleError(e);
-            });
-        }
+		async updateUserInfo() {
+			await this.$apollo
+				.mutate({
+					mutation: UPDATE_USER,
+					variables: this.data,
+				})
+				.then((data) => {
+					console.log(data);
+					if (data) {
+						if (data.data.updateUser.state == 'success') {
+							this.$store.commit('alert/success', MESSAGES.SUCCESS);
+							this.updateUser();
+						} else {
+							this.$store.commit('alert/error', data.data.updateUser.state);
+						}
+					}
+				})
+				.catch((e) => {
+					this.handleError(e);
+				});
+			this.processing = false;
+			// this.$router.push('/user/');
+		},
 	},
-	
 };
 </script>
 

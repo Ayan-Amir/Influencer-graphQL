@@ -2,12 +2,7 @@
 	<div class="dashboard container">
 		<div class="row">
 			<div class="col-lg-4">
-				<profile-card
-					:firstName="user.first_name"
-					:lastName="user.last_name"
-					:subTitle="`${user.type == 0 ? 'influencer' : 'brand'}`"
-					:avatar="user.avatar"
-				/>
+				<profile-card />
 				<base-statictics :complete="user.completion" :response="user.responseRate" :onTime="user.jobOnTime" />
 			</div>
 			<div class="col-lg-8">

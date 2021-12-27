@@ -20,7 +20,14 @@
 					@input="passwordInput"
 				/>
 				<div class="button-row">
-					<button type="submit" to="/user" class="btn btn-primary large">Login to Continue</button>
+					<button
+						type="submit"
+						to="/user"
+						:class="processing ? 'processing' : ''"
+						class="btn btn-primary large"
+					>
+						Login to Continue
+					</button>
 				</div>
 				<div class="or"><span>or</span></div>
 			</b-form>
@@ -38,6 +45,7 @@ export default {
 				email: 'ciprian',
 				password: '123321',
 			},
+			processing: false,
 		};
 	},
 	computed: {
@@ -48,6 +56,7 @@ export default {
 	methods: {
 		...mapActions(['login']),
 		userLogin: function () {
+			this.processing = true;
 			this.login(this.loginDetails);
 		},
 		userInput(data) {

@@ -17,6 +17,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.row > div {
+	margin-bottom: rem(24px);
+}
 .image {
 	border-radius: 25px;
 	overflow: hidden;

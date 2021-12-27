@@ -13,7 +13,9 @@
 							rules="required"
 						/>
 						<div class="button-row">
-							<button type="submit" class="btn btn-primary large">Save</button>
+							<button type="submit" class="btn btn-primary large" :class="processing ? 'processing' : ''">
+								Save
+							</button>
 						</div>
 					</b-form>
 				</validation-observer>
@@ -33,6 +35,7 @@ export default {
 	data() {
 		return {
 			title: 'Connect Social',
+			processing: false,
 			mediaAccount: {
 				type: 'instagram',
 				username: null,
@@ -44,6 +47,7 @@ export default {
 			this.updateMediaAccount();
 		},
 		async updateMediaAccount() {
+			this.processing = true;
 			await this.$apollo
 				.mutate({
 					mutation: MEDIA_ACCOUNT,

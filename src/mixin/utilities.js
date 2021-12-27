@@ -75,6 +75,7 @@ export default{
 				let img = document.createElement('img');
 				img.src = URL.createObjectURL(e.target.files[0]);
 				wrapper.appendChild(img);
+				this.$emit('input', e.target.files[0]);
 			}
 		},
     }

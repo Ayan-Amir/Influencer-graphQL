@@ -3,13 +3,15 @@
 		<div v-if="isLoading">
 			<base-skeleton-loader type="dashboard" :count="1"></base-skeleton-loader>
 		</div>
-		<div class="card profile">
+		<div class="card profile" v-else>
 			<div class="profile__image">
-				<img :src="`${$config.IMG_HOST}/160x160/${avatar}`" alt="" @load="onLoad" class="img-fluid" />
+				<img :src="`${$config.IMG_HOST}/160x160/${user.avatar}`" alt="" class="img-fluid" />
 			</div>
-			<div v-if="isLoading == false" class="profile__title">{{ firstName }} {{ lastName }}</div>
-			<p v-if="isLoading == false" class="profile__subTitle">{{ subTitle }}</p>
-			<div v-if="isLoading == false" class="button-row">
+			<div class="profile__title">{{ user.first_name }} {{ user.last_name }}</div>
+			<p class="profile__subTitle">
+				{{ `${user.type == 0 ? 'influencer' : 'brand'}` }}
+			</p>
+			<div class="button-row">
 				<router-link to="/user/edit-profile" class="btn btn-primary small">Edit Profile</router-link>
 			</div>
 		</div>
@@ -17,22 +19,21 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
 	data() {
 		return {
 			isLoading: true,
 		};
 	},
-	methods: {
-		onLoad() {
+	mounted() {
+		setTimeout(() => {
 			this.isLoading = false;
-		},
+		}, 5000);
 	},
-	props: {
-		firstName: String,
-		lastName: String,
-		subTitle: String,
-		avatar: String,
+	computed: {
+		...mapGetters(['user']),
 	},
 };
 </script>

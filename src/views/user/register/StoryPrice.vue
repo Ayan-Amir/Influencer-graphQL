@@ -22,7 +22,14 @@
 						My price is negotiable
 					</b-form-checkbox>
 					<div class="button-row">
-						<button type="submit" class="btn btn-primary large" @click="onSubmit">Save</button>
+						<button
+							type="submit"
+							class="btn btn-primary large"
+							:class="processing ? 'processing' : ''"
+							@click="onSubmit"
+						>
+							Save
+						</button>
 					</div>
 				</div>
 				<div v-if="this.$apollo.error">
@@ -47,6 +54,7 @@ export default {
 			title: 'Modify Story Price',
 			subTitle: 'We recommend choosing this price ',
 			type: 'instagram',
+			processing: false,
 			storyPrice: {
 				type: 'instagram',
 				price: null,
@@ -69,6 +77,7 @@ export default {
 			this.updateStoryPrice();
 		},
 		async updateStoryPrice() {
+			this.processing = true;
 			await this.$apollo
 				.mutate({
 					mutation: UPDATE_STORY_PRICE,

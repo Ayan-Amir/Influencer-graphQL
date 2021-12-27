@@ -13,7 +13,9 @@
 							<span>Privacy Policy </span>
 						</p>
 						<div class="button-row">
-							<input type="submit" class="btn btn-primary large" value="Finish" />
+							<button type="submit" class="btn btn-primary large" :class="processing ? 'processing' : ''">
+								Finish
+							</button>
 						</div>
 					</b-form>
 				</validation-observer>
@@ -30,44 +32,47 @@
 <script>
 import BaseProfileUpload from '@/components/base/BaseProfileUpload.vue';
 import { UPLOAD_IMAGE } from '@/graphql/user/mutations';
-import register from '../mixin/register.js'
-import { mapActions} from 'vuex';
+import register from '../mixin/register.js';
+import { mapActions } from 'vuex';
 export default {
 	components: { BaseProfileUpload },
-    mixins:[register],
+	mixins: [register],
 	data() {
 		return {
 			image: null,
+			processing: false,
 		};
 	},
 	methods: {
-        ...mapActions(['setUser']),
+		...mapActions(['setUser']),
 		uploadImage() {
 			this.uploadProfilePhoto();
 		},
-		 uploadProfilePhoto() {
+		uploadProfilePhoto() {
+			if (this.image != null) {
+				this.processing = true;
+			}
 			this.$apollo
 				.mutate({
 					mutation: UPLOAD_IMAGE,
 					variables: {
-                        image: this.image
-                    }
+						image: this.image,
+					},
 				})
 				.then((data) => {
 					console.log(data);
-                    if(data.data.uploadProfile.value!=""){
-                        this.setUser()
-                        .then((data)=>{
-                            this.$router.push('/user/');
-                        });
-                        return;
-                    }
+					if (data.data.uploadProfile.value != '') {
+						this.setUser().then((data) => {
+							this.$router.push('/user/');
+						});
+						return;
+					}
 				})
 				.catch((e) => {
 					//this.handleError(e);
 					console.log(e);
 				});
-		}
+		},
 	},
 };
 </script>

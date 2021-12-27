@@ -30,7 +30,9 @@
 						<base-select :options="gender" v-model="profile.gender" name="Gender" rules="required" />
 						<!-- <base-select :options="gender" name="Gender" rules="required" /> -->
 						<div class="button-row">
-							<button type="submit" class="btn btn-primary large">Save</button>
+							<button type="submit" class="btn btn-primary large" :class="processing ? 'processing' : ''">
+								Save
+							</button>
 						</div>
 					</b-form>
 				</validation-observer>
@@ -58,6 +60,7 @@ export default {
 	data() {
 		return {
 			title: 'My Profile',
+			processing: false,
 			// myGender: { value: null, text: 'Gender' },
 			gender: [
 				{ value: 'M', text: 'Male' },
@@ -84,6 +87,7 @@ export default {
 			this.profile.birthdate = date;
 		},
 		async updateProfile() {
+			this.processing = true;
 			await this.$apollo
 				.mutate({
 					mutation: UPDATE_USER,

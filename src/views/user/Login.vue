@@ -51,10 +51,6 @@ export default {
 					link: 'register',
 				},
 			],
-			loginDetails: {
-				email: 'ciprian',
-				password: '123321',
-			},
 			title: 'Welcome',
 			subTitle:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',

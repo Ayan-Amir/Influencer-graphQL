@@ -34,7 +34,9 @@
 				</div>
 				<base-alerts></base-alerts>
 				<div class="button-row">
-					<button type="submit" class="btn btn-primary large">Continue</button>
+					<button type="submit" class="btn btn-primary large" :class="processing ? 'processing' : ''">
+						Continue
+					</button>
 				</div>
 			</b-form>
 		</validation-observer>
@@ -57,6 +59,7 @@ export default {
 				type: 0,
 			},
 			currentStep: 'email',
+			processing: false,
 		};
 	},
 	methods: {
@@ -65,12 +68,14 @@ export default {
 		async registerUser() {
 			if (this.currentStep == 'email') {
 				let alert = '';
+				this.processing = true;
 				const { data, error } = await this.$apollo.query({
 					query: CHECK_USERNAME,
 					variables: {
 						email: this.authDetails.email,
 					},
 				});
+
 				if (data.usernameAvailable.state == 'fail') {
 					alert = data.usernameAvailable.msg;
 					let email = document.querySelector('.form-group.email input');
@@ -79,6 +84,7 @@ export default {
 				} else {
 					this.clear();
 					this.currentStep = 'password';
+					this.processing = false;
 				}
 				if (error) {
 					alert = error.message;
@@ -87,6 +93,8 @@ export default {
 					this.error(alert);
 				}
 			} else {
+				this.processing = true;
+
 				this.authDetails.type = this.userType;
 				this.register(this.authDetails);
 			}
