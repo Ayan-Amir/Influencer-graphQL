@@ -13,7 +13,7 @@
 				:count="8"
 			></base-skeleton-loader>
 		</div>
-		<div class="row" v-if="$apollo.data.offers">
+		<div class="row" v-if="$apollo.data.offers && !$apollo.loading">
 			<div
 				class="col-xl-3 col-lg-4 col-sm-6"
 				v-for="offer in offers"
@@ -46,6 +46,8 @@ export default {
 			page: 1,
 			selected: '',
 			norecord: false,
+            loading: false,
+            loadmore: true
 		};
 	},
 	apollo: {
@@ -83,11 +85,15 @@ export default {
 				if (data.data.offers.length == 0) {
 					this.norecord = true;
 				} else {
+                    console.log(data.data.offers.length)
 					this.norecord = false;
+                    if(data.data.offers.length<8){
+                        this.loadmore= false
+                    }
 				}
 			},
 			error(e) {
-				console.log(e);
+				this.handleError(e)
 			},
 			skip() {
 				return this.skipQuery;
@@ -127,23 +133,31 @@ export default {
 					page: this.page,
 				},
 				updateQuery: (previousResult, { fetchMoreResult }) => {
-					const mewoffers = fetchMoreResult.tagsPage;
-					//const hasMore = fetchMoreResult.tagsPage.hasMore
+                    console.log(fetchMoreResult);
 
-					//this.showMoreEnabled = hasMore
-					// console.log(previousResult);
-					return {
-						offers: {
-							__typename: previousResult.offers.__typename,
-							// Merging the tag list
-							offers: [...previousResult.offers, ...mewoffers],
-						},
-					};
+					// const mewoffers = fetchMoreResult.tagsPage;
+					// //const hasMore = fetchMoreResult.tagsPage.hasMore
+
+					// //this.showMoreEnabled = hasMore
+					// // console.log(previousResult);
+					// return {
+					// 	offers: {
+					// 		__typename: previousResult.offers.__typename,
+					// 		// Merging the tag list
+					// 		offers: [...previousResult.offers, ...mewoffers],
+					// 	},
+					// };
 				},
 			});
 			$state.loaded();
-		},
+		}
 	},
+    watch:{
+        offers(){
+            this.loading = false
+            console.log(this.offers)
+        }
+    }
 };
 </script>
 

@@ -2,12 +2,15 @@ import Vue from 'vue'
 import VueApollo from 'vue-apollo'
 import { setContext } from 'apollo-link-context'
 import { createApolloClient, restartWebsockets } from 'vue-cli-plugin-apollo/graphql-client'
-
+import { createUploadLink } from 'apollo-upload-client'
+import { ApolloLink, Observable } from 'apollo-link';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 // Install the vue plugin
 Vue.use(VueApollo)
 
 // Name of the localStorage item
 const AUTH_TOKEN = 'apollo-token'
+const cache = new InMemoryCache();
 
 // Http endpoint
 const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'https://instars.hostify.one/graphql'
@@ -25,6 +28,16 @@ const authLink = setContext(async (_, { headers }) => {
     }
   }
 })
+
+// const httpLink = createUploadLink({
+//     uri: httpEndpoint
+// })
+const httpLink = ApolloLink.from([
+    // ...
+    createUploadLink({
+      uri: httpEndpoint
+    })
+]);
 
 const defaultOptions = {
   // You can use `https` for secure connection (recommended in production)
@@ -46,10 +59,11 @@ const defaultOptions = {
   // note: don't override httpLink here, specify httpLink options in the
   // httpLinkOptions property of defaultOptions.
   // link: myLink
-  link: authLink
+  
+  link: authLink,
 
   // Override default cache
-  // cache: myCache
+  //cache: cache
 
   // Override the way the Authorization header is set
   // getAuth: (tokenName) => { }
@@ -58,7 +72,10 @@ const defaultOptions = {
   // apollo: { ... }
 
   // Client local data (see apollo-link-state)
+  
   // clientState: { resolvers: { ... }, defaults: { ... } }
+
+    
 }
 
 // Create apollo client
@@ -75,7 +92,7 @@ export function createProvider (options = {}) {
     defaultClient: apolloClient,
     defaultOptions: {
       $query: {
-        // fetchPolicy: 'cache-and-network',
+        fetchPolicy: 'network-only',
       }
     },
     errorHandler (error) {

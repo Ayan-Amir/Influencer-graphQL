@@ -33,10 +33,10 @@
 						</li>
 					</ul>
 					<div v-if="$apollo.loading">
-						<base-skeleton-loader type="discover" :count="8"></base-skeleton-loader>
+						<base-skeleton-loader type="discover" :count="4"></base-skeleton-loader>
 					</div>
 					<div v-if="norecord">No Record Found</div>
-					<div class="campaigns" v-else>
+					<div class="campaigns" v-if="!$apollo.loading && !norecord">
 						<compaign-card
 							v-for="campaign in campaigns"
 							:key="campaign.id"
@@ -62,7 +62,7 @@ export default {
 		return {
 			campaigns: [],
 			page: 1,
-			subscription: 'pending',
+			subscription: 'active',
 			norecord: false,
 			complete: 61,
 			response: 68,
@@ -84,8 +84,6 @@ export default {
 			},
 			result(data) {
 				if (data.data.campaigns.length == 0) {
-					console.log('apollo Data', data.data.campaigns);
-					// this.subscription = null;
 					this.norecord = true;
 				} else {
 					this.norecord = false;
@@ -95,6 +93,7 @@ export default {
 	},
 	methods: {
 		handleTab(data) {
+            this.norecord=false
 			this.subscription = data;
 		},
 	},
@@ -102,10 +101,6 @@ export default {
 		...mapGetters(['user']),
 	},
 	mounted() {
-		// console.log('user', this.user);
-		// console.log('campaigns', this.campaigns);
-
-		// console.log('camp', this.subscription);
 		let items = document.querySelectorAll('.statesLinks__item--link');
 		items.forEach((item) => {
 			item.addEventListener('click', () => {

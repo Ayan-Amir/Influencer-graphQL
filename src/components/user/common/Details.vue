@@ -12,9 +12,10 @@
 </template>
 
 <script>
-import DetailsGallery from './partials/DetailsGallery.vue';
 export default {
-	components: { DetailsGallery },
+	components: { 
+        DetailsGallery: ()=>import('./partials/DetailsGallery.vue')
+    },
 	props: {
 		details: Array,
 	},

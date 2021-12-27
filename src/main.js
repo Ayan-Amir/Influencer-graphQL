@@ -24,6 +24,8 @@ import StarRating from 'vue-star-rating'
 import { createProvider } from "./vue-apollo";
 import {config} from "@/config.js";
 import "@/plugins/veeValidate";
+import VueLazyload from 'vue-lazyload'
+
 Vue.prototype.$config = config;
 Vue.config.productionTip = false;
 
@@ -38,6 +40,9 @@ Vue.component("VSelect", VSelect);
 Vue.mixin(utilities)
 Vue.mixin(exceptions)
 Vue.mixin(alert)
+Vue.use(VueLazyload,{
+    lazyComponent: true
+})
 
 new Vue({
   router,

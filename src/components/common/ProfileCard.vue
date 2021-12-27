@@ -30,7 +30,7 @@ export default {
 	mounted() {
 		setTimeout(() => {
 			this.isLoading = false;
-		}, 5000);
+		}, 500);
 	},
 	computed: {
 		...mapGetters(['user']),

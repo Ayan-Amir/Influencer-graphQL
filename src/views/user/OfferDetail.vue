@@ -1,5 +1,5 @@
 <template>
-	<div class="offerDetail container" v-if="$apollo.data">
+	<div class="offerDetail container" v-if="$apollo.data.offer">
 		<div class="row align-items-center mb-3">
 			<div class="col-md-6">
 				<div class="image">
@@ -54,7 +54,6 @@
 
 <script>
 import { OFFER_DETAILS } from '@/graphql/user/query';
-import Details from '@/components/user/common/Details.vue';
 
 export default {
 	data() {
@@ -64,7 +63,7 @@ export default {
 			locations: [],
 		};
 	},
-	components: { Details },
+	components: { Details: () =>import('@/components/user/common/Details.vue') },
 	created() {
 		this.id = parseInt(this.$route.params.id);
 	},

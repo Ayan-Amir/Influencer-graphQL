@@ -46,7 +46,7 @@
 			</div>
 		</div>
 		<div class="skeleton__discover" v-if="this.type == 'discover'">
-			<div class="card discoverCard">
+			<div class="card discoverCard"  v-for="(item, index) in count" :key="index">
 				<div>
 					<div class="discoverCard__image">
 						<vue-skeleton-loader :width="450" :height="200" :rounded="true" animation="wave" />

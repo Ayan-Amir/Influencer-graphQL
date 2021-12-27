@@ -1,9 +1,9 @@
 <template>
 	<div class="row products">
 		<div class="col-md-3 col-6" v-for="(img, i) in gallery" :key="i + 1">
-			<div class="image">
+			<div class="image" v-lazy-container="{ selector: 'img' }">
 				<img
-					:src="`${$config.IMG_HOST}/296x346/${img}`"
+					:data-src="`${$config.IMG_HOST}/296x346/${img}`"
 					alt=""
 					class="img-fluid"
 				/>
