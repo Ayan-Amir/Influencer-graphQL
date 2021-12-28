@@ -44,7 +44,10 @@
 									<router-link to="/user/edit-profile">
 										<div class="userProfile">
 											{{ user.first_name }} {{ user.last_name }}
-											<span
+											<span v-if="isLoading">
+												<base-skeleton-loader type="header" :count="1"></base-skeleton-loader>
+											</span>
+											<span v-else
 												><img
 													:src="`${$config.IMG_HOST}/160x160/${user.avatar}`"
 													alt=""
@@ -123,6 +126,9 @@ export default {
 	},
 	mounted() {
 		this.menuIcon();
+		setTimeout(() => {
+			this.isLoading = false;
+		}, 5000);
 	},
 };
 </script>
