@@ -6,16 +6,21 @@
 			<details-gallery v-if="detail.gallery" :gallery="detail.gallery" />
 		</div>
 		<div class="button-row">
-			<router-link to="#" class="btn btn-primary">Apply Now</router-link>
+			<router-link to="#" class="btn btn-primary" :class="processing ? 'processing' : ''">Apply Now</router-link>
 		</div>
 	</div>
 </template>
 
 <script>
 export default {
-	components: { 
-        DetailsGallery: ()=>import('./partials/DetailsGallery.vue')
-    },
+	data() {
+		return {
+			processing: false,
+		};
+	},
+	components: {
+		DetailsGallery: () => import('./partials/DetailsGallery.vue'),
+	},
 	props: {
 		details: Array,
 	},

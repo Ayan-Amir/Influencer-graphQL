@@ -25,7 +25,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-4">
-				<profile-card title="Palas Mall" subTitle="Iasi" />
+				<profile-card />
 				<base-statictics :complete="complete" :response="response" :onTime="onTime" />
 			</div>
 			<div class="col-lg-8">
