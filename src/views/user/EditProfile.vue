@@ -176,6 +176,7 @@ export default {
 					.catch((e) => {
 						this.handleError(e);
 					});
+				this.processing = false;
 			} else {
 				if (this.image != null) {
 					await this.$apollo
@@ -195,6 +196,7 @@ export default {
 						});
 				}
 				this.updateUserInfo();
+
 				// this.$router.push('/user/');
 			}
 		},
@@ -217,7 +219,6 @@ export default {
 				.catch((e) => {
 					this.handleError(e);
 				});
-			this.processing = false;
 			// this.$router.push('/user/');
 		},
 	},
@@ -248,6 +249,9 @@ export default {
 	h1 {
 		font-size: rem(20px);
 		margin-bottom: rem(16px);
+	}
+	form {
+		max-width: 100%;
 	}
 	.form-control {
 		padding: rem(14px) rem(10px);

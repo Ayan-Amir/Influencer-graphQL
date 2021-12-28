@@ -6,7 +6,10 @@
 				<validation-observer ref="observer" v-slot="{ handleSubmit }">
 					<b-form @submit.stop.prevent="handleSubmit(uploadImage)" enctype="multipart/form-data">
 						<div class="profile__Photo">
-							<base-profile-upload rules="ext:jpg,png" v-model="image" />
+							<base-profile-upload
+								:rules="`${image == null ? 'required' : 'ext:jpg,png'}`"
+								v-model="image"
+							/>
 						</div>
 						<p class="subTitle">
 							By continuing you accept our <br /><span>Terms and Conditions</span> and

@@ -81,10 +81,11 @@ export default {
 					let email = document.querySelector('.form-group.email input');
 					email.classList.remove('is-valid');
 					email.classList.add('is-invalid');
+					this.processing = false;
 				} else {
+					this.processing = false;
 					this.clear();
 					this.currentStep = 'password';
-					this.processing = false;
 				}
 				if (error) {
 					alert = error.message;
@@ -94,7 +95,6 @@ export default {
 				}
 			} else {
 				this.processing = true;
-
 				this.authDetails.type = this.userType;
 				this.register(this.authDetails);
 			}
