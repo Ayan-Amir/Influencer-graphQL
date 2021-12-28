@@ -119,7 +119,6 @@ export default {
 			if (this.campaign.subscription.state) {
 				this.state = this.campaign.subscription.state;
 				this.images = this.campaign.subscription.images;
-				//console.log('state', this.images);
 			}
 		},
 	},

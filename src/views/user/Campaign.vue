@@ -67,13 +67,6 @@ export default {
 			},
 		},
 	},
-	// mounted() {
-	// 	console.log(this.campaign);
-	// 	console.log('mounted', this.id);
-	// },
-	// updated() {
-	// 	console.log('updates', this.id);
-	// },
 };
 </script>
 

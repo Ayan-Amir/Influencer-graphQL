@@ -84,7 +84,6 @@ export default {
 					variables: this.storyPrice,
 				})
 				.then((data) => {
-					// console.log(data);
 					if (data) {
 						if (data.data.mediaAccount.state == 'added' || data.data.mediaAccount.state == 'updated') {
 							this.$router.push('profile-photo');
@@ -96,9 +95,6 @@ export default {
 				});
 		},
 	},
-	// updated() {
-	// 	console.log('update', this.storyPrice.priceNegotiable);
-	// },
 };
 </script>
 <style lang="scss">

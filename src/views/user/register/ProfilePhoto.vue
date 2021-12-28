@@ -60,7 +60,6 @@ export default {
 					},
 				})
 				.then((data) => {
-					console.log(data);
 					if (data.data.uploadProfile.value != '') {
 						this.setUser().then((data) => {
 							this.$router.push('/user/');
@@ -69,7 +68,6 @@ export default {
 					}
 				})
 				.catch((e) => {
-					//this.handleError(e);
 					console.log(e);
 				});
 		},

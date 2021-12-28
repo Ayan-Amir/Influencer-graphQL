@@ -113,6 +113,9 @@ export default {
 		.v-select-toggle {
 			padding-left: 12px;
 		}
+		.form-control {
+			padding-left: 12px;
+		}
 	}
 }
 /deep/.invalid-feedback {

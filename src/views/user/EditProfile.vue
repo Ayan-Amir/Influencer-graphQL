@@ -167,17 +167,13 @@ export default {
 						},
 					})
 					.then((data) => {
-						console.log(data);
 						if (data) {
-							console.log(data);
 							if (data.data.updatePassword.state == 'success') {
 								this.updateUserInfo();
 							}
 						}
 					})
 					.catch((e) => {
-						//console.log(e.graphQLErrors.map(error => error.message).join(', '))
-						//console.log(e)
 						this.handleError(e);
 					});
 			} else {
@@ -190,7 +186,6 @@ export default {
 							},
 						})
 						.then((data) => {
-							console.log(data);
 							if (data.data.uploadProfile.value != null) {
 								this.setUser();
 							}
@@ -210,7 +205,6 @@ export default {
 					variables: this.data,
 				})
 				.then((data) => {
-					console.log(data);
 					if (data) {
 						if (data.data.updateUser.state == 'success') {
 							this.$store.commit('alert/success', MESSAGES.SUCCESS);
@@ -388,6 +382,7 @@ export default {
 		color: var(--textPrimary) !important;
 		font-size: rem(16px) !important;
 		font-weight: 400 !important;
+		padding-left: rem(24px);
 	}
 	.b-form-datepicker .form-control.text-muted {
 		opacity: 0.8;

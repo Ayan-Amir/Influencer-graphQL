@@ -93,7 +93,7 @@ export default {
 	},
 	methods: {
 		handleTab(data) {
-            this.norecord=false
+			this.norecord = false;
 			this.subscription = data;
 		},
 	},
@@ -108,11 +108,7 @@ export default {
 				item.classList.add('active');
 			});
 		});
-		// console.log('query :', this.campaigns[0].subscription);
 	},
-	// updated() {
-	// 	console.log('update', this.user);
-	// },
 };
 </script>
 
