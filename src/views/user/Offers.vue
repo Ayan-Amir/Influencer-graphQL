@@ -8,17 +8,10 @@
 			@searchvalue="searchvalue"
 		/>
 		<div v-if="$apollo.loading">
-			<base-skeleton-loader
-				type="offer"
-				:count="8"
-			></base-skeleton-loader>
+			<base-skeleton-loader type="offer" :count="8"></base-skeleton-loader>
 		</div>
 		<div class="row" v-if="$apollo.data.offers && !$apollo.loading">
-			<div
-				class="col-xl-3 col-lg-4 col-sm-6"
-				v-for="offer in offers"
-				:key="offer.id"
-			>
+			<div class="col-xl-3 col-lg-4 col-sm-6" v-for="offer in offers" :key="offer.id">
 				<offers-card :offer="offer"></offers-card>
 			</div>
 		</div>
@@ -46,8 +39,8 @@ export default {
 			page: 1,
 			selected: '',
 			norecord: false,
-            loading: false,
-            loadmore: true
+			loading: false,
+			loadmore: true,
 		};
 	},
 	apollo: {
@@ -55,15 +48,9 @@ export default {
 			query: OFFERS_FILTERS,
 			result(data) {
 				if (data) {
-					let newLocation =
-						data.data.offersFilters.default.locations.map(
-							(item) => item.id
-						);
+					let newLocation = data.data.offersFilters.default.locations.map((item) => item.id);
 
-					let newCategory =
-						data.data.offersFilters.default.categories.map(
-							(item) => item.id
-						);
+					let newCategory = data.data.offersFilters.default.categories.map((item) => item.id);
 
 					this.filterLocations = newLocation;
 					this.filterCategories = newCategory;
@@ -85,15 +72,14 @@ export default {
 				if (data.data.offers.length == 0) {
 					this.norecord = true;
 				} else {
-                    console.log(data.data.offers.length)
 					this.norecord = false;
-                    if(data.data.offers.length<8){
-                        this.loadmore= false
-                    }
+					if (data.data.offers.length < 8) {
+						this.loadmore = false;
+					}
 				}
 			},
 			error(e) {
-				this.handleError(e)
+				this.handleError(e);
 			},
 			skip() {
 				return this.skipQuery;
@@ -133,7 +119,7 @@ export default {
 					page: this.page,
 				},
 				updateQuery: (previousResult, { fetchMoreResult }) => {
-                    console.log(fetchMoreResult);
+					console.log(fetchMoreResult);
 
 					// const mewoffers = fetchMoreResult.tagsPage;
 					// //const hasMore = fetchMoreResult.tagsPage.hasMore
@@ -150,14 +136,13 @@ export default {
 				},
 			});
 			$state.loaded();
-		}
+		},
 	},
-    watch:{
-        offers(){
-            this.loading = false
-            console.log(this.offers)
-        }
-    }
+	watch: {
+		offers() {
+			this.loading = false;
+		},
+	},
 };
 </script>
 

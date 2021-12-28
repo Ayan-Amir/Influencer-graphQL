@@ -65,4 +65,10 @@ export default {
 		}
 	}
 }
+.password {
+	.form-control {
+		height: 4.75rem;
+		padding-left: 90px;
+	}
+}
 </style>

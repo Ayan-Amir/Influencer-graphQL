@@ -42,7 +42,7 @@ const actions = {
         .then((data) => {
             // Result
             if(data){
-                console.log(data);
+                // console.log(data);
                 const token = JSON.stringify(data.data.createSession.token)
                 commit('SET_TOKEN', token)
                 onLogin(apolloClient, token)

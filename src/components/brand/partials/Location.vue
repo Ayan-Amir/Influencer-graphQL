@@ -15,10 +15,7 @@
 		>
 			<b-card-body>
 				<!-- dropdown -->
-				<base-select
-					:options="locations"
-					initialValue="Entire Country"
-				/>
+				<base-select :options="locations" initialValue="Entire Country" />
 			</b-card-body>
 		</b-collapse>
 	</b-card>
@@ -43,9 +40,6 @@ export default {
 			let input = document.querySelector(`#${id}`).closest('.card');
 			input.classList.remove('active');
 		},
-	},
-	mounted() {
-		// console.log('loc', this.locations);
 	},
 };
 </script>
