@@ -30,29 +30,6 @@ export default {
 		details: Array,
 		processing: Boolean,
 	},
-	methods: {
-		handleSubmit() {
-			this.updateDetail();
-		},
-		async updateDetail() {
-			this.processing = true;
-			await this.$apollo
-				.mutate({
-					mutation: CAMPAIGN_SUBSCRIBE,
-					variables() {
-						return {
-							idCampaign: parseInt(this.$route.params.id),
-						};
-					},
-				})
-				.then((data) => {
-					console.log('data', data);
-				})
-				.catch((e) => {
-					console.log(e);
-				});
-		},
-	},
 };
 </script>
 
