@@ -1,10 +1,10 @@
 <template>
-	<div class="offerDetail container" v-if="$apollo.data.offer">
+	<div class="offerDetail container" v-if="$apollo.data.offer.image">
 		<div class="row align-items-center mb-3">
 			<div class="col-md-6">
 				<div class="image">
 					<img
-						:src="`${$config.IMG_HOST}/629x230/${offer.image}`"
+						v-lazy="`${$config.IMG_HOST}/629x230/${offer.image}`"
 						alt=""
 						class="img-fluid"
 					/>
@@ -15,7 +15,7 @@
 					<div class="offerDetail__purchase">
 						<div class="offerDetail__purchase--brandLogo">
 							<img
-								:src="`${$config.IMG_HOST}/55x55/${offer.logo}`"
+								v-lazy="`${$config.IMG_HOST}/55x55/${offer.logo}`"
 								alt=""
 								class="img-fluid"
 							/>
@@ -48,13 +48,12 @@
 				</div>
 			</div>
 		</div>
-		<Details :details="offer.details" />
+		<Details :details="offer.details" v-if="offer.details" />
 	</div>
 </template>
 
 <script>
 import { OFFER_DETAILS } from '@/graphql/user/query';
-
 export default {
 	data() {
 		return {

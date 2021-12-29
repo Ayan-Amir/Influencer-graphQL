@@ -25,6 +25,7 @@ import { createProvider } from "./vue-apollo";
 import {config} from "@/config.js";
 import "@/plugins/veeValidate";
 import VueLazyload from 'vue-lazyload'
+const loadimage = require('@/assets/images/svg/loading-spin.svg')
 
 Vue.prototype.$config = config;
 Vue.config.productionTip = false;
@@ -41,7 +42,7 @@ Vue.mixin(utilities)
 Vue.mixin(exceptions)
 Vue.mixin(alert)
 Vue.use(VueLazyload,{
-    lazyComponent: true
+    loading: loadimage,
 })
 
 new Vue({
