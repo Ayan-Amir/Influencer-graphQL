@@ -1,39 +1,23 @@
 <template>
 	<div class="offerCard card">
-		<div class="offerCard__image">
-			<img
-				:src="`${$config.IMG_HOST}/304x206/${offer.image}`"
-				class="img-fluid"
-				alt=""
-			/>
-			<span class="timeValue">{{
-				timeStampToDate(offer.expirationDate)
-			}}</span>
-		</div>
+		<router-link :to="`offer/${offer.id}/${friendURL(offer.name)}`">
+			<div class="offerCard__image">
+				<img :src="`${$config.IMG_HOST}/304x206/${offer.image}`" class="img-fluid" alt="" />
+				<span class="timeValue">{{ timeStampToDate(offer.expirationDate) }}</span>
+			</div>
+		</router-link>
 		<div class="offerCard__detail">
 			<div class="d-flex justify-content-between align-items-center">
-				<a href="#" class="offerCard__detail--title">{{
+				<router-link :to="`offer/${offer.id}/${friendURL(offer.name)}`" class="offerCard__detail--title">{{
 					offer.name
-				}}</a>
+				}}</router-link>
 				<div class="offerCard__detail--brandLogo">
-					<img
-						:src="`${$config.IMG_HOST}/40x40/${offer.logo}`"
-						class="img-fluid"
-						alt=""
-					/>
+					<img :src="`${$config.IMG_HOST}/40x40/${offer.logo}`" class="img-fluid" alt="" />
 				</div>
 			</div>
 			<div class="offerCard__detail--watcher">
-				<router-link
-					:to="`offer/${offer.id}/${friendURL(offer.name)}`"
-					class="btn btn-primary small"
-				>
-					<svg-icon
-						class="arrow"
-						icon-id="watch_icon"
-						icon-viewbox="0 0 11.999 9"
-					>
-					</svg-icon>
+				<router-link :to="`offer/${offer.id}/${friendURL(offer.name)}`" class="btn btn-primary small">
+					<svg-icon class="arrow" icon-id="watch_icon" icon-viewbox="0 0 11.999 9"> </svg-icon>
 					View Offer
 				</router-link>
 			</div>

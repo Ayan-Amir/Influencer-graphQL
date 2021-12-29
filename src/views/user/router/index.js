@@ -1,47 +1,47 @@
 export default [
 	{
 		path: "",
-		component: () => import("@/views/user/Dashboard.vue"),
+		component: () => import(/* webpackChunkName: "details.chunk" */"@/views/user/Dashboard.vue"),
 		meta: { requiresAuth: true, userType: "0" }
 	},
 	{
 		path: "offers",
 		name: "Offers",
-		component: () => import("@/views/user/Offers.vue"),
+		component: () => import(/* webpackChunkName: "details.chunk" */"@/views/user/Offers.vue"),
 	},
 	{
-		path: "campaign",
+		path: "discover",
 		name: "Campaign",
-		component: () => import("@/views/user/Campaign.vue"),
+		component: () => import(/* webpackChunkName: "details.chunk" */"@/views/user/Campaign.vue"),
 	},
 	{
 		path: "campaign/:id/:name",
 		name: "Campaign Detail",
-		component: () => import("@/views/user/CampaignDetails.vue"),
+		component: () => import(/* webpackChunkName: "details.chunk" */"@/views/user/CampaignDetails.vue"),
 	},
 	{
 		path: "discover-detail-deleivery",
 		name: "Discover Detail Deleivery",
-		component: () => import("@/views/user/DiscoverDetailDeleivery.vue"),
+		component: () => import(/* webpackChunkName: "details.chunk" */"@/views/user/DiscoverDetailDeleivery.vue"),
 	},
 	{
 		path: "subscription/:id/:name",
 		name: "subscription",
-		component: () => import("@/views/user/Subscription.vue"),
+		component: () => import(/* webpackChunkName: "details.chunk" */"@/views/user/Subscription.vue"),
 	},
 	{
 		path: "notifications",
 		name: "Notifications",
-		component: () => import("@/views/user/Notifications.vue"),
+		component: () => import(/* webpackChunkName: "details.chunk" */"@/views/user/Notifications.vue"),
 	},
 	{
 		path: "edit-profile",
 		name: "Edit Profile",
-		component: () => import("@/views/user/EditProfile.vue"),
+		component: () => import(/* webpackChunkName: "details.chunk" */"@/views/user/EditProfile.vue"),
 	},
 	{
 		path: "offer/:id/:name",
 		name: "Offer Detail",
-		component: () => import("@/views/user/OfferDetail.vue"),
+		component: () => import(/* webpackChunkName: "details.chunk" */"@/views/user/OfferDetail.vue"),
 	},
 ];

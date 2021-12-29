@@ -21,13 +21,11 @@
 </template>
 
 <script>
-import OffersCard from '@/components/user/OffersCard.vue';
-import InfiniteLoading from 'vue-infinite-loading';
 import { OFFERS_FILTERS, OFFERS } from '@/graphql/user/query';
 export default {
 	components: {
-		OffersCard,
-		InfiniteLoading,
+		OffersCard: () => import(/* webpackChunkName: "details.chunk" */ '@/components/user/OffersCard.vue'),
+		InfiniteLoading: () => import(/* webpackChunkName: "details.chunk" */ 'vue-infinite-loading'),
 	},
 	data() {
 		return {

@@ -53,8 +53,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import CompaignCard from '@/components/user/CompaignCard.vue';
-import ProfileCard from '@/components/common/ProfileCard.vue';
 import { CAMPAIGN_SUBSCRIPTION } from '@/graphql/user/query';
 
 export default {
@@ -69,7 +67,10 @@ export default {
 			onTime: 95,
 		};
 	},
-	components: { CompaignCard, ProfileCard },
+	components: {
+		ProfileCard: () => import(/* webpackChunkName: "details.chunk" */ '@/components/common/ProfileCard.vue'),
+		CompaignCard: () => import(/* webpackChunkName: "details.chunk" */ '@/components/user/CompaignCard.vue'),
+	},
 	apollo: {
 		campaigns: {
 			query: CAMPAIGN_SUBSCRIPTION,

@@ -249,10 +249,12 @@ export default {
 				background-position: 16px center;
 				max-height: 40px;
 				border: 2px solid transparent;
-				color: rgba(82, 82, 82, 1);
+				color: #707070;
 				min-width: 350px;
+				font-weight: 500;
 				&::placeholder {
-					color: rgba(82, 82, 82, 0.5);
+					color: #707070;
+					font-weight: 500;
 				}
 				@media screen and (max-width: 991px) and (min-width: 768px) {
 					min-width: auto;

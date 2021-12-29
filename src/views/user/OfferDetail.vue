@@ -33,7 +33,12 @@
 				</div>
 			</div>
 		</div>
-		<Details @handleSubmit="onSubmit" :processing="this.processing" :details="offer.details" v-if="offer.details" />
+		<offer-detail
+			@handleSubmit="onSubmit"
+			:processing="this.processing"
+			:details="offer.details"
+			v-if="offer.details"
+		/>
 	</div>
 </template>
 
@@ -50,7 +55,9 @@ export default {
 			processing: false,
 		};
 	},
-	components: { Details: () => import('@/components/user/common/Details.vue') },
+	components: {
+		OfferDetail: () => import(/* webpackChunkName: "details.chunk" */ '@/components/user/common/Details.vue'),
+	},
 	created() {
 		this.id = parseInt(this.$route.params.id);
 	},

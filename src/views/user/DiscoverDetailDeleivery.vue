@@ -6,11 +6,7 @@
 				<div class="pageHead">
 					<div class="d-flex align-items-center">
 						<div class="pageHead__icon">
-							<img
-								src="@/assets/images/svg/palasLogo.svg"
-								alt=""
-								class="img-fluid"
-							/>
+							<img src="@/assets/images/svg/palasLogo.svg" alt="" class="img-fluid" />
 						</div>
 						<h1>{{ title }}</h1>
 					</div>
@@ -37,11 +33,7 @@
 			</div>
 			<div class="col-md-6">
 				<div class="image">
-					<img
-						src="@/assets/images/discoveryDetailDeleivery.png"
-						alt=""
-						class="img-fluid"
-					/>
+					<img src="@/assets/images/discoveryDetailDeleivery.png" alt="" class="img-fluid" />
 				</div>
 			</div>
 		</div>
@@ -49,7 +41,6 @@
 </template>
 
 <script>
-import BaseSocialLink from '@/components/base/BaseSocialLink.vue';
 import DeleiveryImages from '@/components/user/partials/DeleiveryImages.vue';
 export default {
 	data() {
@@ -61,7 +52,7 @@ export default {
 			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
 		};
 	},
-	components: { BaseSocialLink, DeleiveryImages },
+	components: { DeleiveryImages },
 };
 </script>
 

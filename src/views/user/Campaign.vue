@@ -9,25 +9,15 @@
 				@searchvalue="searchvalue"
 			/>
 			<div v-if="$apollo.loading">
-				<base-skeleton-loader
-					type="discover"
-					:count="8"
-					:isApply="true"
-				></base-skeleton-loader>
+				<base-skeleton-loader type="discover" :count="8" :isApply="true"></base-skeleton-loader>
 			</div>
-			<compaign-card
-				v-for="campaign in campaigns"
-				:key="campaign.id"
-				:campaign="campaign"
-				:isApply="true"
-			/>
+			<compaign-card v-for="campaign in campaigns" :key="campaign.id" :campaign="campaign" :isApply="true" />
 		</div>
 		<div v-if="norecord">No Record Found</div>
 	</div>
 </template>
 
 <script>
-import CompaignCard from '@/components/user/CompaignCard.vue';
 import { CAMPAIGNS, COMPAIGNS_FILTER } from '@/graphql/user/query';
 export default {
 	data() {
@@ -43,7 +33,7 @@ export default {
 		};
 	},
 	components: {
-		CompaignCard,
+		CompaignCard: () => import(/* webpackChunkName: "details.chunk" */ '@/components/user/CompaignCard.vue'),
 	},
 	apollo: {
 		campaigns: {
@@ -69,15 +59,9 @@ export default {
 			query: COMPAIGNS_FILTER,
 			result(data) {
 				if (data) {
-					let newLocation =
-						data.data.campaignsFilters.default.locations.map(
-							(item) => item.id
-						);
+					let newLocation = data.data.campaignsFilters.default.locations.map((item) => item.id);
 
-					let newCategory =
-						data.data.campaignsFilters.default.categories.map(
-							(item) => item.id
-						);
+					let newCategory = data.data.campaignsFilters.default.categories.map((item) => item.id);
 
 					this.filterLocations = newLocation;
 					this.filterCategories = newCategory;

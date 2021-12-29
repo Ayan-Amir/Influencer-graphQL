@@ -1,5 +1,6 @@
 <template>
 	<div class="campaignDetail container" v-if="$apollo.data.campaign.image">
+		<base-alerts />
 		<div class="row align-items-center mb-3">
 			<div class="col-md-6">
 				<div class="image">
@@ -25,17 +26,25 @@
 				</div>
 			</div>
 		</div>
-		<campaign-detail :details="campaign.details" v-if="campaign.details" />
+		<campaign-detail
+			@handleSubmit="onSubmit"
+			:processing="this.processing"
+			:details="campaign.details"
+			v-if="campaign.details"
+		/>
 	</div>
 </template>
 
 <script>
 import { CAMPAIGN_DETAILS } from '@/graphql/user/query';
+import { CAMPAIGN_SUBSCRIBE } from '@/graphql/user/mutations';
+
 export default {
 	data() {
 		return {
-			campaign: [],
 			id: 0,
+			campaign: [],
+			processing: false,
 		};
 	},
 	components: {
@@ -55,6 +64,35 @@ export default {
 			error(e) {
 				this.handleError(e);
 			},
+		},
+	},
+	methods: {
+		onSubmit() {
+			this.updateDetail();
+		},
+		async updateDetail() {
+			this.processing = true;
+			await this.$apollo
+				.mutate({
+					mutation: CAMPAIGN_SUBSCRIBE,
+					variables() {
+						return {
+							idCampaign: 5,
+						};
+					},
+				})
+				.then((data) => {
+					if (data) {
+						if (data.data.campaignSubscribe.state == 'success') {
+							this.$store.commit('alert/success', MESSAGES.SUCCESS);
+						}
+					}
+					this.processing = false;
+				})
+				.catch((e) => {
+					this.handleError(e);
+					this.processing = false;
+				});
 		},
 	},
 };
