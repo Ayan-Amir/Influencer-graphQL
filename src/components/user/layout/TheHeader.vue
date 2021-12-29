@@ -8,7 +8,7 @@
 					<div class="flex-row">
 						<div class="left-side">
 							<!--Mobile menu-icon -->
-							<a href="#" class="menuIcon d-none show-on-md">
+							<a href="javascript:void(0)" class="menuIcon d-none show-on-md">
 								<svg-icon class="menu" icon-id="menuIcon" icon-viewbox="0 0 44 44"> </svg-icon>
 								<svg-icon class="arrow" icon-id="arrowIcon" icon-viewbox="0 0 38 38"> </svg-icon>
 							</a>
@@ -61,7 +61,7 @@
 						</div>
 						<!-- Setting Icon on Responsive -->
 						<div class="settingIcon d-none show-on-md">
-							<router-link to="#">
+							<router-link to="">
 								<svg-icon icon-id="setting" icon-viewbox="0 0 23.469 25.246"> </svg-icon>
 							</router-link>
 						</div>
@@ -75,20 +75,24 @@
 								<!-- Mobile Main links -->
 								<ul>
 									<li>
-										<router-link to="#">Dashboard</router-link>
+										<router-link to="/user">Dashboard</router-link>
 									</li>
 									<li>
-										<router-link to="/user/free-offer">Free offers</router-link>
+										<router-link to="/user/offers">Free offers</router-link>
 									</li>
 									<li>
 										<router-link to="/user/discover">Discover</router-link>
 									</li>
 								</ul>
 								<!-- Mobile Notification -->
-								<a href="#" class="notification">
+								<router-link to="/user/notifications" class="notification">
 									Notifications
 									<span>4</span>
-								</a>
+								</router-link>
+								<!-- <a href="#" class="notification">
+									Notifications
+									<span>4</span>
+								</a> -->
 							</div>
 						</nav>
 					</div>
