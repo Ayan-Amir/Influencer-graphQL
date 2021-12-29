@@ -25,7 +25,7 @@
 										<router-link to="/user/offers">Free offers</router-link>
 									</li>
 									<li>
-										<router-link to="/user/discover">Discover</router-link>
+										<router-link to="/user/campaign">Discover</router-link>
 									</li>
 								</ul>
 							</nav>
@@ -81,7 +81,7 @@
 										<router-link to="/user/offers">Free offers</router-link>
 									</li>
 									<li>
-										<router-link to="/user/discover">Discover</router-link>
+										<router-link to="/user/campaign">Discover</router-link>
 									</li>
 								</ul>
 								<!-- Mobile Notification -->
