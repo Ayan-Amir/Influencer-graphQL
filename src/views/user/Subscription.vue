@@ -211,6 +211,9 @@ export default {
 		@media screen and (min-width: 768px) {
 			margin-top: rem(20px);
 		}
+		@media screen and (max-width: 767px) {
+			margin-bottom: rem(24px);
+		}
 	}
 	@media screen and (max-width: 767px) {
 		> .row {

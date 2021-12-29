@@ -254,6 +254,9 @@ export default {
 				&::placeholder {
 					color: rgba(82, 82, 82, 0.5);
 				}
+				@media screen and (max-width: 991px) and (min-width: 768px) {
+					min-width: auto;
+				}
 			}
 		}
 	}

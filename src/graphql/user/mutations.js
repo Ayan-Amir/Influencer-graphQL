@@ -56,3 +56,17 @@ mutation campaignDelivery($image: Upload!, $idCampaign: Int!){
         value
     }
 }`
+
+export const CAMPAIGN_SUBSCRIBE = gql`
+mutation campaignSubscribe($idCampaign: Int!) {
+    campaignSubscribe(idCampaign: $idCampaign) {
+      state
+    }
+}`
+
+export const OFFER_SUBSCRIBE = gql`
+mutation offerSubscribe($idOffer: Int!) {
+    offerSubscribe(idOffer: $idOffer) {
+      state
+    }
+}`

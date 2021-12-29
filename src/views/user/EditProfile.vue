@@ -35,26 +35,22 @@
 								name="DOB"
 								rules="required"
 							/>
-							<div class="form-group">
-								<base-input
-									placeholder="Change Password"
-									type="password"
-									rules="min:8"
-									:value="password"
-									v-model="password"
-									name="Password"
-								/>
-							</div>
-							<div class="form-group">
-								<base-input
-									placeholder="Confirm Change Password"
-									type="password"
-									rules="confirmed:Password|min:8"
-									:value="retype"
-									v-model="retype"
-									name="Confirm Password"
-								/>
-							</div>
+							<base-input
+								placeholder="Change Password"
+								type="password"
+								rules="min:8"
+								:value="password"
+								v-model="password"
+								name="Password"
+							/>
+							<base-input
+								placeholder="Confirm Change Password"
+								type="password"
+								rules="confirmed:Password|min:8"
+								:value="retype"
+								v-model="retype"
+								name="Confirm Password"
+							/>
 							<base-input
 								placeholder="Address"
 								type="text"
@@ -90,7 +86,9 @@
 								</li>
 							</ul>
 							<div class="button-row">
-								<button class="btn btn-primary" :class="processing ? 'processing' : ''">{{buttonText}}</button>
+								<button class="btn btn-primary" :class="processing ? 'processing' : ''">
+									{{ buttonText }}
+								</button>
 							</div>
 						</div>
 					</b-form>
@@ -119,7 +117,7 @@ export default {
 			password: null,
 			retype: null,
 			image: null,
-            buttonText:  "Save",
+			buttonText: 'Save',
 			data: {
 				firstName: '',
 				lastName: '',
@@ -150,64 +148,63 @@ export default {
 			this.image = data.target.files[0];
 		},
 		onSubmit() {
-            this.processing = true;
+			this.processing = true;
 			(this.data.firstName = this.editProfile.first_name),
 				(this.data.lastName = this.editProfile.last_name),
 				(this.data.birthdate = this.editProfile.birth_date),
 				(this.data.address = this.editProfile.address);
-            this.updateProfile();
+			this.updateProfile();
 		},
 		async updateProfile() {
 			if (this.password != null) {
-                this.buttonText="Updating Password..."
+				this.buttonText = 'Updating Password...';
 				await this.$apollo
-                .mutate({
-                    mutation: UPDATE_PASSWORD,
-                    variables: {
-                        password: this.password,
-                        retype: this.retype,
-                    },
-                })
-                .then((data) => {
-                    if (data) {
-                        if (data.data.updatePassword.state == 'success') {
-                            this.updateUserInfo();
-                        }
-                    }
-                })
-                .catch((e) => {
-                    this.handleError(e);
-                    this.processing=false
-                });
-			} else {				
+					.mutate({
+						mutation: UPDATE_PASSWORD,
+						variables: {
+							password: this.password,
+							retype: this.retype,
+						},
+					})
+					.then((data) => {
+						if (data) {
+							if (data.data.updatePassword.state == 'success') {
+								this.updateUserInfo();
+							}
+						}
+					})
+					.catch((e) => {
+						this.handleError(e);
+						this.processing = false;
+					});
+			} else {
 				this.updateUserInfo();
 			}
 		},
-        async updateProfileImage(){
-            if (this.image != null) {
-                console.log("enter")
-                this.buttonText="Uploading Image..."
-                await this.$apollo
-                .mutate({
-                    mutation: UPLOAD_IMAGE,
-                    variables: {
-                        image: this.image,
-                    },
-                })
-                .then((data)=>{
-                    if (data.data.uploadProfile.value != null) {
-                        
-                        this.$store.state.auth.user.avatar = data.data.uploadProfile.value;
-                    }
-                })
-                .catch((e) => {
-                    this.handleError(e)
-                });
-            }
-        },
+		async updateProfileImage() {
+			if (this.image != null) {
+				console.log('enter');
+				this.buttonText = 'Uploading Image...';
+				await this.$apollo
+					.mutate({
+						mutation: UPLOAD_IMAGE,
+						variables: {
+							image: this.image,
+						},
+					})
+					.then((data) => {
+						if (data.data.uploadProfile.value != null) {
+							this.$store.state.auth.user.avatar = data.data.uploadProfile.value;
+						}
+					})
+					.catch((e) => {
+						this.handleError(e);
+					});
+			}
+		},
 		async updateUserInfo() {
-            await this.updateProfileImage()
-            this.buttonText="Updating Info..."
+			await this.updateProfileImage();
+			this.buttonText = 'Updating Info...';
 			await this.$apollo
 				.mutate({
 					mutation: UPDATE_USER,
@@ -216,18 +213,18 @@ export default {
 				.then((data) => {
 					if (data) {
 						if (data.data.updateUser.state == 'success') {
-                            this.$store.commit('alert/success', MESSAGES.SUCCESS);
+							this.$store.commit('alert/success', MESSAGES.SUCCESS);
 							this.updateUser();
 						} else {
 							this.$store.commit('alert/error', data.data.updateUser.state);
 						}
 					}
-                    this.buttonText="Save"
-                    this.processing=false
+					this.buttonText = 'Save';
+					this.processing = false;
 				})
 				.catch((e) => {
 					this.handleError(e);
-                    this.processing=false
+					this.processing = false;
 				});
 		},
 	},
@@ -343,7 +340,7 @@ export default {
 			margin: 0;
 			width: 96%;
 			margin: auto;
-			margin-bottom: rem(16px);
+			margin-bottom: 11px;
 			transition: 0.4s ease all;
 			span {
 				position: absolute;

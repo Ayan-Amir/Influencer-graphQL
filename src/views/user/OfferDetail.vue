@@ -1,68 +1,56 @@
 <template>
 	<div class="offerDetail container" v-if="$apollo.data.offer.image">
+		<base-alerts />
 		<div class="row align-items-center mb-3">
 			<div class="col-md-6">
 				<div class="image">
-					<img
-						v-lazy="`${$config.IMG_HOST}/629x230/${offer.image}`"
-						alt=""
-						class="img-fluid"
-					/>
+					<img v-lazy="`${$config.IMG_HOST}/629x230/${offer.image}`" alt="" class="img-fluid" />
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="offerDetail__wrapper">
 					<div class="offerDetail__purchase">
 						<div class="offerDetail__purchase--brandLogo">
-							<img
-								v-lazy="`${$config.IMG_HOST}/55x55/${offer.logo}`"
-								alt=""
-								class="img-fluid"
-							/>
+							<img v-lazy="`${$config.IMG_HOST}/55x55/${offer.logo}`" alt="" class="img-fluid" />
 						</div>
 						<p>
 							{{ offer.company }}
 							<span>{{ locations.name }}</span>
 						</p>
 					</div>
-					<div
-						class="requestOffer__time"
-						v-if="offer.expirationDate !== null"
-					>
+					<div class="requestOffer__time" v-if="offer.expirationDate !== null">
 						Ends in: {{ offer.expirationDate }}
 						<span>{{ offer.left }} Left</span>
 					</div>
 				</div>
 				<p class="desc">{{ offer.description }}</p>
 				<div class="requestOffer">
-					<router-link to="#" class="btn btn-primary large"
-						>Apply Now
-					</router-link>
-					<div
-						class="requestOffer__time"
-						v-if="offer.expirationDate !== null"
-					>
+					<router-link to="#" class="btn btn-primary large">Apply Now </router-link>
+					<div class="requestOffer__time" v-if="offer.expirationDate !== null">
 						Ends in: {{ offer.expirationDate }}
 						<span>{{ offer.left }} Left</span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<Details :details="offer.details" v-if="offer.details" />
+		<Details @handleSubmit="onSubmit" :processing="this.processing" :details="offer.details" v-if="offer.details" />
 	</div>
 </template>
 
 <script>
 import { OFFER_DETAILS } from '@/graphql/user/query';
+import { OFFER_SUBSCRIBE } from '@/graphql/user/mutations';
+
 export default {
 	data() {
 		return {
-			offer: [],
 			id: 0,
+			offer: [],
 			locations: [],
+			processing: false,
 		};
 	},
-	components: { Details: () =>import('@/components/user/common/Details.vue') },
+	components: { Details: () => import('@/components/user/common/Details.vue') },
 	created() {
 		this.id = parseInt(this.$route.params.id);
 	},
@@ -83,6 +71,35 @@ export default {
 					this.locations = this.offer.location;
 				}
 			},
+		},
+	},
+	methods: {
+		onSubmit() {
+			this.updateDetail();
+		},
+		async updateDetail() {
+			this.processing = true;
+			await this.$apollo
+				.mutate({
+					mutation: OFFER_SUBSCRIBE,
+					variables() {
+						return {
+							idCampaign: 5,
+						};
+					},
+				})
+				.then((data) => {
+					if (data) {
+						if (data.data.offerSubscribe.state == 'success') {
+							this.$store.commit('alert/success', MESSAGES.SUCCESS);
+						}
+					}
+					this.processing = false;
+				})
+				.catch((e) => {
+					this.handleError(e);
+					this.processing = false;
+				});
 		},
 	},
 };

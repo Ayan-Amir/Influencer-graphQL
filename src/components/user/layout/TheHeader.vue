@@ -132,7 +132,7 @@ export default {
 		this.menuIcon();
 		setTimeout(() => {
 			this.isLoading = false;
-		}, 4000);
+		}, 700);
 	},
 };
 </script>

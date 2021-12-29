@@ -9,7 +9,10 @@
 				<div>
 					<ul class="statesLinks">
 						<li class="statesLinks__item">
-							<a class="statesLinks__item--link" href="javascript:void(0)" @click="handleTab('active')"
+							<a
+								class="statesLinks__item--link active"
+								href="javascript:void(0)"
+								@click="handleTab('active')"
 								>Active</a
 							>
 						</li>
@@ -24,10 +27,7 @@
 							>
 						</li>
 						<li class="statesLinks__item">
-							<a
-								class="statesLinks__item--link active"
-								href="javascript:void(0)"
-								@click="handleTab('pending')"
+							<a class="statesLinks__item--link" href="javascript:void(0)" @click="handleTab('pending')"
 								>Pending</a
 							>
 						</li>
