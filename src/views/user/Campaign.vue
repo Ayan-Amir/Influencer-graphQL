@@ -1,16 +1,16 @@
 <template>
-	<div class="campaignDetail container" v-if="$apollo.data">
+	<div class="campaignDetail container" v-if="$apollo.data.campaign.image">
 		<div class="row align-items-center mb-3">
 			<div class="col-md-6">
 				<div class="image">
-					<img :src="`${$config.IMG_HOST}/629x230/${campaign.image}`" alt="" class="img-fluid" />
+					<img v-lazy="`${$config.IMG_HOST}/629x230/${campaign.image}`" alt="" class="img-fluid" />
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="pageHead">
 					<div class="d-flex align-items-center">
 						<div class="pageHead__icon">
-							<img :src="`${$config.IMG_HOST}/55x55/${campaign.logo}`" alt="" class="img-fluid" />
+							<img v-lazy="`${$config.IMG_HOST}/55x55/${campaign.logo}`" alt="" class="img-fluid" />
 						</div>
 						<h1>{{ campaign.name }}</h1>
 					</div>
@@ -22,24 +22,15 @@
 				<p class="desc">{{ campaign.description }}</p>
 				<div class="requestOffer">
 					<router-link to="#" class="btn btn-primary large">Apply Now </router-link>
-					<!-- <div
-						class="requestOffer__time"
-						v-if="campaign.expirationDate !== null"
-					>
-						Ends in: {{ campaign.expirationDate }}
-						<span>{{ campaign.left }} Left</span>
-					</div> -->
 				</div>
 			</div>
 		</div>
-		<Details :details="campaign.details" />
+		<campaign-detail :details="campaign.details" v-if="campaign.details" />
 	</div>
 </template>
 
 <script>
 import { CAMPAIGN_DETAILS } from '@/graphql/user/query';
-import Details from '@/components/user/common/Details.vue';
-
 export default {
 	data() {
 		return {
@@ -47,7 +38,9 @@ export default {
 			id: 0,
 		};
 	},
-	components: { Details },
+	components: { 
+        CampaignDetail: ()=>import(/* webpackChunkName: "details.chunk" */ '@/components/user/common/Details.vue')
+    },
 	created() {
 		this.id = parseInt(this.$route.params.id);
 	},
@@ -59,11 +52,8 @@ export default {
 					id: parseInt(this.$route.params.id),
 				};
 			},
-			data(e) {
-				console.log(e);
-			},
-			errror(err) {
-				console.log(err);
+			error(e) {
+				this.handleError(e);
 			},
 		},
 	},

@@ -6,6 +6,8 @@
 					v-lazy="`${$config.IMG_HOST}/296x346/${img}`"
 					alt=""
 					class="img-fluid"
+                    width="100%"
+                    height="336px"
 				/>
 			</div>
 		</div>
@@ -29,6 +31,7 @@ export default {
 	.image {
 		border-radius: 28px;
 		overflow: hidden;
+        @include flex(center,center)
 	}
 	@media screen and (max-width: 767px) {
 		> div {
