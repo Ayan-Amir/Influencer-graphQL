@@ -33,7 +33,7 @@ export default {
 		};
 	},
 	components: {
-		CompaignCard: () => import(/* webpackChunkName: "details.chunk" */ '@/components/user/CompaignCard.vue'),
+		CompaignCard: () => import(/* webpackChunkName: "capaignCard.chunk" */ '@/components/user/CompaignCard.vue'),
 	},
 	apollo: {
 		campaigns: {

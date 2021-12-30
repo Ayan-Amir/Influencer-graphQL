@@ -48,7 +48,8 @@ export default {
 		};
 	},
 	components: {
-		CampaignDetail: () => import(/* webpackChunkName: "details.chunk" */ '@/components/user/common/Details.vue'),
+		CampaignDetail: () =>
+			import(/* webpackChunkName: "campaignDetail.chunk" */ '@/components/user/common/Details.vue'),
 	},
 	created() {
 		this.id = parseInt(this.$route.params.id);

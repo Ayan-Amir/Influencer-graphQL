@@ -68,8 +68,8 @@ export default {
 		};
 	},
 	components: {
-		ProfileCard: () => import(/* webpackChunkName: "details.chunk" */ '@/components/common/ProfileCard.vue'),
-		CompaignCard: () => import(/* webpackChunkName: "details.chunk" */ '@/components/user/CompaignCard.vue'),
+		ProfileCard: () => import(/* webpackChunkName: "profileCard.chunk" */ '@/components/common/ProfileCard.vue'),
+		CompaignCard: () => import(/* webpackChunkName: "compaignCard.chunk" */ '@/components/user/CompaignCard.vue'),
 	},
 	apollo: {
 		campaigns: {

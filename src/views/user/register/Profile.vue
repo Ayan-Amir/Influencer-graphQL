@@ -60,7 +60,6 @@ export default {
 		return {
 			title: 'My Profile',
 			processing: false,
-			// myGender: { value: null, text: 'Gender' },
 			gender: [
 				{ value: 'M', text: 'Male' },
 				{ value: 'F', text: 'Female' },

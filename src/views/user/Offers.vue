@@ -24,8 +24,8 @@
 import { OFFERS_FILTERS, OFFERS } from '@/graphql/user/query';
 export default {
 	components: {
-		OffersCard: () => import(/* webpackChunkName: "details.chunk" */ '@/components/user/OffersCard.vue'),
-		InfiniteLoading: () => import(/* webpackChunkName: "details.chunk" */ 'vue-infinite-loading'),
+		OffersCard: () => import(/* webpackChunkName: "offersCard.chunk" */ '@/components/user/OffersCard.vue'),
+		InfiniteLoading: () => import(/* webpackChunkName: "infiniteLoading.chunk" */ 'vue-infinite-loading'),
 	},
 	data() {
 		return {

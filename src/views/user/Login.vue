@@ -19,8 +19,6 @@
 </template>
 
 <script>
-import SocialLinks from '@/components/user/layout/SocialLinks.vue';
-import Login from '@/components/common/Login.vue';
 import alert from '@/mixin/alert';
 export default {
 	data() {
@@ -57,7 +55,10 @@ export default {
 		};
 	},
 	mixins: ['alert'],
-	components: { Login, SocialLinks },
+	components: {
+		Login: () => import(/* webpackChunkName: "login.chunk" */ '@/components/common/Login.vue'),
+		SocialLinks: () => import(/* webpackChunkName: "socialLinks.chunk" */ '@/components/common/SocialLinks.vue'),
+	},
 };
 </script>
 <style lang="scss">

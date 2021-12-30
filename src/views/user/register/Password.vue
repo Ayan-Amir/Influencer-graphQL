@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import SocialLinks from '@/components/user/layout/SocialLinks.vue';
 export default {
 	data() {
 		return {
@@ -32,7 +31,9 @@ export default {
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
 		};
 	},
-	components: { SocialLinks },
+	components: {
+		SocialLinks: () => import(/* webpackChunkName: "socialLinks.chunk" */ '@/components/common/SocialLinks.vue'),
+	},
 };
 </script>
 <style lang="scss">

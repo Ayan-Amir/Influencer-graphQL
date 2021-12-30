@@ -56,8 +56,6 @@
 <script>
 import { CAMPAIGN_DETAILS } from '@/graphql/user/query';
 import { CAMPAIGN_DELIVERY } from '@/graphql/user/mutations';
-import BaseSocialLink from '@/components/base/BaseSocialLink.vue';
-import DeleiveryImages from '@/components/user/partials/DeleiveryImages.vue';
 export default {
 	data() {
 		return {
@@ -68,7 +66,10 @@ export default {
 			processing: false,
 		};
 	},
-	components: { BaseSocialLink, DeleiveryImages },
+	components: {
+		DeleiveryImages: () =>
+			import(/* webpackChunkName: "deleiveryImages.chunk" */ '@/components/user/partials/DeleiveryImages.vue'),
+	},
 	created() {
 		this.id = parseInt(this.$route.params.id);
 	},

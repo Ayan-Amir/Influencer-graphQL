@@ -56,7 +56,7 @@ export default {
 		};
 	},
 	components: {
-		OfferDetail: () => import(/* webpackChunkName: "details.chunk" */ '@/components/user/common/Details.vue'),
+		OfferDetail: () => import(/* webpackChunkName: "offerDetail.chunk" */ '@/components/user/common/Details.vue'),
 	},
 	created() {
 		this.id = parseInt(this.$route.params.id);

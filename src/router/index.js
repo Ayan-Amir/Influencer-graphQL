@@ -13,7 +13,7 @@ Vue.use(VueRouter);
 const routes = [{
         path: "/login",
         component: () =>
-            import ("@/views/common/Login.vue"),
+            import (/* webpackChunkName: "login.chunk" */"@/views/common/Login.vue"),
     },
     {
         path: "/user",
@@ -26,7 +26,7 @@ const routes = [{
         children: [{
             path: "",
             component: () =>
-                import ("@/views/user/Login.vue"),
+                import (/* webpackChunkName: "userLogin.chunk" */"@/views/user/Login.vue"),
         }, ],
     },
     {
@@ -47,7 +47,7 @@ const routes = [{
         children: [{
             path: "",
             component: () =>
-                import ("@/views/brand/Login.vue"),
+                import (/* webpackChunkName: "brandLogin.chunk" */"@/views/brand/Login.vue"),
         }, ],
     },
     {

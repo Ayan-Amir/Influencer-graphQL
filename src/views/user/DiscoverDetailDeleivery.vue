@@ -41,7 +41,6 @@
 </template>
 
 <script>
-import DeleiveryImages from '@/components/user/partials/DeleiveryImages.vue';
 export default {
 	data() {
 		return {
@@ -55,7 +54,7 @@ export default {
 
 	components: {
 		DeleiveryImages: () =>
-			import(/* webpackChunkName: "details.chunk" */ '@/components/user/partials/DeleiveryImages.vue'),
+			import(/* webpackChunkName: "deleiveryImages.chunk" */ '@/components/user/partials/DeleiveryImages.vue'),
 	},
 };
 </script>

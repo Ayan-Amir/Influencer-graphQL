@@ -33,12 +33,10 @@
 </template>
 
 <script>
-import BaseProfileUpload from '@/components/base/BaseProfileUpload.vue';
 import { UPLOAD_IMAGE } from '@/graphql/user/mutations';
 import register from '../mixin/register.js';
 import { mapActions } from 'vuex';
 export default {
-	components: { BaseProfileUpload },
 	mixins: [register],
 	data() {
 		return {
