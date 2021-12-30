@@ -7,7 +7,6 @@ import brand from "@/views/brand/router";
 import userRegister from "@/views/user/router/register";
 import brandRegister from "@/views/brand/router/register";
 import store from '../store'
-// import {MESSAGE} from '@/_helpers/alertMessages';
 Vue.use(VueRouter);
 
 const routes = [{

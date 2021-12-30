@@ -106,7 +106,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { UPDATE_USER, UPDATE_PASSWORD, UPLOAD_IMAGE } from '@/graphql/user/mutations';
-import { MESSAGES } from '@/_helpers/alertMessages.js';
+import { MESSAGES } from '@/_helpers/notifications';
 import cloneDeep from 'lodash/cloneDeep';
 
 export default {

@@ -34,7 +34,7 @@
 
 <script>
 import { UPLOAD_IMAGE } from '@/graphql/user/mutations';
-import register from '../mixin/register.js';
+import register from '../../../mixin/register.js';
 import { mapActions } from 'vuex';
 export default {
 	mixins: [register],

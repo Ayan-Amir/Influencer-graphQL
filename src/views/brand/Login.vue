@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import alert from '@/mixin/alert';
 export default {
 	data() {
 		return {
@@ -58,7 +57,6 @@ export default {
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.',
 		};
 	},
-	mixins: ['alert'],
 	components: {
 		Login: () => import(/* webpackChunkName: "login.chunk" */ '@/components/common/Login.vue'),
 		SocialLinks: () => import(/* webpackChunkName: "socialLinks.chunk" */ '@/components/common/SocialLinks.vue'),

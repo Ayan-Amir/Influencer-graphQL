@@ -45,7 +45,7 @@
 <script>
 import { OFFER_DETAILS } from '@/graphql/user/query';
 import { OFFER_SUBSCRIBE } from '@/graphql/user/mutations';
-
+import { MESSAGES } from '@/_helpers/notifications';
 export default {
 	data() {
 		return {
@@ -81,48 +81,41 @@ export default {
 		},
 	},
 	methods: {
-		onSubmit() {
-			this.updateDetail();
+		async onSubmit() {
+            this.processing = true;
+			await this.updateDetail()
+            .then(()=>{
+                this.scrollTop();
+                this.processing = false;
+            })
 		},
-		async updateDetail() {
-			this.processing = true;
+        scrollTop(){
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        },
+		async updateDetail() {            
 			await this.$apollo
-				.mutate({
-					mutation: OFFER_SUBSCRIBE,
-					variables() {
-						return {
-							idCampaign: 5,
-						};
-					},
-				})
-				.then((data) => {
-					if (data) {
-						if (data.data.offerSubscribe.state == 'success') {
-							this.$store.commit('alert/success', MESSAGES.SUCCESS);
-						}
-					}
-					this.processing = false;
-				})
-				.catch((e) => {
-					this.handleError(e);
-					this.processing = false;
-				});
+            .mutate({
+                mutation: OFFER_SUBSCRIBE,
+                variables: {
+                    idOffer: parseInt(this.$route.params.id)					
+                },
+            })
+            .then((data) => {
+                if (data) {
+                    if (data.data.offerSubscribe.state == 'success') {
+                        this.$store.commit('alert/success', MESSAGES.SUBSCRIBED);
+                    }
+                }
+            })
+            .catch((e) => {
+                this.handleError(e);
+            });
 		},
 	},
 };
 </script>
 
-<style lang="scss">
-// .btn.btn-primary {
-// 	min-height: 40px;
-// 	width: 142px;
-// 	padding-top: 6px;
-// 	padding-bottom: 6px;
-// 	font-size: rem(14px);
-// 	font-weight: 700;
-// 	border-radius: 8px;
-// }
-</style>
 
 <style lang="scss" scoped>
 .offerDetail {

@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex'
-import {MESSAGES} from '@/_helpers/alertMessages';
+import {MESSAGES} from '@/_helpers/notifications';
 import store from "vuex"
 export default{
     computed: {
