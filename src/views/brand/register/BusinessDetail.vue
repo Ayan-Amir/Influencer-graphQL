@@ -37,9 +37,7 @@
 </template>
 
 <script>
-import BaseProfileUpload from '@/components/base/BaseProfileUpload.vue';
 export default {
-	components: { BaseProfileUpload },
 	methods: {
 		upload: function (e) {
 			let wrapper = e.target.parentNode;

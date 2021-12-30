@@ -25,7 +25,9 @@
 				</div>
 				<p class="desc">{{ offer.description }}</p>
 				<div class="requestOffer">
-					<router-link to="#" class="btn btn-primary large">Apply Now </router-link>
+					<button @click="onSubmit" :class="processing ? 'processing' : ''" class="btn btn-primary large">
+						Apply Now
+					</button>
 					<div class="requestOffer__time" v-if="offer.expirationDate !== null">
 						Ends in: {{ offer.expirationDate }}
 						<span>{{ offer.left }} Left</span>
@@ -33,12 +35,10 @@
 				</div>
 			</div>
 		</div>
-		<offer-detail
-			@handleSubmit="onSubmit"
-			:processing="this.processing"
-			:details="offer.details"
-			v-if="offer.details"
-		/>
+		<offer-detail :processing="this.processing" :details="offer.details" v-if="offer.details" />
+		<div class="button-row">
+			<button @click="onSubmit" class="btn btn-primary" :class="processing ? 'processing' : ''">Apply Now</button>
+		</div>
 	</div>
 </template>
 
@@ -56,7 +56,7 @@ export default {
 		};
 	},
 	components: {
-		OfferDetail: () => import(/* webpackChunkName: "offerDetail.chunk" */ '@/components/user/common/Details.vue'),
+		OfferDetail: () => import(/* webpackChunkName: "offerDetail" */ '@/components/user/common/Details.vue'),
 	},
 	created() {
 		this.id = parseInt(this.$route.params.id);
@@ -82,40 +82,38 @@ export default {
 	},
 	methods: {
 		async onSubmit() {
-            this.processing = true;
-			await this.updateDetail()
-            .then(()=>{
-                this.scrollTop();
-                this.processing = false;
-            })
+			this.processing = true;
+			await this.updateDetail().then(() => {
+				this.scrollTop();
+				this.processing = false;
+			});
 		},
-        scrollTop(){
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        },
-		async updateDetail() {            
+		scrollTop() {
+			document.body.scrollTop = 0; // For Safari
+			document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+		},
+		async updateDetail() {
 			await this.$apollo
-            .mutate({
-                mutation: OFFER_SUBSCRIBE,
-                variables: {
-                    idOffer: parseInt(this.$route.params.id)					
-                },
-            })
-            .then((data) => {
-                if (data) {
-                    if (data.data.offerSubscribe.state == 'success') {
-                        this.$store.commit('alert/success', MESSAGES.SUBSCRIBED);
-                    }
-                }
-            })
-            .catch((e) => {
-                this.handleError(e);
-            });
+				.mutate({
+					mutation: OFFER_SUBSCRIBE,
+					variables: {
+						idOffer: parseInt(this.$route.params.id),
+					},
+				})
+				.then((data) => {
+					if (data) {
+						if (data.data.offerSubscribe.state == 'success') {
+							this.$store.commit('alert/success', MESSAGES.SUBSCRIBED);
+						}
+					}
+				})
+				.catch((e) => {
+					this.handleError(e);
+				});
 		},
 	},
 };
 </script>
-
 
 <style lang="scss" scoped>
 .offerDetail {

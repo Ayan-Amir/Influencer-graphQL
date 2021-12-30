@@ -5,11 +5,6 @@
 			<h2 v-html="detail.description"></h2>
 			<details-gallery v-if="detail.gallery" :gallery="detail.gallery" />
 		</div>
-		<div class="button-row">
-			<button @click="$emit('handleSubmit')" class="btn btn-primary" :class="processing ? 'processing' : ''">
-				Apply Now
-			</button>
-		</div>
 	</div>
 </template>
 
@@ -43,11 +38,6 @@ export default {
 		margin: 10px 0;
 		/deep/ p {
 			margin: 0;
-		}
-	}
-	.button-row {
-		@media screen and (max-width: 575px) {
-			text-align: center;
 		}
 	}
 }

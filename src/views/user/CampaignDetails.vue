@@ -22,16 +22,16 @@
 				<base-social-link />
 				<p class="desc">{{ campaign.description }}</p>
 				<div class="requestOffer">
-					<router-link to="#" class="btn btn-primary large">Apply Now </router-link>
+					<button @click="onSubmit" :class="processing ? 'processing' : ''" class="btn btn-primary large">
+						Apply Now
+					</button>
 				</div>
 			</div>
 		</div>
-		<campaign-detail
-			@handleSubmit="onSubmit"
-			:processing="this.processing"
-			:details="campaign.details"
-			v-if="campaign.details"
-		/>
+		<campaign-detail :processing="this.processing" :details="campaign.details" v-if="campaign.details" />
+		<div class="button-row">
+			<button @click="onSubmit" class="btn btn-primary" :class="processing ? 'processing' : ''">Apply Now</button>
+		</div>
 	</div>
 </template>
 
@@ -48,8 +48,7 @@ export default {
 		};
 	},
 	components: {
-		CampaignDetail: () =>
-			import(/* webpackChunkName: "campaignDetail.chunk" */ '@/components/user/common/Details.vue'),
+		CampaignDetail: () => import(/* webpackChunkName: "campaignDetail" */ '@/components/user/common/Details.vue'),
 	},
 	created() {
 		this.id = parseInt(this.$route.params.id);
@@ -68,18 +67,24 @@ export default {
 		},
 	},
 	methods: {
-		onSubmit() {
-			this.updateDetail();
+		async onSubmit() {
+			this.processing = true;
+			await this.updateDetail().then(() => {
+				this.scrollTop();
+				this.processing = false;
+			});
+		},
+		scrollTop() {
+			document.body.scrollTop = 0; // For Safari
+			document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 		},
 		async updateDetail() {
 			this.processing = true;
 			await this.$apollo
 				.mutate({
 					mutation: CAMPAIGN_SUBSCRIBE,
-					variables() {
-						return {
-							idCampaign: 5,
-						};
+					variables: {
+						idCampaign: parseInt(this.$route.params.id),
 					},
 				})
 				.then((data) => {

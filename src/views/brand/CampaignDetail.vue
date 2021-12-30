@@ -12,12 +12,15 @@
 </template>
 
 <script>
-import CampaignOverview from '@/components/brand/CampaignOverview.vue';
-import CampaignPromoters from '@/components/brand/CampaignPromoters.vue';
-import CampaignInsights from '@/components/brand/CampaignInsights.vue';
-
 export default {
-	components: { CampaignOverview, CampaignPromoters, CampaignInsights },
+	components: {
+		CampaignOverview: () =>
+			import(/* webpackChunkName: "CampaignOverview" */ '@/components/brand/CampaignOverview.vue'),
+		CampaignPromoters: () =>
+			import(/* webpackChunkName: "CampaignPromoters" */ '@/components/brand/CampaignPromoters.vue'),
+		CampaignInsights: () =>
+			import(/* webpackChunkName: "CampaignInsights" */ '@/components/brand/CampaignInsights.vue'),
+	},
 };
 </script>
 
