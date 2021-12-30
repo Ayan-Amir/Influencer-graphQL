@@ -1,38 +1,36 @@
 export default [
-    // {
-    //     path: "",
-    //     component: () =>
-    //         import ("@/views/brand/register/Register.vue"),
-    // },
-
+    {
+        path: "",
+        component: () => import(/* webpackChunkName: "register.chunk" */"@/views/brand/register/Register.vue"),
+    },
     {
         path: "number-registration",
         component: () =>
-            import ("@/views/brand/register/NumberRegistration.vue"),
+            import (/* webpackChunkName: "numberRegistration.chunk" */"@/views/brand/register/NumberRegistration.vue"),
     },
     {
         path: "email",
         component: () =>
-            import ("@/views/brand/register/Email.vue"),
+            import (/* webpackChunkName: "email.chunk" */"@/views/brand/register/Email.vue"),
     },
     {
         path: "verification",
         component: () =>
-            import ("@/views/brand/register/Verification.vue"),
+            import (/* webpackChunkName: "verification.chunk" */"@/views/brand/register/Verification.vue"),
     },
     {
         path: "business",
         component: () =>
-            import ("@/views/brand/register/Business.vue"),
+            import (/* webpackChunkName: "business.chunk" */"@/views/brand/register/Business.vue"),
     },
     {
         path: "business-detail",
         component: () =>
-            import ("@/views/brand/register/BusinessDetail.vue"),
+            import (/* webpackChunkName: "businessDetail.chunk" */"@/views/brand/register/BusinessDetail.vue"),
     },
     {
         path: "contact",
         component: () =>
-            import ("@/views/brand/register/Contact.vue"),
+            import (/* webpackChunkName: "contact.chunk" */"@/views/brand/register/Contact.vue"),
     },
 ];
