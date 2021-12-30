@@ -70,3 +70,10 @@ mutation offerSubscribe($idOffer: Int!) {
       state
     }
 }`
+
+export const REMOVE_DELIVERY = gql`
+mutation removeDelivery($id: Int!) {
+    removeDelivery(id: $id) {
+      state
+    }
+}`
