@@ -6,23 +6,23 @@
 
 <script>
 import TheHeader from "@/components/layout/TheHeader.vue";
-import {mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
   name: "App",
   components: {
-      TheHeader,
+    TheHeader,
   },
   methods: {
     ...mapActions({
-        clearAlert: 'alert/clear' 
-    })
+      clearAlert: "alert/clear",
+    }),
   },
-//   watch: {
-//     $route (to, from){
-//         // clear alert on location change
-//         this.clearAlert();
-//     }
-//   } 
+  //   watch: {
+  //     $route (to, from){
+  //         // clear alert on location change
+  //         this.clearAlert();
+  //     }
+  //   }
 };
 </script>
 

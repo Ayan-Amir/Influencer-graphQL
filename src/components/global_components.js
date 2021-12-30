@@ -2,19 +2,16 @@ import camelCase from "lodash/camelCase";
 import upperFirst from "lodash/upperFirst";
 import Vue from "vue";
 
-import { ValidationObserver, ValidationProvider,extend} from "vee-validate";
-import * as rules from "vee-validate/dist/rules"
+import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
+import * as rules from "vee-validate/dist/rules";
 
-
-Object.keys(rules).forEach(rule => {
+Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule]);
 });
 
-extend('min', value => {
+extend("min", (value) => {
   return value.length >= 3;
-  }
-);
-
+});
 
 const requireComponent = require.context(
   "./base",
@@ -36,5 +33,5 @@ requireComponent.keys().forEach((fileName) => {
   Vue.component(componentName, componentConfig.default || componentConfig);
 });
 
-Vue.component('ValidationProvider', ValidationProvider)
-Vue.component('ValidationObserver', ValidationObserver)
+Vue.component("ValidationProvider", ValidationProvider);
+Vue.component("ValidationObserver", ValidationObserver);

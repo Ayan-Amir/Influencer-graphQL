@@ -1,31 +1,32 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const CAMPAIGN_FILTER = gql`
-query {
+  query {
     newCampaignFilters {
       followers
       priceStart
       priceEnd
       influencers
       posts
-      locations{
+      locations {
         value: id
         text: name
       }
-      interests{
+      interests {
         index: id
         value: name
       }
-      gender{
+      gender {
         id
         name
       }
     }
-}`
+  }
+`;
 
 export const CAMPAIGN_ESTIMATE = gql`
-query {
-    campaignEstimate{
+  query {
+    campaignEstimate {
       location
       potential
       influencers
@@ -33,4 +34,5 @@ query {
       engagement
       buget
     }
-}`
+  }
+`;

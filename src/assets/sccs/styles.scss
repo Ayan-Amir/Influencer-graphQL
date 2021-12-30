@@ -406,6 +406,5 @@ p {
 }
 
 img[lazy=loading]{
-    width: 50px;
-    height: auto;
+    width: 50px !important;
 }
