@@ -42,11 +42,7 @@
 					<tspan x="0" y="0">Local Influencer</tspan>
 				</text>
 			</g>
-			<g
-				id="watch_icon"
-				data-name="watch icon"
-				transform="translate(-0.723 -0.721)"
-			>
+			<g id="watch_icon" data-name="watch icon" transform="translate(-0.723 -0.721)">
 				<path
 					id="Path_102"
 					data-name="Path 102"
@@ -68,11 +64,7 @@
 					stroke-width="1.045"
 				/>
 			</g>
-			<g
-				id="setting"
-				data-name="Group 1345"
-				transform="translate(-162.264 160.327)"
-			>
+			<g id="setting" data-name="Group 1345" transform="translate(-162.264 160.327)">
 				<path
 					id="Path_972"
 					data-name="Path 972"
@@ -82,11 +74,7 @@
 					fill-rule="evenodd"
 				/>
 			</g>
-			<g
-				id="notiffication_icon"
-				data-name="notiffication icon"
-				transform="translate(1 1)"
-			>
+			<g id="notiffication_icon" data-name="notiffication icon" transform="translate(1 1)">
 				<path
 					id="Path_169"
 					data-name="Path 169"
@@ -110,11 +98,7 @@
 					stroke-width="2"
 				/>
 			</g>
-			<g
-				id="notiffication_icon-2"
-				data-name="notiffication icon"
-				transform="translate(1 1)"
-			>
+			<g id="notiffication_icon-2" data-name="notiffication icon" transform="translate(1 1)">
 				<g data-name="notiffication icon">
 					<path
 						id="Path_169"
@@ -230,14 +214,7 @@
 				/>
 			</g>
 			<g id="menuIcon" transform="translate(59)">
-				<rect
-					id="Rectangle"
-					width="44"
-					height="44"
-					rx="12"
-					transform="translate(-59)"
-					fill="#fff"
-				/>
+				<rect id="Rectangle" width="44" height="44" rx="12" transform="translate(-59)" fill="#fff" />
 				<path
 					id="Path_938"
 					data-name="Path 938"
@@ -270,13 +247,7 @@
 				/>
 			</g>
 			<g id="arrowIcon">
-				<rect
-					id="Rectangle"
-					width="38"
-					height="38"
-					rx="6"
-					fill="#fff"
-				/>
+				<rect id="Rectangle" width="38" height="38" rx="6" fill="#fff" />
 				<g data-name="Icon" transform="translate(12 12)">
 					<path
 						id="Path"
@@ -301,6 +272,12 @@
 						stroke-width="2"
 					/>
 				</g>
+			</g>
+			<g id="cross">
+				<path
+					fill="currentColor"
+					d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+				></path>
 			</g>
 		</svg>
 	</div>

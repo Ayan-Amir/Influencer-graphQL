@@ -42,13 +42,14 @@ const actions = {
         .then((data) => {
             // Result
             if(data){
-                // console.log(data);
+                console.log('data',data);
                 const token = JSON.stringify(data.data.createSession.token)
                 commit('SET_TOKEN', token)
                 onLogin(apolloClient, token)
                 .then(()=>{
                     dispatch('setUser')
-                    router.push('/user');
+                    console.log('user');
+                    //router.push('/user');
                 })
             }
         })

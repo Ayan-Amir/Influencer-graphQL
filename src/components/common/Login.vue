@@ -37,7 +37,6 @@
 
 <script>
 import { mapActions, mapGetters, mapState } from 'vuex';
-import BaseAlerts from '../base/BaseAlerts.vue';
 export default {
 	data() {
 		return {
@@ -57,7 +56,10 @@ export default {
 		...mapActions(['login']),
 		userLogin: function () {
 			this.processing = true;
-			this.login(this.loginDetails);
+			this.login(this.loginDetails).then(() => {
+				console.log(this.$store.state.auth.user.type);
+				this.$store.state.auth.user.type == 0 ? this.$router.push('/user') : this.$router.push('/brand');
+			});
 		},
 		userInput(data) {
 			this.loginDetails.email = data;
