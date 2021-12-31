@@ -25,8 +25,6 @@
 
 <script>
 import { CAMPAIGN_FILTER, CAMPAIGN_ESTIMATE } from "@/graphql/brand/query";
-import Statics from "@/components/brand/partials/Statics.vue";
-import Chart from "@/components/brand/partials/Chart.vue";
 
 export default {
   data() {
@@ -56,7 +54,16 @@ export default {
       },
     },
   },
-  components: { Statics, Chart },
+  components: {
+    Statics: () =>
+      import(
+        /* webpackChunkName: "statics" */ "@/components/brand/partials/Statics.vue"
+      ),
+    Chart: () =>
+      import(
+        /* webpackChunkName: "statics" */ "@/components/brand/partials/Chart.vue"
+      ),
+  },
 };
 </script>
 

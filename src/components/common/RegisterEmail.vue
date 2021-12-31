@@ -53,7 +53,7 @@ import { CHECK_USERNAME } from "@/graphql/user/query";
 
 export default {
   props: {
-    userType: 0,
+    userType: Number,
   },
   data() {
     return {

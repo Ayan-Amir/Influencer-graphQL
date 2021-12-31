@@ -76,14 +76,14 @@ export default {
         })
         .then((data) => {
           if (data.data.uploadProfile.value != "") {
-            this.setUser().then((data) => {
+            this.setUser().then(() => {
               this.$router.push("/user/");
             });
             return;
           }
         })
         .catch((e) => {
-          console.log(e);
+          this.handleError(e);
         });
     },
   },

@@ -58,9 +58,7 @@ export default {
   props: {
     ageStart: Number,
     ageEnd: Number,
-    gender: {
-      type: Object | Array,
-    },
+    gender: [Object, Array],
   },
   methods: {
     UpdateAgeValue(e) {

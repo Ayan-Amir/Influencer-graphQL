@@ -33,10 +33,7 @@
 <script>
 export default {
   props: {
-    campaignEstimate: {
-      type: Array | Object,
-      default: Array,
-    },
+    campaignEstimate: [Object, Array],
   },
 };
 </script>

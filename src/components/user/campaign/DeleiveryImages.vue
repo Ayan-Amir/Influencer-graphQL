@@ -34,7 +34,7 @@ export default {
         .then(() => {
           event.target.classList.remove("processing");
         })
-        .catch((e) => {
+        .catch((event) => {
           event.target.classList.remove("processing");
         });
     },
@@ -48,11 +48,8 @@ export default {
         })
         .then((data) => {
           if (data) {
-            if (
-              data.data.removeDelivery.state == "success" ||
-              data.data.removeDelivery.state == "updated"
-            ) {
-              let parentEle = event.target.parentNode.closest(".col-lg-4");
+            if (data.data.removeDelivery.state == "success") {
+              let parentEle = event.target.parentNode.closest(".row div");
               parentEle.classList.add("d-none");
             }
           }

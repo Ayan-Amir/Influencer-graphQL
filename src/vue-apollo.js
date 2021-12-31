@@ -6,14 +6,14 @@ import {
   restartWebsockets,
 } from "vue-cli-plugin-apollo/graphql-client";
 import { createUploadLink } from "apollo-upload-client";
-import { ApolloLink, Observable } from "apollo-link";
+import { ApolloLink } from "apollo-link";
 import { InMemoryCache } from "apollo-cache-inmemory";
 // Install the vue plugin
 Vue.use(VueApollo);
 
 // Name of the localStorage item
 const AUTH_TOKEN = "apollo-token";
-const cache = new InMemoryCache();
+new InMemoryCache();
 
 // Http endpoint
 const httpEndpoint =
@@ -36,7 +36,7 @@ const authLink = setContext(async (_, { headers }) => {
 // const httpLink = createUploadLink({
 //     uri: httpEndpoint
 // })
-const httpLink = ApolloLink.from([
+ApolloLink.from([
   // ...
   createUploadLink({
     uri: httpEndpoint,

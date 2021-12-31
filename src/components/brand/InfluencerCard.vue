@@ -14,11 +14,6 @@
         </h3>
         <div class="influencerCard__detail--fileUpload">
           <input type="file" />
-          <!-- <img
-						:src="require(`@/assets/images/svg/${influencer.icon}`)"
-						class="img-fluid"
-						alt=""
-					/> -->
         </div>
       </div>
       <span>{{ influencer.subTitle }}</span>
@@ -47,9 +42,7 @@
 <script>
 export default {
   props: {
-    influencer: {
-      type: Object | Array,
-    },
+    influencer: [Object, Array],
   },
 };
 </script>

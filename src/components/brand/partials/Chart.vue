@@ -25,7 +25,7 @@ export default {
     axis.max = 100;
     axis.strictMinMax = true;
 
-    var colorSet = new am4core.ColorSet();
+    // var colorSet = new am4core.ColorSet();
 
     var gradient = new am4core.LinearGradient();
     gradient.stops.push({ color: am4core.color("#D46F66") });

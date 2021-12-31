@@ -22,11 +22,7 @@ export default {
   components: {
     RegisterEmail: () =>
       import(
-        /* webpackChunkName: "socialLinks.chunk" */ "@/components/common/RegisterEmail.vue"
-      ),
-    SocialLinks: () =>
-      import(
-        /* webpackChunkName: "socialLinks.chunk" */ "@/components/common/SocialLinks.vue"
+        /* webpackChunkName: "socialLinks" */ "@/components/common/RegisterEmail.vue"
       ),
   },
 };

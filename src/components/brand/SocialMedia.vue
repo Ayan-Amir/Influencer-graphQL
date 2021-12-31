@@ -17,9 +17,7 @@
 <script>
 export default {
   props: {
-    socialMedia: {
-      type: Array | Object,
-    },
+    socialMedia: [Object, Array],
   },
 };
 </script>

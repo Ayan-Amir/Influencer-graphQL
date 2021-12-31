@@ -41,12 +41,6 @@ export default {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna arcu tempor et tellus, lobortis interdu.",
     };
   },
-  components: {
-    SocialLinks: () =>
-      import(
-        /* webpackChunkName: "socialLinks.chunk" */ "@/components/common/SocialLinks.vue"
-      ),
-  },
 };
 </script>
 <style lang="scss">

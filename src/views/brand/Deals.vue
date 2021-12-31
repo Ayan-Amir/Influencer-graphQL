@@ -270,10 +270,14 @@
 </template>
 
 <script>
-import { OFFERS_FILTERS, CAMPAIGN_FILTER } from "@/graphql/user/query";
-import DealCard from "@/components/brand/DealCard.vue";
+import { OFFERS_FILTERS } from "@/graphql/user/query";
 export default {
-  components: { DealCard },
+  components: {
+    DealCard: () =>
+      import(
+        /* webpackChunkName: "dealCard" */ "@/components/brand/DealCard.vue"
+      ),
+  },
   data() {
     return {
       offersFilters: [],

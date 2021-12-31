@@ -86,11 +86,11 @@ export default {
   components: {
     ProfileCard: () =>
       import(
-        /* webpackChunkName: "profileCard.chunk" */ "@/components/common/ProfileCard.vue"
+        /* webpackChunkName: "profileCard" */ "@/components/common/ProfileCard.vue"
       ),
     CompaignCard: () =>
       import(
-        /* webpackChunkName: "compaignCard.chunk" */ "@/components/user/CompaignCard.vue"
+        /* webpackChunkName: "compaignCard" */ "@/components/user/CompaignCard.vue"
       ),
   },
   apollo: {

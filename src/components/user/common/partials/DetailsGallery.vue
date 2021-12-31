@@ -17,11 +17,8 @@
 <script>
 export default {
   props: {
-    gallery: {
-      type: Object | Array,
-    },
+    gallery: [Object, Array],
   },
-  mounted() {},
 };
 </script>
 

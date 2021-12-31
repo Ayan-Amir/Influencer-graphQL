@@ -53,7 +53,6 @@
 </template>
 
 <script>
-import StarRating from "./StarRating.vue";
 export default {
   methods: {
     show(id) {
@@ -66,12 +65,12 @@ export default {
     },
   },
   props: {
-    newCampaignFilters: {
-      type: Array | Object,
-      default: Array,
-    },
+    newCampaignFilters: [Object, Array],
   },
-  components: { StarRating },
+  components: {
+    StarRating: () =>
+      import(/* webpackChunkName: "starRating" */ "./StarRating.vue"),
+  },
 };
 </script>
 

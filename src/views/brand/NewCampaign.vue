@@ -31,11 +31,11 @@
             <!-- Target Section -->
             <campaign-target />
             <!-- Budget Section -->
-            <compaign-budget />
+            <campaign-budget />
           </div>
           <div class="col-lg-6">
             <!-- Audience Definition Section -->
-            <compaign-audience-defination />
+            <campaign-audience-defination />
           </div>
         </div>
       </div>
@@ -44,12 +44,21 @@
 </template>
 
 <script>
-import CampaignTarget from "@/components/brand/CampaignTarget.vue";
-import CompaignBudget from "@/components/brand/CompaignBudget.vue";
-import CompaignAudienceDefination from "@/components/brand/CompaignAudienceDefination.vue";
-
 export default {
-  components: { CampaignTarget, CompaignBudget, CompaignAudienceDefination },
+  components: {
+    CampaignTarget: () =>
+      import(
+        /* webpackChunkName: "campaignTarget" */ "@/components/brand/CampaignTarget.vue"
+      ),
+    CampaignBudget: () =>
+      import(
+        /* webpackChunkName: "compaignBudget" */ "@/components/brand/CompaignBudget.vue"
+      ),
+    CampaignAudienceDefination: () =>
+      import(
+        /* webpackChunkName: "campaignAudienceDefination" */ "@/components/brand/CompaignAudienceDefination.vue"
+      ),
+  },
 };
 </script>
 

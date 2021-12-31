@@ -48,9 +48,7 @@
 <script>
 export default {
   props: {
-    offer: {
-      type: Object | Array,
-    },
+    offer: [Object, Array],
   },
   mounted() {
     setInterval(() => {

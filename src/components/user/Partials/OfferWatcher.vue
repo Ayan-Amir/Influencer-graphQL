@@ -17,9 +17,7 @@
 <script>
 export default {
   props: {
-    offerCard: {
-      type: Object | Array,
-    },
+    offerCard: [Object, Array],
   },
 };
 </script>

@@ -59,21 +59,28 @@
 </template>
 
 <script>
-import StarRating from "./partials/StarRating.vue";
-import AgeAndGender from "@/components/brand/partials/AgeAndGender.vue";
-import Location from "@/components/brand/partials/Location.vue";
-import Interest from "@/components/brand/partials/Interest.vue";
-import Filters from "@/components/brand/partials/Filters.vue";
-
 import { CAMPAIGN_FILTER } from "@/graphql/brand/query";
 
 export default {
   components: {
-    StarRating,
-    AgeAndGender,
-    Location,
-    Interest,
-    Filters,
+    StarRating: () =>
+      import(/* webpackChunkName: "starRating" */ "./partials/StarRating.vue"),
+    AgeAndGender: () =>
+      import(
+        /* webpackChunkName: "ageAndGender" */ "@/components/brand/partials/AgeAndGender.vue"
+      ),
+    Location: () =>
+      import(
+        /* webpackChunkName: "location" */ "@/components/brand/partials/Location.vue"
+      ),
+    Interest: () =>
+      import(
+        /* webpackChunkName: "interest" */ "@/components/brand/partials/Interest.vue"
+      ),
+    Filters: () =>
+      import(
+        /* webpackChunkName: "filters" */ "@/components/brand/partials/Filters.vue"
+      ),
   },
   data() {
     return {

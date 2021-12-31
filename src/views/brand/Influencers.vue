@@ -48,9 +48,13 @@
 
 <script>
 import { OFFERS_FILTERS } from "@/graphql/user/query";
-import InfluencerCard from "@/components/brand/InfluencerCard.vue";
 export default {
-  components: { InfluencerCard },
+  components: {
+    InfluencerCard: () =>
+      import(
+        /* webpackChunkName: "influencerCard" */ "@/components/brand/InfluencerCard.vue"
+      ),
+  },
   data() {
     return {
       offersFilters: [],

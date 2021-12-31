@@ -8,10 +8,10 @@ export default class ErrorService {
     if (response && response.status >= 400 && response.status < 405) {
       return false;
     }
-    let err = e.message;
-    if (e.networkError) {
-      if (e.networkError.result.errors) {
-        error = e.networkError.result.errors[0].message;
+    // let err = e.message;
+    if (error.networkError) {
+      if (error.networkError.result.errors) {
+        error = error.networkError.result.errors[0].message;
       }
     }
   }

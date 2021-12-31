@@ -43,7 +43,7 @@ export default {
     friendURL(title) {
       let encodedUrl = title.toString().toLowerCase();
 
-      encodedUrl = encodedUrl.split(/\&+/).join("-and-");
+      encodedUrl = encodedUrl.split(/&/).join("-and-");
 
       encodedUrl = encodedUrl.split(/[^a-z0-9]/).join("-");
 

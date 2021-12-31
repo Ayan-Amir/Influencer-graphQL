@@ -15,7 +15,7 @@ export default {
   components: {
     TheHeader: () =>
       import(
-        /* webpackChunkName: "socialLinks.chunk" */ "@/components/user/layout/TheHeader.vue"
+        /* webpackChunkName: "socialLinks" */ "@/components/user/layout/TheHeader.vue"
       ),
   },
 };

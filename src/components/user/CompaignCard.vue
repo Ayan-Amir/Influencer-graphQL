@@ -36,9 +36,7 @@
 <script>
 export default {
   props: {
-    campaign: {
-      type: Object | Array,
-    },
+    campaign: [Object, Array],
     isApply: Boolean,
     islink: Boolean,
   },

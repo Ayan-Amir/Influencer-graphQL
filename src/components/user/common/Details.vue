@@ -16,7 +16,10 @@ export default {
     };
   },
   components: {
-    DetailsGallery: () => import("./partials/DetailsGallery.vue"),
+    DetailsGallery: () =>
+      import(
+        /* webpackChunkName: "detailsGallery" */ "./partials/DetailsGallery.vue"
+      ),
   },
   created() {
     this.id = parseInt(this.$route.params.id);

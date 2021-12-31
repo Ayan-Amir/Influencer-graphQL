@@ -48,11 +48,17 @@
 </template>
 
 <script>
-import ProfileCard from "@/components/common/ProfileCard.vue";
-import CampaignCard from "@/components/brand/CampaignCard.vue";
-
 export default {
-  components: { ProfileCard, CampaignCard },
+  components: {
+    ProfileCard: () =>
+      import(
+        /* webpackChunkName: "profileCard" */ "@/components/common/ProfileCard.vue"
+      ),
+    CampaignCard: () =>
+      import(
+        /* webpackChunkName: "campaignCard" */ "@/components/brand/CampaignCard.vue"
+      ),
+  },
   data() {
     return {
       options: [

@@ -46,9 +46,7 @@
 <script>
 export default {
   props: {
-    deal: {
-      type: Object | Array,
-    },
+    deal: [Object, Array],
   },
 };
 </script>

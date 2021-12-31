@@ -36,9 +36,7 @@
 <script>
 export default {
   props: {
-    interests: {
-      type: Object | Array,
-    },
+    interests: [Object, Array],
   },
   methods: {
     show(id) {

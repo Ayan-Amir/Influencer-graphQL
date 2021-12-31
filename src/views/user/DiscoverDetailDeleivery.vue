@@ -62,7 +62,7 @@ export default {
 
   components: {
     // DeleiveryImages: () =>
-    // 	import(/* webpackChunkName: "deleiveryImages.chunk" */ '@/components/user/partials/DeleiveryImages.vue'),
+    // 	import(/* webpackChunkName: "deleiveryImages" */ '@/components/user/partials/DeleiveryImages.vue'),
   },
 };
 </script>

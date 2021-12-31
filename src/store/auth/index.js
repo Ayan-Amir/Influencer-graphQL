@@ -1,7 +1,7 @@
 import { onLogin, apolloClient, onLogout } from "@/vue-apollo";
 import { LOGIN_USER, REGISTER_USER } from "@/graphql/user/mutations";
 import { LOGGED_IN_USER } from "@/graphql/user/query";
-import { getDefaultValues } from "@apollo/client/utilities";
+// import { getDefaultValues } from "@apollo/client/utilities";
 import router from "@/router";
 
 // import apolloClient from 'vue-apollo'
@@ -124,7 +124,7 @@ const actions = {
         commit("alert/error", error);
       });
   },
-  async logOut({ commit, dispatch }) {
+  async logOut({ commit }) {
     commit("LOGOUT_USER");
     onLogout(apolloClient);
   },

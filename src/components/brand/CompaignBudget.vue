@@ -81,6 +81,7 @@ export default {
       this.newCampaignFilters.influencers = e;
     },
     selectedpost(e) {
+      console.log(e);
       // this.newCampaignFilters.posts = e;
     },
   },

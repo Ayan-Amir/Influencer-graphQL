@@ -30,12 +30,10 @@ export default {
   components: {
     OffersCard: () =>
       import(
-        /* webpackChunkName: "offersCard.chunk" */ "@/components/user/OffersCard.vue"
+        /* webpackChunkName: "offersCard" */ "@/components/user/OffersCard.vue"
       ),
-    InfiniteLoading: () =>
-      import(
-        /* webpackChunkName: "infiniteLoading.chunk" */ "vue-infinite-loading"
-      ),
+    // InfiniteLoading: () =>
+    //   import(/* webpackChunkName: "infiniteLoading" */ "vue-infinite-loading"),
   },
   data() {
     return {

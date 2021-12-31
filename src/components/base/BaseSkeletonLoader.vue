@@ -157,7 +157,6 @@
 </template>
 
 <script>
-import VueSkeletonLoader from "skeleton-loader-vue";
 export default {
   props: {
     type: String,
@@ -168,7 +167,8 @@ export default {
     isApply: Boolean,
   },
   components: {
-    VueSkeletonLoader,
+    VueSkeletonLoader: () =>
+      import(/* webpackChunkName: "vueSkeletonLoader" */ "skeleton-loader-vue"),
   },
 };
 </script>

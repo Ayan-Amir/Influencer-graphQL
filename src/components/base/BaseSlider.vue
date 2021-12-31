@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/antd.css";
 export default {
   data() {
@@ -19,7 +18,8 @@ export default {
     input: Number,
   },
   components: {
-    VueSlider,
+    VueSlider: () =>
+      import(/* webpackChunkName: "vueSlider" */ "vue-slider-component"),
   },
   watch: {
     number: function () {

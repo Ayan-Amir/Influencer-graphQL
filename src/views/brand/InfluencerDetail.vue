@@ -238,11 +238,17 @@
 </template>
 
 <script>
-import SocialMedia from "@/components/brand/SocialMedia.vue";
-import InfluencerDetailGallery from "@/components/brand/InfluencerDetailGallery.vue";
-
 export default {
-  components: { SocialMedia, InfluencerDetailGallery },
+  components: {
+    SocialMedia: () =>
+      import(
+        /* webpackChunkName: "socialMedia" */ "@/components/brand/SocialMedia.vue"
+      ),
+    InfluencerDetailGallery: () =>
+      import(
+        /* webpackChunkName: "influencerDetailGallery" */ "@/components/brand/InfluencerDetailGallery.vue"
+      ),
+  },
   methods: {
     hideModal() {
       this.$refs["introduction"].hide();

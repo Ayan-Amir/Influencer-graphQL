@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import MultiRangeSlider from "multi-range-slider-vue";
-
 export default {
   props: {
     min: Number,
@@ -23,7 +21,12 @@ export default {
     start: Number,
     end: Number,
   },
-  components: { MultiRangeSlider },
+  components: {
+    MultiRangeSlider: () =>
+      import(
+        /* webpackChunkName: "multiRangeSlider" */ "multi-range-slider-vue"
+      ),
+  },
   methods: {
     UpdateValues(e) {
       this.$emit("rangeValue", e.minValue, e.maxValue);

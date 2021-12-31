@@ -27,9 +27,7 @@ export default {
     return {};
   },
   props: {
-    locations: {
-      type: Object | Array,
-    },
+    locations: [Object, Array],
   },
   methods: {
     show(id) {

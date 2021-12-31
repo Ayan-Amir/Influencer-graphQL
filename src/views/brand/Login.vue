@@ -63,12 +63,10 @@ export default {
   },
   components: {
     Login: () =>
-      import(
-        /* webpackChunkName: "login.chunk" */ "@/components/common/Login.vue"
-      ),
+      import(/* webpackChunkName: "login" */ "@/components/common/Login.vue"),
     SocialLinks: () =>
       import(
-        /* webpackChunkName: "socialLinks.chunk" */ "@/components/common/SocialLinks.vue"
+        /* webpackChunkName: "socialLinks" */ "@/components/common/SocialLinks.vue"
       ),
   },
 };

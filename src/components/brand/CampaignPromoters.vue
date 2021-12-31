@@ -24,10 +24,12 @@
 </template>
 
 <script>
-import CampaignPromotersCard from "./partials/CampaignPromotersCard.vue";
 export default {
   components: {
-    CampaignPromotersCard,
+    CampaignPromotersCard: () =>
+      import(
+        /* webpackChunkName: "campaignPromotersCard" */ "./partials/CampaignPromotersCard.vue"
+      ),
   },
 };
 </script>

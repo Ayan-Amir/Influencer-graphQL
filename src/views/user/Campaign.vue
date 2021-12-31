@@ -44,7 +44,7 @@ export default {
   components: {
     CompaignCard: () =>
       import(
-        /* webpackChunkName: "capaignCard.chunk" */ "@/components/user/CompaignCard.vue"
+        /* webpackChunkName: "capaignCard" */ "@/components/user/CompaignCard.vue"
       ),
   },
   apollo: {
