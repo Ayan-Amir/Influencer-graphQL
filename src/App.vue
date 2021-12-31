@@ -5,13 +5,10 @@
 </template>
 
 <script>
-import TheHeader from "@/components/layout/TheHeader.vue";
 import { mapActions } from "vuex";
 export default {
   name: "App",
-  components: {
-    TheHeader,
-  },
+
   methods: {
     ...mapActions({
       clearAlert: "alert/clear",

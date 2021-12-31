@@ -51,7 +51,7 @@ export default {
           this.selectedValue = null;
         }
       } else {
-        this.selectedValue = value;
+        this.selectedValue = this.value;
       }
     },
   },

@@ -51,9 +51,7 @@ export default {
     };
   },
   props: {
-    filters: {
-      type: Object | Array,
-    },
+    filters: [Object, Array],
     selected: String,
     isSeacrh: Boolean,
   },
