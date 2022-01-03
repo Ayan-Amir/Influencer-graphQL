@@ -31,7 +31,7 @@ export default [
   },
   {
     path: "campaign-detail",
-    name: "Campaign Detail",
+    name: "Brand Campaign Detail",
     component: () =>
       import(
         /* webpackChunkName: "campaignDetail" */ "@/views/brand/CampaignDetail.vue"

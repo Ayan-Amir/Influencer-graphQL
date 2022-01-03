@@ -816,6 +816,8 @@ h6 {
 		border-radius: 12px;
 		padding: 12px;
 		font-weight: 300 !important;
+		display: flex;
+		align-items: center;
 		&.active {
 			outline: none;
 			box-shadow: none;

@@ -1,9 +1,9 @@
-import { required, confirmed, email } from "vee-validate/dist/rules";
-import { extend } from "vee-validate";
+import { required, confirmed, email ,field } from "vee-validate/dist/rules";
+import { extend  , name} from "vee-validate";
 
 extend("required", {
   ...required,
-  message: "{field} is required",
+  message: `${field} is required`,
 });
 
 extend("email", {

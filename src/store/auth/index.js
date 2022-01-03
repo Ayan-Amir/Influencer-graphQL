@@ -46,7 +46,6 @@ const actions = {
           commit("SET_TOKEN", token);
           onLogin(apolloClient, token).then(() => {
             dispatch("setUser");
-            console.log("user");
             //router.push('/user');
           });
         }

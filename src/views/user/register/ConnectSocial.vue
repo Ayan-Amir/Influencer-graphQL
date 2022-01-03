@@ -2,6 +2,7 @@
   <div class="paymentDetail">
     <div class="row justify-content-between align-items-center">
       <div class="col-md-5">
+        <base-alerts />
         <h1>{{ title }}</h1>
         <validation-observer ref="observer" v-slot="{ handleSubmit }">
           <b-form @submit.stop.prevent="handleSubmit(onSubmit)">
@@ -18,7 +19,7 @@
                 class="btn btn-primary large"
                 :class="processing ? 'processing' : ''"
               >
-                Save
+                {{ btnText }}
               </button>
             </div>
           </b-form>
@@ -44,6 +45,7 @@ export default {
     return {
       title: "Connect Social",
       processing: false,
+      btnText: "Save",
       mediaAccount: {
         type: "instagram",
         username: null,
@@ -56,6 +58,7 @@ export default {
     },
     async updateMediaAccount() {
       this.processing = true;
+      this.btnText = "Saving...";
       await this.$apollo
         .mutate({
           mutation: MEDIA_ACCOUNT,
@@ -68,11 +71,15 @@ export default {
               data.data.mediaAccount.state == "updated"
             ) {
               this.$router.push("story-price");
+              this.processing = false;
+              this.btnText = "Save";
             }
           }
         })
         .catch((e) => {
           this.handleError(e);
+          this.processing = false;
+          this.btnText = "Save";
         });
     },
   },
