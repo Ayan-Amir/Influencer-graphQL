@@ -1,117 +1,111 @@
 <template>
-  <div class="discover container">
-    <div>
-      <base-filters
-        v-if="$apollo.data.campaignsFilters"
-        :filters="campaignsFilters"
-        @locationvalue="locationValue"
-        @categoryvalue="categoryValue"
-        @searchvalue="searchvalue"
-      />
-      <div v-if="$apollo.loading">
-        <base-skeleton-loader
-          type="discover"
-          :count="8"
-          :isApply="true"
-        ></base-skeleton-loader>
-      </div>
-      <compaign-card
-        v-for="campaign in campaigns"
-        :key="campaign.id"
-        :campaign="campaign"
-        :isApply="true"
-      />
-    </div>
-    <div v-if="norecord">No Record Found</div>
-  </div>
+	<div class="discover container" v-if="$apollo.data.campaigns">
+		<div>
+			<base-filters
+				v-if="$apollo.data.campaignsFilters"
+				:filters="campaignsFilters"
+				@locationvalue="locationValue"
+				@categoryvalue="categoryValue"
+				@searchvalue="searchvalue"
+			/>
+			<div v-if="$apollo.loading">
+				<base-skeleton-loader type="discover" :count="8" :isApply="true"></base-skeleton-loader>
+			</div>
+			<compaign-card v-for="campaign in campaigns" :key="campaign.id" :campaign="campaign" :isApply="true" />
+		</div>
+		<div v-if="norecord">No Record Found</div>
+	</div>
 </template>
 
 <script>
-import { CAMPAIGNS, COMPAIGNS_FILTER } from "@/graphql/user/query";
+import { CAMPAIGNS, COMPAIGNS_FILTER } from '@/graphql/user/query';
 export default {
-  data() {
-    return {
-      campaignsFilters: [],
-      campaigns: [],
-      filterLocations: [],
-      filterCategories: [],
-      search: "",
-      page: 1,
-      selected: "",
-      norecord: false,
-    };
-  },
-  components: {
-    CompaignCard: () =>
-      import(
-        /* webpackChunkName: "capaignCard" */ "@/components/user/CompaignCard.vue"
-      ),
-  },
-  apollo: {
-    campaigns: {
-      query: CAMPAIGNS,
-      variables() {
-        return {
-          page: this.page,
-          locations: this.filterLocations,
-          categories: this.filterCategories,
-          search: this.search,
-          subscriptions: null,
-        };
-      },
-      result(data) {
-        if (data.data.campaigns.length == 0) {
-          this.norecord = true;
-        } else {
-          this.norecord = false;
-        }
-      },
-    },
-    campaignsFilters: {
-      query: COMPAIGNS_FILTER,
-      result(data) {
-        if (data) {
-          let newLocation = data.data.campaignsFilters.default.locations.map(
-            (item) => item.id
-          );
+	data() {
+		return {
+			campaignsFilters: [],
+			campaigns: [],
+			// newCampaign: [],
+			filterLocations: [],
+			filterCategories: [],
+			search: '',
+			page: 1,
+			selected: '',
+			norecord: false,
+		};
+	},
+	components: {
+		CompaignCard: () => import(/* webpackChunkName: "capaignCard" */ '@/components/user/CompaignCard.vue'),
+	},
+	apollo: {
+		campaigns: {
+			query: CAMPAIGNS,
+			variables() {
+				return {
+					page: this.page,
+					locations: this.filterLocations,
+					categories: this.filterCategories,
+					search: this.search,
+					subscriptions: null,
+				};
+			},
+			result(data) {
+				if (data.data.campaigns.length == 0) {
+					this.norecord = true;
+				} else {
+					this.norecord = false;
+				}
+			},
+		},
+		campaignsFilters: {
+			query: COMPAIGNS_FILTER,
+			result(data) {
+				if (data) {
+					let newLocation = data.data.campaignsFilters.default.locations.map((item) => item.id);
 
-          let newCategory = data.data.campaignsFilters.default.categories.map(
-            (item) => item.id
-          );
+					let newCategory = data.data.campaignsFilters.default.categories.map((item) => item.id);
 
-          this.filterLocations = newLocation;
-          this.filterCategories = newCategory;
-          this.$apollo.queries.campaigns.skip = false;
-        }
-      },
-    },
-  },
-  methods: {
-    locationValue(data) {
-      this.filterLocations = data;
+					this.filterLocations = newLocation;
+					this.filterCategories = newCategory;
+					this.$apollo.queries.campaigns.skip = false;
+				}
+			},
+		},
+	},
+	// watch: {
+	// 	campaigns: {
+	// 		handler() {
+	// 			if (this.campaigns) {
+	// 				this.newCampaign = this.campaigns;
+	// 			}
+	// 		},
+	// 	},
+	// },
+	methods: {
+		locationValue(data) {
+			this.filterLocations = data;
 
-      let newFilter = this.filterLocations.map((item) => item.id);
-      if (this.filterLocations.length == 0) {
-        this.filterLocations = null;
-      } else {
-        this.filterLocations = newFilter;
-      }
-    },
-    categoryValue(data) {
-      this.filterCategories = data;
+			let newFilter = this.filterLocations.map((item) => item.id);
+			if (this.filterLocations.length == 0) {
+				this.filterLocations = null;
+			} else {
+				this.filterLocations = newFilter;
+			}
+		},
+		categoryValue(data) {
+			this.filterCategories = data;
 
-      let newFilter = this.filterCategories.map((item) => item.id);
+			let newFilter = this.filterCategories.map((item) => item.id);
 
-      if (this.filterCategories.length == 0) {
-        this.filterCategories = null;
-      } else {
-        this.filterCategories = newFilter;
-      }
-    },
-    searchvalue(data) {
-      this.search = data;
-    },
-  },
+			if (this.filterCategories.length == 0) {
+				this.filterCategories = null;
+			} else {
+				this.filterCategories = newFilter;
+			}
+		},
+		searchvalue(data) {
+			this.search = data;
+		},
+	},
 };
 </script>
 
