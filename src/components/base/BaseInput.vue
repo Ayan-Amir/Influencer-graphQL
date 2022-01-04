@@ -35,11 +35,6 @@ export default {
 			this.$emit('input', value);
 		},
 	},
-	mounted() {
-		console.log('name', this.name);
-		// this.getValidationState();
-		// this.onSubmit();
-	},
 };
 </script>
 

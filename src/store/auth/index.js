@@ -41,7 +41,6 @@ const actions = {
       .then((data) => {
         // Result
         if (data) {
-          console.log("data", data);
           const token = JSON.stringify(data.data.createSession.token);
           commit("SET_TOKEN", token);
           onLogin(apolloClient, token).then(() => {
@@ -95,7 +94,6 @@ const actions = {
         }
       })
       .catch((e) => {
-        console.log(e.message);
         let error = e.message;
         if (e.networkError) {
           if (e.networkError.result.errors) {
