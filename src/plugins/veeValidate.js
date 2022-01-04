@@ -1,14 +1,14 @@
-import { required, confirmed, email ,field } from "vee-validate/dist/rules";
-import { extend  , name} from "vee-validate";
+import { required, confirmed, email } from "vee-validate/dist/rules";
+import { extend } from "vee-validate";
 
 extend("required", {
   ...required,
-  message: `${field} is required`,
+  message: `{_field_} is required`,
 });
 
 extend("email", {
   ...email,
-  message: "{field} must be a valid email",
+  message: "{_field_} must be a valid email",
 });
 
 extend("confirmed", {
@@ -18,5 +18,5 @@ extend("confirmed", {
 
 extend("min", {
   ...length,
-  message: "{field} must be at least {min} characters",
+  message: "{_field_} must be at least {_min_} characters",
 });

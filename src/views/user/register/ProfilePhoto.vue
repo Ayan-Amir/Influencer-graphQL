@@ -8,6 +8,7 @@
 					<b-form @submit.stop.prevent="handleSubmit(uploadImage)" enctype="multipart/form-data">
 						<div class="profile__Photo">
 							<base-profile-upload
+								name="Image"
 								:rules="`${image == null ? 'required' : 'ext:jpg,png'}`"
 								v-model="image"
 							/>

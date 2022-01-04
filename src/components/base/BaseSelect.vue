@@ -2,7 +2,6 @@
 	<validation-provider :name="name" mode="eager" :rules="rules" v-slot="{ valid, errors }">
 		<b-form-group>
 			<v-select
-				placeholder="Gender"
 				v-model="selectedValue"
 				:options="options_arr"
 				:state="errors[0] ? false : valid ? true : null"
