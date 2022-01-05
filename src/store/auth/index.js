@@ -91,6 +91,7 @@ const actions = {
       .then((data) => {
         if (data) {
           commit("LOGIN_USER", data.data.me);
+          data.data.me.type==0 ? router.push('/user') : router.push('/brand')
         }
       })
       .catch((e) => {

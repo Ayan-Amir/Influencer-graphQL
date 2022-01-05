@@ -49,18 +49,15 @@ export default {
 	},
 	computed: {
 		...mapState({
-			alert: (state) => state.alert,
+			alert: (state) => state.alert
 		}),
 	},
 	methods: {
 		...mapActions(['login', 'logOut']),
 		userLogin: function () {
-			// this.logOut();
+			this.logOut();
 			this.processing = true;
-			this.login(this.loginDetails).then(() => {
-				console.log(this.$store.state.auth.user.type);
-				this.$store.state.auth.user.type == 0 ? this.$router.push('/user') : this.$router.push('/brand');
-			});
+			this.login(this.loginDetails);
 		},
 		userInput(data) {
 			this.loginDetails.email = data;
