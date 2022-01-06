@@ -13,7 +13,7 @@
 export default {
 	name: 'DashboardLayout',
 	components: {
-		TheHeader: () => import(/* webpackChunkName: "theHeader" */ '@/components/layout/TheHeader2.vue'),
+		TheHeader: () => import(/* webpackChunkName: "theHeader" */ '@/components/layout/TheHeader.vue'),
 	},
 };
 </script>
