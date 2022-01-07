@@ -86,4 +86,24 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.btn {
+    display: inline-flex;
+    user-select: none;
+    border: 0;
+    line-height: 1;
+    border-radius: 0;
+    transition: all 0.5s ease;
+    color: #fff;
+    padding: rem(14px) rem(65px);
+    border-radius: 16px;
+    font-size: rem(20px);
+    font-weight: 600;
+    width: 270px;
+    vertical-align: middle;
+    position: relative;
+}
+
+</style>
+
+
