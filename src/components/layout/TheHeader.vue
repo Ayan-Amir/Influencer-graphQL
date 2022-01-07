@@ -102,6 +102,28 @@
 										<router-link to="/user/discover">Discover</router-link>
 									</li>
 								</ul>
+								<!-- Mobile Main links -->
+								<ul v-if="user.type != 0" class="mainLinks">
+									<li>
+										<router-link to="#">
+											<svg-icon icon-id="Influencers" icon-viewbox="0 0 20.738 11.668">
+											</svg-icon>
+											Influencers
+										</router-link>
+									</li>
+									<li class="active">
+										<router-link to="#">
+											<svg-icon icon-id="compaign" icon-viewbox="0 0 14.788 13.238"> </svg-icon>
+											Campaign
+										</router-link>
+									</li>
+									<li>
+										<router-link to="#">
+											<svg-icon icon-id="deal" icon-viewbox=" 0 0 14.788 13.238"> </svg-icon>
+											Deal
+										</router-link>
+									</li>
+								</ul>
 								<!-- Mobile Notification -->
 								<router-link to="/user/notifications" class="notification">
 									Notifications

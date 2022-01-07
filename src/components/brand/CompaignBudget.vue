@@ -34,9 +34,7 @@
           <base-slider :min="0" :max="1000" :input="0" @value="selectedpost" />
           <!-- Rang slider -->
           <div class="button-row">
-            <router-link to="" class="btn btn-primary full"
-              >Continue</router-link
-            >
+            <router-link to="" class="btn btn-primary full">Continue</router-link>
           </div>
         </div>
       </div>

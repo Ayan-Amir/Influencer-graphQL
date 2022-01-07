@@ -2,29 +2,7 @@
   <div class="influencer">
     <div class="container">
       <div class="topHead">
-        <ul class="mainLinks hide-on-lg">
-          <li class="active">
-            <router-link to="/brand/influencers">
-              <svg-icon icon-id="Influencers" icon-viewbox="0 0 20.738 11.668">
-              </svg-icon>
-              Influencers
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/brand">
-              <svg-icon icon-id="compaign" icon-viewbox="0 0 14.788 13.238">
-              </svg-icon>
-              Campaign
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/brand/deals">
-              <svg-icon icon-id="deal" icon-viewbox=" 0 0 14.788 13.238">
-              </svg-icon>
-              Deal
-            </router-link>
-          </li>
-        </ul>
+        <navigation/>
         <base-filters
           v-if="$apollo.data.offersFilters"
           :filters="offersFilters"
@@ -53,6 +31,10 @@ export default {
     InfluencerCard: () =>
       import(
         /* webpackChunkName: "influencerCard" */ "@/components/brand/InfluencerCard.vue"
+      ),
+      navigation: () =>
+      import(
+        /* webpackChunkName: "navigations" */ "@/components/brand/Navigation.vue"
       ),
   },
   data() {
@@ -203,6 +185,24 @@ export default {
   /deep/ {
     .filters {
       margin-bottom: 0;
+      padding-top:0;
+      @media screen and (max-width:575px){
+        width:100%;
+        .d-flex{
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          .form-group{
+            &:not(:last-child){
+              margin-bottom:rem(20px);
+            }
+          }
+          .multiselect{
+            margin:0;
+            min-width: 300px;
+          }
+        }
+      }
     }
   }
   .topHead {
