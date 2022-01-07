@@ -147,7 +147,7 @@ export default {
 		...mapGetters(['user']),
 	},
 	mounted() {
-		console.log('user', this.user);
+		console.log('user', this.user.type);
 		this.menuIcon();
 		setTimeout(() => {
 			this.isLoading = false;
@@ -214,11 +214,6 @@ header {
 						max-width: 160px;
 					}
 				}
-				// @media screen and (max-width: 767px) {
-				// 	position: absolute;
-				// 	left: 50%;
-				// 	transform: translateX(-50%);
-				// }
 			}
 		}
 		.middle-side {
