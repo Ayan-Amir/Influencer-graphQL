@@ -35,7 +35,7 @@
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Product Value*" value="Product Value*" />
 				</div>
-				<div class="form-group mt-2">
+				<div class="form-group mt-20">
 					<label class="control-label">Product Description (obtional)</label>
 					<textarea
 						class="form-control"
@@ -141,7 +141,7 @@
 		<b-modal ref="task" id="task" centered>
 			<div class="title">Task</div>
 			<p class="subTitle">How many influencers would you like to receive your free service/product.</p>
-			<base-touch-spin sign="" :price="1" text=" Instagram story" />
+			<base-touch-spin sign="" v-model="instaStory" :price="1" text=" Instagram story" />
 			<p class="subTitle">What do you want the influencers to crate?</p>
 			<div class="touch-spin">
 				<base-touch-spin sign="" :price="1" text=" Instagram story" />
@@ -198,10 +198,12 @@ import 'vue-simple-suggest/dist/styles.css';
 export default {
 	data() {
 		return {
+			chosen: '',
+			instaStory: '',
+			instaStory2: '',
 			followers: 500,
 			priceStart: 16,
 			priceEnd: 65,
-			chosen: '',
 			autoCompleteStyle: {
 				vueSimpleSuggest: 'position-relative',
 				inputWrapper: '',
@@ -413,41 +415,41 @@ export default {
 	}
 }
 /deep/ {
-	.quantityToggle {
-		input {
-			padding: 0 !important;
-			width: 180px;
-			font-size: rem(14px);
-			font-weight: 400;
-			color: var(--primary);
-			background: transparent;
-			height: 28px;
-			@media screen and (max-width: 991px) {
-				width: 150px;
-			}
-		}
-		button {
-			width: 23px;
-			height: 23px;
-			min-width: 23px;
-			border-width: 2px;
-			background: #fff;
-			&.decrement {
-				&:before {
-					background: url(../../assets/images/icons/minus.png) center center no-repeat;
-					width: 11px;
-					height: 4px;
-				}
-			}
-			&.increament {
-				&:before {
-					background: url(../../assets/images/icons/pluss.png) center center no-repeat;
-					width: 10px;
-					height: 17px;
-				}
-			}
-		}
-	}
+	// .quantityToggle {
+	// 	input {
+	// 		padding: 0 !important;
+	// 		width: 180px;
+	// 		font-size: rem(14px);
+	// 		font-weight: 400;
+	// 		color: var(--primary);
+	// 		background: transparent;
+	// 		height: 28px;
+	// @media screen and (max-width: 991px) {
+	// 	width: 150px;
+	// }
+	// 	}
+	// 	button {
+	// 		width: 23px;
+	// 		height: 23px;
+	// 		min-width: 23px;
+	// 		border-width: 2px;
+	// 		background: #fff;
+	// 		&.decrement {
+	// 			&:before {
+	// 				background: url(../../assets/images/icons/minus.png) center center no-repeat;
+	// 				width: 11px;
+	// 				height: 4px;
+	// 			}
+	// 		}
+	// 		&.increament {
+	// 			&:before {
+	// 				background: url(../../assets/images/icons/pluss.png) center center no-repeat;
+	// 				width: 10px;
+	// 				height: 17px;
+	// 			}
+	// 		}
+	// 	}
+	// }
 	.v-select {
 		.v-select-toggle {
 			border-radius: 8px;
@@ -488,6 +490,31 @@ export default {
 			}
 			.form-control {
 				padding-left: rem(32px);
+			}
+		}
+		&.designed {
+			.suggestions {
+				border: 0;
+				box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.24);
+				-webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.24);
+				-moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.24);
+				border-radius: 8px;
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
+				.suggest-item {
+					padding: 0.5rem 1.25rem;
+					user-select: none;
+					font-size: 0.875rem;
+					font-weight: 600;
+					line-height: 1.1;
+					&.hover {
+						background: var(--primary) !important;
+					}
+					span {
+						font-size: 0.875rem;
+						font-weight: 600;
+					}
+				}
 			}
 		}
 	}
