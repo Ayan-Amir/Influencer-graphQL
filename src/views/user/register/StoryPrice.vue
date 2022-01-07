@@ -116,6 +116,7 @@ export default {
 				font-size: rem(52px);
 				font-weight: 900;
 				height: 45px;
+				color: var(--primary);
 				@media screen and (max-width: 991px) {
 					width: 220px;
 				}

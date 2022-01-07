@@ -44,19 +44,16 @@ export default {
 		margin: rem(20px) 0;
 	}
 	input {
-		width: 180px;
+		width: 135px;
 		padding: 0 !important;
 		border: 0 !important;
 		text-align: center;
 		font-size: rem(14px);
 		font-weight: 400;
-		color: var(--primary);
+		color: var(--textPrimary);
 		background: transparent;
 		height: 28px;
 		outline: none !important;
-		@media screen and (max-width: 991px) {
-			width: 150px;
-		}
 	}
 	button {
 		position: relative;
