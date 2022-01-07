@@ -67,7 +67,8 @@ export default {
 		border: 2px solid var(--primary);
 		border-radius: 50%;
 		background: #fff;
-		transition: all 0.5s ease;
+		cursor: pointer;
+		// transition: all 0.5s ease;
 		font-size: 0;
 		&:before {
 			content: '';
