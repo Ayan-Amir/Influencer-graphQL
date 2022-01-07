@@ -420,41 +420,6 @@ export default {
 	}
 }
 /deep/ {
-	// .quantityToggle {
-	// 	input {
-	// 		padding: 0 !important;
-	// 		width: 180px;
-	// 		font-size: rem(14px);
-	// 		font-weight: 400;
-	// 		color: var(--primary);
-	// 		background: transparent;
-	// 		height: 28px;
-	// @media screen and (max-width: 991px) {
-	// 	width: 150px;
-	// }
-	// 	}
-	// 	button {
-	// 		width: 23px;
-	// 		height: 23px;
-	// 		min-width: 23px;
-	// 		border-width: 2px;
-	// 		background: #fff;
-	// 		&.decrement {
-	// 			&:before {
-	// 				background: url(../../assets/images/icons/minus.png) center center no-repeat;
-	// 				width: 11px;
-	// 				height: 4px;
-	// 			}
-	// 		}
-	// 		&.increament {
-	// 			&:before {
-	// 				background: url(../../assets/images/icons/pluss.png) center center no-repeat;
-	// 				width: 10px;
-	// 				height: 17px;
-	// 			}
-	// 		}
-	// 	}
-	// }
 	.v-select {
 		.v-select-toggle {
 			border-radius: 8px;

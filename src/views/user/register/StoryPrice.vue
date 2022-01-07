@@ -110,6 +110,38 @@ export default {
 		padding-top: 0 !important;
 	}
 	.storyPrice {
+		.quantityToggle {
+			input {
+				width: 220px;
+				font-size: rem(52px);
+				font-weight: 900;
+				height: 45px;
+				@media screen and (max-width: 991px) {
+					width: 220px;
+				}
+				@media screen and (max-width: 767px) {
+					width: 100%;
+				}
+			}
+			button {
+				width: 42px;
+				height: 42px;
+				min-width: 42px;
+				border: 5px solid var(--primary);
+				&.decrement {
+					&:before {
+						width: 14px;
+						height: 16px;
+					}
+				}
+				&.increament {
+					&:before {
+						width: 18px;
+						height: 21px;
+					}
+				}
+			}
+		}
 		@media screen and (max-width: 1850px) {
 			.image {
 				img {
