@@ -360,10 +360,15 @@ export default {
 					&.number {
 						font-size: rem(35px);
 						font-weight: 700;
+						line-height:1;
+						margin-bottom:rem(17px);
+					}
+					&.heading {
+						font-weight:400;
 					}
 					&.green {
 						color: #24d694;
-						font-weight: 700;
+						font-weight: 500;
 					}
 				}
 				h3 {
