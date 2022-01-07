@@ -121,7 +121,7 @@
 					</li>
 				</ul>
 
-				<p>How will the influencer get your offer?</p>
+				<p>Where Will this offer be a availiable?</p>
 				<base-select :options="options" initialValue="Entry location" />
 				<p>What do you want the influencer to include in the story?</p>
 				<div class="form-group">
@@ -155,7 +155,7 @@
 						value="Other instruction for the local influencerz"
 					/>
 				</div>
-				<p>Can influencers accept the produc immediately?</p>
+				<p>Can influencers accept the product immediately?</p>
 				<ul class="checkbox list-unstyled">
 					<li>
 						<label>
