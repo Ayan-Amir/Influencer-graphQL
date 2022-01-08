@@ -27,7 +27,7 @@
 				</div>
 			</div>
 		</div>
-		<create-campaign />
+		<create-offer />
 	</div>
 </template>
 
@@ -36,7 +36,7 @@ import { OFFERS_FILTERS } from '@/graphql/user/query';
 
 export default {
 	components: {
-		CreateCampaign: () => import(/* webpackChunkName: "CreateCampaign" */ '@/components/brand/CreateCampaign.vue'),
+		CreateOffer: () => import(/* webpackChunkName: "CreateCampaign" */ '@/components/brand/CreateOffer.vue'),
 		DealCard: () => import(/* webpackChunkName: "dealCard" */ '@/components/brand/DealCard.vue'),
 		navigation: () =>import(/* webpackChunkName: "navigations" */ "@/components/brand/Navigation.vue"),
 	},

@@ -109,6 +109,7 @@ export default {
 		},
 		searchvalue(data) {
 			this.search = data;
+            this.$apollo.queries.offers.skip = false;
 		},
 
 		infiniteHandler($state) {

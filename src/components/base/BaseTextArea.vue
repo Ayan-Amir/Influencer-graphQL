@@ -1,9 +1,8 @@
 <template>
 	<validation-provider :name="name" mode="eager" :rules="rules" v-slot="{ errors }">
-		<b-form-group :class="className">
+		<b-form-group>
             <label v-if="label!=null" class="control-label">{{label}}</label>
-			<b-form-input
-				:type="type"
+			<b-form-textarea
 				:vid="vid"
 				class="form-control"
 				:placeholder="placeholder"
@@ -11,7 +10,7 @@
 				:value="value"
 				@input="input"
 				autocomplete="off"
-			></b-form-input>
+			></b-form-textarea>
 			<b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
 		</b-form-group>
 	</validation-provider>
@@ -21,13 +20,13 @@
 export default {
 	props: {
 		name: String,
-		className: String,
 		placeholder: String,
 		type: String,
 		value: String,
 		rules: String,
 		vid: String,
-        label: String
+        label: String,
+        rows: Number
 	},
 	methods: {
 		getValidationState({ dirty, validated, valid = null }) {

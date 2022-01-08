@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { alert } from "./alert";
 import auth from "./auth";
+import {campaign} from "./campaign";
 import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
@@ -10,6 +11,7 @@ export default new Vuex.Store({
   modules: {
     alert,
     auth,
+    campaign
   },
   plugins: [
     createPersistedState({

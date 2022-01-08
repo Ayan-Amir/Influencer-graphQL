@@ -1,21 +1,21 @@
 <template>
 	<div>
 		<!-- createOffer modal -->
-		<b-modal ref="createOffer" id="createOffer" centered>
+		<b-modal ref="offerType" id="createOffer" centered>
 			<div class="title centered">What are you offering for free to the local influencers?</div>
 			<div class="row">
 				<div class="col-md-6">
 					<div class="image">
 						<img src="@/assets/images/product.png" alt="" class="img-fluid" />
 					</div>
-					<a href="#" class="btn btn-primary">Free Product</a>
+					<a href="javascript:void(0);" @click="offerType('product')" class="btn btn-primary">Free Product</a>
 					<p>Ex: coffee, pizza, burger, bar etc..</p>
 				</div>
 				<div class="col-md-6">
 					<div class="image">
 						<img src="@/assets/images/service.png" alt="" class="img-fluid" />
 					</div>
-					<a href="#" class="btn btn-primary" @click="hideModal('createOffer')" v-b-modal.freeService
+					<a href="javascript:void(0);" class="btn btn-primary" @click="offerType('service')" 
 						>Free Service</a
 					>
 					<p>Ex: gym, entry, haircut, spa, salon etc.</p>
@@ -28,112 +28,124 @@
 		<b-modal ref="freeService" id="freeService" centered>
 			<div class="title">Offer type</div>
 			<p class="subTitle">What free Porduct are you offering?</p>
-			<form>
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Product Name*" value="Product Name*" />
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Product Value*" value="Product Value*" />
-				</div>
-				<div class="form-group mt-20">
-					<label class="control-label">Product Description (obtional)</label>
-					<textarea
-						class="form-control"
-						placeholder="Ex: Iwant you to talk about Local Influencer"
-					></textarea>
-				</div>
-				<button type="button" class="btn btn-default full mb-2">Add an image for the offered product</button>
-				<p>Will the influencer need to call you for a reservation</p>
-				<ul class="checkbox list-unstyled">
-					<li>
-						<label>
-							<input type="checkbox" name="delivery" />
-							<span>No, don't call</span>
-						</label>
-					</li>
-					<li>
-						<label>
-							<input type="checkbox" name="location" />
-							<span>Yes, call first</span>
-						</label>
-					</li>
-				</ul>
-				<p>How will the influencer get your offer?</p>
-				<ul class="checkbox list-unstyled">
-					<li>
-						<label>
-							<input type="checkbox" name="delivery" />
-							<span>Home delivery to the influencer</span>
-						</label>
-					</li>
-					<li>
-						<label>
-							<input type="checkbox" name="location" />
-							<span>Personal pick-up from our location</span>
-						</label>
-					</li>
-				</ul>
+			<validation-observer ref="observer" v-slot="{ handleSubmit }">
+                <b-form @submit.stop.prevent="handleSubmit(userLogin)">
+                    <base-input
+                        className=""
+                        placeholder="Product Name*"
+                        type="text"
+                        :required="true"
+                        v-model="newOffer.attributes.name"
+                    />
+                    <base-input
+                        className=""
+                        placeholder="Product Value*"
+                        type="text"
+                        :required="true"
+                        v-model="newOffer.attributes.value"
+                    />
+                    <base-text-area label="Product Description (obtional)" :required="true" v-model="newOffer.attributes.decription"></base-text-area>
+                    <!-- <div class="form-group mt-20">
+                        <label class="control-label">Product Description (obtional)</label>
+                        <textarea
+                            class="form-control"
+                            placeholder="Ex: Iwant you to talk about Local Influencer"
+                        ></textarea>
+                    </div> -->
+                    <button type="button" class="btn btn-default full mb-2">Add an image for the offered product</button>
+                    <base-radio-group label="Will the influencer need to call you for a reservation" name="needstocall" :options="needsToCall"></base-radio-group>
+                    <p>Will the influencer need to call you for a reservation</p>
+                    <ul class="checkbox list-unstyled">
+                        <li>
+                            <label>
+                                <input type="checkbox" name="delivery" />
+                                <span>No, don't call</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="location" />
+                                <span>Yes, call first</span>
+                            </label>
+                        </li>
+                    </ul>
+                    <p>How will the influencer get your offer?</p>
+                    <ul class="checkbox list-unstyled">
+                        <li>
+                            <label>
+                                <input type="checkbox" name="delivery" />
+                                <span>Home delivery to the influencer</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="location" />
+                                <span>Personal pick-up from our location</span>
+                            </label>
+                        </li>
+                    </ul>
 
-				<p>Where Will this offer be a availiable?</p>
-				<vue-simple-suggest
-					v-model="chosen"
-					:list="simpleSuggestionList"
-					:styles="autoCompleteStyle"
-					:filter-by-query="true"
-					placeholder="Entry location"
-				/>
-				<!-- <base-select :options="options" initialValue="Entry location" /> -->
-				<p>What do you want the influencer to include in the story?</p>
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="@our instagram" value="@our instagram" />
-				</div>
-				<ul class="checkbox list-unstyled">
-					<li>
-						<label>
-							<input type="checkbox" name="atmosphere" />
-							<span>Our atmosphere</span>
-						</label>
-					</li>
-					<li>
-						<label>
-							<input type="checkbox" name="product" />
-							<span>Our product</span>
-						</label>
-					</li>
-				</ul>
-				<!-- <div class="form-group">
-					<input type="text" class="form-control" placeholder="Our atmosphere" value="Our atmosphere" />
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Our product" value="Our product" />
-				</div> -->
-				<div class="form-group">
-					<input
-						type="text"
-						class="form-control"
-						placeholder="Other instruction for the local influencerz"
-						value="Other instruction for the local influencerz"
-					/>
-				</div>
-				<p>Can influencers accept the product immediately?</p>
-				<ul class="checkbox list-unstyled">
-					<li>
-						<label>
-							<input type="checkbox" name="delivery" />
-							<span>Yes, of corse</span>
-						</label>
-					</li>
-					<li>
-						<label>
-							<input type="checkbox" name="location" />
-							<span>No, I will chech an approve personally every influencer</span>
-						</label>
-					</li>
-				</ul>
-				<button type="button" class="btn btn-primary" @click="hideModal('freeService')" v-b-modal.task>
-					continue
-				</button>
-			</form>
+                    <p>Where Will this offer be a availiable?</p>
+                    <vue-simple-suggest
+                        v-model="chosen"
+                        :list="simpleSuggestionList"
+                        :styles="autoCompleteStyle"
+                        :filter-by-query="true"
+                        placeholder="Entry location"
+                    />
+                    <!-- <base-select :options="options" initialValue="Entry location" /> -->
+                    <p>What do you want the influencer to include in the story?</p>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="@our instagram" value="@our instagram" />
+                    </div>
+                    <ul class="checkbox list-unstyled">
+                        <li>
+                            <label>
+                                <input type="checkbox" name="atmosphere" />
+                                <span>Our atmosphere</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="product" />
+                                <span>Our product</span>
+                            </label>
+                        </li>
+                    </ul>
+                    <!-- <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Our atmosphere" value="Our atmosphere" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Our product" value="Our product" />
+                    </div> -->
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Other instruction for the local influencerz"
+                            value="Other instruction for the local influencerz"
+                        />
+                    </div>
+                    <p>Can influencers accept the product immediately?</p>
+                    <ul class="checkbox list-unstyled">
+                        <li>
+                            <label>
+                                <input type="checkbox" name="delivery" />
+                                <span>Yes, of corse</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="location" />
+                                <span>No, I will chech an approve personally every influencer</span>
+                            </label>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-primary" @click="hideModal('freeService')" v-b-modal.task>
+                        continue
+                    </button>
+                </b-form>
+            </validation-observer>
 		</b-modal>
 		<!-- modal End-->
 
@@ -195,6 +207,8 @@
 <script>
 import VueSimpleSuggest from 'vue-simple-suggest';
 import 'vue-simple-suggest/dist/styles.css';
+let now = new Date();
+let timestamp = now.getTime();
 export default {
 	data() {
 		return {
@@ -216,12 +230,44 @@ export default {
 				{ value: 'a', text: 'Male' },
 				{ value: 'b', text: 'Female' },
 			],
+            needsToCall:[
+                {text: "No, don't call", value: 'false'},
+                {text: 'Yes, call first', value: 'true'}
+            ],
+            newOffer:{
+                type: null,
+                mediaType: "instagram",
+                attributes:{
+                    name: null,
+                    value: null,
+                    description: null,
+                    location: null,
+                    total: 0,
+                    expirationDate: timestamp,
+                    followers: 0,
+                    availability: 0,
+                    needsToCall: false,
+                    deliveryType: null,
+                    deliveryLocations: null,
+                    storiesTotal: 0,
+                    storiesAccount: null,
+                    storiesTypes: null,
+                    storiesInstructions: null,
+                    postsTotal: 0
+                }
+            }
 		};
 	},
 	components: {
 		VueSimpleSuggest,
 	},
 	methods: {
+        offerType(type){
+            this.newOffer.type=type
+            this.$refs['offerType'].hide();
+            this.$refs['freeService'].show();
+            console.log(this.newOffer);
+        },
 		hideModal(data) {
 			this.$refs[data].hide();
 		},

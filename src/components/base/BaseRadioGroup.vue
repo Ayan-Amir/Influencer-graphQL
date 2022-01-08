@@ -1,17 +1,13 @@
 <template>
 	<validation-provider :name="name" mode="eager" :rules="rules" v-slot="{ errors }">
-		<b-form-group :class="className">
-            <label v-if="label!=null" class="control-label">{{label}}</label>
-			<b-form-input
-				:type="type"
-				:vid="vid"
-				class="form-control"
-				:placeholder="placeholder"
-				:state="errors[0] ? false : null"
-				:value="value"
-				@input="input"
-				autocomplete="off"
-			></b-form-input>
+		<b-form-group :label="label">
+            <b-form-radio-group
+                :options="options"
+                :name="name"
+                @input="input"
+                :checked="value"
+                plain
+            ></b-form-radio-group>
 			<b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
 		</b-form-group>
 	</validation-provider>
@@ -21,13 +17,10 @@
 export default {
 	props: {
 		name: String,
-		className: String,
-		placeholder: String,
-		type: String,
 		value: String,
 		rules: String,
-		vid: String,
-        label: String
+        label: String,
+        options: Array
 	},
 	methods: {
 		getValidationState({ dirty, validated, valid = null }) {
